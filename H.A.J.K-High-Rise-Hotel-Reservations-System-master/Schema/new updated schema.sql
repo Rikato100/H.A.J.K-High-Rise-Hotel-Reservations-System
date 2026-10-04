@@ -21,8 +21,8 @@ CREATE TABLE `account` (
 
 -- Sample data for the `account` table, including hashed passwords for security.
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin3104', 'admin123', 'Hans Norman Olaes', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
-(2, 'S0223', 'staff123', 'Jasper Dela Cruz', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
+(1, 'Admin3104', 'admin123', 'Hans Norman Olaes', 'Admin', 'Active', '2026-10-01 16:23:25', '2026-10-04 16:23:25'),
+(2, 'S0223', 'staff123', 'Jasper Dela Cruz', 'Staff', 'Active', '2026-10-01 16:52:02', '2026-10-04 16:52:02');
 
 
 -- --------------------------------------------------------
