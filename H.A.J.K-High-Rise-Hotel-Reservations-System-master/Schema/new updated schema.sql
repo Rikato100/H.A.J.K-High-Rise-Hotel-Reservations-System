@@ -35,8 +35,8 @@ CREATE TABLE `discount` (
   `discount_name` varchar(100) NOT NULL,
   `discount_rate` decimal(5,2) NOT NULL DEFAULT 0.00,
   `discount_type` enum('None','Statutory','Lean Season','Peak Season') NOT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
+  `start_date` varchar(5) DEFAULT NULL,
+  `end_date` varchar(5) DEFAULT NULL,
   `vat_exempt` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -44,8 +44,8 @@ CREATE TABLE `discount` (
 INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_rate`, `discount_type`, `start_date`, `end_date`, `vat_exempt`, `created_at`) VALUES
 (1, 1, 'None', 0.00, 'None', NULL, NULL, 0, '2026-10-04 16:26:45'),
 (2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1, '2026-10-04 16:26:45'),
-(3, 1, 'Lean Season', 15.00, 'Lean Season', '2026-06-01', '2026-10-31', 0, '2026-10-04 16:26:45'),
-(4, 1, 'Peak Season', 10.00, 'Peak Season', '2026-11-01', '2027-01-31', 0, '2026-10-04 16:26:45');
+(3, 1, 'Lean Season', 15.00, 'Lean Season', '06-01', '10-31', 0, '2026-10-04 16:26:45'),
+(4, 1, 'Peak Season', 10.00, 'Peak Season', '11-01', '01-31', 0, '2026-10-04 16:26:45');
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ INSERT INTO `room` (`room_id`, `room_type_id`, `room_number`, `floor`, `room_sta
 (12, 4, '402', 4, 'Available', 'Wi-Fi, TV, Air Conditioning, Living Area, Dining Area, Kitchenette', '2026-10-04 16:25:53'),
 (13, 1, '13', 1, 'Available', 'sad', '2026-10-04 20:14:54'),
 (14, 2, '14', 2, 'Available', 'ads', '2026-10-04 20:17:54');
-s
+
 -- --------------------------------------------------------
 
 
