@@ -188,11 +188,11 @@ Partial Class frmAdminHomepage
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Tahoma", 4.20000029F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = SystemColors.ButtonHighlight
-        Label2.Location = New Point(39, 79)
+        Label2.Location = New Point(28, 80)
         Label2.Name = "Label2"
-        Label2.Size = New Size(138, 10)
+        Label2.Size = New Size(152, 10)
         Label2.TabIndex = 4
-        Label2.Text = "Where Every Stay Feels Ordinary."
+        Label2.Text = "Where Every Stay Feels High Quality."
         ' 
         ' Label1
         ' 

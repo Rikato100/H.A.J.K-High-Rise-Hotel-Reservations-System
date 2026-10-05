@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Forms\AdminForm\Class1.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Forms\AdminForm\frmAdmin.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -9,6 +12,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\AdminForm\frmRoomTypes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AdminForm\General.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AdminForm\Roominventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AdminForm\RoomTypes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AdminForm\User.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Dashboard\dashboard.vb">
