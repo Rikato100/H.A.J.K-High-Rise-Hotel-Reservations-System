@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "cbRpu3O7Mi0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\H.A.J.K-High-Rise-Hotel-Reservations-System-master\\H.A.J.K-High-Rise-Hotel-Reservations-System-master\\HAJK_HotelReservationSystem.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\google.protobuf\\3.35.0\\google.protobuf.3.35.0.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.8\\k4os.compression.lz4.streams.1.3.8.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\mysql.data\\26.7.0\\mysql.data.26.7.0.nupkg.sha512",
+    "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\zstdsharp.port\\0.8.8\\zstdsharp.port.0.8.8.nupkg.sha512"
+  ],
+  "logs": []
+}

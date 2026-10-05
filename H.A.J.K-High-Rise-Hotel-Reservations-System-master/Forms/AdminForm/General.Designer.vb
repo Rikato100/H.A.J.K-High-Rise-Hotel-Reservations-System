@@ -34,11 +34,6 @@ Partial Class FrmSettings
         Label2 = New Label()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
-        Panel2 = New Panel()
-        Class11 = New Class1()
-        Class12 = New Class1()
-        Label3 = New Label()
-        Label4 = New Label()
         Label5 = New Label()
         TextBox1 = New TextBox()
         Label6 = New Label()
@@ -60,20 +55,53 @@ Partial Class FrmSettings
         Label16 = New Label()
         Button9 = New Button()
         Label17 = New Label()
-        Class13 = New Class1()
         Label18 = New Label()
         Label19 = New Label()
         ComboBox1 = New ComboBox()
         Button10 = New Button()
+        Label3 = New Label()
+        Label4 = New Label()
+        Panel2 = New Panel()
+        Class14 = New Class1()
+        Class11 = New Class1()
+        Label20 = New Label()
+        TextBox4 = New TextBox()
+        Label21 = New Label()
+        Label22 = New Label()
+        TextBox5 = New TextBox()
+        Label23 = New Label()
+        TextBox6 = New TextBox()
+        Button11 = New Button()
+        Label24 = New Label()
+        Label25 = New Label()
+        Label26 = New Label()
+        Label27 = New Label()
+        NumericUpDown4 = New NumericUpDown()
+        Label28 = New Label()
+        NumericUpDown5 = New NumericUpDown()
+        NumericUpDown6 = New NumericUpDown()
+        Label29 = New Label()
+        Label30 = New Label()
+        Label31 = New Label()
+        Label32 = New Label()
+        Button12 = New Button()
+        Class12 = New Class1()
+        Label33 = New Label()
+        Label34 = New Label()
+        ComboBox2 = New ComboBox()
+        Button13 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        Panel2.SuspendLayout()
-        Class11.SuspendLayout()
-        Class12.SuspendLayout()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumericUpDown2, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumericUpDown3, ComponentModel.ISupportInitialize).BeginInit()
-        Class13.SuspendLayout()
+        Panel2.SuspendLayout()
+        Class14.SuspendLayout()
+        Class11.SuspendLayout()
+        CType(NumericUpDown4, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumericUpDown5, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumericUpDown6, ComponentModel.ISupportInitialize).BeginInit()
+        Class12.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
@@ -210,79 +238,6 @@ Partial Class FrmSettings
         PictureBox1.TabIndex = 1
         PictureBox1.TabStop = False
         PictureBox1.WaitOnLoad = True
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.Beige
-        Panel2.Controls.Add(Class13)
-        Panel2.Controls.Add(Label4)
-        Panel2.Controls.Add(Label3)
-        Panel2.Controls.Add(Class12)
-        Panel2.Controls.Add(Class11)
-        Panel2.Dock = DockStyle.Fill
-        Panel2.Location = New Point(210, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(879, 583)
-        Panel2.TabIndex = 4
-        ' 
-        ' Class11
-        ' 
-        Class11.BackColor = Color.Blue
-        Class11.Controls.Add(Button8)
-        Class11.Controls.Add(Label8)
-        Class11.Controls.Add(TextBox3)
-        Class11.Controls.Add(Label7)
-        Class11.Controls.Add(TextBox2)
-        Class11.Controls.Add(Label6)
-        Class11.Controls.Add(TextBox1)
-        Class11.Controls.Add(Label5)
-        Class11.Location = New Point(6, 86)
-        Class11.Name = "Class11"
-        Class11.Size = New Size(430, 300)
-        Class11.TabIndex = 19
-        ' 
-        ' Class12
-        ' 
-        Class12.BackColor = Color.Blue
-        Class12.Controls.Add(Label17)
-        Class12.Controls.Add(Button9)
-        Class12.Controls.Add(Label16)
-        Class12.Controls.Add(Label15)
-        Class12.Controls.Add(Label14)
-        Class12.Controls.Add(NumericUpDown3)
-        Class12.Controls.Add(NumericUpDown2)
-        Class12.Controls.Add(NumericUpDown1)
-        Class12.Controls.Add(Label13)
-        Class12.Controls.Add(Label12)
-        Class12.Controls.Add(Label11)
-        Class12.Controls.Add(Label10)
-        Class12.Controls.Add(Label9)
-        Class12.Location = New Point(442, 86)
-        Class12.Name = "Class12"
-        Class12.Size = New Size(430, 300)
-        Class12.TabIndex = 20
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(2, 1)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(340, 50)
-        Label3.TabIndex = 24
-        Label3.Text = "User Management"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.BackColor = Color.Transparent
-        Label4.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(7, 46)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(484, 23)
-        Label4.TabIndex = 25
-        Label4.Text = "Manage hotel preferences, discount, security, and system data"
         ' 
         ' Label5
         ' 
@@ -494,18 +449,6 @@ Partial Class FrmSettings
         Label17.TabIndex = 37
         Label17.Text = "___________________________________________________________"
         ' 
-        ' Class13
-        ' 
-        Class13.BackColor = Color.Blue
-        Class13.Controls.Add(Button10)
-        Class13.Controls.Add(ComboBox1)
-        Class13.Controls.Add(Label19)
-        Class13.Controls.Add(Label18)
-        Class13.Location = New Point(6, 392)
-        Class13.Name = "Class13"
-        Class13.Size = New Size(866, 162)
-        Class13.TabIndex = 26
-        ' 
         ' Label18
         ' 
         Label18.AutoSize = True
@@ -549,6 +492,337 @@ Partial Class FrmSettings
         Button10.Text = "Reset Selected"
         Button10.UseVisualStyleBackColor = False
         ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.BackColor = Color.Transparent
+        Label3.Font = New Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Location = New Point(2, 1)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(307, 50)
+        Label3.TabIndex = 24
+        Label3.Text = "General Settings"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.BackColor = Color.Transparent
+        Label4.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Location = New Point(7, 46)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(484, 23)
+        Label4.TabIndex = 25
+        Label4.Text = "Manage hotel preferences, discount, security, and system data"
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.Beige
+        Panel2.Controls.Add(Class12)
+        Panel2.Controls.Add(Class11)
+        Panel2.Controls.Add(Class14)
+        Panel2.Controls.Add(Label4)
+        Panel2.Controls.Add(Label3)
+        Panel2.Dock = DockStyle.Fill
+        Panel2.Location = New Point(210, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(879, 583)
+        Panel2.TabIndex = 4
+        ' 
+        ' Class14
+        ' 
+        Class14.Controls.Add(Label28)
+        Class14.Controls.Add(Button11)
+        Class14.Controls.Add(Label23)
+        Class14.Controls.Add(TextBox6)
+        Class14.Controls.Add(Label22)
+        Class14.Controls.Add(TextBox5)
+        Class14.Controls.Add(TextBox4)
+        Class14.Controls.Add(Label20)
+        Class14.Location = New Point(7, 91)
+        Class14.Name = "Class14"
+        Class14.Size = New Size(430, 300)
+        Class14.TabIndex = 26
+        ' 
+        ' Class11
+        ' 
+        Class11.Controls.Add(Button12)
+        Class11.Controls.Add(Label32)
+        Class11.Controls.Add(Label31)
+        Class11.Controls.Add(Label30)
+        Class11.Controls.Add(Label29)
+        Class11.Controls.Add(NumericUpDown6)
+        Class11.Controls.Add(NumericUpDown5)
+        Class11.Controls.Add(NumericUpDown4)
+        Class11.Controls.Add(Label27)
+        Class11.Controls.Add(Label26)
+        Class11.Controls.Add(Label25)
+        Class11.Controls.Add(Label24)
+        Class11.Controls.Add(Label21)
+        Class11.Location = New Point(443, 91)
+        Class11.Name = "Class11"
+        Class11.Size = New Size(430, 300)
+        Class11.TabIndex = 27
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.BackColor = Color.Transparent
+        Label20.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label20.Location = New Point(4, 4)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(239, 31)
+        Label20.TabIndex = 28
+        Label20.Text = "🔒 Change Password"
+        ' 
+        ' TextBox4
+        ' 
+        TextBox4.Location = New Point(22, 78)
+        TextBox4.Name = "TextBox4"
+        TextBox4.Size = New Size(320, 27)
+        TextBox4.TabIndex = 29
+        TextBox4.UseSystemPasswordChar = True
+        ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.BackColor = Color.Transparent
+        Label21.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label21.Location = New Point(10, 78)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(170, 23)
+        Label21.TabIndex = 30
+        Label21.Text = "PWD / Senior Citizen"
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.BackColor = Color.Transparent
+        Label22.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label22.Location = New Point(22, 117)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(119, 23)
+        Label22.TabIndex = 32
+        Label22.Text = "New Password"
+        ' 
+        ' TextBox5
+        ' 
+        TextBox5.Location = New Point(22, 143)
+        TextBox5.Name = "TextBox5"
+        TextBox5.Size = New Size(320, 27)
+        TextBox5.TabIndex = 31
+        TextBox5.UseSystemPasswordChar = True
+        ' 
+        ' Label23
+        ' 
+        Label23.AutoSize = True
+        Label23.BackColor = Color.Transparent
+        Label23.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label23.Location = New Point(22, 183)
+        Label23.Name = "Label23"
+        Label23.Size = New Size(146, 23)
+        Label23.TabIndex = 34
+        Label23.Text = "Confirm Password"
+        ' 
+        ' TextBox6
+        ' 
+        TextBox6.Location = New Point(22, 209)
+        TextBox6.Name = "TextBox6"
+        TextBox6.Size = New Size(320, 27)
+        TextBox6.TabIndex = 33
+        TextBox6.UseSystemPasswordChar = True
+        ' 
+        ' Button11
+        ' 
+        Button11.FlatStyle = FlatStyle.Popup
+        Button11.Location = New Point(104, 251)
+        Button11.Name = "Button11"
+        Button11.Size = New Size(144, 29)
+        Button11.TabIndex = 35
+        Button11.Text = "Update Password"
+        Button11.UseVisualStyleBackColor = True
+        ' 
+        ' Label24
+        ' 
+        Label24.AutoSize = True
+        Label24.BackColor = Color.Transparent
+        Label24.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label24.Location = New Point(2, 4)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(230, 31)
+        Label24.TabIndex = 29
+        Label24.Text = "% Discount Settings"
+        ' 
+        ' Label25
+        ' 
+        Label25.AutoSize = True
+        Label25.BackColor = Color.Transparent
+        Label25.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label25.Location = New Point(7, 34)
+        Label25.Name = "Label25"
+        Label25.Size = New Size(416, 23)
+        Label25.TabIndex = 30
+        Label25.Text = "__________________________________________________________"
+        ' 
+        ' Label26
+        ' 
+        Label26.AutoSize = True
+        Label26.BackColor = Color.Transparent
+        Label26.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label26.Location = New Point(10, 174)
+        Label26.Name = "Label26"
+        Label26.Size = New Size(104, 23)
+        Label26.TabIndex = 31
+        Label26.Text = "Peak Season"
+        ' 
+        ' Label27
+        ' 
+        Label27.AutoSize = True
+        Label27.BackColor = Color.Transparent
+        Label27.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label27.Location = New Point(10, 127)
+        Label27.Name = "Label27"
+        Label27.Size = New Size(105, 23)
+        Label27.TabIndex = 32
+        Label27.Text = "Lean Season"
+        ' 
+        ' NumericUpDown4
+        ' 
+        NumericUpDown4.Location = New Point(335, 74)
+        NumericUpDown4.Name = "NumericUpDown4"
+        NumericUpDown4.Size = New Size(62, 27)
+        NumericUpDown4.TabIndex = 33
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.BackColor = Color.Transparent
+        Label28.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label28.Location = New Point(23, 52)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(143, 23)
+        Label28.TabIndex = 36
+        Label28.Text = "Current Password"
+        ' 
+        ' NumericUpDown5
+        ' 
+        NumericUpDown5.Location = New Point(335, 174)
+        NumericUpDown5.Name = "NumericUpDown5"
+        NumericUpDown5.Size = New Size(62, 27)
+        NumericUpDown5.TabIndex = 34
+        ' 
+        ' NumericUpDown6
+        ' 
+        NumericUpDown6.Location = New Point(335, 123)
+        NumericUpDown6.Name = "NumericUpDown6"
+        NumericUpDown6.Size = New Size(62, 27)
+        NumericUpDown6.TabIndex = 35
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.BackColor = Color.Transparent
+        Label29.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label29.Location = New Point(399, 74)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(24, 23)
+        Label29.TabIndex = 36
+        Label29.Text = "%"
+        ' 
+        ' Label30
+        ' 
+        Label30.AutoSize = True
+        Label30.BackColor = Color.Transparent
+        Label30.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label30.Location = New Point(399, 174)
+        Label30.Name = "Label30"
+        Label30.Size = New Size(24, 23)
+        Label30.TabIndex = 37
+        Label30.Text = "%"
+        ' 
+        ' Label31
+        ' 
+        Label31.AutoSize = True
+        Label31.BackColor = Color.Transparent
+        Label31.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label31.Location = New Point(399, 123)
+        Label31.Name = "Label31"
+        Label31.Size = New Size(24, 23)
+        Label31.TabIndex = 38
+        Label31.Text = "%"
+        ' 
+        ' Label32
+        ' 
+        Label32.AutoSize = True
+        Label32.BackColor = Color.Transparent
+        Label32.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label32.Location = New Point(7, 209)
+        Label32.Name = "Label32"
+        Label32.Size = New Size(416, 23)
+        Label32.TabIndex = 39
+        Label32.Text = "__________________________________________________________"
+        ' 
+        ' Button12
+        ' 
+        Button12.FlatStyle = FlatStyle.Popup
+        Button12.Location = New Point(124, 251)
+        Button12.Name = "Button12"
+        Button12.Size = New Size(177, 29)
+        Button12.TabIndex = 37
+        Button12.Text = "Save Discount Settings"
+        Button12.UseVisualStyleBackColor = True
+        ' 
+        ' Class12
+        ' 
+        Class12.Controls.Add(Button13)
+        Class12.Controls.Add(ComboBox2)
+        Class12.Controls.Add(Label34)
+        Class12.Controls.Add(Label33)
+        Class12.Location = New Point(7, 397)
+        Class12.Name = "Class12"
+        Class12.Size = New Size(866, 174)
+        Class12.TabIndex = 28
+        ' 
+        ' Label33
+        ' 
+        Label33.AutoSize = True
+        Label33.BackColor = Color.Transparent
+        Label33.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label33.Location = New Point(9, 5)
+        Label33.Name = "Label33"
+        Label33.Size = New Size(248, 31)
+        Label33.TabIndex = 37
+        Label33.Text = "⚠ Reset System Data"
+        ' 
+        ' Label34
+        ' 
+        Label34.AutoSize = True
+        Label34.BackColor = Color.Transparent
+        Label34.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label34.Location = New Point(14, 36)
+        Label34.Name = "Label34"
+        Label34.Size = New Size(570, 23)
+        Label34.TabIndex = 37
+        Label34.Text = "Reset selected system data. This action may permanently remove records."
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Items.AddRange(New Object() {"Guest History", "", "Financial & Billing Transactions", "", "Room Statuses Only", "", "Full System Reset"})
+        ComboBox2.Location = New Point(14, 62)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(845, 28)
+        ComboBox2.TabIndex = 38
+        ' 
+        ' Button13
+        ' 
+        Button13.FlatStyle = FlatStyle.Popup
+        Button13.Location = New Point(716, 114)
+        Button13.Name = "Button13"
+        Button13.Size = New Size(143, 29)
+        Button13.TabIndex = 40
+        Button13.Text = "Reset Selected"
+        Button13.UseVisualStyleBackColor = True
+        ' 
         ' FrmSettings
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -561,17 +835,20 @@ Partial Class FrmSettings
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        Panel2.ResumeLayout(False)
-        Panel2.PerformLayout()
-        Class11.ResumeLayout(False)
-        Class11.PerformLayout()
-        Class12.ResumeLayout(False)
-        Class12.PerformLayout()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).EndInit()
         CType(NumericUpDown2, ComponentModel.ISupportInitialize).EndInit()
         CType(NumericUpDown3, ComponentModel.ISupportInitialize).EndInit()
-        Class13.ResumeLayout(False)
-        Class13.PerformLayout()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        Class14.ResumeLayout(False)
+        Class14.PerformLayout()
+        Class11.ResumeLayout(False)
+        Class11.PerformLayout()
+        CType(NumericUpDown4, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumericUpDown5, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumericUpDown6, ComponentModel.ISupportInitialize).EndInit()
+        Class12.ResumeLayout(False)
+        Class12.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -586,11 +863,8 @@ Partial Class FrmSettings
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents Class11 As Class1
     Friend WithEvents Class12 As Class1
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label7 As Label
@@ -617,4 +891,33 @@ Partial Class FrmSettings
     Friend WithEvents Label18 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents Button10 As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Class14 As Class1
+    Friend WithEvents Label20 As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button12 As Button
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label29 As Label
+    Friend WithEvents NumericUpDown6 As NumericUpDown
+    Friend WithEvents NumericUpDown5 As NumericUpDown
+    Friend WithEvents NumericUpDown4 As NumericUpDown
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label34 As Label
+    Friend WithEvents Label33 As Label
+    Friend WithEvents Button13 As Button
+    Friend WithEvents ComboBox2 As ComboBox
 End Class
