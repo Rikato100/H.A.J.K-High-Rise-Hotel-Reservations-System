@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class RoomForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,12 @@ Partial Class RoomForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoomForm))
         Label1 = New Label()
         dgvRooms = New DataGridView()
         colRoomID = New DataGridViewTextBoxColumn()
@@ -35,117 +39,363 @@ Partial Class RoomForm
         btnBack = New Button()
         btnRefresh = New Button()
         btnDelete = New Button()
+        Panel1 = New Panel()
+        Panel2 = New Panel()
+        Label2 = New Label()
+        PictureBox1 = New PictureBox()
+        Label3 = New Label()
+        Button1 = New Button()
+        Button2 = New Button()
+        Button3 = New Button()
+        Button4 = New Button()
+        Button5 = New Button()
+        Button6 = New Button()
+        Label4 = New Label()
+        PictureBox2 = New PictureBox()
+        PictureBox3 = New PictureBox()
+        PictureBox4 = New PictureBox()
         CType(dgvRooms, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(303, 28)
+        Label1.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Label1.Location = New Point(252, 111)
         Label1.Name = "Label1"
-        Label1.Size = New Size(207, 30)
+        Label1.Size = New Size(305, 38)
         Label1.TabIndex = 1
         Label1.Text = "Room Management"
         ' 
         ' dgvRooms
         ' 
-        dgvRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvRooms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvRooms.BackgroundColor = Color.Beige
+        dgvRooms.BorderStyle = BorderStyle.None
+        dgvRooms.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.Maroon
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvRooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        dgvRooms.ColumnHeadersHeight = 47
+        dgvRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         dgvRooms.Columns.AddRange(New DataGridViewColumn() {colRoomID, colRoomNumber, colRoomType, colFloor, colStatus, colRate})
-        dgvRooms.Location = New Point(81, 125)
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle2.ForeColor = Color.Maroon
+        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvRooms.DefaultCellStyle = DataGridViewCellStyle2
+        dgvRooms.EditMode = DataGridViewEditMode.EditProgrammatically
+        dgvRooms.EnableHeadersVisualStyles = False
+        dgvRooms.GridColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        dgvRooms.Location = New Point(164, 249)
+        dgvRooms.Margin = New Padding(3, 4, 3, 4)
         dgvRooms.MultiSelect = False
         dgvRooms.Name = "dgvRooms"
         dgvRooms.ReadOnly = True
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle3.ForeColor = Color.Maroon
+        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvRooms.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        dgvRooms.RowHeadersWidth = 51
         dgvRooms.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvRooms.Size = New Size(643, 313)
+        dgvRooms.Size = New Size(1008, 366)
         dgvRooms.TabIndex = 2
         ' 
         ' colRoomID
         ' 
         colRoomID.HeaderText = "RoomID"
+        colRoomID.MinimumWidth = 6
         colRoomID.Name = "colRoomID"
         colRoomID.ReadOnly = True
         ' 
         ' colRoomNumber
         ' 
         colRoomNumber.HeaderText = "Room Number"
+        colRoomNumber.MinimumWidth = 6
         colRoomNumber.Name = "colRoomNumber"
         colRoomNumber.ReadOnly = True
         ' 
         ' colRoomType
         ' 
         colRoomType.HeaderText = "Room Type"
+        colRoomType.MinimumWidth = 6
         colRoomType.Name = "colRoomType"
         colRoomType.ReadOnly = True
         ' 
         ' colFloor
         ' 
         colFloor.HeaderText = "Floor"
+        colFloor.MinimumWidth = 6
         colFloor.Name = "colFloor"
         colFloor.ReadOnly = True
         ' 
         ' colStatus
         ' 
         colStatus.HeaderText = "Status"
+        colStatus.MinimumWidth = 6
         colStatus.Name = "colStatus"
         colStatus.ReadOnly = True
         ' 
         ' colRate
         ' 
         colRate.HeaderText = "Base Rate"
+        colRate.MinimumWidth = 6
         colRate.Name = "colRate"
         colRate.ReadOnly = True
         ' 
         ' btnAdd
         ' 
-        btnAdd.Location = New Point(102, 76)
+        btnAdd.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        btnAdd.ForeColor = Color.Beige
+        btnAdd.Location = New Point(164, 180)
+        btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(107, 34)
+        btnAdd.Size = New Size(196, 61)
         btnAdd.TabIndex = 6
-        btnAdd.Text = "ADD"
-        btnAdd.UseVisualStyleBackColor = True
+        btnAdd.Text = "＋ ADD"
+        btnAdd.UseVisualStyleBackColor = False
         ' 
         ' btnEdit
         ' 
-        btnEdit.Location = New Point(226, 76)
+        btnEdit.BackColor = Color.OldLace
+        btnEdit.ForeColor = Color.Maroon
+        btnEdit.Location = New Point(361, 180)
+        btnEdit.Margin = New Padding(3, 4, 3, 4)
         btnEdit.Name = "btnEdit"
-        btnEdit.Size = New Size(107, 34)
+        btnEdit.Size = New Size(196, 61)
         btnEdit.TabIndex = 7
         btnEdit.Text = "EDIT"
-        btnEdit.UseVisualStyleBackColor = True
+        btnEdit.UseVisualStyleBackColor = False
         ' 
         ' btnBack
         ' 
-        btnBack.Location = New Point(596, 76)
+        btnBack.BackColor = Color.OldLace
+        btnBack.Location = New Point(976, 180)
+        btnBack.Margin = New Padding(3, 4, 3, 4)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(107, 34)
+        btnBack.Size = New Size(196, 61)
         btnBack.TabIndex = 8
-        btnBack.Text = "BACK"
-        btnBack.UseVisualStyleBackColor = True
+        btnBack.Text = "← BACK"
+        btnBack.UseVisualStyleBackColor = False
         ' 
         ' btnRefresh
         ' 
-        btnRefresh.Location = New Point(474, 76)
+        btnRefresh.BackColor = Color.OldLace
+        btnRefresh.Location = New Point(771, 180)
+        btnRefresh.Margin = New Padding(3, 4, 3, 4)
         btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(107, 34)
+        btnRefresh.Size = New Size(196, 61)
         btnRefresh.TabIndex = 9
-        btnRefresh.Text = "REFRESH"
-        btnRefresh.UseVisualStyleBackColor = True
+        btnRefresh.Text = "↻ REFRESH"
+        btnRefresh.UseVisualStyleBackColor = False
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(352, 76)
+        btnDelete.BackColor = Color.OldLace
+        btnDelete.ForeColor = Color.Maroon
+        btnDelete.Location = New Point(566, 180)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(107, 34)
+        btnDelete.Size = New Size(196, 61)
         btnDelete.TabIndex = 10
         btnDelete.Text = "DELETE"
-        btnDelete.UseVisualStyleBackColor = True
+        btnDelete.UseVisualStyleBackColor = False
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Panel1.Controls.Add(PictureBox3)
+        Panel1.Controls.Add(Button6)
+        Panel1.Controls.Add(Button5)
+        Panel1.Controls.Add(Button4)
+        Panel1.Controls.Add(Button3)
+        Panel1.Controls.Add(Button2)
+        Panel1.Controls.Add(Button1)
+        Panel1.Dock = DockStyle.Left
+        Panel1.Location = New Point(0, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(150, 653)
+        Panel1.TabIndex = 12
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Panel2.Controls.Add(PictureBox4)
+        Panel2.Controls.Add(Label3)
+        Panel2.Controls.Add(PictureBox1)
+        Panel2.Controls.Add(Label2)
+        Panel2.Dock = DockStyle.Top
+        Panel2.Location = New Point(150, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1032, 100)
+        Panel2.TabIndex = 13
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        Label2.Location = New Point(129, 15)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(375, 38)
+        Label2.TabIndex = 0
+        Label2.Text = "H.A.J.K High Rise Hotel"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(6, 12)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(125, 62)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 14
+        PictureBox1.TabStop = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = Color.Beige
+        Label3.Location = New Point(148, 50)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(336, 20)
+        Label3.TabIndex = 15
+        Label3.Text = "Where stay feels high quality or like extraordinary"
+        ' 
+        ' Button1
+        ' 
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.ForeColor = Color.Beige
+        Button1.Location = New Point(3, 113)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(144, 56)
+        Button1.TabIndex = 0
+        Button1.Text = "🏠 Dashboard"
+        Button1.UseVisualStyleBackColor = True
+        ' 
+        ' Button2
+        ' 
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.ForeColor = Color.Beige
+        Button2.Location = New Point(3, 281)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(144, 56)
+        Button2.TabIndex = 1
+        Button2.Text = "📅 Reservations"
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' Button3
+        ' 
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.ForeColor = Color.Beige
+        Button3.Location = New Point(3, 337)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(144, 56)
+        Button3.TabIndex = 2
+        Button3.Text = "📊 Reports "
+        Button3.UseVisualStyleBackColor = True
+        ' 
+        ' Button4
+        ' 
+        Button4.FlatStyle = FlatStyle.Flat
+        Button4.ForeColor = Color.Beige
+        Button4.Location = New Point(3, 225)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(144, 56)
+        Button4.TabIndex = 3
+        Button4.Text = "👥 Staff Management"
+        Button4.UseVisualStyleBackColor = True
+        ' 
+        ' Button5
+        ' 
+        Button5.FlatStyle = FlatStyle.Flat
+        Button5.ForeColor = Color.Beige
+        Button5.Location = New Point(3, 169)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(144, 56)
+        Button5.TabIndex = 4
+        Button5.Text = "🛏 Rooms Management"
+        Button5.UseVisualStyleBackColor = True
+        ' 
+        ' Button6
+        ' 
+        Button6.FlatStyle = FlatStyle.Flat
+        Button6.ForeColor = Color.Beige
+        Button6.Location = New Point(3, 393)
+        Button6.Name = "Button6"
+        Button6.Size = New Size(144, 56)
+        Button6.TabIndex = 5
+        Button6.Text = "⚙ Settings"
+        Button6.UseVisualStyleBackColor = True
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Label4.Location = New Point(256, 149)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(468, 20)
+        Label4.TabIndex = 16
+        Label4.Text = "Manage hotel rooms, update details, and keep track of the availabilty"
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(164, 111)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(94, 62)
+        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox2.TabIndex = 16
+        PictureBox2.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(12, 8)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(125, 92)
+        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox3.TabIndex = 15
+        PictureBox3.TabStop = False
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(510, 0)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(522, 100)
+        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox4.TabIndex = 16
+        PictureBox4.TabStop = False
         ' 
         ' RoomForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
+        ClientSize = New Size(1182, 653)
+        Controls.Add(PictureBox2)
+        Controls.Add(Label4)
+        Controls.Add(Panel2)
+        Controls.Add(Panel1)
         Controls.Add(btnDelete)
         Controls.Add(btnRefresh)
         Controls.Add(btnBack)
@@ -153,10 +403,20 @@ Partial Class RoomForm
         Controls.Add(btnAdd)
         Controls.Add(dgvRooms)
         Controls.Add(Label1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        Margin = New Padding(3, 4, 3, 4)
+        MaximizeBox = False
         Name = "RoomForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Room Management"
         CType(dgvRooms, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -174,4 +434,19 @@ Partial Class RoomForm
     Friend WithEvents colStatus As DataGridViewTextBoxColumn
     Friend WithEvents colRate As DataGridViewTextBoxColumn
     Friend WithEvents btnDelete As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

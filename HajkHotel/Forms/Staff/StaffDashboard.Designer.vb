@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class StaffDashboard
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class StaffDashboard
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
@@ -36,7 +36,7 @@ Partial Class StaffDashboard
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(266, 37)
+        Label1.Location = New Point(431, 19)
         Label1.Name = "Label1"
         Label1.Size = New Size(452, 37)
         Label1.TabIndex = 1
@@ -46,7 +46,7 @@ Partial Class StaffDashboard
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(366, 77)
+        Label2.Location = New Point(523, 73)
         Label2.Name = "Label2"
         Label2.Size = New Size(212, 37)
         Label2.TabIndex = 2
@@ -54,7 +54,7 @@ Partial Class StaffDashboard
         ' 
         ' btnLogout
         ' 
-        btnLogout.Location = New Point(481, 309)
+        btnLogout.Location = New Point(746, 291)
         btnLogout.Margin = New Padding(3, 4, 3, 4)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(118, 53)
@@ -64,7 +64,7 @@ Partial Class StaffDashboard
         ' 
         ' btnPayments
         ' 
-        btnPayments.Location = New Point(481, 235)
+        btnPayments.Location = New Point(746, 217)
         btnPayments.Margin = New Padding(3, 4, 3, 4)
         btnPayments.Name = "btnPayments"
         btnPayments.Size = New Size(118, 53)
@@ -74,7 +74,7 @@ Partial Class StaffDashboard
         ' 
         ' btnGuests
         ' 
-        btnGuests.Location = New Point(481, 160)
+        btnGuests.Location = New Point(746, 142)
         btnGuests.Margin = New Padding(3, 4, 3, 4)
         btnGuests.Name = "btnGuests"
         btnGuests.Size = New Size(118, 53)
@@ -84,7 +84,7 @@ Partial Class StaffDashboard
         ' 
         ' btnReports
         ' 
-        btnReports.Location = New Point(317, 309)
+        btnReports.Location = New Point(582, 291)
         btnReports.Margin = New Padding(3, 4, 3, 4)
         btnReports.Name = "btnReports"
         btnReports.Size = New Size(119, 53)
@@ -94,7 +94,7 @@ Partial Class StaffDashboard
         ' 
         ' btnReservations
         ' 
-        btnReservations.Location = New Point(317, 235)
+        btnReservations.Location = New Point(582, 217)
         btnReservations.Margin = New Padding(3, 4, 3, 4)
         btnReservations.Name = "btnReservations"
         btnReservations.Size = New Size(119, 53)
@@ -104,7 +104,7 @@ Partial Class StaffDashboard
         ' 
         ' btnRooms
         ' 
-        btnRooms.Location = New Point(317, 160)
+        btnRooms.Location = New Point(582, 142)
         btnRooms.Margin = New Padding(3, 4, 3, 4)
         btnRooms.Name = "btnRooms"
         btnRooms.Size = New Size(119, 53)
@@ -114,7 +114,7 @@ Partial Class StaffDashboard
         ' 
         ' StaffDashboard
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(914, 600)
         Controls.Add(btnLogout)
