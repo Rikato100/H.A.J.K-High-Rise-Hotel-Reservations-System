@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+
 Public Class AdminDashboard
     Private Sub AdminDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -20,7 +21,6 @@ Public Class AdminDashboard
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
         Dim guests As New GuestForm()
-
         guests.ShowDialog()
     End Sub
 
@@ -30,18 +30,18 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnPayments_Click(sender As Object, e As EventArgs) Handles btnPayments.Click
-        Dim payments As New PaymentsForm()
-        payments.ShowDialog()
+        'Dim payments As New PaymentsForm()
+        'payments.ShowDialog()
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        Dim staff As New StaffManagementForm()
+        ' Fixed: Updated from StaffManagementForm to StaffManagement
+        Dim staff As New StaffManagement()
         staff.ShowDialog()
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        Dim reports As New ReportsForm()
-        reports.ShowDialog()
+        'Dim reports As New ReportsForm()
+        'reports.ShowDialog()
     End Sub
-
 End Class

@@ -28,5 +28,8 @@
     <Compile Update="Forms\Staff\StaffDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Staff\StaffManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

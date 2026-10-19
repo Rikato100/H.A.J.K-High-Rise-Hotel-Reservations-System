@@ -1,6 +1,12 @@
-﻿Public Class StaffManagement
+﻿Partial Public Class StaffManagement
+    Inherits System.Windows.Forms.Form
 
     Private selectedAccountId As Integer = 0
+
+    Public Sub New()
+        ' Required by the Windows Form Designer
+        InitializeComponent()
+    End Sub
 
     Private Sub StaffManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboRole.Items.Clear()
