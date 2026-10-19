@@ -305,4 +305,12 @@ Public Class GuestForm
     Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
 
     End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+
+    End Sub
 End Class

@@ -4,13 +4,13 @@
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        loginForm.Show()
-        Me.Close()
+        loginForm.Show
+        Close
     End Sub
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
-        Dim rooms As New RoomForm()
-        rooms.ShowDialog()
+        Dim rooms As New RoomForm
+        rooms.ShowDialog
     End Sub
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
