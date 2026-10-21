@@ -10,6 +10,9 @@ Public Class ReservationListForm
         dgvReservations.MultiSelect = False
         dgvReservations.ReadOnly = True
 
+        ' Hide the ResID column from the table view while keeping it accessible in the background
+        colResID.Visible = False
+
         LoadReservations()
     End Sub
 
@@ -394,13 +397,13 @@ Public Class ReservationListForm
 
     Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
         Dim reservations As New ReservationListForm
-        reservations.ShowDialog
+        reservations.ShowDialog()
     End Sub
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
         Dim guests As New GuestForm
 
-        guests.ShowDialog
+        guests.ShowDialog()
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click

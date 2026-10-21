@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ReservationListForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ReservationListForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -68,9 +68,9 @@ Partial Class ReservationListForm
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
+        '
         ' lblSearch
-        ' 
+        '
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSearch.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
@@ -79,17 +79,17 @@ Partial Class ReservationListForm
         lblSearch.Size = New Size(175, 25)
         lblSearch.TabIndex = 3
         lblSearch.Text = "Search Reservation:"
-        ' 
+        '
         ' txtSearch
-        ' 
+        '
         txtSearch.Location = New Point(462, 183)
         txtSearch.Margin = New Padding(3, 4, 3, 4)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(313, 27)
         txtSearch.TabIndex = 4
-        ' 
+        '
         ' btnSearch
-        ' 
+        '
         btnSearch.BackColor = Color.OldLace
         btnSearch.ForeColor = Color.Maroon
         btnSearch.Location = New Point(793, 183)
@@ -99,9 +99,9 @@ Partial Class ReservationListForm
         btnSearch.TabIndex = 5
         btnSearch.Text = "SEARCH"
         btnSearch.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnRefresh
-        ' 
+        '
         btnRefresh.BackColor = Color.OldLace
         btnRefresh.ForeColor = Color.Maroon
         btnRefresh.Location = New Point(910, 183)
@@ -111,15 +111,15 @@ Partial Class ReservationListForm
         btnRefresh.TabIndex = 6
         btnRefresh.Text = "↻ REFRESH"
         btnRefresh.UseVisualStyleBackColor = False
-        ' 
+        '
         ' dgvReservations
-        ' 
+        '
         dgvReservations.AllowUserToResizeRows = False
         dgvReservations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvReservations.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.Maroon
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle1.ForeColor = Color.Beige
         DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
         DataGridViewCellStyle1.SelectionForeColor = Color.Beige
@@ -129,7 +129,7 @@ Partial Class ReservationListForm
         dgvReservations.Columns.AddRange(New DataGridViewColumn() {colResID, colResCode, colGuest, colRoom, colStatus, colCheckIn, colCheckOut, colNights, colTotal})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle2.ForeColor = Color.Maroon
         DataGridViewCellStyle2.SelectionBackColor = Color.Beige
         DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
@@ -141,7 +141,7 @@ Partial Class ReservationListForm
         dgvReservations.Name = "dgvReservations"
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle3.ForeColor = Color.Maroon
         DataGridViewCellStyle3.SelectionBackColor = Color.Beige
         DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
@@ -151,72 +151,73 @@ Partial Class ReservationListForm
         dgvReservations.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvReservations.Size = New Size(1008, 366)
         dgvReservations.TabIndex = 7
-        ' 
+        '
         ' colResID
-        ' 
+        '
         colResID.HeaderText = "ResID"
         colResID.MinimumWidth = 6
         colResID.Name = "colResID"
         colResID.ReadOnly = True
-        ' 
+        colResID.Visible = False
+        '
         ' colResCode
-        ' 
+        '
         colResCode.HeaderText = "Code"
         colResCode.MinimumWidth = 6
         colResCode.Name = "colResCode"
         colResCode.ReadOnly = True
-        ' 
+        '
         ' colGuest
-        ' 
+        '
         colGuest.HeaderText = "Guest"
         colGuest.MinimumWidth = 6
         colGuest.Name = "colGuest"
         colGuest.ReadOnly = True
-        ' 
+        '
         ' colRoom
-        ' 
+        '
         colRoom.HeaderText = "Room"
         colRoom.MinimumWidth = 6
         colRoom.Name = "colRoom"
         colRoom.ReadOnly = True
-        ' 
+        '
         ' colStatus
-        ' 
+        '
         colStatus.HeaderText = "Status"
         colStatus.MinimumWidth = 6
         colStatus.Name = "colStatus"
         colStatus.ReadOnly = True
-        ' 
+        '
         ' colCheckIn
-        ' 
+        '
         colCheckIn.HeaderText = "CheckIn"
         colCheckIn.MinimumWidth = 6
         colCheckIn.Name = "colCheckIn"
         colCheckIn.ReadOnly = True
-        ' 
+        '
         ' colCheckOut
-        ' 
+        '
         colCheckOut.HeaderText = "CheckOut"
         colCheckOut.MinimumWidth = 6
         colCheckOut.Name = "colCheckOut"
         colCheckOut.ReadOnly = True
-        ' 
+        '
         ' colNights
-        ' 
+        '
         colNights.HeaderText = "Nights"
         colNights.MinimumWidth = 6
         colNights.Name = "colNights"
         colNights.ReadOnly = True
-        ' 
+        '
         ' colTotal
-        ' 
+        '
         colTotal.HeaderText = "Total"
         colTotal.MinimumWidth = 6
         colTotal.Name = "colTotal"
         colTotal.ReadOnly = True
-        ' 
+        '
         ' btnAddReservation
-        ' 
+        '
         btnAddReservation.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         btnAddReservation.ForeColor = Color.Beige
         btnAddReservation.Location = New Point(158, 218)
@@ -226,9 +227,9 @@ Partial Class ReservationListForm
         btnAddReservation.TabIndex = 9
         btnAddReservation.Text = "＋ADD RESERVATION"
         btnAddReservation.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnEdit
-        ' 
+        '
         btnEdit.BackColor = Color.OldLace
         btnEdit.ForeColor = Color.Maroon
         btnEdit.Location = New Point(362, 218)
@@ -238,9 +239,9 @@ Partial Class ReservationListForm
         btnEdit.TabIndex = 10
         btnEdit.Text = "EDIT"
         btnEdit.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnCancelReservation
-        ' 
+        '
         btnCancelReservation.BackColor = Color.OldLace
         btnCancelReservation.ForeColor = Color.Maroon
         btnCancelReservation.Location = New Point(566, 218)
@@ -250,9 +251,9 @@ Partial Class ReservationListForm
         btnCancelReservation.TabIndex = 11
         btnCancelReservation.Text = "CANCEL RESERVATION"
         btnCancelReservation.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnBack
-        ' 
+        '
         btnBack.BackColor = Color.OldLace
         btnBack.ForeColor = Color.Maroon
         btnBack.Location = New Point(974, 218)
@@ -262,9 +263,9 @@ Partial Class ReservationListForm
         btnBack.TabIndex = 12
         btnBack.Text = "← BACK"
         btnBack.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnDelete
-        ' 
+        '
         btnDelete.BackColor = Color.OldLace
         btnDelete.ForeColor = Color.Maroon
         btnDelete.Location = New Point(770, 218)
@@ -274,9 +275,9 @@ Partial Class ReservationListForm
         btnDelete.TabIndex = 13
         btnDelete.Text = "DELETE"
         btnDelete.UseVisualStyleBackColor = False
-        ' 
+        '
         ' Panel1
-        ' 
+        '
         Panel1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         Panel1.Controls.Add(btnLogout)
         Panel1.Controls.Add(btnReservations)
@@ -289,9 +290,9 @@ Partial Class ReservationListForm
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(150, 653)
         Panel1.TabIndex = 14
-        ' 
+        '
         ' btnLogout
-        ' 
+        '
         btnLogout.BackColor = Color.Transparent
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.ForeColor = Color.Beige
@@ -300,11 +301,11 @@ Partial Class ReservationListForm
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(144, 56)
         btnLogout.TabIndex = 29
-        btnLogout.Text = ChrW(9211) & " Logout"
+        btnLogout.Text = "⎋ Logout"
         btnLogout.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnReservations
-        ' 
+        '
         btnReservations.BackColor = Color.Transparent
         btnReservations.FlatStyle = FlatStyle.Flat
         btnReservations.ForeColor = Color.Beige
@@ -315,9 +316,9 @@ Partial Class ReservationListForm
         btnReservations.TabIndex = 26
         btnReservations.Text = "▤ Reservation"
         btnReservations.UseVisualStyleBackColor = False
-        ' 
+        '
         ' PictureBox3
-        ' 
+        '
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
         PictureBox3.Location = New Point(12, 8)
         PictureBox3.Name = "PictureBox3"
@@ -325,9 +326,9 @@ Partial Class ReservationListForm
         PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox3.TabIndex = 15
         PictureBox3.TabStop = False
-        ' 
+        '
         ' Button6
-        ' 
+        '
         Button6.BackColor = Color.Transparent
         Button6.FlatStyle = FlatStyle.Flat
         Button6.ForeColor = Color.Beige
@@ -337,9 +338,9 @@ Partial Class ReservationListForm
         Button6.TabIndex = 5
         Button6.Text = "⚙ Settings"
         Button6.UseVisualStyleBackColor = False
-        ' 
+        '
         ' btnGuests
-        ' 
+        '
         btnGuests.BackColor = Color.Transparent
         btnGuests.FlatStyle = FlatStyle.Flat
         btnGuests.ForeColor = Color.Beige
@@ -350,9 +351,9 @@ Partial Class ReservationListForm
         btnGuests.TabIndex = 27
         btnGuests.Text = "♟ Guest Management"
         btnGuests.UseVisualStyleBackColor = False
-        ' 
+        '
         ' Button1
-        ' 
+        '
         Button1.BackColor = Color.Transparent
         Button1.FlatStyle = FlatStyle.Flat
         Button1.ForeColor = Color.Beige
@@ -362,9 +363,9 @@ Partial Class ReservationListForm
         Button1.TabIndex = 0
         Button1.Text = "🏠 Dashboard"
         Button1.UseVisualStyleBackColor = False
-        ' 
+        '
         ' PictureBox2
-        ' 
+        '
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(162, 113)
         PictureBox2.Name = "PictureBox2"
@@ -372,9 +373,9 @@ Partial Class ReservationListForm
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 22
         PictureBox2.TabStop = False
-        ' 
+        '
         ' Label4
-        ' 
+        '
         Label4.AutoSize = True
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label4.Location = New Point(254, 151)
@@ -382,9 +383,9 @@ Partial Class ReservationListForm
         Label4.Size = New Size(539, 20)
         Label4.TabIndex = 21
         Label4.Text = "Manage reservations, track check-in schedules, and keep stay records up to date."
-        ' 
+        '
         ' Label1
-        ' 
+        '
         Label1.AutoSize = True
         Label1.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
@@ -393,9 +394,9 @@ Partial Class ReservationListForm
         Label1.Size = New Size(255, 38)
         Label1.TabIndex = 20
         Label1.Text = "Reservation List"
-        ' 
+        '
         ' Panel2
-        ' 
+        '
         Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         Panel2.Controls.Add(PictureBox4)
         Panel2.Controls.Add(Label3)
@@ -406,9 +407,9 @@ Partial Class ReservationListForm
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1032, 100)
         Panel2.TabIndex = 23
-        ' 
+        '
         ' PictureBox4
-        ' 
+        '
         PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
         PictureBox4.Location = New Point(510, 0)
         PictureBox4.Name = "PictureBox4"
@@ -416,9 +417,9 @@ Partial Class ReservationListForm
         PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox4.TabIndex = 16
         PictureBox4.TabStop = False
-        ' 
+        '
         ' Label3
-        ' 
+        '
         Label3.AutoSize = True
         Label3.ForeColor = Color.Beige
         Label3.Location = New Point(135, 51)
@@ -426,9 +427,9 @@ Partial Class ReservationListForm
         Label3.Size = New Size(248, 20)
         Label3.TabIndex = 15
         Label3.Text = "Where every stay feels extraordinary"
-        ' 
+        '
         ' PictureBox1
-        ' 
+        '
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(6, 12)
         PictureBox1.Name = "PictureBox1"
@@ -436,9 +437,9 @@ Partial Class ReservationListForm
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 14
         PictureBox1.TabStop = False
-        ' 
+        '
         ' Label2
-        ' 
+        '
         Label2.AutoSize = True
         Label2.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
@@ -447,10 +448,10 @@ Partial Class ReservationListForm
         Label2.Size = New Size(375, 38)
         Label2.TabIndex = 0
         Label2.Text = "H.A.J.K High Rise Hotel"
-        ' 
+        '
         ' ReservationListForm
-        ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        '
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 653)

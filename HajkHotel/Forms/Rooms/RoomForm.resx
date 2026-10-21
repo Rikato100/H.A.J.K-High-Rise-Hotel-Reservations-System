@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="colRoomID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="colRoomNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="colRoomType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colFloor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="colStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -2956,7 +2950,7 @@
   <data name="PictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABlcAAAKQCAIAAACNbbtdAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAA/7JJREFUeF7U/fmXPPtZ3wlW5RL7Z409ct+zqjKz9qqsfd/ru16JxUBPG0Ofbnf3
+        cQAAEnEB89x6jgAA/7JJREFUeF7U/fmXPPtZ3wlW5RL7Z409ct+zqjKz9qqsfd/ru16JxUBPG0Ofbnf3
         nDNnfpgzBrTY3TaLe+bM/GZAEjbSXQQYAxIgCbHq6goJ2yw22KCrBYyZn8Ye/wVzns8TGZXfqu+9SJjx
         tM95Tp3IzMjMyKzIiPi8Pu/3+5nZy+f28rnd3OzO7Az+3Zud3Zud3c1B4TI+NH1PVrszM/u53MM7793z
         sHZnZh6udu+lpt/xhXdXG4zrv7jOzG4u235YxndR23//vVTNqHq4/PK6tz33vqv9XG56+6e3De7P53Zm
