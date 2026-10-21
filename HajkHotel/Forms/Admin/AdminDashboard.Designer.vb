@@ -47,7 +47,7 @@ Partial Class AdminDashboard
         ' 
         ' btnRooms
         ' 
-        btnRooms.BackColor = Color.FromArgb(89, 15, 27)
+        btnRooms.BackColor = Color.Transparent
         btnRooms.FlatStyle = FlatStyle.Flat
         btnRooms.ForeColor = Color.Beige
         btnRooms.Location = New Point(3, 168)
@@ -60,7 +60,7 @@ Partial Class AdminDashboard
         ' 
         ' btnStaff
         ' 
-        btnStaff.BackColor = Color.FromArgb(89, 15, 27)
+        btnStaff.BackColor = Color.Transparent
         btnStaff.FlatStyle = FlatStyle.Flat
         btnStaff.ForeColor = Color.Beige
         btnStaff.Location = New Point(3, 224)
@@ -73,6 +73,7 @@ Partial Class AdminDashboard
         ' 
         ' btnLogout
         ' 
+        btnLogout.BackColor = Color.Transparent
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.ForeColor = Color.Beige
         btnLogout.Location = New Point(3, 541)
@@ -80,12 +81,12 @@ Partial Class AdminDashboard
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(144, 56)
         btnLogout.TabIndex = 9
-        btnLogout.Text = ChrW(9211) + " Logout"
-        btnLogout.UseVisualStyleBackColor = True
+        btnLogout.Text = ChrW(9211) & " Logout"
+        btnLogout.UseVisualStyleBackColor = False
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.FromArgb(89, 15, 27)
+        Panel1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         Panel1.Controls.Add(PictureBox3)
         Panel1.Controls.Add(Button6)
         Panel1.Controls.Add(btnLogout)
@@ -111,6 +112,7 @@ Partial Class AdminDashboard
         ' 
         ' Button6
         ' 
+        Button6.BackColor = Color.Transparent
         Button6.FlatStyle = FlatStyle.Flat
         Button6.ForeColor = Color.Beige
         Button6.Location = New Point(3, 336)
@@ -118,10 +120,11 @@ Partial Class AdminDashboard
         Button6.Size = New Size(144, 56)
         Button6.TabIndex = 5
         Button6.Text = "⚙ Settings"
-        Button6.UseVisualStyleBackColor = True
+        Button6.UseVisualStyleBackColor = False
         ' 
         ' Button3
         ' 
+        Button3.BackColor = Color.Transparent
         Button3.FlatStyle = FlatStyle.Flat
         Button3.ForeColor = Color.Beige
         Button3.Location = New Point(3, 280)
@@ -129,10 +132,11 @@ Partial Class AdminDashboard
         Button3.Size = New Size(144, 56)
         Button3.TabIndex = 2
         Button3.Text = "📊 Reports "
-        Button3.UseVisualStyleBackColor = True
+        Button3.UseVisualStyleBackColor = False
         ' 
         ' Button1
         ' 
+        Button1.BackColor = Color.Transparent
         Button1.FlatStyle = FlatStyle.Flat
         Button1.ForeColor = Color.Beige
         Button1.Location = New Point(3, 113)
@@ -140,11 +144,11 @@ Partial Class AdminDashboard
         Button1.Size = New Size(144, 56)
         Button1.TabIndex = 0
         Button1.Text = "🏠 Dashboard"
-        Button1.UseVisualStyleBackColor = True
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' Panel2
         ' 
-        Panel2.BackColor = Color.FromArgb(89, 15, 27)
+        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         Panel2.Controls.Add(PictureBox4)
         Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(PictureBox1)
@@ -169,11 +173,11 @@ Partial Class AdminDashboard
         ' 
         Label3.AutoSize = True
         Label3.ForeColor = Color.Beige
-        Label3.Location = New Point(148, 50)
+        Label3.Location = New Point(135, 51)
         Label3.Name = "Label3"
-        Label3.Size = New Size(336, 20)
+        Label3.Size = New Size(248, 20)
         Label3.TabIndex = 15
-        Label3.Text = "Where stay feels high quality or like extraordinary"
+        Label3.Text = "Where every stay feels extraordinary"
         ' 
         ' PictureBox1
         ' 
@@ -188,8 +192,8 @@ Partial Class AdminDashboard
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0)
-        Label4.ForeColor = Color.FromArgb(255, 255, 128)
+        Label4.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
         Label4.Location = New Point(129, 15)
         Label4.Name = "Label4"
         Label4.Size = New Size(375, 38)
@@ -199,8 +203,8 @@ Partial Class AdminDashboard
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0)
-        Label5.ForeColor = Color.FromArgb(89, 15, 27)
+        Label5.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label5.Location = New Point(241, 103)
         Label5.Name = "Label5"
         Label5.Size = New Size(527, 38)
@@ -210,8 +214,8 @@ Partial Class AdminDashboard
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0)
-        Label1.ForeColor = Color.FromArgb(89, 15, 27)
+        Label1.Font = New Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label1.Location = New Point(241, 141)
         Label1.Name = "Label1"
         Label1.Size = New Size(216, 32)

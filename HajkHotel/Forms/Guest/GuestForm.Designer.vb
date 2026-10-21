@@ -22,9 +22,9 @@ Partial Class GuestForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle19 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GuestForm))
         lblSearch = New Label()
         txtSearch = New TextBox()
@@ -45,11 +45,6 @@ Partial Class GuestForm
         btnBack = New Button()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
-        Panel2 = New Panel()
-        PictureBox4 = New PictureBox()
-        Label3 = New Label()
-        PictureBox1 = New PictureBox()
-        Label2 = New Label()
         PictureBox2 = New PictureBox()
         Label4 = New Label()
         Label1 = New Label()
@@ -58,13 +53,18 @@ Partial Class GuestForm
         btnGuests = New Button()
         Button2 = New Button()
         btnReservations = New Button()
+        Panel2 = New Panel()
+        PictureBox4 = New PictureBox()
+        Label3 = New Label()
+        PictureBox1 = New PictureBox()
+        Label2 = New Label()
         CType(dgvGuests, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' lblSearch
@@ -115,37 +115,37 @@ Partial Class GuestForm
         dgvGuests.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvGuests.BackgroundColor = Color.Beige
         dgvGuests.BorderStyle = BorderStyle.None
-        DataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = Color.Maroon
-        DataGridViewCellStyle19.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle19.ForeColor = Color.Beige
-        DataGridViewCellStyle19.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle19.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle19.WrapMode = DataGridViewTriState.True
-        dgvGuests.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.Maroon
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvGuests.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvGuests.Columns.AddRange(New DataGridViewColumn() {colGuestID, colSurname, colFirstName, colMiddle, colContact, colEmail, colValidIDType, colValidIDNumber})
-        DataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = Color.Beige
-        DataGridViewCellStyle20.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle20.ForeColor = Color.Maroon
-        DataGridViewCellStyle20.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle20.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle20.WrapMode = DataGridViewTriState.False
-        dgvGuests.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Maroon
+        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvGuests.DefaultCellStyle = DataGridViewCellStyle2
         dgvGuests.EnableHeadersVisualStyles = False
         dgvGuests.GridColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         dgvGuests.Location = New Point(162, 287)
         dgvGuests.Margin = New Padding(3, 4, 3, 4)
         dgvGuests.Name = "dgvGuests"
-        DataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle21.BackColor = Color.Beige
-        DataGridViewCellStyle21.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle21.ForeColor = Color.Maroon
-        DataGridViewCellStyle21.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle21.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle21.WrapMode = DataGridViewTriState.True
-        dgvGuests.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.Maroon
+        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvGuests.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvGuests.RowHeadersWidth = 51
         dgvGuests.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvGuests.Size = New Size(1008, 353)
@@ -257,7 +257,7 @@ Partial Class GuestForm
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Panel1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         Panel1.Controls.Add(Button6)
         Panel1.Controls.Add(PictureBox3)
         Panel1.Controls.Add(btnLogout)
@@ -279,60 +279,6 @@ Partial Class GuestForm
         PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox3.TabIndex = 15
         PictureBox3.TabStop = False
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Panel2.Controls.Add(PictureBox4)
-        Panel2.Controls.Add(Label3)
-        Panel2.Controls.Add(PictureBox1)
-        Panel2.Controls.Add(Label2)
-        Panel2.Dock = DockStyle.Top
-        Panel2.Location = New Point(150, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1032, 100)
-        Panel2.TabIndex = 14
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(510, 0)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(522, 100)
-        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox4.TabIndex = 16
-        PictureBox4.TabStop = False
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.ForeColor = Color.Beige
-        Label3.Location = New Point(148, 50)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(336, 20)
-        Label3.TabIndex = 15
-        Label3.Text = "Where stay feels high quality or like extraordinary"
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(6, 12)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(125, 62)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 14
-        PictureBox1.TabStop = False
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        Label2.Location = New Point(129, 15)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(375, 38)
-        Label2.TabIndex = 0
-        Label2.Text = "H.A.J.K High Rise Hotel"
         ' 
         ' PictureBox2
         ' 
@@ -367,6 +313,7 @@ Partial Class GuestForm
         ' 
         ' Button6
         ' 
+        Button6.BackColor = Color.Transparent
         Button6.FlatStyle = FlatStyle.Flat
         Button6.ForeColor = Color.Beige
         Button6.Location = New Point(3, 274)
@@ -374,11 +321,11 @@ Partial Class GuestForm
         Button6.Size = New Size(144, 56)
         Button6.TabIndex = 21
         Button6.Text = "⚙ Settings"
-        Button6.UseVisualStyleBackColor = True
+        Button6.UseVisualStyleBackColor = False
         ' 
         ' btnLogout
         ' 
-        btnLogout.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        btnLogout.BackColor = Color.Transparent
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.ForeColor = Color.Beige
         btnLogout.Location = New Point(3, 533)
@@ -391,7 +338,7 @@ Partial Class GuestForm
         ' 
         ' btnGuests
         ' 
-        btnGuests.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        btnGuests.BackColor = Color.Transparent
         btnGuests.FlatStyle = FlatStyle.Flat
         btnGuests.ForeColor = Color.Beige
         btnGuests.Location = New Point(3, 221)
@@ -404,6 +351,7 @@ Partial Class GuestForm
         ' 
         ' Button2
         ' 
+        Button2.BackColor = Color.Transparent
         Button2.FlatStyle = FlatStyle.Flat
         Button2.ForeColor = Color.Beige
         Button2.Location = New Point(3, 109)
@@ -411,11 +359,11 @@ Partial Class GuestForm
         Button2.Size = New Size(144, 56)
         Button2.TabIndex = 20
         Button2.Text = "🏠 Dashboard"
-        Button2.UseVisualStyleBackColor = True
+        Button2.UseVisualStyleBackColor = False
         ' 
         ' btnReservations
         ' 
-        btnReservations.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        btnReservations.BackColor = Color.Transparent
         btnReservations.FlatStyle = FlatStyle.Flat
         btnReservations.ForeColor = Color.Beige
         btnReservations.Location = New Point(3, 165)
@@ -426,16 +374,70 @@ Partial Class GuestForm
         btnReservations.Text = "▤ Reservation"
         btnReservations.UseVisualStyleBackColor = False
         ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel2.Controls.Add(PictureBox4)
+        Panel2.Controls.Add(Label3)
+        Panel2.Controls.Add(PictureBox1)
+        Panel2.Controls.Add(Label2)
+        Panel2.Dock = DockStyle.Top
+        Panel2.Location = New Point(150, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1032, 100)
+        Panel2.TabIndex = 20
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(510, 0)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(522, 100)
+        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox4.TabIndex = 16
+        PictureBox4.TabStop = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = Color.Beige
+        Label3.Location = New Point(135, 51)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(248, 20)
+        Label3.TabIndex = 15
+        Label3.Text = "Where every stay feels extraordinary"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(6, 12)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(125, 62)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 14
+        PictureBox1.TabStop = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        Label2.Location = New Point(129, 15)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(375, 38)
+        Label2.TabIndex = 0
+        Label2.Text = "H.A.J.K High Rise Hotel"
+        ' 
         ' GuestForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 653)
+        Controls.Add(Panel2)
         Controls.Add(PictureBox2)
         Controls.Add(Label4)
         Controls.Add(Label1)
-        Controls.Add(Panel2)
         Controls.Add(Panel1)
         Controls.Add(btnBack)
         Controls.Add(btnDelete)
@@ -453,11 +455,11 @@ Partial Class GuestForm
         CType(dgvGuests, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -482,11 +484,6 @@ Partial Class GuestForm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Button3 As Button
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label1 As Label
@@ -495,4 +492,9 @@ Partial Class GuestForm
     Friend WithEvents Button2 As Button
     Friend WithEvents btnGuests As Button
     Friend WithEvents btnReservations As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label2 As Label
 End Class
