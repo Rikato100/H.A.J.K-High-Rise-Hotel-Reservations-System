@@ -23,4 +23,13 @@
         Dim reservations As New ReservationListForm()
         reservations.ShowDialog()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
 End Class

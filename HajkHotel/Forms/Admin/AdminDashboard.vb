@@ -19,17 +19,17 @@ Public Class AdminDashboard
         rooms.ShowDialog()
     End Sub
 
-    Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
-        Dim guests As New GuestForm()
-        guests.ShowDialog()
+    Private Sub btnGuests_Click(sender As Object, e As EventArgs)
+        Dim guests As New GuestForm
+        guests.ShowDialog
     End Sub
 
-    Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
-        Dim reservations As New ReservationListForm()
-        reservations.ShowDialog()
+    Private Sub btnReservations_Click(sender As Object, e As EventArgs)
+        Dim reservations As New ReservationListForm
+        reservations.ShowDialog
     End Sub
 
-    Private Sub btnPayments_Click(sender As Object, e As EventArgs) Handles btnPayments.Click
+    Private Sub btnPayments_Click(sender As Object, e As EventArgs)
         'Dim payments As New PaymentsForm()
         'payments.ShowDialog()
     End Sub
@@ -40,8 +40,17 @@ Public Class AdminDashboard
         staff.ShowDialog()
     End Sub
 
-    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
+    Private Sub btnReports_Click(sender As Object, e As EventArgs)
         'Dim reports As New ReportsForm()
         'reports.ShowDialog()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

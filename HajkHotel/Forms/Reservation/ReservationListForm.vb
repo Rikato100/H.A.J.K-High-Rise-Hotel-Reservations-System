@@ -387,4 +387,24 @@ Public Class ReservationListForm
     Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
 
     End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+    End Sub
+
+    Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
+        Dim reservations As New ReservationListForm
+        reservations.ShowDialog
+    End Sub
+
+    Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
+        Dim guests As New GuestForm
+
+        guests.ShowDialog
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        loginForm.Show()
+        Close()
+    End Sub
 End Class

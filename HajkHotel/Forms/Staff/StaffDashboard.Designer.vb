@@ -26,14 +26,10 @@ Partial Class StaffDashboard
         btnLogout = New Button()
         btnPayments = New Button()
         btnGuests = New Button()
-        btnReports = New Button()
         btnReservations = New Button()
-        btnRooms = New Button()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
         Button6 = New Button()
-        Button1 = New Button()
-        Button3 = New Button()
         Button2 = New Button()
         Panel2 = New Panel()
         PictureBox4 = New PictureBox()
@@ -51,13 +47,16 @@ Partial Class StaffDashboard
         ' 
         ' btnLogout
         ' 
-        btnLogout.Location = New Point(748, 510)
+        btnLogout.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        btnLogout.FlatStyle = FlatStyle.Flat
+        btnLogout.ForeColor = Color.Beige
+        btnLogout.Location = New Point(3, 537)
         btnLogout.Margin = New Padding(3, 4, 3, 4)
         btnLogout.Name = "btnLogout"
-        btnLogout.Size = New Size(118, 53)
+        btnLogout.Size = New Size(144, 56)
         btnLogout.TabIndex = 16
-        btnLogout.Text = "LOGOUT"
-        btnLogout.UseVisualStyleBackColor = True
+        btnLogout.Text = ChrW(9211) & " Logout"
+        btnLogout.UseVisualStyleBackColor = False
         ' 
         ' btnPayments
         ' 
@@ -82,16 +81,6 @@ Partial Class StaffDashboard
         btnGuests.Text = "♟ Guest Management"
         btnGuests.UseVisualStyleBackColor = False
         ' 
-        ' btnReports
-        ' 
-        btnReports.Location = New Point(584, 510)
-        btnReports.Margin = New Padding(3, 4, 3, 4)
-        btnReports.Name = "btnReports"
-        btnReports.Size = New Size(119, 53)
-        btnReports.TabIndex = 12
-        btnReports.Text = "REPORTS"
-        btnReports.UseVisualStyleBackColor = True
-        ' 
         ' btnReservations
         ' 
         btnReservations.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
@@ -105,23 +94,12 @@ Partial Class StaffDashboard
         btnReservations.Text = "▤ Reservation"
         btnReservations.UseVisualStyleBackColor = False
         ' 
-        ' btnRooms
-        ' 
-        btnRooms.Location = New Point(584, 361)
-        btnRooms.Margin = New Padding(3, 4, 3, 4)
-        btnRooms.Name = "btnRooms"
-        btnRooms.Size = New Size(119, 53)
-        btnRooms.TabIndex = 10
-        btnRooms.Text = "ROOMS"
-        btnRooms.UseVisualStyleBackColor = True
-        ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Panel1.Controls.Add(PictureBox3)
         Panel1.Controls.Add(Button6)
-        Panel1.Controls.Add(Button1)
-        Panel1.Controls.Add(Button3)
+        Panel1.Controls.Add(btnLogout)
         Panel1.Controls.Add(btnGuests)
         Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(btnReservations)
@@ -145,35 +123,12 @@ Partial Class StaffDashboard
         ' 
         Button6.FlatStyle = FlatStyle.Flat
         Button6.ForeColor = Color.Beige
-        Button6.Location = New Point(3, 337)
+        Button6.Location = New Point(3, 278)
         Button6.Name = "Button6"
         Button6.Size = New Size(144, 56)
         Button6.TabIndex = 5
         Button6.Text = "⚙ Settings"
         Button6.UseVisualStyleBackColor = True
-        ' 
-        ' Button1
-        ' 
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.ForeColor = Color.Beige
-        Button1.Location = New Point(3, 541)
-        Button1.Margin = New Padding(3, 4, 3, 4)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(144, 56)
-        Button1.TabIndex = 9
-        Button1.Text = ChrW(9211) & " Logout"
-        Button1.UseVisualStyleBackColor = True
-        ' 
-        ' Button3
-        ' 
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.ForeColor = Color.Beige
-        Button3.Location = New Point(3, 281)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(144, 56)
-        Button3.TabIndex = 2
-        Button3.Text = "📊 Reports "
-        Button3.UseVisualStyleBackColor = True
         ' 
         ' Button2
         ' 
@@ -271,10 +226,7 @@ Partial Class StaffDashboard
         Controls.Add(Label5)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
-        Controls.Add(btnLogout)
         Controls.Add(btnPayments)
-        Controls.Add(btnReports)
-        Controls.Add(btnRooms)
         Margin = New Padding(3, 4, 3, 4)
         Name = "StaffDashboard"
         StartPosition = FormStartPosition.CenterScreen
@@ -298,7 +250,6 @@ Partial Class StaffDashboard
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Button6 As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Panel2 As Panel

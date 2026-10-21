@@ -241,4 +241,13 @@ Public Class RoomForm
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
+
+    Private Sub dgvRooms_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRooms.CellContentClick
+
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        loginForm.Show()
+        Close()
+    End Sub
 End Class
