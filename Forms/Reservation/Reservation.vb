@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class Reservation
 
@@ -41,14 +41,16 @@ Public Class Reservation
         Public Property RoomType As String
         Public Property BaseRate As Decimal
         Public Property StandardCapacity As Integer
+        Public Property MaxCapacity As Integer
 
         Public Sub New(id As Integer, number As String, typeName As String,
-                       rate As Decimal, stdCap As Integer)
+                       rate As Decimal, stdCap As Integer, maxCap As Integer)
             RoomID = id
             RoomNumber = number
             RoomType = typeName
             BaseRate = rate
             StandardCapacity = stdCap
+            MaxCapacity = maxCap
         End Sub
 
         Public Overrides Function ToString() As String
@@ -68,7 +70,7 @@ Public Class Reservation
             DiscountID = id
             DiscountName = name
             DiscountRate = rate
-            vatExempt = vatExempt
+            Me.VATExempt = vatExempt
         End Sub
 
         Public Overrides Function ToString() As String
@@ -136,19 +138,20 @@ Public Class Reservation
     Private Sub LoadStatuses()
         cmbStatus.Items.Clear()
         cmbStatus.Items.Add("Pending")
-        cmbStatus.Items.Add("Confirmed")
-        cmbStatus.Items.Add("Checked-In")
-        cmbStatus.Items.Add("Checked-Out")
-        cmbStatus.Items.Add("Cancelled")
+        cmbStatus.Items.Add("Check-In")
+        cmbStatus.Items.Add("Check-Out")
+        cmbStatus.Items.Add("No-Show")
+        cmbStatus.Items.Add("Canceled")
         cmbStatus.SelectedIndex = 0
     End Sub
 
     Private Sub LoadPaymentMethods()
         cmbPaymentMethod.Items.Clear()
         cmbPaymentMethod.Items.Add("Cash")
-        cmbPaymentMethod.Items.Add("Credit Card")
-        cmbPaymentMethod.Items.Add("Debit Card")
         cmbPaymentMethod.Items.Add("GCash")
+        cmbPaymentMethod.Items.Add("Maya")
+        cmbPaymentMethod.Items.Add("PayPal")
+        cmbPaymentMethod.Items.Add("Card")
         cmbPaymentMethod.Items.Add("Bank Transfer")
         cmbPaymentMethod.SelectedIndex = 0
     End Sub
@@ -218,7 +221,7 @@ Public Class Reservation
 
                 Dim query As String =
                     "SELECT r.room_id, r.room_number, rt.type_name, " &
-                    "rt.base_rate, rt.standard_capacity " &
+                    "rt.base_rate, rt.standard_capacity, rt.max_capacity " &
                     "FROM room r " &
                     "INNER JOIN room_type rt ON r.room_type_id = rt.room_type_id " &
                     "WHERE r.room_status = 'Available' " &
@@ -235,7 +238,8 @@ Public Class Reservation
                                     reader("room_number").ToString(),
                                     reader("type_name").ToString(),
                                     Convert.ToDecimal(reader("base_rate")),
-                                    Convert.ToInt32(reader("standard_capacity"))
+                                    Convert.ToInt32(reader("standard_capacity")),
+                                    Convert.ToInt32(reader("max_capacity"))
                                 )
                             )
                         End While
@@ -331,8 +335,19 @@ Public Class Reservation
         End If
 
         Dim adults As Integer = Convert.ToInt32(numAdults.Value)
+        
+        ' Validation for Max Capacity
+        If adults > selectedRoom.MaxCapacity Then
+            txtTotal.Text = "Exceeds Max Capacity!"
+            txtSubtotal.Text = "0.00"
+            txtVAT.Text = "0.00"
+            txtDiscountAmount.Text = "0.00"
+            Exit Sub
+        End If
+
         Dim roomCharge As Decimal = selectedRoom.BaseRate * nights
         Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
+        
         Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
         Dim subtotal As Decimal = roomCharge + extraPersonFee
@@ -424,11 +439,17 @@ Public Class Reservation
             Exit Sub
         End If
 
+        Dim selectedRoomItem As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
+        If numAdults.Value > selectedRoomItem.MaxCapacity Then
+            MessageBox.Show("The number of adults exceeds the maximum capacity for this room type.",
+                            "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' Use the selected guest, or create a new guest.
                 Dim guestId As Integer = 0
 
                 If selectedGuestID > 0 Then
@@ -453,7 +474,6 @@ Public Class Reservation
                     End Using
                 End If
 
-                ' Booking details
                 Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
                 Dim roomID As Integer = selectedRoom.RoomID
                 Dim baseRate As Decimal = selectedRoom.BaseRate
@@ -475,24 +495,27 @@ Public Class Reservation
                 Dim netAmount As Decimal = subtotal - discountAmount
                 Dim vatAmount As Decimal = Convert.ToDecimal(txtVAT.Text)
                 Dim totalAmount As Decimal = Convert.ToDecimal(txtTotal.Text)
+                
+                Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
+                Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
                 If reservationID = 0 Then
-                    ' Insert new reservation.
                     Dim resCode As String = txtResCode.Text.Trim()
 
                     Dim query As String =
                         "INSERT INTO reservation " &
                         "(guest_id, room_id, discount_id, created_by, res_code, res_status, " &
                         "check_in, check_out, num_nights, adults, children, base_rate, " &
-                        "subtotal, discount_amount, net_amount, vat_amount, total_amount) " &
-                        "VALUES (@guestID, @roomID, @discountID, 1, @resCode, @status, " &
+                        "extra_person, subtotal, discount_amount, net_amount, vat_amount, total_amount) " &
+                        "VALUES (@guestID, @roomID, @discountID, @createdBy, @resCode, @status, " &
                         "@checkIn, @checkOut, @nights, @adults, @children, @baseRate, " &
-                        "@subtotal, @discountAmount, @netAmount, @vatAmount, @totalAmount)"
+                        "@extraPerson, @subtotal, @discountAmount, @netAmount, @vatAmount, @totalAmount)"
 
                     Using cmd As New MySqlCommand(query, conn)
                         cmd.Parameters.AddWithValue("@guestID", guestId)
                         cmd.Parameters.AddWithValue("@roomID", roomID)
                         cmd.Parameters.AddWithValue("@discountID", discountID)
+                        cmd.Parameters.AddWithValue("@createdBy", CurrentUser.AccountID)
                         cmd.Parameters.AddWithValue("@resCode", resCode)
                         cmd.Parameters.AddWithValue("@status", cmbStatus.Text)
                         cmd.Parameters.AddWithValue("@checkIn", dtpCheckIn.Value.Date)
@@ -501,6 +524,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@adults", adults)
                         cmd.Parameters.AddWithValue("@children", children)
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
+                        cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
                         cmd.Parameters.AddWithValue("@subtotal", subtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
@@ -510,7 +534,6 @@ Public Class Reservation
                         cmd.ExecuteNonQuery()
                     End Using
 
-                    ' Mark room as occupied.
                     Dim updateRoomQuery As String =
                         "UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID"
 
@@ -523,13 +546,19 @@ Public Class Reservation
                                     MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Else
-                    ' Update existing reservation.
+                    ' FIXED: Get old room ID to free it up if changed
+                    Dim oldRoomID As Integer = 0
+                    Using getOldRoomCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
+                        getOldRoomCmd.Parameters.AddWithValue("@resID", reservationID)
+                        oldRoomID = Convert.ToInt32(getOldRoomCmd.ExecuteScalar())
+                    End Using
+
                     Dim query As String =
                         "UPDATE reservation SET " &
                         "guest_id = @guestID, room_id = @roomID, discount_id = @discountID, " &
                         "res_status = @status, check_in = @checkIn, check_out = @checkOut, " &
                         "num_nights = @nights, adults = @adults, children = @children, " &
-                        "base_rate = @baseRate, subtotal = @subtotal, discount_amount = @discountAmount, " &
+                        "base_rate = @baseRate, extra_person = @extraPerson, subtotal = @subtotal, discount_amount = @discountAmount, " &
                         "net_amount = @netAmount, vat_amount = @vatAmount, total_amount = @totalAmount " &
                         "WHERE res_id = @resID"
 
@@ -544,6 +573,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@adults", adults)
                         cmd.Parameters.AddWithValue("@children", children)
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
+                        cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
                         cmd.Parameters.AddWithValue("@subtotal", subtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
@@ -553,6 +583,21 @@ Public Class Reservation
 
                         cmd.ExecuteNonQuery()
                     End Using
+                    
+                    ' FIXED: If the room changed, free the old one and occupy the new one
+                    If oldRoomID <> roomID Then
+                        Dim freeOldRoom As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID"
+                        Using freeCmd As New MySqlCommand(freeOldRoom, conn)
+                            freeCmd.Parameters.AddWithValue("@oldRoomID", oldRoomID)
+                            freeCmd.ExecuteNonQuery()
+                        End Using
+
+                        Dim occupyNewRoom As String = "UPDATE room SET room_status = 'Occupied' WHERE room_id = @newRoomID"
+                        Using occCmd As New MySqlCommand(occupyNewRoom, conn)
+                            occCmd.Parameters.AddWithValue("@newRoomID", roomID)
+                            occCmd.ExecuteNonQuery()
+                        End Using
+                    End If
 
                     MessageBox.Show("Reservation updated successfully!", "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -592,7 +637,6 @@ Public Class Reservation
                                 cmbStatus.SelectedItem = savedStatus
                             End If
 
-                            ' Select the saved guest.
                             Dim savedGuestID As Integer = Convert.ToInt32(reader("guest_id"))
                             cmbGuest.SelectedIndex = -1
 
@@ -606,7 +650,6 @@ Public Class Reservation
                                 End If
                             Next
 
-                            ' Fill fields if the guest is not in the dropdown.
                             If cmbGuest.SelectedIndex = -1 Then
                                 selectedGuestID = savedGuestID
 
@@ -624,7 +667,6 @@ Public Class Reservation
                                     If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             End If
 
-                            ' Select room.
                             Dim roomID As Integer = Convert.ToInt32(reader("room_id"))
 
                             For i As Integer = 0 To cmbRoom.Items.Count - 1
@@ -645,7 +687,6 @@ Public Class Reservation
                             numChildren.Value = Math.Max(numChildren.Minimum,
                                 Math.Min(numChildren.Maximum, Convert.ToDecimal(reader("children"))))
 
-                            ' Select discount.
                             If Not IsDBNull(reader("discount_id")) Then
                                 Dim discountID As Integer = Convert.ToInt32(reader("discount_id"))
 
