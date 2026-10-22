@@ -97,4 +97,16 @@ Public Class AdminDashboard
         reports.ShowDialog()
     End Sub
 
+            Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
+        Using f As New ChangePasswordForm()
+            f.ShowDialog(Me)
+        End Using
+    End Sub
+
+    Private Sub btnDiscountSettings_Click(sender As Object, e As EventArgs) Handles btnDiscountSettings.Click
+        Using f As New DiscountSettingsForm()
+            f.ShowDialog(Me)
+        End Using
+    End Sub
+
 End Class
