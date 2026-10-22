@@ -13,7 +13,7 @@ Public Class GuestForm
 
         Try
 
-            Using conn As MySqlConnection = DBConnection.GetConnection()
+            Using conn As MySqlConnection = DbConnection.GetConnection()
 
                 conn.Open()
 
@@ -231,7 +231,7 @@ Public Class GuestForm
 
         Try
 
-            Using conn As MySqlConnection = DBConnection.GetConnection()
+            Using conn As MySqlConnection = DbConnection.GetConnection()
 
                 conn.Open()
 
