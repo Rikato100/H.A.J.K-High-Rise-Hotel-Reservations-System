@@ -253,13 +253,12 @@ Public Class Reservation
         End Try
     End Sub
 
-        Private Sub LoadDiscounts()
+    Private Sub LoadDiscounts()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' Only load discounts where today's date falls within the start/end date
-                ' OR if the discount has no dates (NULL), like Statutory/None.
+                ' FIX 1: Filter discounts by date
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
                     "FROM discount " &
@@ -539,19 +538,21 @@ Public Class Reservation
                         cmd.ExecuteNonQuery()
                     End Using
 
-                    Dim updateRoomQuery As String =
-                        "UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID"
+                    ' FIX 2: Only mark room occupied if check-in is TODAY
+                    If dtpCheckIn.Value.Date = DateTime.Today Then
+                        Dim updateRoomQuery As String =
+                            "UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID"
 
-                    Using updateCmd As New MySqlCommand(updateRoomQuery, conn)
-                        updateCmd.Parameters.AddWithValue("@roomID", roomID)
-                        updateCmd.ExecuteNonQuery()
-                    End Using
+                        Using updateCmd As New MySqlCommand(updateRoomQuery, conn)
+                            updateCmd.Parameters.AddWithValue("@roomID", roomID)
+                            updateCmd.ExecuteNonQuery()
+                        End Using
+                    End If
 
                     MessageBox.Show("Reservation saved successfully!", "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Else
-                    ' FIXED: Get old room ID to free it up if changed
                     Dim oldRoomID As Integer = 0
                     Using getOldRoomCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
                         getOldRoomCmd.Parameters.AddWithValue("@resID", reservationID)
@@ -589,19 +590,21 @@ Public Class Reservation
                         cmd.ExecuteNonQuery()
                     End Using
                     
-                    ' FIXED: If the room changed, free the old one and occupy the new one
-                    If oldRoomID <> roomID Then
-                        Dim freeOldRoom As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID"
-                        Using freeCmd As New MySqlCommand(freeOldRoom, conn)
-                            freeCmd.Parameters.AddWithValue("@oldRoomID", oldRoomID)
-                            freeCmd.ExecuteNonQuery()
-                        End Using
+                    ' FIX 2 (Edit): Only update room status if check-in is TODAY
+                    If dtpCheckIn.Value.Date = DateTime.Today Then
+                        If oldRoomID <> roomID Then
+                            Dim freeOldRoom As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID"
+                            Using freeCmd As New MySqlCommand(freeOldRoom, conn)
+                                freeCmd.Parameters.AddWithValue("@oldRoomID", oldRoomID)
+                                freeCmd.ExecuteNonQuery()
+                            End Using
 
-                        Dim occupyNewRoom As String = "UPDATE room SET room_status = 'Occupied' WHERE room_id = @newRoomID"
-                        Using occCmd As New MySqlCommand(occupyNewRoom, conn)
-                            occCmd.Parameters.AddWithValue("@newRoomID", roomID)
-                            occCmd.ExecuteNonQuery()
-                        End Using
+                            Dim occupyNewRoom As String = "UPDATE room SET room_status = 'Occupied' WHERE room_id = @newRoomID"
+                            Using occCmd As New MySqlCommand(occupyNewRoom, conn)
+                                occCmd.Parameters.AddWithValue("@newRoomID", roomID)
+                                occCmd.ExecuteNonQuery()
+                            End Using
+                        End If
                     End If
 
                     MessageBox.Show("Reservation updated successfully!", "Success",
