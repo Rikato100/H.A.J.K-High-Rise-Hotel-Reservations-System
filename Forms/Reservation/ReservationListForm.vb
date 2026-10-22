@@ -161,7 +161,6 @@ Public Class ReservationListForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' Find the room tied to this reservation BEFORE changing anything
                 Dim roomID As Integer = 0
                 Dim findRoomQuery As String = "SELECT room_id FROM reservation WHERE res_id = @resID"
                 Using findCmd As New MySqlCommand(findRoomQuery, conn)
@@ -178,7 +177,6 @@ Public Class ReservationListForm
                     cmd.ExecuteNonQuery()
                 End Using
 
-                ' Free up the room so it can be booked again
                 If roomID <> 0 Then
                     Dim freeRoomQuery As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @roomID"
                     Using freeCmd As New MySqlCommand(freeRoomQuery, conn)
@@ -235,7 +233,6 @@ Public Class ReservationListForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' FIXED: Find the room ID first so we can free it up
                 Dim roomID As Integer = 0
                 Using findCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
                     findCmd.Parameters.AddWithValue("@resID", resID)
@@ -245,8 +242,6 @@ Public Class ReservationListForm
                     End If
                 End Using
 
-                ' FIXED: Free the room if it wasn't already canceled
-                ' If it was canceled, the room is likely already available
                 Dim currentStatus As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
                 If roomID <> 0 AndAlso currentStatus <> "Canceled" Then
                     Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @roomID", conn)
@@ -255,7 +250,6 @@ Public Class ReservationListForm
                     End Using
                 End If
 
-                ' Now delete the reservation
                 Dim query As String = "DELETE FROM reservation WHERE res_id = @resID"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@resID", resID)
@@ -280,6 +274,119 @@ Public Class ReservationListForm
         Catch ex As Exception
             MessageBox.Show("Error deleting reservation: " & ex.Message,
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    ' ==========================================
+    ' CHECK-IN BUTTON
+    ' ==========================================
+    Private Sub btnCheckIn_Click(sender As Object, e As EventArgs) Handles btnCheckIn.Click
+        If dgvReservations.SelectedRows.Count = 0 Then
+            MessageBox.Show("Please select a reservation to check-in.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Dim resID As Integer = Convert.ToInt32(dgvReservations.SelectedRows(0).Cells("colResID").Value)
+        Dim status As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
+        Dim resName As String = dgvReservations.SelectedRows(0).Cells("colGuest").Value.ToString()
+
+        If status <> "Pending" Then
+            MessageBox.Show("Only 'Pending' reservations can be checked in.", "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        If MessageBox.Show($"Are you sure you want to check-in {resName}?", "Confirm Check-In", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Try
+                Using conn As MySqlConnection = DbConnection.GetConnection()
+                    conn.Open()
+
+                    Dim roomID As Integer = 0
+                    Using findCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
+                        findCmd.Parameters.AddWithValue("@resID", resID)
+                        roomID = Convert.ToInt32(findCmd.ExecuteScalar())
+                    End Using
+
+                    Using resCmd As New MySqlCommand("UPDATE reservation SET res_status = 'Check-In' WHERE res_id = @resID", conn)
+                        resCmd.Parameters.AddWithValue("@resID", resID)
+                        resCmd.ExecuteNonQuery()
+                    End Using
+
+                    If roomID <> 0 Then
+                        Using roomCmd As New MySqlCommand("UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID", conn)
+                            roomCmd.Parameters.AddWithValue("@roomID", roomID)
+                            roomCmd.ExecuteNonQuery()
+                        End Using
+                    End If
+                End Using
+
+                MessageBox.Show("Guest successfully checked in!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadReservations()
+
+            Catch ex As Exception
+                MessageBox.Show("Error checking in: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    ' ==========================================
+    ' CHECK-OUT BUTTON
+    ' ==========================================
+    Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
+        If dgvReservations.SelectedRows.Count = 0 Then
+            MessageBox.Show("Please select a reservation to check-out.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Dim resID As Integer = Convert.ToInt32(dgvReservations.SelectedRows(0).Cells("colResID").Value)
+        Dim status As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
+        Dim resName As String = dgvReservations.SelectedRows(0).Cells("colGuest").Value.ToString()
+
+        If status <> "Check-In" Then
+            MessageBox.Show("Only 'Check-In' reservations can be checked out.", "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Dim paymentSettled As DialogResult = MessageBox.Show(
+            $"Has {resName} settled their final bill?", 
+            "Final Payment", 
+            MessageBoxButtons.YesNoCancel, 
+            MessageBoxIcon.Question)
+
+        If paymentSettled = DialogResult.Cancel Then Exit Sub
+        
+        If paymentSettled = DialogResult.No Then
+            MessageBox.Show("Please process the payment first before checking out.", "Payment Required", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+
+                Dim roomID As Integer = 0
+                Using findCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
+                    findCmd.Parameters.AddWithValue("@resID", resID)
+                    roomID = Convert.ToInt32(findCmd.ExecuteScalar())
+                End Using
+
+                Using resCmd As New MySqlCommand("UPDATE reservation SET res_status = 'Check-Out' WHERE res_id = @resID", conn)
+                    resCmd.Parameters.AddWithValue("@resID", resID)
+                    resCmd.ExecuteNonQuery()
+                End Using
+
+                If roomID <> 0 Then
+                    Using roomCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @roomID", conn)
+                        roomCmd.Parameters.AddWithValue("@roomID", roomID)
+                        roomCmd.ExecuteNonQuery()
+                    End Using
+                End If
+            End Using
+
+            MessageBox.Show("Guest successfully checked out! Room is now available.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LoadReservations()
+
+        Catch ex As Exception
+            MessageBox.Show("Error checking out: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
