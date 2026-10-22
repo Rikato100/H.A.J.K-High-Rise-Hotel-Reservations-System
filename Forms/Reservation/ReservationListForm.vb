@@ -331,7 +331,7 @@ Public Class ReservationListForm
     ' ==========================================
     ' CHECK-OUT BUTTON
     ' ==========================================
-    Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
+        Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
         If dgvReservations.SelectedRows.Count = 0 Then
             MessageBox.Show("Please select a reservation to check-out.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -346,23 +346,34 @@ Public Class ReservationListForm
             Exit Sub
         End If
 
-        Dim paymentSettled As DialogResult = MessageBox.Show(
-            $"Has {resName} settled their final bill?", 
-            "Final Payment", 
-            MessageBoxButtons.YesNoCancel, 
-            MessageBoxIcon.Question)
-
-        If paymentSettled = DialogResult.Cancel Then Exit Sub
-        
-        If paymentSettled = DialogResult.No Then
-            MessageBox.Show("Please process the payment first before checking out.", "Payment Required", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
+                ' 1. Get Total Amount of the Reservation
+                Dim totalAmount As Decimal = 0
+                Using totalCmd As New MySqlCommand("SELECT total_amount FROM reservation WHERE res_id = @resID", conn)
+                    totalCmd.Parameters.AddWithValue("@resID", resID)
+                    totalAmount = Convert.ToDecimal(totalCmd.ExecuteScalar())
+                End Using
+
+                ' 2. Get Total Amount Paid (if any)
+                Dim totalPaid As Decimal = 0
+                Using paidCmd As New MySqlCommand("SELECT SUM(amount) FROM payment WHERE res_id = @resID", conn)
+                    paidCmd.Parameters.AddWithValue("@resID", resID)
+                    Dim result = paidCmd.ExecuteScalar()
+                    If result IsNot DBNull.Value Then totalPaid = Convert.ToDecimal(result)
+                End Using
+
+                ' 3. Enforce Payment
+                Dim balance As Decimal = totalAmount - totalPaid
+                If balance > 0 Then
+                    MessageBox.Show($"Cannot check-out. Guest still has a balance of ₱{balance.ToString("N2")}. Please process payment first.", 
+                                    "Payment Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Exit Sub
+                End If
+
+                ' 4. If balance is 0, proceed with check-out
                 Dim roomID As Integer = 0
                 Using findCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
                     findCmd.Parameters.AddWithValue("@resID", resID)
