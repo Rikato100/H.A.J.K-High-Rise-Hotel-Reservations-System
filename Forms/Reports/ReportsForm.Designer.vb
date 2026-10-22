@@ -183,7 +183,7 @@ Partial Class ReportsForm
     Friend WithEvents colDate As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colResCode As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colGuest As System.Windows.Forms.DataGridViewTextBoxColumn
-    FriendWithEvents colAmount As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colAmount As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colMethod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblTotalRevenue As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
