@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class loginForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -39,8 +39,9 @@ Public Class loginForm
 
                             Dim role As String = reader("role").ToString()
 
-                            CurrentUser.AccountId = Convert.ToInt32(reader("account_id"))
+                            CurrentUser.AccountID = Convert.ToInt32(reader("account_id"))
                             CurrentUser.Role = role
+                            CurrentUser.Username = username
 
                             If role = "Admin" Then
 
