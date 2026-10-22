@@ -214,7 +214,7 @@ Partial Class AddGuestForm
         Controls.Add(Label2)
         Controls.Add(lblTitle)
         Name = "AddGuestForm"
-        StartPosition = FormStartPosition.CenterScreen
+        StartPosition = FormStartPosition.CenterParent
         Text = "AddGuestForm"
         ResumeLayout(False)
         PerformLayout()

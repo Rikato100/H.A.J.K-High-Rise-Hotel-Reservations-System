@@ -14,8 +14,7 @@
     End Sub
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
-        Dim guests As New GuestForm()
-
+        Dim guests As New GuestForm
         guests.ShowDialog()
     End Sub
 
@@ -34,6 +33,10 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs)
 
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
 
     End Sub
 End Class

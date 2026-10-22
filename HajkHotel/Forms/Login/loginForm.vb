@@ -1,13 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class loginForm
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblUsername.Click
-
-    End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = txtUsername.Text.Trim()
@@ -19,7 +12,7 @@ Public Class loginForm
         End If
 
         Try
-            Using conn As MySqlConnection = DBConnection.GetConnection()
+            Using conn As MySqlConnection = DbConnection.GetConnection()
 
                 conn.Open()
 
