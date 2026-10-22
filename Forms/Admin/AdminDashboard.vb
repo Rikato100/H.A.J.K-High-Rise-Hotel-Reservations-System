@@ -34,8 +34,8 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        'Dim reports As New ReportsForm()
-        'reports.ShowDialog()
+        Dim reports As New ReportsForm()
+        reports.ShowDialog()
     End Sub
 
 End Class
