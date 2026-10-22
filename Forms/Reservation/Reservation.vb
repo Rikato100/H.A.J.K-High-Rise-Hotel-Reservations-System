@@ -221,16 +221,23 @@ Public Class Reservation
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' FIX: Added rt.amenities to match the new schema
+                ' FIX: Overbooking check. Shows Available rooms OR Occupied rooms that will check out before the new check-in date
                 Dim query As String =
                     "SELECT r.room_id, r.room_number, rt.type_name, " &
                     "rt.base_rate, rt.standard_capacity, rt.max_capacity, rt.amenities " &
                     "FROM room r " &
                     "INNER JOIN room_type rt ON r.room_type_id = rt.room_type_id " &
                     "WHERE r.room_status = 'Available' " &
+                    "OR (r.room_status = 'Occupied' AND r.room_id NOT IN (" &
+                    "    SELECT room_id FROM reservation " &
+                    "    WHERE res_status = 'Check-In' " &
+                    "    AND @newCheckIn < check_out" & 
+                    ")) " &
                     "ORDER BY r.room_number"
 
                 Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@newCheckIn", dtpCheckIn.Value.Date)
+
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbRoom.Items.Clear()
 
@@ -308,6 +315,7 @@ Public Class Reservation
 
     Private Sub dtpCheckIn_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckIn.ValueChanged
         CalculateNights()
+        LoadRooms() ' FIX: Refresh room list based on the new check-in date
     End Sub
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
@@ -509,7 +517,6 @@ Public Class Reservation
                 If reservationID = 0 Then
                     Dim resCode As String = txtResCode.Text.Trim()
 
-                    ' FIX: Added extra_adult_fee to the INSERT query
                     Dim query As String =
                         "INSERT INTO reservation " &
                         "(guest_id, room_id, discount_id, created_by, res_code, res_status, " &
@@ -532,7 +539,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@adults", adults)
                         cmd.Parameters.AddWithValue("@children", children)
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
-                        cmd.Parameters.AddWithValue("@extraAdultFee", 800D) ' FIX
+                        cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
                         cmd.Parameters.AddWithValue("@subtotal", subtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
@@ -563,7 +570,6 @@ Public Class Reservation
                         oldRoomID = Convert.ToInt32(getOldRoomCmd.ExecuteScalar())
                     End Using
 
-                    ' FIX: Added extra_adult_fee to the UPDATE query
                     Dim query As String =
                         "UPDATE reservation SET " &
                         "guest_id = @guestID, room_id = @roomID, discount_id = @discountID, " &
@@ -584,7 +590,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@adults", adults)
                         cmd.Parameters.AddWithValue("@children", children)
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
-                        cmd.Parameters.AddWithValue("@extraAdultFee", 800D) ' FIX
+                        cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
                         cmd.Parameters.AddWithValue("@subtotal", subtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
