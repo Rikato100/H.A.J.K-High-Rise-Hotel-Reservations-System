@@ -31,6 +31,7 @@ CREATE TABLE `account` (
   `account_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
+  `fullname` varchar(100) NOT NULL DEFAULT '',
   `role` enum('Admin','Staff') NOT NULL,
   `account_status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -41,9 +42,9 @@ CREATE TABLE `account` (
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`account_id`, `username`, `password_hash`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin123', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
-(3, 'staff', 'staff123', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
+INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin123', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
+(3, 'staff', 'staff123', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
 
 -- --------------------------------------------------------
 
