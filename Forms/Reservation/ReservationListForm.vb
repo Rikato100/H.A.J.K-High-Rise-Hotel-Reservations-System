@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class ReservationListForm
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -17,11 +17,8 @@ Public Class ReservationListForm
     End Sub
 
     Private Sub LoadReservations()
-
         Try
-
             Using conn As MySqlConnection = DbConnection.GetConnection()
-
                 conn.Open()
 
                 Dim query As String =
@@ -36,13 +33,10 @@ Public Class ReservationListForm
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
-
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
-
                         dgvReservations.Rows.Clear()
 
                         While reader.Read()
-
                             dgvReservations.Rows.Add(
                                 reader("res_id"),
                                 reader("res_code"),
@@ -54,26 +48,15 @@ Public Class ReservationListForm
                                 reader("num_nights"),
                                 Convert.ToDecimal(reader("total_amount")).ToString("N2")
                             )
-
                         End While
-
                     End Using
-
                 End Using
-
             End Using
 
         Catch ex As Exception
-
-            MessageBox.Show(
-                "Error loading reservations: " & ex.Message,
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            )
-
+            MessageBox.Show("Error loading reservations: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAddReservation.Click
@@ -97,9 +80,7 @@ Public Class ReservationListForm
         End If
 
         Try
-
             Using conn As MySqlConnection = DbConnection.GetConnection()
-
                 conn.Open()
 
                 Dim query As String =
@@ -119,18 +100,12 @@ Public Class ReservationListForm
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
-
-                    cmd.Parameters.AddWithValue(
-                        "@search",
-                        "%" & searchText & "%"
-                    )
+                    cmd.Parameters.AddWithValue("@search", "%" & searchText & "%")
 
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
-
                         dgvReservations.Rows.Clear()
 
                         While reader.Read()
-
                             dgvReservations.Rows.Add(
                                 reader("res_id"),
                                 reader("res_code"),
@@ -142,83 +117,51 @@ Public Class ReservationListForm
                                 reader("num_nights"),
                                 Convert.ToDecimal(reader("total_amount")).ToString("N2")
                             )
-
                         End While
-
                     End Using
-
                 End Using
-
             End Using
 
         Catch ex As Exception
-
-            MessageBox.Show(
-                "Error searching reservations: " & ex.Message,
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            )
-
+            MessageBox.Show("Error searching reservations: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
 
     Private Sub btnCancelReservation_Click(sender As Object, e As EventArgs) Handles btnCancelReservation.Click
         If dgvReservations.SelectedRows.Count = 0 Then
-
             MessageBox.Show("Please select a reservation to cancel.")
             Exit Sub
-
         End If
 
-        Dim resID As Integer =
-            Convert.ToInt32(
-                dgvReservations.SelectedRows(0).Cells("colResID").Value
-            )
-
-        Dim resCode As String =
-            dgvReservations.SelectedRows(0).Cells("colResCode").Value.ToString()
-
-        Dim status As String =
-            dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
-
-        Dim resName As String =
-            dgvReservations.SelectedRows(0).Cells("colGuest").Value.ToString()
+        Dim resID As Integer = Convert.ToInt32(dgvReservations.SelectedRows(0).Cells("colResID").Value)
+        Dim status As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
+        Dim resName As String = dgvReservations.SelectedRows(0).Cells("colGuest").Value.ToString()
 
         If status = "Canceled" Then
-
             MessageBox.Show("This reservation is already canceled.")
             Exit Sub
-
         End If
 
         If status = "Check-Out" Then
-
             MessageBox.Show("A checked-out reservation cannot be canceled.")
             Exit Sub
-
         End If
 
-        Dim answer As DialogResult =
-            MessageBox.Show(
-                "Are you sure you want to cancel the reservation of " &
-                resName & "?",
-                "Cancel Reservation",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            )
+        Dim answer As DialogResult = MessageBox.Show(
+            "Are you sure you want to cancel the reservation of " & resName & "?",
+            "Cancel Reservation",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+        )
 
         If answer <> DialogResult.Yes Then Exit Sub
 
         Try
-
             Using conn As MySqlConnection = DbConnection.GetConnection()
-
                 conn.Open()
 
-                ' Find the room tied to this reservation BEFORE changing anything,
-                ' so we know which room to free up
+                ' Find the room tied to this reservation BEFORE changing anything
                 Dim roomID As Integer = 0
                 Dim findRoomQuery As String = "SELECT room_id FROM reservation WHERE res_id = @resID"
                 Using findCmd As New MySqlCommand(findRoomQuery, conn)
@@ -229,17 +172,10 @@ Public Class ReservationListForm
                     End If
                 End Using
 
-                Dim query As String =
-                    "UPDATE reservation " &
-                    "SET res_status = 'Canceled' " &
-                    "WHERE res_id = @resID"
-
+                Dim query As String = "UPDATE reservation SET res_status = 'Canceled' WHERE res_id = @resID"
                 Using cmd As New MySqlCommand(query, conn)
-
                     cmd.Parameters.AddWithValue("@resID", resID)
-
                     cmd.ExecuteNonQuery()
-
                 End Using
 
                 ' Free up the room so it can be booked again
@@ -250,149 +186,107 @@ Public Class ReservationListForm
                         freeCmd.ExecuteNonQuery()
                     End Using
                 End If
-
             End Using
 
-            MessageBox.Show(
-                "Reservation canceled successfully!",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            )
+            MessageBox.Show("Reservation canceled successfully!", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             LoadReservations()
 
         Catch ex As Exception
-
-            MessageBox.Show(
-                "Error canceling reservation: " & ex.Message,
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            )
-
+            MessageBox.Show("Error canceling reservation: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If dgvReservations.SelectedRows.Count = 0 Then
-
             MessageBox.Show("Please select a reservation to edit.")
             Exit Sub
-
         End If
 
-        Dim resID As Integer =
-        Convert.ToInt32(
-            dgvReservations.SelectedRows(0).Cells("colResID").Value
-        )
-
+        Dim resID As Integer = Convert.ToInt32(dgvReservations.SelectedRows(0).Cells("colResID").Value)
         Dim editReservation As New Reservation(resID)
 
         If editReservation.ShowDialog() = DialogResult.OK Then
             LoadReservations()
         End If
-
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If dgvReservations.SelectedRows.Count = 0 Then
-
             MessageBox.Show("Please select a reservation to delete.")
             Exit Sub
-
         End If
 
-        Dim resID As Integer =
-            Convert.ToInt32(
-                dgvReservations.SelectedRows(0).Cells("colResID").Value
-            )
+        Dim resID As Integer = Convert.ToInt32(dgvReservations.SelectedRows(0).Cells("colResID").Value)
+        Dim resCode As String = dgvReservations.SelectedRows(0).Cells("colResCode").Value.ToString()
 
-        Dim resCode As String =
-            dgvReservations.SelectedRows(0).Cells("colResCode").Value.ToString()
+        Dim answer As DialogResult = MessageBox.Show(
+            "Are you sure you want to permanently delete reservation " & resCode & "?",
+            "Delete Reservation",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+        )
 
-        Dim answer As DialogResult =
-            MessageBox.Show(
-                "Are you sure you want to permanently delete reservation " &
-                resCode & "?",
-                "Delete Reservation",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            )
-
-        If answer <> DialogResult.Yes Then
-            Exit Sub
-        End If
+        If answer <> DialogResult.Yes Then Exit Sub
 
         Try
-
             Using conn As MySqlConnection = DbConnection.GetConnection()
-
                 conn.Open()
 
-                Dim query As String =
-                    "DELETE FROM reservation " &
-                    "WHERE res_id = @resID"
-
-                Using cmd As New MySqlCommand(query, conn)
-
-                    cmd.Parameters.AddWithValue("@resID", resID)
-
-                    cmd.ExecuteNonQuery()
-
+                ' FIXED: Find the room ID first so we can free it up
+                Dim roomID As Integer = 0
+                Using findCmd As New MySqlCommand("SELECT room_id FROM reservation WHERE res_id = @resID", conn)
+                    findCmd.Parameters.AddWithValue("@resID", resID)
+                    Dim result = findCmd.ExecuteScalar()
+                    If result IsNot Nothing Then
+                        roomID = Convert.ToInt32(result)
+                    End If
                 End Using
 
+                ' FIXED: Free the room if it wasn't already canceled
+                ' If it was canceled, the room is likely already available
+                Dim currentStatus As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
+                If roomID <> 0 AndAlso currentStatus <> "Canceled" Then
+                    Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @roomID", conn)
+                        freeCmd.Parameters.AddWithValue("@roomID", roomID)
+                        freeCmd.ExecuteNonQuery()
+                    End Using
+                End If
+
+                ' Now delete the reservation
+                Dim query As String = "DELETE FROM reservation WHERE res_id = @resID"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@resID", resID)
+                    cmd.ExecuteNonQuery()
+                End Using
             End Using
 
-            MessageBox.Show(
-                "Reservation deleted successfully!",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            )
+            MessageBox.Show("Reservation deleted successfully!", "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             LoadReservations()
 
         Catch ex As MySqlException
-
             If ex.Number = 1451 Then
-
-                MessageBox.Show(
-                    "This reservation cannot be deleted because it has related payment records.",
-                    "Cannot Delete",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                )
-
+                MessageBox.Show("This reservation cannot be deleted because it has related payment records.",
+                                "Cannot Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
-
-                MessageBox.Show(
-                    "Database error: " & ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                )
-
+                MessageBox.Show("Database error: " & ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         Catch ex As Exception
-
-            MessageBox.Show(
-                "Error deleting reservation: " & ex.Message,
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            )
-
+            MessageBox.Show("Error deleting reservation: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
-
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-
     End Sub
 
     Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
@@ -402,7 +296,6 @@ Public Class ReservationListForm
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
         Dim guests As New GuestForm
-
         guests.ShowDialog()
     End Sub
 
