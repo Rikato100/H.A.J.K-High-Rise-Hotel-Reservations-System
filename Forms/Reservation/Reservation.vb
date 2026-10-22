@@ -253,14 +253,19 @@ Public Class Reservation
         End Try
     End Sub
 
-    Private Sub LoadDiscounts()
+        Private Sub LoadDiscounts()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
+                ' Only load discounts where today's date falls within the start/end date
+                ' OR if the discount has no dates (NULL), like Statutory/None.
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
-                    "FROM discount ORDER BY discount_id"
+                    "FROM discount " &
+                    "WHERE (start_date IS NULL AND end_date IS NULL) " &
+                    "OR (CURDATE() BETWEEN start_date AND end_date) " &
+                    "ORDER BY discount_id"
 
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
