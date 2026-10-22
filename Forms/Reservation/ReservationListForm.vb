@@ -280,7 +280,7 @@ Public Class ReservationListForm
     ' ==========================================
     ' CHECK-IN BUTTON
     ' ==========================================
-    Private Sub btnCheckIn_Click(sender As Object, e As EventArgs) Handles btnCheckIn.Click
+    Private Sub btnCheckIn_Click(sender As Object, e As EventArgs)
         If dgvReservations.SelectedRows.Count = 0 Then
             MessageBox.Show("Please select a reservation to check-in.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -331,7 +331,7 @@ Public Class ReservationListForm
     ' ==========================================
     ' CHECK-OUT BUTTON
     ' ==========================================
-        Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
+    Private Sub btnCheckOut_Click(sender As Object, e As EventArgs)
         If dgvReservations.SelectedRows.Count = 0 Then
             MessageBox.Show("Please select a reservation to check-out.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -368,7 +368,7 @@ Public Class ReservationListForm
                 ' 3. Enforce Payment
                 Dim balance As Decimal = totalAmount - totalPaid
                 If balance > 0 Then
-                    MessageBox.Show($"Cannot check-out. Guest still has a balance of ₱{balance.ToString("N2")}. Please process payment first.", 
+                    MessageBox.Show($"Cannot check-out. Guest still has a balance of ₱{balance.ToString("N2")}. Please process payment first.",
                                     "Payment Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Exit Sub
                 End If
