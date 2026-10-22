@@ -1,11 +1,9 @@
 Imports MySql.Data.MySqlClient
 
-' Lets the logged-in user change their own password.
-' Open with:  Using f As New ChangePasswordForm() : f.ShowDialog(Me) : End Using
 Public Class ChangePasswordForm
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CurrentUser.AccountID = 0 Then
+        If CurrentUser.AccountID = 0 Then ' FIXED: Capital D
             MessageBox.Show("No logged-in account was found. Please log in again.", "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
@@ -35,10 +33,9 @@ Public Class ChangePasswordForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' Verify the current password first
                 Dim storedHash As String = ""
                 Using cmd As New MySqlCommand("SELECT password_hash FROM account WHERE account_id = @id", conn)
-                    cmd.Parameters.AddWithValue("@id", CurrentUser.AccountID)
+                    cmd.Parameters.AddWithValue("@id", CurrentUser.AccountID) ' FIXED
                     Dim result As Object = cmd.ExecuteScalar()
                     If result IsNot Nothing Then storedHash = result.ToString()
                 End Using
@@ -50,7 +47,7 @@ Public Class ChangePasswordForm
 
                 Using cmd As New MySqlCommand("UPDATE account SET password_hash = @hash WHERE account_id = @id", conn)
                     cmd.Parameters.AddWithValue("@hash", PasswordHash.HashPassword(txtNew.Text))
-                    cmd.Parameters.AddWithValue("@id", CurrentUser.AccountID)
+                    cmd.Parameters.AddWithValue("@id", CurrentUser.AccountID) ' FIXED
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
