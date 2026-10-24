@@ -2,7 +2,6 @@
 Partial Class SystemResetForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,150 +13,196 @@ Partial Class SystemResetForm
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.grpResetOptions = New System.Windows.Forms.GroupBox()
-        Me.lblEndDate = New System.Windows.Forms.Label()
-        Me.dtpEndDate = New System.Windows.Forms.DateTimePicker()
-        Me.lblStartDate = New System.Windows.Forms.Label()
-        Me.dtpStartDate = New System.Windows.Forms.DateTimePicker()
-        Me.radSelectiveReset = New System.Windows.Forms.RadioButton()
-        Me.radFactoryReset = New System.Windows.Forms.RadioButton()
-        Me.lblPassword = New System.Windows.Forms.Label()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.btnExecuteReset = New System.Windows.Forms.Button()
-        Me.grpResetOptions.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'grpResetOptions
-        '
-        Me.grpResetOptions.Controls.Add(Me.lblEndDate)
-        Me.grpResetOptions.Controls.Add(Me.dtpEndDate)
-        Me.grpResetOptions.Controls.Add(Me.lblStartDate)
-        Me.grpResetOptions.Controls.Add(Me.dtpStartDate)
-        Me.grpResetOptions.Controls.Add(Me.radSelectiveReset)
-        Me.grpResetOptions.Controls.Add(Me.radFactoryReset)
-        Me.grpResetOptions.Location = New System.Drawing.Point(12, 12)
-        Me.grpResetOptions.Name = "grpResetOptions"
-        Me.grpResetOptions.Size = New System.Drawing.Size(400, 180)
-        Me.grpResetOptions.TabIndex = 0
-        Me.grpResetOptions.TabStop = False
-        Me.grpResetOptions.Text = "Reset Configuration"
-        '
-        'lblEndDate
-        '
-        Me.lblEndDate.AutoSize = True
-        Me.lblEndDate.Location = New System.Drawing.Point(200, 115)
-        Me.lblEndDate.Name = "lblEndDate"
-        Me.lblEndDate.Size = New System.Drawing.Size(55, 13)
-        Me.lblEndDate.TabIndex = 5
-        Me.lblEndDate.Text = "End Date:"
-        '
-        'dtpEndDate
-        '
-        Me.dtpEndDate.Enabled = False
-        Me.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short
-        Me.dtpEndDate.Location = New System.Drawing.Point(260, 112)
-        Me.dtpEndDate.Name = "dtpEndDate"
-        Me.dtpEndDate.Size = New System.Drawing.Size(120, 20)
-        Me.dtpEndDate.TabIndex = 4
-        '
-        'lblStartDate
-        '
-        Me.lblStartDate.AutoSize = True
-        Me.lblStartDate.Location = New System.Drawing.Point(20, 115)
-        Me.lblStartDate.Name = "lblStartDate"
-        Me.lblStartDate.Size = New System.Drawing.Size(58, 13)
-        Me.lblStartDate.TabIndex = 3
-        Me.lblStartDate.Text = "Start Date:"
-        '
-        'dtpStartDate
-        '
-        Me.dtpStartDate.Enabled = False
-        Me.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short
-        Me.dtpStartDate.Location = New System.Drawing.Point(80, 112)
-        Me.dtpStartDate.Name = "dtpStartDate"
-        Me.dtpStartDate.Size = New System.Drawing.Size(110, 20)
-        Me.dtpStartDate.TabIndex = 2
-        '
-        'radSelectiveReset
-        '
-        Me.radSelectiveReset.AutoSize = True
-        Me.radSelectiveReset.Location = New System.Drawing.Point(23, 80)
-        Me.radSelectiveReset.Name = "radSelectiveReset"
-        Me.radSelectiveReset.Size = New System.Drawing.Size(186, 17)
-        Me.radSelectiveReset.TabIndex = 1
-        Me.radSelectiveReset.Text = "Selective Reset (By Date Range)"
-        Me.radSelectiveReset.UseVisualStyleBackColor = True
-        '
-        'radFactoryReset
-        '
-        Me.radFactoryReset.AutoSize = True
-        Me.radFactoryReset.Checked = True
-        Me.radFactoryReset.Location = New System.Drawing.Point(23, 40)
-        Me.radFactoryReset.Name = "radFactoryReset"
-        Me.radFactoryReset.Size = New System.Drawing.Size(219, 17)
-        Me.radFactoryReset.TabIndex = 0
-        Me.radFactoryReset.TabStop = True
-        Me.radFactoryReset.Text = "Factory Reset (Wipe all transactions && staff)"
-        Me.radFactoryReset.UseVisualStyleBackColor = True
-        '
-        'lblPassword
-        '
-        Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(12, 215)
-        Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(172, 13)
-        Me.lblPassword.TabIndex = 1
-        Me.lblPassword.Text = "Enter Admin Password to confirm:"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Location = New System.Drawing.Point(15, 235)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(250, 20)
-        Me.txtPassword.TabIndex = 2
-        '
-        'btnExecuteReset
-        '
-        Me.btnExecuteReset.BackColor = System.Drawing.Color.Firebrick
-        Me.btnExecuteReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExecuteReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExecuteReset.ForeColor = System.Drawing.Color.White
-        Me.btnExecuteReset.Location = New System.Drawing.Point(15, 280)
-        Me.btnExecuteReset.Name = "btnExecuteReset"
-        Me.btnExecuteReset.Size = New System.Drawing.Size(150, 40)
-        Me.btnExecuteReset.TabIndex = 3
-        Me.btnExecuteReset.Text = "EXECUTE RESET"
-        Me.btnExecuteReset.UseVisualStyleBackColor = False
-        '
-        'SystemResetForm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(430, 340)
-        Me.Controls.Add(Me.btnExecuteReset)
-        Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.lblPassword)
-        Me.Controls.Add(Me.grpResetOptions)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "SystemResetForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "System Reset"
-        Me.grpResetOptions.ResumeLayout(False)
-        Me.grpResetOptions.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
-
+        grpResetOptions = New GroupBox()
+        chkRoomStatuses = New CheckBox()
+        chkFinancials = New CheckBox()
+        chkGuestHistory = New CheckBox()
+        lblEndDate = New Label()
+        dtpEndDate = New DateTimePicker()
+        lblStartDate = New Label()
+        dtpStartDate = New DateTimePicker()
+        radSelectiveReset = New RadioButton()
+        radFactoryReset = New RadioButton()
+        lblPassword = New Label()
+        txtPassword = New TextBox()
+        btnExecuteReset = New Button()
+        grpResetOptions.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' grpResetOptions
+        ' 
+        grpResetOptions.Controls.Add(chkRoomStatuses)
+        grpResetOptions.Controls.Add(chkFinancials)
+        grpResetOptions.Controls.Add(chkGuestHistory)
+        grpResetOptions.Controls.Add(lblEndDate)
+        grpResetOptions.Controls.Add(dtpEndDate)
+        grpResetOptions.Controls.Add(lblStartDate)
+        grpResetOptions.Controls.Add(dtpStartDate)
+        grpResetOptions.Controls.Add(radSelectiveReset)
+        grpResetOptions.Controls.Add(radFactoryReset)
+        grpResetOptions.Location = New Point(14, 16)
+        grpResetOptions.Margin = New Padding(3, 4, 3, 4)
+        grpResetOptions.Name = "grpResetOptions"
+        grpResetOptions.Padding = New Padding(3, 4, 3, 4)
+        grpResetOptions.Size = New Size(457, 307)
+        grpResetOptions.TabIndex = 0
+        grpResetOptions.TabStop = False
+        grpResetOptions.Text = "Reset Configuration"
+        ' 
+        ' chkRoomStatuses
+        ' 
+        chkRoomStatuses.AutoSize = True
+        chkRoomStatuses.Enabled = False
+        chkRoomStatuses.Location = New Point(26, 260)
+        chkRoomStatuses.Margin = New Padding(3, 4, 3, 4)
+        chkRoomStatuses.Name = "chkRoomStatuses"
+        chkRoomStatuses.Size = New Size(203, 24)
+        chkRoomStatuses.TabIndex = 8
+        chkRoomStatuses.Text = "Reset Room Statuses Only"
+        chkRoomStatuses.UseVisualStyleBackColor = True
+        ' 
+        ' chkFinancials
+        ' 
+        chkFinancials.AutoSize = True
+        chkFinancials.Enabled = False
+        chkFinancials.Location = New Point(26, 227)
+        chkFinancials.Margin = New Padding(3, 4, 3, 4)
+        chkFinancials.Name = "chkFinancials"
+        chkFinancials.Size = New Size(297, 24)
+        chkFinancials.TabIndex = 7
+        chkFinancials.Text = "Delete Financial and Billing Transactions"
+        chkFinancials.UseVisualStyleBackColor = True
+        ' 
+        ' chkGuestHistory
+        ' 
+        chkGuestHistory.AutoSize = True
+        chkGuestHistory.Enabled = False
+        chkGuestHistory.Location = New Point(26, 193)
+        chkGuestHistory.Margin = New Padding(3, 4, 3, 4)
+        chkGuestHistory.Name = "chkGuestHistory"
+        chkGuestHistory.Size = New Size(259, 24)
+        chkGuestHistory.TabIndex = 6
+        chkGuestHistory.Text = "Delete Guest History (Date Range)"
+        chkGuestHistory.UseVisualStyleBackColor = True
+        ' 
+        ' lblEndDate
+        ' 
+        lblEndDate.AutoSize = True
+        lblEndDate.Location = New Point(229, 153)
+        lblEndDate.Name = "lblEndDate"
+        lblEndDate.Size = New Size(73, 20)
+        lblEndDate.TabIndex = 5
+        lblEndDate.Text = "End Date:"
+        ' 
+        ' dtpEndDate
+        ' 
+        dtpEndDate.Enabled = False
+        dtpEndDate.Format = DateTimePickerFormat.Short
+        dtpEndDate.Location = New Point(297, 149)
+        dtpEndDate.Margin = New Padding(3, 4, 3, 4)
+        dtpEndDate.Name = "dtpEndDate"
+        dtpEndDate.Size = New Size(137, 27)
+        dtpEndDate.TabIndex = 4
+        ' 
+        ' lblStartDate
+        ' 
+        lblStartDate.AutoSize = True
+        lblStartDate.Location = New Point(23, 153)
+        lblStartDate.Name = "lblStartDate"
+        lblStartDate.Size = New Size(79, 20)
+        lblStartDate.TabIndex = 3
+        lblStartDate.Text = "Start Date:"
+        ' 
+        ' dtpStartDate
+        ' 
+        dtpStartDate.Enabled = False
+        dtpStartDate.Format = DateTimePickerFormat.Short
+        dtpStartDate.Location = New Point(91, 149)
+        dtpStartDate.Margin = New Padding(3, 4, 3, 4)
+        dtpStartDate.Name = "dtpStartDate"
+        dtpStartDate.Size = New Size(125, 27)
+        dtpStartDate.TabIndex = 2
+        ' 
+        ' radSelectiveReset
+        ' 
+        radSelectiveReset.AutoSize = True
+        radSelectiveReset.Location = New Point(26, 107)
+        radSelectiveReset.Margin = New Padding(3, 4, 3, 4)
+        radSelectiveReset.Name = "radSelectiveReset"
+        radSelectiveReset.Size = New Size(241, 24)
+        radSelectiveReset.TabIndex = 1
+        radSelectiveReset.Text = "Selective Reset (By Date Range)"
+        radSelectiveReset.UseVisualStyleBackColor = True
+        ' 
+        ' radFactoryReset
+        ' 
+        radFactoryReset.AutoSize = True
+        radFactoryReset.Checked = True
+        radFactoryReset.Location = New Point(26, 53)
+        radFactoryReset.Margin = New Padding(3, 4, 3, 4)
+        radFactoryReset.Name = "radFactoryReset"
+        radFactoryReset.Size = New Size(269, 24)
+        radFactoryReset.TabIndex = 0
+        radFactoryReset.TabStop = True
+        radFactoryReset.Text = "Factory Reset (Wipe all transactions)"
+        radFactoryReset.UseVisualStyleBackColor = True
+        ' 
+        ' lblPassword
+        ' 
+        lblPassword.AutoSize = True
+        lblPassword.Location = New Point(14, 340)
+        lblPassword.Name = "lblPassword"
+        lblPassword.Size = New Size(232, 20)
+        lblPassword.TabIndex = 1
+        lblPassword.Text = "Enter Admin Password to confirm:"
+        ' 
+        ' txtPassword
+        ' 
+        txtPassword.Location = New Point(17, 367)
+        txtPassword.Margin = New Padding(3, 4, 3, 4)
+        txtPassword.Name = "txtPassword"
+        txtPassword.PasswordChar = "*"c
+        txtPassword.Size = New Size(285, 27)
+        txtPassword.TabIndex = 2
+        ' 
+        ' btnExecuteReset
+        ' 
+        btnExecuteReset.BackColor = Color.Firebrick
+        btnExecuteReset.FlatStyle = FlatStyle.Flat
+        btnExecuteReset.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Bold)
+        btnExecuteReset.ForeColor = Color.White
+        btnExecuteReset.Location = New Point(17, 420)
+        btnExecuteReset.Margin = New Padding(3, 4, 3, 4)
+        btnExecuteReset.Name = "btnExecuteReset"
+        btnExecuteReset.Size = New Size(171, 53)
+        btnExecuteReset.TabIndex = 3
+        btnExecuteReset.Text = "EXECUTE RESET"
+        btnExecuteReset.UseVisualStyleBackColor = False
+        ' 
+        ' SystemResetForm
+        ' 
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(491, 493)
+        Controls.Add(btnExecuteReset)
+        Controls.Add(txtPassword)
+        Controls.Add(lblPassword)
+        Controls.Add(grpResetOptions)
+        FormBorderStyle = FormBorderStyle.FixedDialog
+        Margin = New Padding(3, 4, 3, 4)
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "SystemResetForm"
+        StartPosition = FormStartPosition.CenterParent
+        Text = "System Reset"
+        grpResetOptions.ResumeLayout(False)
+        grpResetOptions.PerformLayout()
+        ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents grpResetOptions As System.Windows.Forms.GroupBox
@@ -170,5 +215,7 @@ Partial Class SystemResetForm
     Friend WithEvents lblPassword As System.Windows.Forms.Label
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents btnExecuteReset As System.Windows.Forms.Button
-
+    Friend WithEvents chkRoomStatuses As System.Windows.Forms.CheckBox
+    Friend WithEvents chkFinancials As System.Windows.Forms.CheckBox
+    Friend WithEvents chkGuestHistory As System.Windows.Forms.CheckBox
 End Class
