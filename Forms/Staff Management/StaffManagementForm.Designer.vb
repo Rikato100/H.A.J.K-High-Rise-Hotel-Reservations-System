@@ -19,7 +19,8 @@ Partial Class StaffManagementForm
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        lblTitle = New Label()
+        Dim Panel2 As Panel
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StaffManagementForm))
         lblSearch = New Label()
         txtSearch = New TextBox()
         lblStatusFilter = New Label()
@@ -41,44 +42,65 @@ Partial Class StaffManagementForm
         btnUpdate = New Button()
         btnDeactivate = New Button()
         btnReactivate = New Button()
-        btnClose = New Button()
+        Panel3 = New Panel()
+        Panel1 = New Panel()
+        PictureBox3 = New PictureBox()
+        btnSettings = New Button()
+        btnLogout = New Button()
+        btnReports = New Button()
+        btnStaff = New Button()
+        btnDashboard = New Button()
+        btnRooms = New Button()
+        PictureBox4 = New PictureBox()
+        lblTagline = New Label()
+        lblHotelName = New Label()
+        Panel4 = New Panel()
+        PictureBox2 = New PictureBox()
+        Label4 = New Label()
+        Label1 = New Label()
+        Label2 = New Label()
+        PictureBox1 = New PictureBox()
+        Panel2 = New Panel()
         CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
+        Panel3.SuspendLayout()
+        Panel1.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        Panel2.SuspendLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        Panel4.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' lblTitle
-        ' 
-        lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
-        lblTitle.Location = New Point(23, 21)
-        lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(255, 37)
-        lblTitle.TabIndex = 0
-        lblTitle.Text = "Staff Management"
         ' 
         ' lblSearch
         ' 
         lblSearch.AutoSize = True
-        lblSearch.Location = New Point(23, 84)
+        lblSearch.Font = New Font("Segoe UI", 11.25F)
+        lblSearch.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        lblSearch.Location = New Point(164, 194)
         lblSearch.Name = "lblSearch"
-        lblSearch.Size = New Size(56, 20)
+        lblSearch.Size = New Size(73, 25)
         lblSearch.TabIndex = 16
         lblSearch.Text = "Search:"
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(86, 80)
+        txtSearch.Location = New Point(243, 194)
         txtSearch.Margin = New Padding(3, 4, 3, 4)
+        txtSearch.Multiline = True
         txtSearch.Name = "txtSearch"
         txtSearch.PlaceholderText = "Username or full name"
-        txtSearch.Size = New Size(251, 27)
+        txtSearch.Size = New Size(268, 33)
         txtSearch.TabIndex = 17
         ' 
         ' lblStatusFilter
         ' 
         lblStatusFilter.AutoSize = True
-        lblStatusFilter.Location = New Point(360, 84)
+        lblStatusFilter.Font = New Font("Segoe UI", 11.25F)
+        lblStatusFilter.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        lblStatusFilter.Location = New Point(517, 194)
         lblStatusFilter.Name = "lblStatusFilter"
-        lblStatusFilter.Size = New Size(52, 20)
+        lblStatusFilter.Size = New Size(66, 25)
         lblStatusFilter.TabIndex = 18
         lblStatusFilter.Text = "Status:"
         ' 
@@ -86,18 +108,20 @@ Partial Class StaffManagementForm
         ' 
         cboStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboStatusFilter.FormattingEnabled = True
-        cboStatusFilter.Location = New Point(417, 80)
+        cboStatusFilter.Location = New Point(579, 196)
         cboStatusFilter.Margin = New Padding(3, 4, 3, 4)
         cboStatusFilter.Name = "cboStatusFilter"
-        cboStatusFilter.Size = New Size(125, 28)
+        cboStatusFilter.Size = New Size(171, 28)
         cboStatusFilter.TabIndex = 19
         ' 
         ' lblRoleFilter
         ' 
         lblRoleFilter.AutoSize = True
-        lblRoleFilter.Location = New Point(566, 84)
+        lblRoleFilter.Font = New Font("Segoe UI", 11.25F)
+        lblRoleFilter.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        lblRoleFilter.Location = New Point(766, 194)
         lblRoleFilter.Name = "lblRoleFilter"
-        lblRoleFilter.Size = New Size(42, 20)
+        lblRoleFilter.Size = New Size(52, 25)
         lblRoleFilter.TabIndex = 20
         lblRoleFilter.Text = "Role:"
         ' 
@@ -105,23 +129,24 @@ Partial Class StaffManagementForm
         ' 
         cboRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboRoleFilter.FormattingEnabled = True
-        cboRoleFilter.Location = New Point(617, 80)
+        cboRoleFilter.Location = New Point(824, 196)
         cboRoleFilter.Margin = New Padding(3, 4, 3, 4)
         cboRoleFilter.Name = "cboRoleFilter"
-        cboRoleFilter.Size = New Size(125, 28)
+        cboRoleFilter.Size = New Size(171, 28)
         cboRoleFilter.TabIndex = 21
         ' 
         ' btnClearFilter
         ' 
-        btnClearFilter.BackColor = Color.White
+        btnClearFilter.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnClearFilter.FlatAppearance.BorderColor = Color.Silver
         btnClearFilter.FlatStyle = FlatStyle.Flat
-        btnClearFilter.Location = New Point(766, 77)
+        btnClearFilter.ForeColor = Color.Beige
+        btnClearFilter.Location = New Point(1037, 168)
         btnClearFilter.Margin = New Padding(3, 4, 3, 4)
         btnClearFilter.Name = "btnClearFilter"
-        btnClearFilter.Size = New Size(114, 36)
+        btnClearFilter.Size = New Size(127, 56)
         btnClearFilter.TabIndex = 22
-        btnClearFilter.Text = "CLEAR"
+        btnClearFilter.Text = "✕ CLEAR"
         btnClearFilter.UseVisualStyleBackColor = False
         ' 
         ' dgvStaff
@@ -131,7 +156,7 @@ Partial Class StaffManagementForm
         dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvStaff.BackgroundColor = Color.White
         dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvStaff.Location = New Point(23, 123)
+        dgvStaff.Location = New Point(163, 235)
         dgvStaff.Margin = New Padding(3, 4, 3, 4)
         dgvStaff.MultiSelect = False
         dgvStaff.Name = "dgvStaff"
@@ -139,13 +164,13 @@ Partial Class StaffManagementForm
         dgvStaff.RowHeadersVisible = False
         dgvStaff.RowHeadersWidth = 51
         dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvStaff.Size = New Size(960, 283)
+        dgvStaff.Size = New Size(654, 549)
         dgvStaff.TabIndex = 1
         ' 
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
-        lblUsername.Location = New Point(23, 440)
+        lblUsername.Location = New Point(9, 63)
         lblUsername.Name = "lblUsername"
         lblUsername.Size = New Size(78, 20)
         lblUsername.TabIndex = 2
@@ -153,16 +178,16 @@ Partial Class StaffManagementForm
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(126, 436)
+        txtUsername.Location = New Point(14, 93)
         txtUsername.Margin = New Padding(3, 4, 3, 4)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(228, 27)
+        txtUsername.Size = New Size(297, 27)
         txtUsername.TabIndex = 3
         ' 
         ' lblFullname
         ' 
         lblFullname.AutoSize = True
-        lblFullname.Location = New Point(389, 440)
+        lblFullname.Location = New Point(9, 130)
         lblFullname.Name = "lblFullname"
         lblFullname.Size = New Size(79, 20)
         lblFullname.TabIndex = 4
@@ -170,16 +195,16 @@ Partial Class StaffManagementForm
         ' 
         ' txtFullname
         ' 
-        txtFullname.Location = New Point(491, 436)
+        txtFullname.Location = New Point(14, 227)
         txtFullname.Margin = New Padding(3, 4, 3, 4)
         txtFullname.Name = "txtFullname"
-        txtFullname.Size = New Size(274, 27)
+        txtFullname.Size = New Size(297, 27)
         txtFullname.TabIndex = 5
         ' 
         ' lblPassword
         ' 
         lblPassword.AutoSize = True
-        lblPassword.Location = New Point(23, 500)
+        lblPassword.Location = New Point(9, 197)
         lblPassword.Name = "lblPassword"
         lblPassword.Size = New Size(73, 20)
         lblPassword.TabIndex = 6
@@ -187,27 +212,27 @@ Partial Class StaffManagementForm
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(126, 496)
+        txtPassword.Location = New Point(14, 160)
         txtPassword.Margin = New Padding(3, 4, 3, 4)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(228, 27)
+        txtPassword.Size = New Size(297, 27)
         txtPassword.TabIndex = 7
         txtPassword.UseSystemPasswordChar = True
         ' 
         ' lblPasswordHint
         ' 
-        lblPasswordHint.AutoSize = True
+        lblPasswordHint.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPasswordHint.ForeColor = Color.Gray
-        lblPasswordHint.Location = New Point(126, 532)
+        lblPasswordHint.Location = New Point(14, 258)
         lblPasswordHint.Name = "lblPasswordHint"
-        lblPasswordHint.Size = New Size(664, 20)
+        lblPasswordHint.Size = New Size(286, 40)
         lblPasswordHint.TabIndex = 8
-        lblPasswordHint.Text = "Min. 8 characters, with letters and numbers. When editing, leave blank to keep the current password"
+        lblPasswordHint.Text = "Min. 8 characters, with letters and numbers." & vbLf & "When editing, leave blank to keep the current password."
         ' 
         ' lblRole
         ' 
         lblRole.AutoSize = True
-        lblRole.Location = New Point(389, 500)
+        lblRole.Location = New Point(14, 306)
         lblRole.Name = "lblRole"
         lblRole.Size = New Size(42, 20)
         lblRole.TabIndex = 9
@@ -217,96 +242,316 @@ Partial Class StaffManagementForm
         ' 
         cboRole.DropDownStyle = ComboBoxStyle.DropDownList
         cboRole.FormattingEnabled = True
-        cboRole.Location = New Point(491, 496)
+        cboRole.Location = New Point(14, 334)
         cboRole.Margin = New Padding(3, 4, 3, 4)
         cboRole.Name = "cboRole"
-        cboRole.Size = New Size(159, 28)
+        cboRole.Size = New Size(297, 28)
         cboRole.TabIndex = 10
         ' 
         ' btnAdd
         ' 
-        btnAdd.BackColor = Color.White
+        btnAdd.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnAdd.FlatAppearance.BorderColor = Color.Silver
         btnAdd.FlatStyle = FlatStyle.Flat
-        btnAdd.Location = New Point(23, 587)
+        btnAdd.ForeColor = Color.Beige
+        btnAdd.Location = New Point(835, 675)
         btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(137, 51)
+        btnAdd.Size = New Size(171, 46)
         btnAdd.TabIndex = 11
-        btnAdd.Text = "ADD"
+        btnAdd.Text = "⊕ ADD"
         btnAdd.UseVisualStyleBackColor = False
         ' 
         ' btnUpdate
         ' 
-        btnUpdate.BackColor = Color.White
+        btnUpdate.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnUpdate.FlatAppearance.BorderColor = Color.Silver
         btnUpdate.FlatStyle = FlatStyle.Flat
-        btnUpdate.Location = New Point(171, 587)
+        btnUpdate.ForeColor = Color.Beige
+        btnUpdate.Location = New Point(1017, 675)
         btnUpdate.Margin = New Padding(3, 4, 3, 4)
         btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(137, 51)
+        btnUpdate.Size = New Size(171, 46)
         btnUpdate.TabIndex = 12
-        btnUpdate.Text = "UPDATE"
+        btnUpdate.Text = "✎ UPDATE"
         btnUpdate.UseVisualStyleBackColor = False
         ' 
         ' btnDeactivate
         ' 
-        btnDeactivate.BackColor = Color.White
+        btnDeactivate.BackColor = Color.Maroon
         btnDeactivate.FlatAppearance.BorderColor = Color.Silver
         btnDeactivate.FlatStyle = FlatStyle.Flat
-        btnDeactivate.Location = New Point(320, 587)
+        btnDeactivate.ForeColor = Color.Beige
+        btnDeactivate.Location = New Point(835, 738)
         btnDeactivate.Margin = New Padding(3, 4, 3, 4)
         btnDeactivate.Name = "btnDeactivate"
-        btnDeactivate.Size = New Size(160, 51)
+        btnDeactivate.Size = New Size(171, 46)
         btnDeactivate.TabIndex = 13
-        btnDeactivate.Text = "DEACTIVATE"
+        btnDeactivate.Text = "⊖ DEACTIVATE"
         btnDeactivate.UseVisualStyleBackColor = False
         ' 
         ' btnReactivate
         ' 
-        btnReactivate.BackColor = Color.White
+        btnReactivate.BackColor = Color.AntiqueWhite
         btnReactivate.FlatAppearance.BorderColor = Color.Silver
         btnReactivate.FlatStyle = FlatStyle.Flat
-        btnReactivate.Location = New Point(491, 587)
+        btnReactivate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        btnReactivate.Location = New Point(1017, 738)
         btnReactivate.Margin = New Padding(3, 4, 3, 4)
         btnReactivate.Name = "btnReactivate"
-        btnReactivate.Size = New Size(160, 51)
+        btnReactivate.Size = New Size(171, 46)
         btnReactivate.TabIndex = 15
-        btnReactivate.Text = "REACTIVATE"
+        btnReactivate.Text = "↻ REACTIVATE"
         btnReactivate.UseVisualStyleBackColor = False
         ' 
-        ' btnClose
+        ' Panel3
         ' 
-        btnClose.BackColor = Color.White
-        btnClose.FlatAppearance.BorderColor = Color.Silver
-        btnClose.FlatStyle = FlatStyle.Flat
-        btnClose.Location = New Point(846, 587)
-        btnClose.Margin = New Padding(3, 4, 3, 4)
-        btnClose.Name = "btnClose"
-        btnClose.Size = New Size(137, 51)
-        btnClose.TabIndex = 14
-        btnClose.Text = "CLOSE"
-        btnClose.UseVisualStyleBackColor = False
+        Panel3.BackColor = Color.AntiqueWhite
+        Panel3.Controls.Add(Panel4)
+        Panel3.Controls.Add(lblUsername)
+        Panel3.Controls.Add(txtUsername)
+        Panel3.Controls.Add(lblPassword)
+        Panel3.Controls.Add(txtPassword)
+        Panel3.Controls.Add(lblFullname)
+        Panel3.Controls.Add(txtFullname)
+        Panel3.Controls.Add(lblPasswordHint)
+        Panel3.Controls.Add(lblRole)
+        Panel3.Controls.Add(cboRole)
+        Panel3.Location = New Point(835, 235)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(353, 418)
+        Panel3.TabIndex = 25
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel1.Controls.Add(PictureBox3)
+        Panel1.Controls.Add(btnSettings)
+        Panel1.Controls.Add(btnLogout)
+        Panel1.Controls.Add(btnReports)
+        Panel1.Controls.Add(btnStaff)
+        Panel1.Controls.Add(btnDashboard)
+        Panel1.Controls.Add(btnRooms)
+        Panel1.Dock = DockStyle.Left
+        Panel1.Location = New Point(0, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(150, 826)
+        Panel1.TabIndex = 26
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(11, 8)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(125, 92)
+        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox3.TabIndex = 15
+        PictureBox3.TabStop = False
+        ' 
+        ' btnSettings
+        ' 
+        btnSettings.BackColor = Color.Transparent
+        btnSettings.FlatStyle = FlatStyle.Flat
+        btnSettings.Font = New Font("Mongolian Baiti", 11.25F)
+        btnSettings.ForeColor = Color.Beige
+        btnSettings.Location = New Point(3, 336)
+        btnSettings.Name = "btnSettings"
+        btnSettings.Size = New Size(144, 56)
+        btnSettings.TabIndex = 5
+        btnSettings.Text = "⚙ Settings"
+        btnSettings.UseVisualStyleBackColor = False
+        ' 
+        ' btnLogout
+        ' 
+        btnLogout.BackColor = Color.Transparent
+        btnLogout.FlatStyle = FlatStyle.Flat
+        btnLogout.Font = New Font("Mongolian Baiti", 11.25F)
+        btnLogout.ForeColor = Color.Beige
+        btnLogout.Location = New Point(3, 541)
+        btnLogout.Margin = New Padding(3, 4, 3, 4)
+        btnLogout.Name = "btnLogout"
+        btnLogout.Size = New Size(144, 56)
+        btnLogout.TabIndex = 9
+        btnLogout.Text = ChrW(9211) & " Logout"
+        btnLogout.UseVisualStyleBackColor = False
+        ' 
+        ' btnReports
+        ' 
+        btnReports.BackColor = Color.Transparent
+        btnReports.FlatStyle = FlatStyle.Flat
+        btnReports.Font = New Font("Mongolian Baiti", 11.25F)
+        btnReports.ForeColor = Color.Beige
+        btnReports.Location = New Point(3, 280)
+        btnReports.Name = "btnReports"
+        btnReports.Size = New Size(144, 56)
+        btnReports.TabIndex = 2
+        btnReports.Text = "📊 Reports "
+        btnReports.UseVisualStyleBackColor = False
+        ' 
+        ' btnStaff
+        ' 
+        btnStaff.BackColor = Color.Transparent
+        btnStaff.FlatStyle = FlatStyle.Flat
+        btnStaff.Font = New Font("Mongolian Baiti", 11.25F)
+        btnStaff.ForeColor = Color.Beige
+        btnStaff.Location = New Point(3, 224)
+        btnStaff.Margin = New Padding(3, 4, 3, 4)
+        btnStaff.Name = "btnStaff"
+        btnStaff.Size = New Size(144, 56)
+        btnStaff.TabIndex = 8
+        btnStaff.Text = "👥 Staff Management"
+        btnStaff.UseVisualStyleBackColor = False
+        ' 
+        ' btnDashboard
+        ' 
+        btnDashboard.BackColor = Color.Transparent
+        btnDashboard.FlatStyle = FlatStyle.Flat
+        btnDashboard.Font = New Font("Mongolian Baiti", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnDashboard.ForeColor = Color.Beige
+        btnDashboard.Location = New Point(3, 113)
+        btnDashboard.Name = "btnDashboard"
+        btnDashboard.Size = New Size(144, 56)
+        btnDashboard.TabIndex = 0
+        btnDashboard.Text = "🏠 Dashboard"
+        btnDashboard.UseVisualStyleBackColor = False
+        ' 
+        ' btnRooms
+        ' 
+        btnRooms.BackColor = Color.Transparent
+        btnRooms.FlatStyle = FlatStyle.Flat
+        btnRooms.Font = New Font("Mongolian Baiti", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnRooms.ForeColor = Color.Beige
+        btnRooms.Location = New Point(3, 168)
+        btnRooms.Margin = New Padding(3, 4, 3, 4)
+        btnRooms.Name = "btnRooms"
+        btnRooms.Size = New Size(144, 56)
+        btnRooms.TabIndex = 2
+        btnRooms.Text = "🛏 Rooms Management"
+        btnRooms.UseVisualStyleBackColor = False
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel2.Controls.Add(PictureBox4)
+        Panel2.Controls.Add(lblTagline)
+        Panel2.Controls.Add(lblHotelName)
+        Panel2.Dock = DockStyle.Top
+        Panel2.Location = New Point(150, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1050, 112)
+        Panel2.TabIndex = 27
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(510, 0)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(522, 112)
+        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox4.TabIndex = 16
+        PictureBox4.TabStop = False
+        ' 
+        ' lblTagline
+        ' 
+        lblTagline.AutoSize = True
+        lblTagline.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        lblTagline.ForeColor = Color.Beige
+        lblTagline.Location = New Point(13, 59)
+        lblTagline.Name = "lblTagline"
+        lblTagline.Size = New Size(264, 24)
+        lblTagline.TabIndex = 15
+        lblTagline.Text = "Where every stay feels extraordinary"
+        ' 
+        ' lblHotelName
+        ' 
+        lblHotelName.AutoSize = True
+        lblHotelName.Font = New Font("Imprint MT Shadow", 19.8000011F, FontStyle.Bold)
+        lblHotelName.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        lblHotelName.Location = New Point(7, 12)
+        lblHotelName.Name = "lblHotelName"
+        lblHotelName.Size = New Size(404, 40)
+        lblHotelName.TabIndex = 0
+        lblHotelName.Text = "H.A.J.K High Rise Hotel"
+        ' 
+        ' Panel4
+        ' 
+        Panel4.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel4.Controls.Add(PictureBox1)
+        Panel4.Controls.Add(Label2)
+        Panel4.Dock = DockStyle.Top
+        Panel4.Location = New Point(0, 0)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(353, 45)
+        Panel4.TabIndex = 11
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(163, 113)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(94, 61)
+        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox2.TabIndex = 30
+        PictureBox2.TabStop = False
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Label4.Location = New Point(270, 149)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(522, 20)
+        Label4.TabIndex = 29
+        Label4.Text = "Manage guest information, update guest details, and keep records organized."
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
+        Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
+        Label1.Location = New Point(266, 116)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(247, 30)
+        Label1.TabIndex = 28
+        Label1.Text = "Staff Management"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
+        Label2.ForeColor = Color.Beige
+        Label2.Location = New Point(49, 7)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(247, 30)
+        Label2.TabIndex = 31
+        Label2.Text = "Staff Management"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(3, 3)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(46, 38)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 31
+        PictureBox1.TabStop = False
         ' 
         ' StaffManagementForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1182, 773)
-        Controls.Add(btnClose)
+        BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
+        ClientSize = New Size(1200, 826)
+        Controls.Add(PictureBox2)
+        Controls.Add(Label4)
+        Controls.Add(Label1)
+        Controls.Add(Panel2)
+        Controls.Add(Panel1)
+        Controls.Add(Panel3)
         Controls.Add(btnReactivate)
         Controls.Add(btnDeactivate)
         Controls.Add(btnUpdate)
         Controls.Add(btnAdd)
-        Controls.Add(cboRole)
-        Controls.Add(lblRole)
-        Controls.Add(lblPasswordHint)
-        Controls.Add(txtPassword)
-        Controls.Add(lblPassword)
-        Controls.Add(txtFullname)
-        Controls.Add(lblFullname)
-        Controls.Add(txtUsername)
-        Controls.Add(lblUsername)
         Controls.Add(dgvStaff)
         Controls.Add(btnClearFilter)
         Controls.Add(cboRoleFilter)
@@ -315,7 +560,6 @@ Partial Class StaffManagementForm
         Controls.Add(lblStatusFilter)
         Controls.Add(txtSearch)
         Controls.Add(lblSearch)
-        Controls.Add(lblTitle)
         FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
@@ -323,12 +567,21 @@ Partial Class StaffManagementForm
         StartPosition = FormStartPosition.CenterScreen
         Text = "Staff Management"
         CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
+        Panel1.ResumeLayout(False)
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
+        Panel4.ResumeLayout(False)
+        Panel4.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
 
     End Sub
-
-    Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents lblSearch As System.Windows.Forms.Label
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents lblStatusFilter As System.Windows.Forms.Label
@@ -350,6 +603,23 @@ Partial Class StaffManagementForm
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
     Friend WithEvents btnDeactivate As System.Windows.Forms.Button
     Friend WithEvents btnReactivate As System.Windows.Forms.Button
-    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents btnSettings As Button
+    Friend WithEvents btnLogout As Button
+    Friend WithEvents btnReports As Button
+    Friend WithEvents btnStaff As Button
+    Friend WithEvents btnDashboard As Button
+    Friend WithEvents btnRooms As Button
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents lblTagline As Label
+    Friend WithEvents lblHotelName As Label
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents PictureBox1 As PictureBox
 
 End Class

@@ -69,8 +69,8 @@ Public Class StaffManagementForm
         LoadStaffGrid()
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        Me.Close()
+    Private Sub btnClose_Click(sender As Object, e As EventArgs)
+        Close()
     End Sub
 
     ' Clicking a row loads that account's details into the form for editing
@@ -270,4 +270,7 @@ Public Class StaffManagementForm
         cboRole.Text = ""
     End Sub
 
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
+    End Sub
 End Class
