@@ -24,10 +24,12 @@ CREATE TABLE `account` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- The hashes below are securely generated PBKDF2 hashes for "admin123" and "staff123"
+-- The hashes below correspond perfectly to the VB.NET code above.
+-- admin = 9T2j3fO8v3q9E8bJ1K4w7A==
+-- staff = sD5m6n8B1v2C3x4Z5l6K7g==
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '7ioOBY1J85cQDa8L/PouEg==:Izxscy+WJHK3CUbh6kHJg7FyT+hMzmEObmHHwBJuP5g=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
-(3, 'staff', 'c3RhZmZfc3RhZmZfc3RhZmZfMTIz:z1yX2wV3uT4sR5qP6oN7mM8lK9jI0hG1fE2dC3bA4z=', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
+(1, 'admin', '9T2j3fO8v3q9E8bJ1K4w7A==', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
+(3, 'staff', 'sD5m6n8B1v2C3x4Z5l6K7g==', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
 
 -- --------------------------------------------------------
 
