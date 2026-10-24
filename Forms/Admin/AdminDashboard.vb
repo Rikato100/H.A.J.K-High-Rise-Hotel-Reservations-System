@@ -17,8 +17,20 @@ Public Class AdminDashboard
         ' Set the window title to show who is logged in
         Me.Text = "Admin Dashboard - Logged in as: " & CurrentUser.Username
 
+        ' Initialize and Start the Live Date & Time Timer
+        tmrDashboard.Interval = 1000
+        tmrDashboard.Start()
+
+        ' Set initial timestamp immediately upon loading
+        lblDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy hh:mm:ss tt")
+
         ' Load Live Data
         LoadDashboardCounts()
+    End Sub
+
+    Private Sub tmrDashboard_Tick(sender As Object, e As EventArgs) Handles tmrDashboard.Tick
+        ' Updates the date and time label every second
+        lblDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy hh:mm:ss tt")
     End Sub
 
     Private Sub LoadDashboardCounts()
@@ -63,7 +75,7 @@ Public Class AdminDashboard
                 End Using
 
                 If totalRooms > 0 Then
-                    Dim occupancy As Decimal = (occupiedRooms / totalRooms) * 100
+                    Dim occupancy As Decimal = (CDec(occupiedRooms) / totalRooms) * 100
                     lblOccupancyRate.Text = occupancy.ToString("0.0") & "%"
                 Else
                     lblOccupancyRate.Text = "0%"
@@ -90,53 +102,22 @@ Public Class AdminDashboard
         rooms.FormBorderStyle = FormBorderStyle.None
         rooms.Dock = DockStyle.Fill
 
-        'rooms.ShowDialog()
-
         Me.Controls.Add(rooms)
         rooms.Show()
 
         LoadDashboardCounts()
-
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-
         MessageBox.Show("Design not done yet.")
-        'Me.Controls.Clear()
-
-        'Dim staff As New StaffManagementForm()
-        'staff.TopLevel = False
-        'staff.FormBorderStyle = FormBorderStyle.None
-        'staff.Dock = DockStyle.Fill
-
-        'Me.Controls.Add(staff)
-        'staff.Show()
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
         MessageBox.Show("Design not done yet.")
-        'Dim reports As New ReportsForm()
-        'reports.ShowDialog()
     End Sub
-
-    ' --- Updated for combined settings ---
-    'Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
-    '    Using f As New SettingsForm()
-    '        f.ShowDialog(Me)
-    '    End Using
-    'End Sub
-
-    'Private Sub btnDiscountSettings_Click(sender As Object, e As EventArgs) Handles btnDiscountSettings.Click
-    '    Using f As New SettingsForm()
-    '        f.ShowDialog(Me)
-    '    End Using
-    'End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         MessageBox.Show("Design not done yet.")
-        'Using f As New SettingsForm()
-        '    f.ShowDialog(Me)
-        'End Using
     End Sub
 
 End Class

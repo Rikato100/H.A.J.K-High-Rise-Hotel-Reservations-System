@@ -61,10 +61,9 @@ Partial Class SettingsForm
         TabControl1.Controls.Add(TabPagePassword)
         TabControl1.Dock = DockStyle.Fill
         TabControl1.Location = New Point(0, 0)
-        TabControl1.Margin = New Padding(3, 4, 3, 4)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(650, 650)
+        TabControl1.Size = New Size(569, 488)
         TabControl1.TabIndex = 0
         ' 
         ' TabPageDiscounts
@@ -82,11 +81,10 @@ Partial Class SettingsForm
         TabPageDiscounts.Controls.Add(lblNote)
         TabPageDiscounts.Controls.Add(btnSaveDiscount)
         TabPageDiscounts.Controls.Add(btnCloseDiscount)
-        TabPageDiscounts.Location = New Point(4, 29)
-        TabPageDiscounts.Margin = New Padding(3, 4, 3, 4)
+        TabPageDiscounts.Location = New Point(4, 24)
         TabPageDiscounts.Name = "TabPageDiscounts"
-        TabPageDiscounts.Padding = New Padding(3, 4, 3, 4)
-        TabPageDiscounts.Size = New Size(642, 617)
+        TabPageDiscounts.Padding = New Padding(3, 3, 3, 3)
+        TabPageDiscounts.Size = New Size(561, 460)
         TabPageDiscounts.TabIndex = 0
         TabPageDiscounts.Text = "Discount Settings"
         TabPageDiscounts.UseVisualStyleBackColor = True
@@ -94,59 +92,56 @@ Partial Class SettingsForm
         ' lblDiscountTitle
         ' 
         lblDiscountTitle.AutoSize = True
-        lblDiscountTitle.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
-        lblDiscountTitle.Location = New Point(20, 25)
+        lblDiscountTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        lblDiscountTitle.Location = New Point(18, 19)
         lblDiscountTitle.Name = "lblDiscountTitle"
-        lblDiscountTitle.Size = New Size(242, 37)
+        lblDiscountTitle.Size = New Size(195, 30)
         lblDiscountTitle.TabIndex = 0
         lblDiscountTitle.Text = "Discount Settings"
         ' 
         ' dgvDiscounts
         ' 
         dgvDiscounts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvDiscounts.Location = New Point(27, 94)
-        dgvDiscounts.Margin = New Padding(3, 4, 3, 4)
+        dgvDiscounts.Location = New Point(24, 70)
         dgvDiscounts.Name = "dgvDiscounts"
         dgvDiscounts.RowHeadersWidth = 51
         dgvDiscounts.RowTemplate.Height = 24
-        dgvDiscounts.Size = New Size(585, 188)
+        dgvDiscounts.Size = New Size(512, 141)
         dgvDiscounts.TabIndex = 1
         ' 
         ' lblSelectDiscount
         ' 
         lblSelectDiscount.AutoSize = True
-        lblSelectDiscount.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        lblSelectDiscount.Location = New Point(27, 294)
+        lblSelectDiscount.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        lblSelectDiscount.Location = New Point(24, 220)
         lblSelectDiscount.Name = "lblSelectDiscount"
-        lblSelectDiscount.Size = New Size(198, 23)
+        lblSelectDiscount.Size = New Size(167, 19)
         lblSelectDiscount.TabIndex = 2
         lblSelectDiscount.Text = "Select a discount above"
         ' 
         ' lblRate
         ' 
         lblRate.AutoSize = True
-        lblRate.Location = New Point(27, 350)
+        lblRate.Location = New Point(24, 262)
         lblRate.Name = "lblRate"
-        lblRate.Size = New Size(68, 20)
+        lblRate.Size = New Size(54, 15)
         lblRate.TabIndex = 3
         lblRate.Text = "Rate (%):"
         ' 
         ' numRate
         ' 
         numRate.DecimalPlaces = 2
-        numRate.Location = New Point(100, 348)
-        numRate.Margin = New Padding(3, 4, 3, 4)
+        numRate.Location = New Point(88, 261)
         numRate.Name = "numRate"
-        numRate.Size = New Size(120, 27)
+        numRate.Size = New Size(105, 23)
         numRate.TabIndex = 4
         ' 
         ' chkBoxVatExempt
         ' 
         chkBoxVatExempt.AutoSize = True
-        chkBoxVatExempt.Location = New Point(260, 350)
-        chkBoxVatExempt.Margin = New Padding(3, 4, 3, 4)
+        chkBoxVatExempt.Location = New Point(228, 262)
         chkBoxVatExempt.Name = "chkBoxVatExempt"
-        chkBoxVatExempt.Size = New Size(110, 24)
+        chkBoxVatExempt.Size = New Size(88, 19)
         chkBoxVatExempt.TabIndex = 5
         chkBoxVatExempt.Text = "VAT exempt"
         chkBoxVatExempt.UseVisualStyleBackColor = True
@@ -154,65 +149,61 @@ Partial Class SettingsForm
         ' lblStartDate
         ' 
         lblStartDate.AutoSize = True
-        lblStartDate.Location = New Point(27, 412)
+        lblStartDate.Location = New Point(24, 309)
         lblStartDate.Name = "lblStartDate"
-        lblStartDate.Size = New Size(77, 20)
+        lblStartDate.Size = New Size(60, 15)
         lblStartDate.TabIndex = 6
         lblStartDate.Text = "Start date:"
         ' 
         ' dtpStartDate
         ' 
         dtpStartDate.Format = DateTimePickerFormat.Short
-        dtpStartDate.Location = New Point(100, 406)
-        dtpStartDate.Margin = New Padding(3, 4, 3, 4)
+        dtpStartDate.Location = New Point(88, 304)
         dtpStartDate.Name = "dtpStartDate"
-        dtpStartDate.Size = New Size(150, 27)
+        dtpStartDate.Size = New Size(132, 23)
         dtpStartDate.TabIndex = 7
         ' 
         ' lblEndDate
         ' 
         lblEndDate.AutoSize = True
-        lblEndDate.Location = New Point(280, 412)
+        lblEndDate.Location = New Point(245, 309)
         lblEndDate.Name = "lblEndDate"
-        lblEndDate.Size = New Size(71, 20)
+        lblEndDate.Size = New Size(56, 15)
         lblEndDate.TabIndex = 8
         lblEndDate.Text = "End date:"
         ' 
         ' dtpEndDate
         ' 
         dtpEndDate.Format = DateTimePickerFormat.Short
-        dtpEndDate.Location = New Point(355, 406)
-        dtpEndDate.Margin = New Padding(3, 4, 3, 4)
+        dtpEndDate.Location = New Point(311, 304)
         dtpEndDate.Name = "dtpEndDate"
-        dtpEndDate.Size = New Size(150, 27)
+        dtpEndDate.Size = New Size(132, 23)
         dtpEndDate.TabIndex = 9
         ' 
         ' lblNote
         ' 
         lblNote.AutoSize = True
         lblNote.ForeColor = Color.Gray
-        lblNote.Location = New Point(27, 469)
+        lblNote.Location = New Point(24, 352)
         lblNote.Name = "lblNote"
-        lblNote.Size = New Size(545, 20)
+        lblNote.Size = New Size(436, 15)
         lblNote.TabIndex = 10
         lblNote.Text = "Changes apply to new reservations only. Existing reservations keep their amounts."
         ' 
         ' btnSaveDiscount
         ' 
-        btnSaveDiscount.Location = New Point(27, 525)
-        btnSaveDiscount.Margin = New Padding(3, 4, 3, 4)
+        btnSaveDiscount.Location = New Point(24, 394)
         btnSaveDiscount.Name = "btnSaveDiscount"
-        btnSaveDiscount.Size = New Size(130, 50)
+        btnSaveDiscount.Size = New Size(114, 38)
         btnSaveDiscount.TabIndex = 11
         btnSaveDiscount.Text = "SAVE CHANGES"
         btnSaveDiscount.UseVisualStyleBackColor = True
         ' 
         ' btnCloseDiscount
         ' 
-        btnCloseDiscount.Location = New Point(482, 525)
-        btnCloseDiscount.Margin = New Padding(3, 4, 3, 4)
+        btnCloseDiscount.Location = New Point(422, 394)
         btnCloseDiscount.Name = "btnCloseDiscount"
-        btnCloseDiscount.Size = New Size(130, 50)
+        btnCloseDiscount.Size = New Size(114, 38)
         btnCloseDiscount.TabIndex = 12
         btnCloseDiscount.Text = "CLOSE"
         btnCloseDiscount.UseVisualStyleBackColor = True
@@ -229,11 +220,10 @@ Partial Class SettingsForm
         TabPagePassword.Controls.Add(lblPwdHint)
         TabPagePassword.Controls.Add(btnSavePassword)
         TabPagePassword.Controls.Add(btnCancelPassword)
-        TabPagePassword.Location = New Point(4, 29)
-        TabPagePassword.Margin = New Padding(3, 4, 3, 4)
+        TabPagePassword.Location = New Point(4, 24)
         TabPagePassword.Name = "TabPagePassword"
-        TabPagePassword.Padding = New Padding(3, 4, 3, 4)
-        TabPagePassword.Size = New Size(642, 617)
+        TabPagePassword.Padding = New Padding(3, 3, 3, 3)
+        TabPagePassword.Size = New Size(561, 460)
         TabPagePassword.TabIndex = 1
         TabPagePassword.Text = "Change Password"
         TabPagePassword.UseVisualStyleBackColor = True
@@ -241,105 +231,99 @@ Partial Class SettingsForm
         ' lblPasswordTitle
         ' 
         lblPasswordTitle.AutoSize = True
-        lblPasswordTitle.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
-        lblPasswordTitle.Location = New Point(20, 25)
+        lblPasswordTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        lblPasswordTitle.Location = New Point(18, 19)
         lblPasswordTitle.Name = "lblPasswordTitle"
-        lblPasswordTitle.Size = New Size(242, 37)
+        lblPasswordTitle.Size = New Size(196, 30)
         lblPasswordTitle.TabIndex = 0
         lblPasswordTitle.Text = "Change Password"
         ' 
         ' lblCurrentPwd
         ' 
         lblCurrentPwd.AutoSize = True
-        lblCurrentPwd.Location = New Point(50, 138)
+        lblCurrentPwd.Location = New Point(44, 104)
         lblCurrentPwd.Name = "lblCurrentPwd"
-        lblCurrentPwd.Size = New Size(127, 20)
+        lblCurrentPwd.Size = New Size(103, 15)
         lblCurrentPwd.TabIndex = 1
         lblCurrentPwd.Text = "Current password:"
         ' 
         ' txtCurrentPwd
         ' 
-        txtCurrentPwd.Location = New Point(200, 134)
-        txtCurrentPwd.Margin = New Padding(3, 4, 3, 4)
+        txtCurrentPwd.Location = New Point(175, 100)
         txtCurrentPwd.Name = "txtCurrentPwd"
         txtCurrentPwd.PasswordChar = "*"c
-        txtCurrentPwd.Size = New Size(350, 27)
+        txtCurrentPwd.Size = New Size(307, 23)
         txtCurrentPwd.TabIndex = 2
         ' 
         ' lblNewPwd
         ' 
         lblNewPwd.AutoSize = True
-        lblNewPwd.Location = New Point(50, 212)
+        lblNewPwd.Location = New Point(44, 159)
         lblNewPwd.Name = "lblNewPwd"
-        lblNewPwd.Size = New Size(109, 20)
+        lblNewPwd.Size = New Size(87, 15)
         lblNewPwd.TabIndex = 3
         lblNewPwd.Text = "New password:"
         ' 
         ' txtNewPwd
         ' 
-        txtNewPwd.Location = New Point(200, 209)
-        txtNewPwd.Margin = New Padding(3, 4, 3, 4)
+        txtNewPwd.Location = New Point(175, 157)
         txtNewPwd.Name = "txtNewPwd"
         txtNewPwd.PasswordChar = "*"c
-        txtNewPwd.Size = New Size(350, 27)
+        txtNewPwd.Size = New Size(307, 23)
         txtNewPwd.TabIndex = 4
         ' 
         ' lblConfirmPwd
         ' 
         lblConfirmPwd.AutoSize = True
-        lblConfirmPwd.Location = New Point(50, 288)
+        lblConfirmPwd.Location = New Point(44, 216)
         lblConfirmPwd.Name = "lblConfirmPwd"
-        lblConfirmPwd.Size = New Size(163, 20)
+        lblConfirmPwd.Size = New Size(132, 15)
         lblConfirmPwd.TabIndex = 5
         lblConfirmPwd.Text = "Confirm new password:"
         ' 
         ' txtConfirmPwd
         ' 
-        txtConfirmPwd.Location = New Point(200, 284)
-        txtConfirmPwd.Margin = New Padding(3, 4, 3, 4)
+        txtConfirmPwd.Location = New Point(175, 213)
         txtConfirmPwd.Name = "txtConfirmPwd"
         txtConfirmPwd.PasswordChar = "*"c
-        txtConfirmPwd.Size = New Size(350, 27)
+        txtConfirmPwd.Size = New Size(307, 23)
         txtConfirmPwd.TabIndex = 6
         ' 
         ' lblPwdHint
         ' 
         lblPwdHint.AutoSize = True
         lblPwdHint.ForeColor = Color.Gray
-        lblPwdHint.Location = New Point(200, 325)
+        lblPwdHint.Location = New Point(175, 244)
         lblPwdHint.Name = "lblPwdHint"
-        lblPwdHint.Size = New Size(293, 20)
+        lblPwdHint.Size = New Size(237, 15)
         lblPwdHint.TabIndex = 7
         lblPwdHint.Text = "Min. 8 characters, with letters and numbers."
         ' 
         ' btnSavePassword
         ' 
-        btnSavePassword.Location = New Point(200, 412)
-        btnSavePassword.Margin = New Padding(3, 4, 3, 4)
+        btnSavePassword.Location = New Point(175, 309)
         btnSavePassword.Name = "btnSavePassword"
-        btnSavePassword.Size = New Size(160, 56)
+        btnSavePassword.Size = New Size(140, 42)
         btnSavePassword.TabIndex = 8
         btnSavePassword.Text = "SAVE"
         btnSavePassword.UseVisualStyleBackColor = True
         ' 
         ' btnCancelPassword
         ' 
-        btnCancelPassword.Location = New Point(390, 412)
-        btnCancelPassword.Margin = New Padding(3, 4, 3, 4)
+        btnCancelPassword.Location = New Point(341, 309)
         btnCancelPassword.Name = "btnCancelPassword"
-        btnCancelPassword.Size = New Size(160, 56)
+        btnCancelPassword.Size = New Size(140, 42)
         btnCancelPassword.TabIndex = 9
         btnCancelPassword.Text = "CANCEL"
         btnCancelPassword.UseVisualStyleBackColor = True
         ' 
         ' SettingsForm
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(650, 650)
+        ClientSize = New Size(569, 488)
         Controls.Add(TabControl1)
         FormBorderStyle = FormBorderStyle.FixedDialog
-        Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
         Name = "SettingsForm"
         StartPosition = FormStartPosition.CenterParent

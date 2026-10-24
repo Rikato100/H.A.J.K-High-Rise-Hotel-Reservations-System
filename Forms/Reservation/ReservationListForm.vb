@@ -628,11 +628,6 @@ Public Class ReservationListForm
         GridExporter.ExportToCsv(dgvReservations, "Reservations")
     End Sub
 
-    Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
-        Dim reservations As New ReservationListForm
-        reservations.ShowDialog()
-    End Sub
-
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
         Me.Controls.Clear()
 
