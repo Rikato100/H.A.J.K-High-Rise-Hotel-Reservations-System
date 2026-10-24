@@ -129,7 +129,22 @@ Public Class Reservation
     End Sub
 
     Private Function GenerateReservationCode() As String
-        Return DateTime.Now.ToString("yyyyMMdd") & "-" & Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
+        Dim todayPrefix As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim dailyCounter As Integer = 1
+
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_code LIKE @prefix", conn)
+                    cmd.Parameters.AddWithValue("@prefix", todayPrefix & "%")
+                    dailyCounter = Convert.ToInt32(cmd.ExecuteScalar()) + 1
+                End Using
+            End Using
+        Catch ex As Exception
+            Return todayPrefix & "-" & Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
+        End Try
+
+        Return todayPrefix & "-" & dailyCounter.ToString("D4")
     End Function
 
     Private Sub LoadStatuses()
@@ -244,14 +259,16 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
+                ' FIX #1: Check based on the guest's Check-In month
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
                     "FROM discount " &
                     "WHERE (start_date IS NULL AND end_date IS NULL) " &
-                    "OR (CURDATE() BETWEEN start_date AND end_date) " &
+                    "OR (MONTH(@checkInDate) BETWEEN MONTH(start_date) AND MONTH(end_date)) " &
                     "ORDER BY discount_id"
 
                 Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@checkInDate", dtpCheckIn.Value.Date)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbDiscount.Items.Clear()
                         While reader.Read()
@@ -284,6 +301,7 @@ Public Class Reservation
     Private Sub dtpCheckIn_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckIn.ValueChanged
         CalculateNights()
         LoadRooms()
+        LoadDiscounts() ' FIX #1: Reload discounts when Check-In date changes
     End Sub
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
@@ -314,7 +332,6 @@ Public Class Reservation
         Dim adults As Integer = Convert.ToInt32(numAdults.Value)
         Dim children As Integer = Convert.ToInt32(numChildren.Value)
 
-        ' FIX: Check adults + children against Max Capacity
         If (adults + children) > selectedRoom.MaxCapacity Then
             txtTotal.Text = "Exceeds Max Capacity!"
             txtSubtotal.Text = "0.00"
@@ -490,7 +507,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
                         cmd.ExecuteNonQuery()
 
-                        ' FIX: SAVE DOWNPAYMENT IF REFERENCE NO EXISTS
+                        ' Downpayment logic
                         If cmbPaymentMethod.SelectedIndex > -1 AndAlso Not String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
                             Dim newResID As Integer = CInt(cmd.LastInsertedId)
                             Dim payQuery As String = "INSERT INTO payment (res_id, amount, payment_method, reference_no) VALUES (@resID, @amount, @method, @refNo)"
