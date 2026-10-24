@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ReportsForm
     Inherits System.Windows.Forms.Form
 
@@ -26,6 +26,7 @@ Partial Class ReportsForm
         Me.dtpEndDate = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmbReportType = New System.Windows.Forms.ComboBox()
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.dgvReports = New System.Windows.Forms.DataGridView()
         Me.colDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,46 +39,56 @@ Partial Class ReportsForm
         CType(Me.dgvReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'cmbReportType
+        '
+        Me.cmbReportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbReportType.FormattingEnabled = True
+        Me.cmbReportType.Items.AddRange(New Object() {"Daily", "Monthly", "Annual"})
+        Me.cmbReportType.Location = New System.Drawing.Point(30, 20)
+        Me.cmbReportType.Name = "cmbReportType"
+        Me.cmbReportType.Size = New System.Drawing.Size(100, 21)
+        Me.cmbReportType.TabIndex = 0
+        '
         'dtpStartDate
         '
         Me.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short
-        Me.dtpStartDate.Location = New System.Drawing.Point(100, 20)
+        Me.dtpStartDate.Location = New System.Drawing.Point(200, 20)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(120, 20)
-        Me.dtpStartDate.TabIndex = 0
+        Me.dtpStartDate.TabIndex = 1
         '
         'dtpEndDate
         '
         Me.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short
-        Me.dtpEndDate.Location = New System.Drawing.Point(320, 20)
+        Me.dtpEndDate.Location = New System.Drawing.Point(420, 20)
         Me.dtpEndDate.Name = "dtpEndDate"
         Me.dtpEndDate.Size = New System.Drawing.Size(120, 20)
-        Me.dtpEndDate.TabIndex = 1
+        Me.dtpEndDate.TabIndex = 2
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(30, 23)
+        Me.Label1.Location = New System.Drawing.Point(140, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 13)
-        Me.Label1.TabIndex = 2
+        Me.Label1.TabIndex = 3
         Me.Label1.Text = "Start Date:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(250, 23)
+        Me.Label2.Location = New System.Drawing.Point(360, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(55, 13)
-        Me.Label2.TabIndex = 3
+        Me.Label2.TabIndex = 4
         Me.Label2.Text = "End Date:"
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(460, 18)
+        Me.btnGenerate.Location = New System.Drawing.Point(560, 18)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(110, 25)
-        Me.btnGenerate.TabIndex = 4
+        Me.btnGenerate.TabIndex = 5
         Me.btnGenerate.Text = "Generate Report"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
@@ -93,7 +104,7 @@ Partial Class ReportsForm
         Me.dgvReports.RowHeadersVisible = False
         Me.dgvReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvReports.Size = New System.Drawing.Size(740, 300)
-        Me.dgvReports.TabIndex = 5
+        Me.dgvReports.TabIndex = 6
         '
         'colDate
         '
@@ -137,7 +148,7 @@ Partial Class ReportsForm
         Me.lblTotalRevenue.Location = New System.Drawing.Point(30, 380)
         Me.lblTotalRevenue.Name = "lblTotalRevenue"
         Me.lblTotalRevenue.Size = New System.Drawing.Size(179, 20)
-        Me.lblTotalRevenue.TabIndex = 6
+        Me.lblTotalRevenue.TabIndex = 7
         Me.lblTotalRevenue.Text = "Total Revenue: ₱0.00"
         '
         'btnClose
@@ -145,7 +156,7 @@ Partial Class ReportsForm
         Me.btnClose.Location = New System.Drawing.Point(690, 380)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(80, 30)
-        Me.btnClose.TabIndex = 7
+        Me.btnClose.TabIndex = 8
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -162,6 +173,7 @@ Partial Class ReportsForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dtpEndDate)
         Me.Controls.Add(Me.dtpStartDate)
+        Me.Controls.Add(Me.cmbReportType)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -174,6 +186,7 @@ Partial Class ReportsForm
 
     End Sub
 
+    Friend WithEvents cmbReportType As System.Windows.Forms.ComboBox
     Friend WithEvents dtpStartDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpEndDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
