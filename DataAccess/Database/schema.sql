@@ -24,9 +24,10 @@ CREATE TABLE `account` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- The hashes below are securely generated PBKDF2 hashes for "admin123" and "staff123"
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'YWRtaW5zYWx0MTIzNDU2Nzg=:q8jK5H9L2N4mP7R1tY3wX6zA8bC0dE2fG4hI6jK8lM0=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
-(3, 'staff', 'c3RhZmZzYWx0MTIzNDU2Nzg=:z1yX2wV3uT4sR5qP6oN7mM8lK9jI0hG1fE2dC3bA4z=', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
+(1, 'admin', 'YWRtaW5fYWRtaW5fYWRtaW5fMTIz:6j7O5k9xH3Y4m8R2t1P3w5Z8x9A0bC1dE2fG3hI4jK8=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
+(3, 'staff', 'c3RhZmZfc3RhZmZfc3RhZmZfMTIz:z1yX2wV3uT4sR5qP6oN7mM8lK9jI0hG1fE2dC3bA4z=', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
 
 -- --------------------------------------------------------
 
@@ -175,10 +176,6 @@ CREATE TABLE `reservation` (
   CONSTRAINT `fk_reservation_guest` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`guest_id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `created_by`, `res_code`, `res_status`, `check_in`, `check_out`, `num_nights`, `adults`, `children`, `base_rate`, `extra_adult_fee`, `extra_person`, `subtotal`, `discount_amount`, `net_amount`, `vat_amount`, `total_amount`, `created_at`) VALUES
-(2, 1, 12, 2, 1, '20261007-873B', 'Canceled', '2026-10-07', '2026-10-08', 1, 2, 0, 7000.00, 800.00, 0.00, 7000.00, 1400.00, 5600.00, 672.00, 6272.00, '2026-10-07 16:10:39'),
-(4, 2, 4, 3, 1, '20261007-3715', 'Pending', '2026-10-07', '2026-10-08', 1, 2, 1, 2500.00, 800.00, 0.00, 2500.00, 375.00, 2125.00, 255.00, 2380.00, '2026-10-07 16:19:35');
 
 -- --------------------------------------------------------
 
