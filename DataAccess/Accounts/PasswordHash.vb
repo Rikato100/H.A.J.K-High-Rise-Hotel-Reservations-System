@@ -3,7 +3,6 @@ Imports System.Text
 
 Public Class PasswordHash
 
-    ' Static salt ensures the hash is always the same
     Private Const Salt As String = "HajkHotelSystemSalt123!"
 
     Public Shared Function HashPassword(password As String) As String
