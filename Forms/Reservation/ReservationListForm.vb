@@ -9,20 +9,22 @@ Public Class ReservationListForm
 
         colResID.Visible = False
 
+        cmbStatusFilter.SelectedIndex = 0 ' Default to "All"
+
         LoadReservations()
 
         ' Wire up the manually added buttons
         AddHandler btnCheckIn.Click, AddressOf btnCheckIn_Click
         AddHandler btnCheckOut.Click, AddressOf btnCheckOut_Click
         AddHandler btnProcessPayment.Click, AddressOf btnProcessPayment_Click
-
-        ' Note: btnPrintInvoice and btnExport are wired via Handles below
     End Sub
 
     Private Sub LoadReservations()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
+
+                Dim statusFilter As String = If(cmbStatusFilter.SelectedIndex = -1, "All", cmbStatusFilter.Text)
 
                 Dim query As String =
                     "SELECT r.res_id, r.res_code, " &
@@ -33,9 +35,12 @@ Public Class ReservationListForm
                     "FROM reservation r " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
                     "INNER JOIN room rm ON r.room_id = rm.room_id " &
+                    "WHERE (@status = 'All' OR r.res_status = @status) " &
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@status", statusFilter)
+
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         dgvReservations.Rows.Clear()
 
@@ -62,9 +67,12 @@ Public Class ReservationListForm
         End Try
     End Sub
 
+    Private Sub cmbStatusFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStatusFilter.SelectedIndexChanged
+        LoadReservations()
+    End Sub
+
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAddReservation.Click
         Dim addReservation As New Reservation()
-
         If addReservation.ShowDialog() = DialogResult.OK Then
             LoadReservations()
         End If
@@ -99,7 +107,6 @@ Public Class ReservationListForm
                     "OR g.surname LIKE @search " &
                     "OR g.firstname LIKE @search " &
                     "OR rm.room_number LIKE @search " &
-                    "OR r.res_status LIKE @search " &
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
@@ -191,7 +198,6 @@ Public Class ReservationListForm
 
             MessageBox.Show("Reservation canceled successfully!", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information)
-
             LoadReservations()
 
         Catch ex As Exception
@@ -262,7 +268,6 @@ Public Class ReservationListForm
 
             MessageBox.Show("Reservation deleted successfully!", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information)
-
             LoadReservations()
 
         Catch ex As MySqlException
@@ -505,14 +510,21 @@ Public Class ReservationListForm
                     End Using
                 End Using
 
-                Dim q2 As String = "SELECT SUM(amount) AS paid, MAX(payment_method) AS method, MAX(reference_no) AS ref FROM payment WHERE res_id = @resID"
+                ' FIX #3: Get the SUM of all payments
+                Using paidCmd As New MySqlCommand("SELECT SUM(amount) FROM payment WHERE res_id = @resID", conn)
+                    paidCmd.Parameters.AddWithValue("@resID", resID)
+                    Dim result = paidCmd.ExecuteScalar()
+                    If result IsNot DBNull.Value Then totalPaid = Convert.ToDecimal(result)
+                End Using
+
+                ' FIX #3: Get the LATEST payment method and reference
+                Dim q2 As String = "SELECT payment_method, reference_no FROM payment WHERE res_id = @resID ORDER BY payment_id DESC LIMIT 1"
                 Using cmd As New MySqlCommand(q2, conn)
                     cmd.Parameters.AddWithValue("@resID", resID)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
-                            If Not IsDBNull(reader("paid")) Then totalPaid = Convert.ToDecimal(reader("paid"))
-                            If Not IsDBNull(reader("method")) Then paymentMethod = reader("method").ToString()
-                            If Not IsDBNull(reader("ref")) Then refNo = reader("ref").ToString()
+                            If Not IsDBNull(reader("payment_method")) Then paymentMethod = reader("payment_method").ToString()
+                            If Not IsDBNull(reader("reference_no")) Then refNo = reader("reference_no").ToString()
                         End If
                     End Using
                 End Using
@@ -636,7 +648,6 @@ Public Class ReservationListForm
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Dim login As New loginForm()
         login.Show()
-
 
         Dim parentForm As Form = Me.FindForm()
         If parentForm IsNot Nothing AndAlso Not TypeOf parentForm Is ReservationListForm Then
