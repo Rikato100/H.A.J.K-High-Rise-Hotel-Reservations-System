@@ -131,19 +131,22 @@ Public Class Reservation
     Private Function GenerateReservationCode() As String
         Dim todayPrefix As String = DateTime.Now.ToString("yyyyMMdd")
         Dim dailyCounter As Integer = 1
-
+        
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
+                ' Count how many reservations were created today
                 Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_code LIKE @prefix", conn)
                     cmd.Parameters.AddWithValue("@prefix", todayPrefix & "%")
                     dailyCounter = Convert.ToInt32(cmd.ExecuteScalar()) + 1
                 End Using
             End Using
         Catch ex As Exception
+            ' If there's an error, fall back to random to prevent crashing
             Return todayPrefix & "-" & Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
         End Try
 
+        ' Format as YYYYMMDD-0001, YYYYMMDD-0002, etc.
         Return todayPrefix & "-" & dailyCounter.ToString("D4")
     End Function
 
@@ -259,7 +262,6 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                ' FIX #1: Check based on the guest's Check-In month
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
                     "FROM discount " &
@@ -301,7 +303,7 @@ Public Class Reservation
     Private Sub dtpCheckIn_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckIn.ValueChanged
         CalculateNights()
         LoadRooms()
-        LoadDiscounts() ' FIX #1: Reload discounts when Check-In date changes
+        LoadDiscounts() ' Reload discounts when Check-In date changes
     End Sub
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
@@ -470,7 +472,7 @@ Public Class Reservation
                 Dim netAmount As Decimal = subtotal - discountAmount
                 Dim vatAmount As Decimal = Convert.ToDecimal(txtVAT.Text)
                 Dim totalAmount As Decimal = Convert.ToDecimal(txtTotal.Text)
-
+                
                 Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
                 Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
@@ -507,7 +509,6 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
                         cmd.ExecuteNonQuery()
 
-                        ' Downpayment logic
                         If cmbPaymentMethod.SelectedIndex > -1 AndAlso Not String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
                             Dim newResID As Integer = CInt(cmd.LastInsertedId)
                             Dim payQuery As String = "INSERT INTO payment (res_id, amount, payment_method, reference_no) VALUES (@resID, @amount, @method, @refNo)"
@@ -567,7 +568,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@resID", reservationID)
                         cmd.ExecuteNonQuery()
                     End Using
-
+                    
                     If dtpCheckIn.Value.Date = DateTime.Today Then
                         If oldRoomID <> roomID Then
                             Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID", conn)
