@@ -3,7 +3,7 @@ Imports MySql.Data.MySqlClient
 Public Class RoomForm
 
     Private Sub RoomForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TopLevel = True
+        Me.TopLevel = False
         LoadRooms()
     End Sub
 

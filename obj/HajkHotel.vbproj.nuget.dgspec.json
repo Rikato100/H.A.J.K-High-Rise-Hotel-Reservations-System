@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj": {}
+    "C:\\Users\\admin\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj": {
+    "C:\\Users\\admin\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj",
+        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj",
         "projectName": "HajkHotel",
-        "projectPath": "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj",
-        "packagesPath": "C:\\Users\\Jasper Delacruz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jasper Delacruz\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\obj\\",
+        "projectPath": "C:\\Users\\admin\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\HajkHotel.vbproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\source\\repos\\H.A.J.K-High-Rise-Hotel-Reservations-System-main\\HajkHotel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jasper Delacruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0-windows": {
@@ -77,7 +76,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

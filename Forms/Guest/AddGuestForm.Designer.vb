@@ -39,6 +39,8 @@ Partial Class AddGuestForm
         txtValidIDNumber = New TextBox()
         btnSave = New Button()
         btnCancel = New Button()
+        txtNotes = New TextBox()
+        lblNotes = New Label()
         SuspendLayout()
         ' 
         ' lblTitle
@@ -191,11 +193,31 @@ Partial Class AddGuestForm
         btnCancel.Text = "CANCEL"
         btnCancel.UseVisualStyleBackColor = True
         ' 
+        ' txtNotes
+        ' 
+        txtNotes.Location = New Point(467, 239)
+        txtNotes.Multiline = True
+        txtNotes.Name = "txtNotes"
+        txtNotes.Size = New Size(223, 146)
+        txtNotes.TabIndex = 18
+        ' 
+        ' lblNotes
+        ' 
+        lblNotes.AutoSize = True
+        lblNotes.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblNotes.Location = New Point(467, 198)
+        lblNotes.Name = "lblNotes"
+        lblNotes.Size = New Size(54, 21)
+        lblNotes.TabIndex = 19
+        lblNotes.Text = "Notes:"
+        ' 
         ' AddGuestForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(457, 519)
+        ClientSize = New Size(754, 519)
+        Controls.Add(lblNotes)
+        Controls.Add(txtNotes)
         Controls.Add(btnCancel)
         Controls.Add(btnSave)
         Controls.Add(txtValidIDNumber)
@@ -237,4 +259,6 @@ Partial Class AddGuestForm
     Friend WithEvents txtValidIDNumber As TextBox
     Friend WithEvents btnSave As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents txtNotes As TextBox
+    Friend WithEvents lblNotes As Label
 End Class
