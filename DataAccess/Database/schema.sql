@@ -28,8 +28,8 @@ CREATE TABLE `account` (
 -- admin = 9T2j3fO8v3q9E8bJ1K4w7A==
 -- staff = sD5m6n8B1v2C3x4Z5l6K7g==
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '9T2j3fO8v3q9E8bJ1K4w7A==', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
-(3, 'staff', 'sD5m6n8B1v2C3x4Z5l6K7g==', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
+(1, 'admin', 'C2Y5gX8bXf9q5v3b6B8N6A==', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
+(3, 'staff', 'T3z8bX9q5v3b6B8N6A1C2Y5==', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
 
 -- --------------------------------------------------------
 
