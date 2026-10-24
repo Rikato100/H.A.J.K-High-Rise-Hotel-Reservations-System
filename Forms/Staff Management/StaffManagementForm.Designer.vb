@@ -21,6 +21,9 @@ Partial Class StaffManagementForm
     Private Sub InitializeComponent()
         Dim Panel2 As Panel
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StaffManagementForm))
+        PictureBox4 = New PictureBox()
+        lblTagline = New Label()
+        lblHotelName = New Label()
         lblSearch = New Label()
         txtSearch = New TextBox()
         lblStatusFilter = New Label()
@@ -43,6 +46,9 @@ Partial Class StaffManagementForm
         btnDeactivate = New Button()
         btnReactivate = New Button()
         Panel3 = New Panel()
+        Panel4 = New Panel()
+        PictureBox1 = New PictureBox()
+        Label2 = New Label()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
         btnSettings = New Button()
@@ -51,26 +57,64 @@ Partial Class StaffManagementForm
         btnStaff = New Button()
         btnDashboard = New Button()
         btnRooms = New Button()
-        PictureBox4 = New PictureBox()
-        lblTagline = New Label()
-        lblHotelName = New Label()
-        Panel4 = New Panel()
         PictureBox2 = New PictureBox()
         Label4 = New Label()
         Label1 = New Label()
-        Label2 = New Label()
-        PictureBox1 = New PictureBox()
         Panel2 = New Panel()
-        CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
-        Panel3.SuspendLayout()
-        Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
+        Panel3.SuspendLayout()
         Panel4.SuspendLayout()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel2.Controls.Add(PictureBox4)
+        Panel2.Controls.Add(lblTagline)
+        Panel2.Controls.Add(lblHotelName)
+        Panel2.Dock = DockStyle.Top
+        Panel2.Location = New Point(150, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1050, 112)
+        Panel2.TabIndex = 27
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(510, 0)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(522, 112)
+        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox4.TabIndex = 16
+        PictureBox4.TabStop = False
+        ' 
+        ' lblTagline
+        ' 
+        lblTagline.AutoSize = True
+        lblTagline.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        lblTagline.ForeColor = Color.Beige
+        lblTagline.Location = New Point(13, 59)
+        lblTagline.Name = "lblTagline"
+        lblTagline.Size = New Size(264, 24)
+        lblTagline.TabIndex = 15
+        lblTagline.Text = "Where every stay feels extraordinary"
+        ' 
+        ' lblHotelName
+        ' 
+        lblHotelName.AutoSize = True
+        lblHotelName.Font = New Font("Imprint MT Shadow", 19.8000011F, FontStyle.Bold)
+        lblHotelName.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        lblHotelName.Location = New Point(7, 12)
+        lblHotelName.Name = "lblHotelName"
+        lblHotelName.Size = New Size(404, 40)
+        lblHotelName.TabIndex = 0
+        lblHotelName.Text = "H.A.J.K High Rise Hotel"
         ' 
         ' lblSearch
         ' 
@@ -170,9 +214,10 @@ Partial Class StaffManagementForm
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
+        lblUsername.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblUsername.Location = New Point(9, 63)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(78, 20)
+        lblUsername.Size = New Size(91, 23)
         lblUsername.TabIndex = 2
         lblUsername.Text = "Username:"
         ' 
@@ -187,9 +232,10 @@ Partial Class StaffManagementForm
         ' lblFullname
         ' 
         lblFullname.AutoSize = True
+        lblFullname.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
         lblFullname.Location = New Point(9, 130)
         lblFullname.Name = "lblFullname"
-        lblFullname.Size = New Size(79, 20)
+        lblFullname.Size = New Size(92, 23)
         lblFullname.TabIndex = 4
         lblFullname.Text = "Full Name:"
         ' 
@@ -204,9 +250,10 @@ Partial Class StaffManagementForm
         ' lblPassword
         ' 
         lblPassword.AutoSize = True
+        lblPassword.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
         lblPassword.Location = New Point(9, 197)
         lblPassword.Name = "lblPassword"
-        lblPassword.Size = New Size(73, 20)
+        lblPassword.Size = New Size(86, 23)
         lblPassword.TabIndex = 6
         lblPassword.Text = "Password:"
         ' 
@@ -232,9 +279,10 @@ Partial Class StaffManagementForm
         ' lblRole
         ' 
         lblRole.AutoSize = True
+        lblRole.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
         lblRole.Location = New Point(14, 306)
         lblRole.Name = "lblRole"
-        lblRole.Size = New Size(42, 20)
+        lblRole.Size = New Size(48, 23)
         lblRole.TabIndex = 9
         lblRole.Text = "Role:"
         ' 
@@ -321,6 +369,38 @@ Partial Class StaffManagementForm
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(353, 418)
         Panel3.TabIndex = 25
+        ' 
+        ' Panel4
+        ' 
+        Panel4.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Panel4.Controls.Add(PictureBox1)
+        Panel4.Controls.Add(Label2)
+        Panel4.Dock = DockStyle.Top
+        Panel4.Location = New Point(0, 0)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(353, 45)
+        Panel4.TabIndex = 11
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(3, 3)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(46, 38)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 31
+        PictureBox1.TabStop = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
+        Label2.ForeColor = Color.Beige
+        Label2.Location = New Point(49, 7)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(236, 30)
+        Label2.TabIndex = 31
+        Label2.Text = "Staff Information"
         ' 
         ' Panel1
         ' 
@@ -429,61 +509,6 @@ Partial Class StaffManagementForm
         btnRooms.Text = "🛏 Rooms Management"
         btnRooms.UseVisualStyleBackColor = False
         ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        Panel2.Controls.Add(PictureBox4)
-        Panel2.Controls.Add(lblTagline)
-        Panel2.Controls.Add(lblHotelName)
-        Panel2.Dock = DockStyle.Top
-        Panel2.Location = New Point(150, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1050, 112)
-        Panel2.TabIndex = 27
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(510, 0)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(522, 112)
-        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox4.TabIndex = 16
-        PictureBox4.TabStop = False
-        ' 
-        ' lblTagline
-        ' 
-        lblTagline.AutoSize = True
-        lblTagline.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        lblTagline.ForeColor = Color.Beige
-        lblTagline.Location = New Point(13, 59)
-        lblTagline.Name = "lblTagline"
-        lblTagline.Size = New Size(264, 24)
-        lblTagline.TabIndex = 15
-        lblTagline.Text = "Where every stay feels extraordinary"
-        ' 
-        ' lblHotelName
-        ' 
-        lblHotelName.AutoSize = True
-        lblHotelName.Font = New Font("Imprint MT Shadow", 19.8000011F, FontStyle.Bold)
-        lblHotelName.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        lblHotelName.Location = New Point(7, 12)
-        lblHotelName.Name = "lblHotelName"
-        lblHotelName.Size = New Size(404, 40)
-        lblHotelName.TabIndex = 0
-        lblHotelName.Text = "H.A.J.K High Rise Hotel"
-        ' 
-        ' Panel4
-        ' 
-        Panel4.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        Panel4.Controls.Add(PictureBox1)
-        Panel4.Controls.Add(Label2)
-        Panel4.Dock = DockStyle.Top
-        Panel4.Location = New Point(0, 0)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(353, 45)
-        Panel4.TabIndex = 11
-        ' 
         ' PictureBox2
         ' 
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
@@ -515,27 +540,6 @@ Partial Class StaffManagementForm
         Label1.TabIndex = 28
         Label1.Text = "Staff Management"
         ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
-        Label2.ForeColor = Color.Beige
-        Label2.Location = New Point(49, 7)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(247, 30)
-        Label2.TabIndex = 31
-        Label2.Text = "Staff Management"
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(3, 3)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(46, 38)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 31
-        PictureBox1.TabStop = False
-        ' 
         ' StaffManagementForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -566,18 +570,18 @@ Partial Class StaffManagementForm
         Name = "StaffManagementForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Staff Management"
-        CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
-        Panel3.ResumeLayout(False)
-        Panel3.PerformLayout()
-        Panel1.ResumeLayout(False)
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
 
