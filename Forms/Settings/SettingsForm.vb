@@ -132,8 +132,8 @@ Public Class SettingsForm
         End Try
     End Sub
 
-    Private Sub btnCloseDiscount_Click(sender As Object, e As EventArgs) Handles btnCloseDiscount.Click
-        Me.Close()
+    Private Sub btnCloseDiscount_Click(sender As Object, e As EventArgs)
+        Close()
     End Sub
 
 
@@ -211,4 +211,23 @@ Public Class SettingsForm
         Return ""
     End Function
 
+    Private Sub dgvDiscounts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDiscounts.CellContentClick
+
+    End Sub
+
+    Private Sub TabPageDiscounts_Click(sender As Object, e As EventArgs) Handles TabPageDiscounts.Click
+
+    End Sub
+
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
+    End Sub
+
+    Private Sub chkBoxVatExempt_CheckedChanged(sender As Object, e As EventArgs) Handles chkBoxVatExempt.CheckedChanged
+
+    End Sub
+
+    Private Sub TabPagePassword_Click(sender As Object, e As EventArgs) Handles TabPagePassword.Click
+
+    End Sub
 End Class
