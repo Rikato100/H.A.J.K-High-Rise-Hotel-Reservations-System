@@ -50,9 +50,6 @@ CREATE TABLE `discount` (
   CONSTRAINT `fk_discount_account` FOREIGN KEY (`created_by`) REFERENCES `account` (`account_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- FIX: Changed dates to standard recurring months. Peak Season now includes April.
--- Note: MySQL 'date' type requires a year. We set them to a default year, but the VB.NET code 
--- should use MONTH() and DAY() to apply them correctly regardless of the current year.
 INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_rate`, `discount_type`, `start_date`, `end_date`, `vat_exempt`, `created_at`) VALUES
 (1, 1, 'None', 0.00, 'None', NULL, NULL, 0, '2026-10-04 16:26:45'),
 (2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1, '2026-10-04 16:26:45'),
@@ -75,7 +72,7 @@ CREATE TABLE `guest` (
   `email` varchar(100) DEFAULT NULL,
   `valid_id_type` varchar(50) DEFAULT NULL,
   `valid_id_number` varchar(100) DEFAULT NULL,
-  `notes` text DEFAULT NULL, -- FIX: Added Notes column
+  `notes` text DEFAULT NULL,
   PRIMARY KEY (`guest_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
