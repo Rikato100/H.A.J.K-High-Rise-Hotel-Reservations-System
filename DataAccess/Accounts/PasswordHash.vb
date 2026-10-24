@@ -1,26 +1,24 @@
-﻿Imports System.Security.Cryptography
+Imports System.Security.Cryptography
+Imports System.Text
 
 Public Class PasswordHash
+    Private Const Salt As String = "HajkHotelSystemSalt123!"
 
-    Private Const Iterations As Integer = 100000
-
-    ' Turns "staff123" into "salt:hash" for storing in password_hash
     Public Shared Function HashPassword(password As String) As String
-        Dim salt As Byte() = RandomNumberGenerator.GetBytes(16)
-        Dim hash As Byte() = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, 32)
-        Return Convert.ToBase64String(salt) & ":" & Convert.ToBase64String(hash)
+        Using sha256 As SHA256 = SHA256.Create()
+            Dim combined As String = password & Salt
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(combined)
+            Dim hash As Byte() = sha256.ComputeHash(bytes)
+            Return Convert.ToBase64String(hash)
+        End Using
     End Function
 
-    ' Checks a typed password against the stored "salt:hash"
-    Public Shared Function VerifyPassword(password As String, stored As String) As Boolean
-        Dim parts() As String = stored.Split(":"c)
-        If parts.Length <> 2 Then Return False
+    Public Shared Function VerifyPassword(password As String, storedHash As String) As Boolean
+        ' Trim to remove any accidental invisible spaces
+        Dim inputHash As String = HashPassword(password).Trim()
+        Dim dbHash As String = storedHash.Trim()
 
-        Dim salt As Byte() = Convert.FromBase64String(parts(0))
-        Dim expected As Byte() = Convert.FromBase64String(parts(1))
-        Dim actual As Byte() = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, expected.Length)
-
-        Return CryptographicOperations.FixedTimeEquals(actual, expected)
+        Return inputHash = dbHash
     End Function
 
 End Class

@@ -18,7 +18,6 @@ Public Class Reservation
         Public Sub New(id As Integer, first As String, middle As String,
                        surname As String, contact As String, email As String,
                        idType As String, idNumber As String)
-
             GuestID = id
             FirstName = first
             MiddleName = middle
@@ -30,8 +29,7 @@ Public Class Reservation
         End Sub
 
         Public Overrides Function ToString() As String
-            Return Surname & ", " & FirstName &
-                If(MiddleName = "", "", " " & MiddleName)
+            Return Surname & ", " & FirstName & If(MiddleName = "", "", " " & MiddleName)
         End Function
     End Class
 
@@ -56,8 +54,7 @@ Public Class Reservation
         End Sub
 
         Public Overrides Function ToString() As String
-            Return RoomNumber & " - " & RoomType &
-                " (₱" & BaseRate.ToString("N2") & ")"
+            Return RoomNumber & " - " & RoomType & " (₱" & BaseRate.ToString("N2") & ")"
         End Function
     End Class
 
@@ -67,8 +64,7 @@ Public Class Reservation
         Public Property DiscountRate As Decimal
         Public Property VATExempt As Boolean
 
-        Public Sub New(id As Integer, name As String, rate As Decimal,
-                       vatExempt As Boolean)
+        Public Sub New(id As Integer, name As String, rate As Decimal, vatExempt As Boolean)
             DiscountID = id
             DiscountName = name
             DiscountRate = rate
@@ -133,8 +129,7 @@ Public Class Reservation
     End Sub
 
     Private Function GenerateReservationCode() As String
-        Return DateTime.Now.ToString("yyyyMMdd") & "-" &
-            Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
+        Return DateTime.Now.ToString("yyyyMMdd") & "-" & Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
     End Function
 
     Private Sub LoadStatuses()
@@ -162,16 +157,11 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-
-                Dim query As String =
-                    "SELECT guest_id, firstname, middlename, surname, " &
-                    "contact, email, valid_id_type, valid_id_number " &
-                    "FROM guest ORDER BY surname, firstname"
+                Dim query As String = "SELECT guest_id, firstname, middlename, surname, contact, email, valid_id_type, valid_id_number FROM guest ORDER BY surname, firstname"
 
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbGuest.Items.Clear()
-
                         While reader.Read()
                             Dim guest As New GuestComboItem(
                                 Convert.ToInt32(reader("guest_id")),
@@ -183,18 +173,14 @@ Public Class Reservation
                                 If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString()),
                                 If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             )
-
                             cmbGuest.Items.Add(guest)
                         End While
                     End Using
                 End Using
             End Using
-
             cmbGuest.SelectedIndex = -1
-
         Catch ex As Exception
-            MessageBox.Show("Error loading guests: " & ex.Message,
-                            "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error loading guests: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -203,9 +189,7 @@ Public Class Reservation
             selectedGuestID = 0
             Exit Sub
         End If
-
         Dim guest As GuestComboItem = CType(cmbGuest.SelectedItem, GuestComboItem)
-
         selectedGuestID = guest.GuestID
         txtFirstName.Text = guest.FirstName
         txtMiddleName.Text = guest.MiddleName
@@ -220,8 +204,6 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-
-                ' FIX: Overbooking check. Shows Available rooms OR Occupied rooms that will check out before the new check-in date
                 Dim query As String =
                     "SELECT r.room_id, r.room_number, rt.type_name, " &
                     "rt.base_rate, rt.standard_capacity, rt.max_capacity, rt.amenities " &
@@ -230,37 +212,31 @@ Public Class Reservation
                     "WHERE r.room_status = 'Available' " &
                     "OR (r.room_status = 'Occupied' AND r.room_id NOT IN (" &
                     "    SELECT room_id FROM reservation " &
-                    "    WHERE res_status = 'Check-In' " &
-                    "    AND @newCheckIn < check_out" & 
+                    "    WHERE res_status IN ('Check-In', 'Pending') " &
+                    "    AND @newCheckIn < check_out" &
                     ")) " &
                     "ORDER BY r.room_number"
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@newCheckIn", dtpCheckIn.Value.Date)
-
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbRoom.Items.Clear()
-
                         While reader.Read()
-                            cmbRoom.Items.Add(
-                                New RoomComboItem(
-                                    Convert.ToInt32(reader("room_id")),
-                                    reader("room_number").ToString(),
-                                    reader("type_name").ToString(),
-                                    Convert.ToDecimal(reader("base_rate")),
-                                    Convert.ToInt32(reader("standard_capacity")),
-                                    Convert.ToInt32(reader("max_capacity")),
-                                    If(IsDBNull(reader("amenities")), "", reader("amenities").ToString())
-                                )
-                            )
+                            cmbRoom.Items.Add(New RoomComboItem(
+                                Convert.ToInt32(reader("room_id")),
+                                reader("room_number").ToString(),
+                                reader("type_name").ToString(),
+                                Convert.ToDecimal(reader("base_rate")),
+                                Convert.ToInt32(reader("standard_capacity")),
+                                Convert.ToInt32(reader("max_capacity")),
+                                If(IsDBNull(reader("amenities")), "", reader("amenities").ToString())
+                            ))
                         End While
                     End Using
                 End Using
             End Using
-
         Catch ex As Exception
-            MessageBox.Show("Error loading rooms: " & ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error loading rooms: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -268,8 +244,6 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-
-                ' Filter discounts by date
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
                     "FROM discount " &
@@ -280,30 +254,24 @@ Public Class Reservation
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbDiscount.Items.Clear()
-
                         While reader.Read()
-                            cmbDiscount.Items.Add(
-                                New DiscountComboItem(
-                                    Convert.ToInt32(reader("discount_id")),
-                                    reader("discount_name").ToString(),
-                                    Convert.ToDecimal(reader("discount_rate")),
-                                    Convert.ToBoolean(reader("vat_exempt"))
-                                )
-                            )
+                            cmbDiscount.Items.Add(New DiscountComboItem(
+                                Convert.ToInt32(reader("discount_id")),
+                                reader("discount_name").ToString(),
+                                Convert.ToDecimal(reader("discount_rate")),
+                                Convert.ToBoolean(reader("vat_exempt"))
+                            ))
                         End While
                     End Using
                 End Using
             End Using
-
         Catch ex As Exception
-            MessageBox.Show("Error loading discounts: " & ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error loading discounts: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
         If cmbRoom.SelectedItem Is Nothing Then Exit Sub
-
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
         txtRoomRate.Text = selectedRoom.BaseRate.ToString("N2")
         CalculateTotal()
@@ -315,7 +283,7 @@ Public Class Reservation
 
     Private Sub dtpCheckIn_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckIn.ValueChanged
         CalculateNights()
-        LoadRooms() ' FIX: Refresh room list based on the new check-in date
+        LoadRooms()
     End Sub
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
@@ -323,11 +291,8 @@ Public Class Reservation
     End Sub
 
     Private Sub CalculateNights()
-        Dim nights As Integer =
-            CInt((dtpCheckOut.Value.Date - dtpCheckIn.Value.Date).TotalDays)
-
+        Dim nights As Integer = CInt((dtpCheckOut.Value.Date - dtpCheckIn.Value.Date).TotalDays)
         If nights < 1 Then nights = 1
-
         txtNights.Text = nights.ToString()
         CalculateTotal()
     End Sub
@@ -342,17 +307,15 @@ Public Class Reservation
 
     Private Sub CalculateTotal()
         If cmbRoom.SelectedItem Is Nothing Then Exit Sub
-
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
         Dim nights As Integer = 1
-
-        If IsNumeric(txtNights.Text) Then
-            nights = Convert.ToInt32(txtNights.Text)
-        End If
+        If IsNumeric(txtNights.Text) Then nights = Convert.ToInt32(txtNights.Text)
 
         Dim adults As Integer = Convert.ToInt32(numAdults.Value)
-        
-        If adults > selectedRoom.MaxCapacity Then
+        Dim children As Integer = Convert.ToInt32(numChildren.Value)
+
+        ' FIX: Check adults + children against Max Capacity
+        If (adults + children) > selectedRoom.MaxCapacity Then
             txtTotal.Text = "Exceeds Max Capacity!"
             txtSubtotal.Text = "0.00"
             txtVAT.Text = "0.00"
@@ -362,7 +325,6 @@ Public Class Reservation
 
         Dim roomCharge As Decimal = selectedRoom.BaseRate * nights
         Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
-        
         Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
         Dim subtotal As Decimal = roomCharge + extraPersonFee
@@ -370,13 +332,9 @@ Public Class Reservation
         Dim vatAmount As Decimal = 0D
 
         If cmbDiscount.SelectedItem IsNot Nothing Then
-            Dim selectedDiscount As DiscountComboItem =
-                CType(cmbDiscount.SelectedItem, DiscountComboItem)
-
+            Dim selectedDiscount As DiscountComboItem = CType(cmbDiscount.SelectedItem, DiscountComboItem)
             discountAmount = subtotal * (selectedDiscount.DiscountRate / 100D)
-
             Dim netAmount As Decimal = subtotal - discountAmount
-
             If Not selectedDiscount.VATExempt Then
                 vatAmount = netAmount * 0.12D
             End If
@@ -434,30 +392,24 @@ Public Class Reservation
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If String.IsNullOrWhiteSpace(txtFirstName.Text) OrElse
-           String.IsNullOrWhiteSpace(txtSurname.Text) Then
-
-            MessageBox.Show("Please enter the guest's First Name and Surname.",
-                            "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If String.IsNullOrWhiteSpace(txtFirstName.Text) OrElse String.IsNullOrWhiteSpace(txtSurname.Text) Then
+            MessageBox.Show("Please enter the guest's First Name and Surname.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         If cmbRoom.SelectedIndex = -1 Then
-            MessageBox.Show("Please select a room.", "Validation Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Please select a room.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         If dtpCheckOut.Value.Date <= dtpCheckIn.Value.Date Then
-            MessageBox.Show("Check-out date must be after check-in date.",
-                            "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Check-out date must be after check-in date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         Dim selectedRoomItem As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
-        If numAdults.Value > selectedRoomItem.MaxCapacity Then
-            MessageBox.Show("The number of adults exceeds the maximum capacity for this room type.",
-                            "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If (numAdults.Value + numChildren.Value) > selectedRoomItem.MaxCapacity Then
+            MessageBox.Show("The total number of guests exceeds the maximum capacity for this room type.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
@@ -466,15 +418,10 @@ Public Class Reservation
                 conn.Open()
 
                 Dim guestId As Integer = 0
-
                 If selectedGuestID > 0 Then
                     guestId = selectedGuestID
                 Else
-                    Dim insertGuestQuery As String =
-                        "INSERT INTO guest " &
-                        "(firstname, middlename, surname, contact, email, valid_id_type, valid_id_number) " &
-                        "VALUES (@fname, @mname, @sname, @contact, @email, @idType, @idNum)"
-
+                    Dim insertGuestQuery As String = "INSERT INTO guest (firstname, middlename, surname, contact, email, valid_id_type, valid_id_number) VALUES (@fname, @mname, @sname, @contact, @email, @idType, @idNum)"
                     Using insertGuestCmd As New MySqlCommand(insertGuestQuery, conn)
                         insertGuestCmd.Parameters.AddWithValue("@fname", txtFirstName.Text.Trim())
                         insertGuestCmd.Parameters.AddWithValue("@mname", txtMiddleName.Text.Trim())
@@ -483,7 +430,6 @@ Public Class Reservation
                         insertGuestCmd.Parameters.AddWithValue("@email", txtEmail.Text.Trim())
                         insertGuestCmd.Parameters.AddWithValue("@idType", txtValidIdType.Text.Trim())
                         insertGuestCmd.Parameters.AddWithValue("@idNum", txtValidIdNumber.Text.Trim())
-
                         insertGuestCmd.ExecuteNonQuery()
                         guestId = CInt(insertGuestCmd.LastInsertedId)
                     End Using
@@ -494,11 +440,8 @@ Public Class Reservation
                 Dim baseRate As Decimal = selectedRoom.BaseRate
 
                 Dim discountID As Object = DBNull.Value
-
                 If cmbDiscount.SelectedItem IsNot Nothing Then
-                    Dim selectedDiscount As DiscountComboItem =
-                        CType(cmbDiscount.SelectedItem, DiscountComboItem)
-
+                    Dim selectedDiscount As DiscountComboItem = CType(cmbDiscount.SelectedItem, DiscountComboItem)
                     discountID = selectedDiscount.DiscountID
                 End If
 
@@ -510,13 +453,12 @@ Public Class Reservation
                 Dim netAmount As Decimal = subtotal - discountAmount
                 Dim vatAmount As Decimal = Convert.ToDecimal(txtVAT.Text)
                 Dim totalAmount As Decimal = Convert.ToDecimal(txtTotal.Text)
-                
+
                 Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
                 Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
                 If reservationID = 0 Then
                     Dim resCode As String = txtResCode.Text.Trim()
-
                     Dim query As String =
                         "INSERT INTO reservation " &
                         "(guest_id, room_id, discount_id, created_by, res_code, res_status, " &
@@ -546,22 +488,30 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
                         cmd.Parameters.AddWithValue("@vatAmount", vatAmount)
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
-
                         cmd.ExecuteNonQuery()
+
+                        ' FIX: SAVE DOWNPAYMENT IF REFERENCE NO EXISTS
+                        If cmbPaymentMethod.SelectedIndex > -1 AndAlso Not String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
+                            Dim newResID As Integer = CInt(cmd.LastInsertedId)
+                            Dim payQuery As String = "INSERT INTO payment (res_id, amount, payment_method, reference_no) VALUES (@resID, @amount, @method, @refNo)"
+                            Using payCmd As New MySqlCommand(payQuery, conn)
+                                payCmd.Parameters.AddWithValue("@resID", newResID)
+                                payCmd.Parameters.AddWithValue("@amount", totalAmount)
+                                payCmd.Parameters.AddWithValue("@method", cmbPaymentMethod.Text)
+                                payCmd.Parameters.AddWithValue("@refNo", txtReferenceNo.Text.Trim())
+                                payCmd.ExecuteNonQuery()
+                            End Using
+                        End If
                     End Using
 
                     If dtpCheckIn.Value.Date = DateTime.Today Then
-                        Dim updateRoomQuery As String =
-                            "UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID"
-
-                        Using updateCmd As New MySqlCommand(updateRoomQuery, conn)
+                        Using updateCmd As New MySqlCommand("UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID", conn)
                             updateCmd.Parameters.AddWithValue("@roomID", roomID)
                             updateCmd.ExecuteNonQuery()
                         End Using
                     End If
 
-                    MessageBox.Show("Reservation saved successfully!", "Success",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Reservation saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Else
                     Dim oldRoomID As Integer = 0
@@ -598,28 +548,23 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@vatAmount", vatAmount)
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
                         cmd.Parameters.AddWithValue("@resID", reservationID)
-
                         cmd.ExecuteNonQuery()
                     End Using
-                    
+
                     If dtpCheckIn.Value.Date = DateTime.Today Then
                         If oldRoomID <> roomID Then
-                            Dim freeOldRoom As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID"
-                            Using freeCmd As New MySqlCommand(freeOldRoom, conn)
+                            Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID", conn)
                                 freeCmd.Parameters.AddWithValue("@oldRoomID", oldRoomID)
                                 freeCmd.ExecuteNonQuery()
                             End Using
-
-                            Dim occupyNewRoom As String = "UPDATE room SET room_status = 'Occupied' WHERE room_id = @newRoomID"
-                            Using occCmd As New MySqlCommand(occupyNewRoom, conn)
+                            Using occCmd As New MySqlCommand("UPDATE room SET room_status = 'Occupied' WHERE room_id = @newRoomID", conn)
                                 occCmd.Parameters.AddWithValue("@newRoomID", roomID)
                                 occCmd.ExecuteNonQuery()
                             End Using
                         End If
                     End If
 
-                    MessageBox.Show("Reservation updated successfully!", "Success",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Reservation updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End Using
 
@@ -627,8 +572,7 @@ Public Class Reservation
             Me.Close()
 
         Catch ex As Exception
-            MessageBox.Show("Error saving reservation: " & ex.Message,
-                            "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error saving reservation: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -636,21 +580,17 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-
                 Dim query As String =
-                    "SELECT r.*, g.firstname, g.middlename, g.surname, " &
-                    "g.contact, g.email, g.valid_id_type, g.valid_id_number " &
+                    "SELECT r.*, g.firstname, g.middlename, g.surname, g.contact, g.email, g.valid_id_type, g.valid_id_number " &
                     "FROM reservation r " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
                     "WHERE r.res_id = @resID"
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@resID", reservationID)
-
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             txtResCode.Text = reader("res_code").ToString()
-
                             Dim savedStatus As String = reader("res_status").ToString()
                             If cmbStatus.Items.Contains(savedStatus) Then
                                 cmbStatus.SelectedItem = savedStatus
@@ -658,11 +598,8 @@ Public Class Reservation
 
                             Dim savedGuestID As Integer = Convert.ToInt32(reader("guest_id"))
                             cmbGuest.SelectedIndex = -1
-
                             For i As Integer = 0 To cmbGuest.Items.Count - 1
-                                Dim guest As GuestComboItem =
-                                    CType(cmbGuest.Items(i), GuestComboItem)
-
+                                Dim guest As GuestComboItem = CType(cmbGuest.Items(i), GuestComboItem)
                                 If guest.GuestID = savedGuestID Then
                                     cmbGuest.SelectedIndex = i
                                     Exit For
@@ -671,26 +608,18 @@ Public Class Reservation
 
                             If cmbGuest.SelectedIndex = -1 Then
                                 selectedGuestID = savedGuestID
-
                                 txtFirstName.Text = reader("firstname").ToString()
-                                txtMiddleName.Text =
-                                    If(IsDBNull(reader("middlename")), "", reader("middlename").ToString())
+                                txtMiddleName.Text = If(IsDBNull(reader("middlename")), "", reader("middlename").ToString())
                                 txtSurname.Text = reader("surname").ToString()
-                                txtContact.Text =
-                                    If(IsDBNull(reader("contact")), "", reader("contact").ToString())
-                                txtEmail.Text =
-                                    If(IsDBNull(reader("email")), "", reader("email").ToString())
-                                txtValidIdType.Text =
-                                    If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString())
-                                txtValidIdNumber.Text =
-                                    If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
+                                txtContact.Text = If(IsDBNull(reader("contact")), "", reader("contact").ToString())
+                                txtEmail.Text = If(IsDBNull(reader("email")), "", reader("email").ToString())
+                                txtValidIdType.Text = If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString())
+                                txtValidIdNumber.Text = If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             End If
 
                             Dim roomID As Integer = Convert.ToInt32(reader("room_id"))
-
                             For i As Integer = 0 To cmbRoom.Items.Count - 1
                                 Dim room As RoomComboItem = CType(cmbRoom.Items(i), RoomComboItem)
-
                                 If room.RoomID = roomID Then
                                     cmbRoom.SelectedIndex = i
                                     Exit For
@@ -699,20 +628,13 @@ Public Class Reservation
 
                             dtpCheckIn.Value = Convert.ToDateTime(reader("check_in"))
                             dtpCheckOut.Value = Convert.ToDateTime(reader("check_out"))
-
-                            numAdults.Value = Math.Max(numAdults.Minimum,
-                                Math.Min(numAdults.Maximum, Convert.ToDecimal(reader("adults"))))
-
-                            numChildren.Value = Math.Max(numChildren.Minimum,
-                                Math.Min(numChildren.Maximum, Convert.ToDecimal(reader("children"))))
+                            numAdults.Value = Math.Max(numAdults.Minimum, Math.Min(numAdults.Maximum, Convert.ToDecimal(reader("adults"))))
+                            numChildren.Value = Math.Max(numChildren.Minimum, Math.Min(numChildren.Maximum, Convert.ToDecimal(reader("children"))))
 
                             If Not IsDBNull(reader("discount_id")) Then
                                 Dim discountID As Integer = Convert.ToInt32(reader("discount_id"))
-
                                 For i As Integer = 0 To cmbDiscount.Items.Count - 1
-                                    Dim discount As DiscountComboItem =
-                                        CType(cmbDiscount.Items(i), DiscountComboItem)
-
+                                    Dim discount As DiscountComboItem = CType(cmbDiscount.Items(i), DiscountComboItem)
                                     If discount.DiscountID = discountID Then
                                         cmbDiscount.SelectedIndex = i
                                         Exit For
@@ -730,8 +652,7 @@ Public Class Reservation
             CalculateTotal()
 
         Catch ex As Exception
-            MessageBox.Show("Error loading reservation: " & ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error loading reservation: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
