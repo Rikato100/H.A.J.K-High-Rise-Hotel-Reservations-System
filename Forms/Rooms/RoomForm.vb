@@ -3,6 +3,7 @@
 Public Class RoomForm
 
     Private Sub RoomForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopLevel = False
         LoadRooms()
     End Sub
 
@@ -127,12 +128,40 @@ Public Class RoomForm
     ' =========================
     ' BACK
     ' =========================
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Me.Close()
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Dim login As New loginForm()
+        login.Show()
+
+        'Loop through all open forms and close any active dashboards
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
+                frm.Close()
+                Exit For
+            End If
+        Next
     End Sub
 
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        loginForm.Show()
-        Close()
+    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
+        Me.Controls.Clear()
+
+        Dim mainDashboard As New AdminDashboard()
+        mainDashboard.TopLevel = False
+        mainDashboard.FormBorderStyle = FormBorderStyle.None
+        mainDashboard.Dock = DockStyle.Fill
+
+        Me.Controls.Add(mainDashboard)
+        mainDashboard.Show()
+    End Sub
+
+    Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
+        MessageBox.Show("Design not done yet.")
+    End Sub
+
+    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
+        MessageBox.Show("Design not done yet.")
+    End Sub
+
+    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        MessageBox.Show("Design not done yet.")
     End Sub
 End Class

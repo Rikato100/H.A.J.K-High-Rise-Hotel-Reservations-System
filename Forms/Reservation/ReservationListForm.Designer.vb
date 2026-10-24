@@ -22,9 +22,9 @@ Partial Class ReservationListForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReservationListForm))
         lblSearch = New Label()
         txtSearch = New TextBox()
@@ -63,8 +63,8 @@ Partial Class ReservationListForm
         btnCheckOut = New Button()
         btnProcessPayment = New Button()
         btnPrintReceipt = New Button()
-        printDoc = New System.Drawing.Printing.PrintDocument()
-        printPreview = New System.Windows.Forms.PrintPreviewDialog()
+        printDoc = New Printing.PrintDocument()
+        printPreview = New PrintPreviewDialog()
         CType(dgvReservations, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -78,7 +78,7 @@ Partial Class ReservationListForm
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSearch.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblSearch.Location = New Point(162, 183)
+        lblSearch.Location = New Point(162, 185)
         lblSearch.Name = "lblSearch"
         lblSearch.Size = New Size(175, 25)
         lblSearch.TabIndex = 3
@@ -86,7 +86,7 @@ Partial Class ReservationListForm
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(334, 183)
+        txtSearch.Location = New Point(334, 184)
         txtSearch.Margin = New Padding(3, 4, 3, 4)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(313, 27)
@@ -96,7 +96,7 @@ Partial Class ReservationListForm
         ' 
         btnSearch.BackColor = Color.OldLace
         btnSearch.ForeColor = Color.Maroon
-        btnSearch.Location = New Point(665, 183)
+        btnSearch.Location = New Point(665, 180)
         btnSearch.Margin = New Padding(3, 4, 3, 4)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(98, 35)
@@ -108,7 +108,7 @@ Partial Class ReservationListForm
         ' 
         btnRefresh.BackColor = Color.OldLace
         btnRefresh.ForeColor = Color.Maroon
-        btnRefresh.Location = New Point(782, 183)
+        btnRefresh.Location = New Point(782, 180)
         btnRefresh.Margin = New Padding(3, 4, 3, 4)
         btnRefresh.Name = "btnRefresh"
         btnRefresh.Size = New Size(98, 35)
@@ -121,36 +121,36 @@ Partial Class ReservationListForm
         dgvReservations.AllowUserToResizeRows = False
         dgvReservations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvReservations.BackgroundColor = Color.Beige
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.Maroon
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle4.ForeColor = Color.Beige
-        DataGridViewCellStyle4.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle4.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.Maroon
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvReservations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvReservations.Columns.AddRange(New DataGridViewColumn() {colResID, colResCode, colGuest, colRoom, colStatus, colCheckIn, colCheckOut, colNights, colTotal})
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.Beige
-        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle5.ForeColor = Color.Maroon
-        DataGridViewCellStyle5.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle5.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
-        dgvReservations.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Maroon
+        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvReservations.DefaultCellStyle = DataGridViewCellStyle2
         dgvReservations.EnableHeadersVisualStyles = False
         dgvReservations.Location = New Point(162, 281)
         dgvReservations.Margin = New Padding(3, 4, 3, 4)
         dgvReservations.Name = "dgvReservations"
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.Beige
-        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle6.ForeColor = Color.Maroon
-        DataGridViewCellStyle6.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle6.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.Maroon
+        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvReservations.RowHeadersWidth = 51
         dgvReservations.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvReservations.Size = New Size(1008, 400)
@@ -429,7 +429,7 @@ Partial Class ReservationListForm
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Monotype Corsiva", 12.0F, FontStyle.Italic)
+        Label3.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic)
         Label3.ForeColor = Color.Beige
         Label3.Location = New Point(13, 59)
         Label3.Name = "Label3"
@@ -496,9 +496,19 @@ Partial Class ReservationListForm
         btnPrintReceipt.Text = "Print Receipt"
         btnPrintReceipt.UseVisualStyleBackColor = False
         ' 
+        ' printPreview
+        ' 
+        printPreview.AutoScrollMargin = New Size(0, 0)
+        printPreview.AutoScrollMinSize = New Size(0, 0)
+        printPreview.ClientSize = New Size(400, 300)
+        printPreview.Enabled = True
+        printPreview.Icon = CType(resources.GetObject("printPreview.Icon"), Icon)
+        printPreview.Name = "printPreview"
+        printPreview.Visible = False
+        ' 
         ' ReservationListForm
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 784)
@@ -521,6 +531,7 @@ Partial Class ReservationListForm
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
         Controls.Add(lblSearch)
+        FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(3, 4, 3, 4)
         Name = "ReservationListForm"
         SizeGripStyle = SizeGripStyle.Show

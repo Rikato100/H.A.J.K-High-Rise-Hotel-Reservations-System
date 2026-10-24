@@ -71,42 +71,72 @@ Public Class AdminDashboard
 
             End Using
         Catch ex As Exception
-            ' If it crashes, it means the labels in the Designer don't match the names in the code!
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        loginForm.Show()
+        Dim login As New loginForm()
+        login.Show()
         Me.Close()
     End Sub
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
+        'clears out the current screen's contents
+        Me.Controls.Clear()
+
         Dim rooms As New RoomForm()
-        rooms.ShowDialog()
-        LoadDashboardCounts() ' Refresh counts when returning
+        rooms.TopLevel = False
+        rooms.FormBorderStyle = FormBorderStyle.None
+        rooms.Dock = DockStyle.Fill
+
+        'rooms.ShowDialog()
+
+        Me.Controls.Add(rooms)
+        rooms.Show()
+
+        LoadDashboardCounts()
+
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        Dim staff As New StaffManagementForm()
-        staff.ShowDialog()
+
+        MessageBox.Show("Design not done yet.")
+        'Me.Controls.Clear()
+
+        'Dim staff As New StaffManagementForm()
+        'staff.TopLevel = False
+        'staff.FormBorderStyle = FormBorderStyle.None
+        'staff.Dock = DockStyle.Fill
+
+        'Me.Controls.Add(staff)
+        'staff.Show()
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        Dim reports As New ReportsForm()
-        reports.ShowDialog()
+        MessageBox.Show("Design not done yet.")
+        'Dim reports As New ReportsForm()
+        'reports.ShowDialog()
     End Sub
 
-            Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
-        Using f As New ChangePasswordForm()
-            f.ShowDialog(Me)
-        End Using
-    End Sub
+    ' --- Updated for combined settings ---
+    'Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
+    '    Using f As New SettingsForm()
+    '        f.ShowDialog(Me)
+    '    End Using
+    'End Sub
 
-    Private Sub btnDiscountSettings_Click(sender As Object, e As EventArgs) Handles btnDiscountSettings.Click
-        Using f As New DiscountSettingsForm()
-            f.ShowDialog(Me)
-        End Using
+    'Private Sub btnDiscountSettings_Click(sender As Object, e As EventArgs) Handles btnDiscountSettings.Click
+    '    Using f As New SettingsForm()
+    '        f.ShowDialog(Me)
+    '    End Using
+    'End Sub
+
+    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        MessageBox.Show("Design not done yet.")
+        'Using f As New SettingsForm()
+        '    f.ShowDialog(Me)
+        'End Using
     End Sub
 
 End Class

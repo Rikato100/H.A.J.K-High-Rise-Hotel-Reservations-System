@@ -1,5 +1,17 @@
 Imports MySql.Data.MySqlClient
 
+'======================================================================
+'======================================================================
+'======================================================================
+
+'THIS IS ALREADY COMBINED WITH CHANGEPASSWORD IN SETTINGSFORM.VB 
+'                   (delete after reading)
+
+'======================================================================
+'======================================================================
+'======================================================================
+
+
 ' Admin screen to edit discount rates, dates and VAT exemption.
 ' Open with:  Using f As New DiscountSettingsForm() : f.ShowDialog(Me) : End Using
 Public Class DiscountSettingsForm
@@ -131,5 +143,18 @@ Public Class DiscountSettingsForm
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
+
+    '======================================================================
+    '======================================================================
+    '======================================================================
+
+    'THIS IS ALREADY COMBINED WITH CHANGEPASSWORD IN SETTINGSFORM.VB
+    '                   (delete after reading)
+
+    '======================================================================
+    '======================================================================
+    '======================================================================
+
+
 
 End Class

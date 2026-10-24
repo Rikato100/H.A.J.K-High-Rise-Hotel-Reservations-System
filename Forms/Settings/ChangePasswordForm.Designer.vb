@@ -17,136 +17,142 @@ Partial Class ChangePasswordForm
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.lblCurrent = New System.Windows.Forms.Label()
-        Me.txtCurrent = New System.Windows.Forms.TextBox()
-        Me.lblNew = New System.Windows.Forms.Label()
-        Me.txtNew = New System.Windows.Forms.TextBox()
-        Me.lblConfirm = New System.Windows.Forms.Label()
-        Me.txtConfirm = New System.Windows.Forms.TextBox()
-        Me.lblHint = New System.Windows.Forms.Label()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.SuspendLayout()
-        '
-        'lblTitle
-        '
-        Me.lblTitle.AutoSize = True
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(20, 16)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(190, 30)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Change Password"
-        '
-        'lblCurrent
-        '
-        Me.lblCurrent.AutoSize = True
-        Me.lblCurrent.Location = New System.Drawing.Point(24, 70)
-        Me.lblCurrent.Name = "lblCurrent"
-        Me.lblCurrent.Size = New System.Drawing.Size(107, 15)
-        Me.lblCurrent.TabIndex = 1
-        Me.lblCurrent.Text = "Current password:"
-        '
-        'txtCurrent
-        '
-        Me.txtCurrent.Location = New System.Drawing.Point(160, 67)
-        Me.txtCurrent.Name = "txtCurrent"
-        Me.txtCurrent.Size = New System.Drawing.Size(220, 23)
-        Me.txtCurrent.TabIndex = 2
-        Me.txtCurrent.UseSystemPasswordChar = True
-        '
-        'lblNew
-        '
-        Me.lblNew.AutoSize = True
-        Me.lblNew.Location = New System.Drawing.Point(24, 110)
-        Me.lblNew.Name = "lblNew"
-        Me.lblNew.Size = New System.Drawing.Size(90, 15)
-        Me.lblNew.TabIndex = 3
-        Me.lblNew.Text = "New password:"
-        '
-        'txtNew
-        '
-        Me.txtNew.Location = New System.Drawing.Point(160, 107)
-        Me.txtNew.Name = "txtNew"
-        Me.txtNew.Size = New System.Drawing.Size(220, 23)
-        Me.txtNew.TabIndex = 4
-        Me.txtNew.UseSystemPasswordChar = True
-        '
-        'lblConfirm
-        '
-        Me.lblConfirm.AutoSize = True
-        Me.lblConfirm.Location = New System.Drawing.Point(24, 150)
-        Me.lblConfirm.Name = "lblConfirm"
-        Me.lblConfirm.Size = New System.Drawing.Size(124, 15)
-        Me.lblConfirm.TabIndex = 5
-        Me.lblConfirm.Text = "Confirm new password:"
-        '
-        'txtConfirm
-        '
-        Me.txtConfirm.Location = New System.Drawing.Point(160, 147)
-        Me.txtConfirm.Name = "txtConfirm"
-        Me.txtConfirm.Size = New System.Drawing.Size(220, 23)
-        Me.txtConfirm.TabIndex = 6
-        Me.txtConfirm.UseSystemPasswordChar = True
-        '
-        'lblHint
-        '
-        Me.lblHint.AutoSize = True
-        Me.lblHint.ForeColor = System.Drawing.Color.Gray
-        Me.lblHint.Location = New System.Drawing.Point(24, 184)
-        Me.lblHint.Name = "lblHint"
-        Me.lblHint.Size = New System.Drawing.Size(290, 15)
-        Me.lblHint.TabIndex = 7
-        Me.lblHint.Text = "Min. 8 characters, with letters and numbers."
-        '
-        'btnSave
-        '
-        Me.btnSave.BackColor = System.Drawing.Color.White
-        Me.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSave.Location = New System.Drawing.Point(160, 224)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(105, 38)
-        Me.btnSave.TabIndex = 8
-        Me.btnSave.Text = "SAVE"
-        Me.btnSave.UseVisualStyleBackColor = False
-        '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.Color.White
-        Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Location = New System.Drawing.Point(275, 224)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(105, 38)
-        Me.btnCancel.TabIndex = 9
-        Me.btnCancel.Text = "CANCEL"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'ChangePasswordForm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(410, 290)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.lblHint)
-        Me.Controls.Add(Me.txtConfirm)
-        Me.Controls.Add(Me.lblConfirm)
-        Me.Controls.Add(Me.txtNew)
-        Me.Controls.Add(Me.lblNew)
-        Me.Controls.Add(Me.txtCurrent)
-        Me.Controls.Add(Me.lblCurrent)
-        Me.Controls.Add(Me.lblTitle)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "ChangePasswordForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Change Password"
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        lblTitle = New Label()
+        lblCurrent = New Label()
+        txtCurrent = New TextBox()
+        lblNew = New Label()
+        txtNew = New TextBox()
+        lblConfirm = New Label()
+        txtConfirm = New TextBox()
+        lblHint = New Label()
+        btnSave = New Button()
+        btnCancel = New Button()
+        SuspendLayout()
+        ' 
+        ' lblTitle
+        ' 
+        lblTitle.AutoSize = True
+        lblTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        lblTitle.Location = New Point(23, 21)
+        lblTitle.Name = "lblTitle"
+        lblTitle.Size = New Size(242, 37)
+        lblTitle.TabIndex = 0
+        lblTitle.Text = "Change Password"
+        ' 
+        ' lblCurrent
+        ' 
+        lblCurrent.AutoSize = True
+        lblCurrent.Location = New Point(27, 93)
+        lblCurrent.Name = "lblCurrent"
+        lblCurrent.Size = New Size(127, 20)
+        lblCurrent.TabIndex = 1
+        lblCurrent.Text = "Current password:"
+        ' 
+        ' txtCurrent
+        ' 
+        txtCurrent.Location = New Point(183, 89)
+        txtCurrent.Margin = New Padding(3, 4, 3, 4)
+        txtCurrent.Name = "txtCurrent"
+        txtCurrent.Size = New Size(251, 27)
+        txtCurrent.TabIndex = 2
+        txtCurrent.UseSystemPasswordChar = True
+        ' 
+        ' lblNew
+        ' 
+        lblNew.AutoSize = True
+        lblNew.Location = New Point(27, 147)
+        lblNew.Name = "lblNew"
+        lblNew.Size = New Size(109, 20)
+        lblNew.TabIndex = 3
+        lblNew.Text = "New password:"
+        ' 
+        ' txtNew
+        ' 
+        txtNew.Location = New Point(183, 143)
+        txtNew.Margin = New Padding(3, 4, 3, 4)
+        txtNew.Name = "txtNew"
+        txtNew.Size = New Size(251, 27)
+        txtNew.TabIndex = 4
+        txtNew.UseSystemPasswordChar = True
+        ' 
+        ' lblConfirm
+        ' 
+        lblConfirm.AutoSize = True
+        lblConfirm.Location = New Point(27, 200)
+        lblConfirm.Name = "lblConfirm"
+        lblConfirm.Size = New Size(163, 20)
+        lblConfirm.TabIndex = 5
+        lblConfirm.Text = "Confirm new password:"
+        ' 
+        ' txtConfirm
+        ' 
+        txtConfirm.Location = New Point(183, 196)
+        txtConfirm.Margin = New Padding(3, 4, 3, 4)
+        txtConfirm.Name = "txtConfirm"
+        txtConfirm.Size = New Size(251, 27)
+        txtConfirm.TabIndex = 6
+        txtConfirm.UseSystemPasswordChar = True
+        ' 
+        ' lblHint
+        ' 
+        lblHint.AutoSize = True
+        lblHint.ForeColor = Color.Gray
+        lblHint.Location = New Point(27, 245)
+        lblHint.Name = "lblHint"
+        lblHint.Size = New Size(293, 20)
+        lblHint.TabIndex = 7
+        lblHint.Text = "Min. 8 characters, with letters and numbers."
+        ' 
+        ' btnSave
+        ' 
+        btnSave.BackColor = Color.White
+        btnSave.FlatAppearance.BorderColor = Color.Silver
+        btnSave.FlatStyle = FlatStyle.Flat
+        btnSave.Location = New Point(183, 299)
+        btnSave.Margin = New Padding(3, 4, 3, 4)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(120, 51)
+        btnSave.TabIndex = 8
+        btnSave.Text = "SAVE"
+        btnSave.UseVisualStyleBackColor = False
+        ' 
+        ' btnCancel
+        ' 
+        btnCancel.BackColor = Color.White
+        btnCancel.FlatAppearance.BorderColor = Color.Silver
+        btnCancel.FlatStyle = FlatStyle.Flat
+        btnCancel.Location = New Point(314, 299)
+        btnCancel.Margin = New Padding(3, 4, 3, 4)
+        btnCancel.Name = "btnCancel"
+        btnCancel.Size = New Size(120, 51)
+        btnCancel.TabIndex = 9
+        btnCancel.Text = "CANCEL"
+        btnCancel.UseVisualStyleBackColor = False
+        ' 
+        ' ChangePasswordForm
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(469, 387)
+        Controls.Add(btnCancel)
+        Controls.Add(btnSave)
+        Controls.Add(lblHint)
+        Controls.Add(txtConfirm)
+        Controls.Add(lblConfirm)
+        Controls.Add(txtNew)
+        Controls.Add(lblNew)
+        Controls.Add(txtCurrent)
+        Controls.Add(lblCurrent)
+        Controls.Add(lblTitle)
+        FormBorderStyle = FormBorderStyle.FixedDialog
+        Margin = New Padding(3, 4, 3, 4)
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "ChangePasswordForm"
+        StartPosition = FormStartPosition.CenterParent
+        Text = "Change Password"
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 

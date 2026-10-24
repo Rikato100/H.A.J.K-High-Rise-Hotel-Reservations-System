@@ -19,296 +19,312 @@ Partial Class StaffManagementForm
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.lblSearch = New System.Windows.Forms.Label()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.lblStatusFilter = New System.Windows.Forms.Label()
-        Me.cboStatusFilter = New System.Windows.Forms.ComboBox()
-        Me.lblRoleFilter = New System.Windows.Forms.Label()
-        Me.cboRoleFilter = New System.Windows.Forms.ComboBox()
-        Me.btnClearFilter = New System.Windows.Forms.Button()
-        Me.dgvStaff = New System.Windows.Forms.DataGridView()
-        Me.lblUsername = New System.Windows.Forms.Label()
-        Me.txtUsername = New System.Windows.Forms.TextBox()
-        Me.lblFullname = New System.Windows.Forms.Label()
-        Me.txtFullname = New System.Windows.Forms.TextBox()
-        Me.lblPassword = New System.Windows.Forms.Label()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.lblPasswordHint = New System.Windows.Forms.Label()
-        Me.lblRole = New System.Windows.Forms.Label()
-        Me.cboRole = New System.Windows.Forms.ComboBox()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.btnDeactivate = New System.Windows.Forms.Button()
-        Me.btnReactivate = New System.Windows.Forms.Button()
-        Me.btnClose = New System.Windows.Forms.Button()
-        CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'lblTitle
-        '
-        Me.lblTitle.AutoSize = True
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.Location = New System.Drawing.Point(20, 16)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(212, 30)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Staff Management"
-        '
-        'lblSearch
-        '
-        Me.lblSearch.AutoSize = True
-        Me.lblSearch.Location = New System.Drawing.Point(20, 63)
-        Me.lblSearch.Name = "lblSearch"
-        Me.lblSearch.Size = New System.Drawing.Size(48, 15)
-        Me.lblSearch.TabIndex = 16
-        Me.lblSearch.Text = "Search:"
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(75, 60)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PlaceholderText = "Username or full name"
-        Me.txtSearch.Size = New System.Drawing.Size(220, 23)
-        Me.txtSearch.TabIndex = 17
-        '
-        'lblStatusFilter
-        '
-        Me.lblStatusFilter.AutoSize = True
-        Me.lblStatusFilter.Location = New System.Drawing.Point(315, 63)
-        Me.lblStatusFilter.Name = "lblStatusFilter"
-        Me.lblStatusFilter.Size = New System.Drawing.Size(42, 15)
-        Me.lblStatusFilter.TabIndex = 18
-        Me.lblStatusFilter.Text = "Status:"
-        '
-        'cboStatusFilter
-        '
-        Me.cboStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboStatusFilter.FormattingEnabled = True
-        Me.cboStatusFilter.Location = New System.Drawing.Point(365, 60)
-        Me.cboStatusFilter.Name = "cboStatusFilter"
-        Me.cboStatusFilter.Size = New System.Drawing.Size(110, 23)
-        Me.cboStatusFilter.TabIndex = 19
-        '
-        'lblRoleFilter
-        '
-        Me.lblRoleFilter.AutoSize = True
-        Me.lblRoleFilter.Location = New System.Drawing.Point(495, 63)
-        Me.lblRoleFilter.Name = "lblRoleFilter"
-        Me.lblRoleFilter.Size = New System.Drawing.Size(34, 15)
-        Me.lblRoleFilter.TabIndex = 20
-        Me.lblRoleFilter.Text = "Role:"
-        '
-        'cboRoleFilter
-        '
-        Me.cboRoleFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboRoleFilter.FormattingEnabled = True
-        Me.cboRoleFilter.Location = New System.Drawing.Point(540, 60)
-        Me.cboRoleFilter.Name = "cboRoleFilter"
-        Me.cboRoleFilter.Size = New System.Drawing.Size(110, 23)
-        Me.cboRoleFilter.TabIndex = 21
-        '
-        'btnClearFilter
-        '
-        Me.btnClearFilter.BackColor = System.Drawing.Color.White
-        Me.btnClearFilter.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClearFilter.Location = New System.Drawing.Point(670, 58)
-        Me.btnClearFilter.Name = "btnClearFilter"
-        Me.btnClearFilter.Size = New System.Drawing.Size(100, 27)
-        Me.btnClearFilter.TabIndex = 22
-        Me.btnClearFilter.Text = "CLEAR"
-        Me.btnClearFilter.UseVisualStyleBackColor = False
-        '
-        'dgvStaff
-        '
-        Me.dgvStaff.AllowUserToAddRows = False
-        Me.dgvStaff.AllowUserToDeleteRows = False
-        Me.dgvStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvStaff.BackgroundColor = System.Drawing.Color.White
-        Me.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvStaff.Location = New System.Drawing.Point(20, 92)
-        Me.dgvStaff.MultiSelect = False
-        Me.dgvStaff.Name = "dgvStaff"
-        Me.dgvStaff.ReadOnly = True
-        Me.dgvStaff.RowHeadersVisible = False
-        Me.dgvStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvStaff.Size = New System.Drawing.Size(840, 212)
-        Me.dgvStaff.TabIndex = 1
-        '
-        'lblUsername
-        '
-        Me.lblUsername.AutoSize = True
-        Me.lblUsername.Location = New System.Drawing.Point(20, 330)
-        Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(63, 15)
-        Me.lblUsername.TabIndex = 2
-        Me.lblUsername.Text = "Username:"
-        '
-        'txtUsername
-        '
-        Me.txtUsername.Location = New System.Drawing.Point(110, 327)
-        Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(200, 23)
-        Me.txtUsername.TabIndex = 3
-        '
-        'lblFullname
-        '
-        Me.lblFullname.AutoSize = True
-        Me.lblFullname.Location = New System.Drawing.Point(340, 330)
-        Me.lblFullname.Name = "lblFullname"
-        Me.lblFullname.Size = New System.Drawing.Size(62, 15)
-        Me.lblFullname.TabIndex = 4
-        Me.lblFullname.Text = "Full Name:"
-        '
-        'txtFullname
-        '
-        Me.txtFullname.Location = New System.Drawing.Point(430, 327)
-        Me.txtFullname.Name = "txtFullname"
-        Me.txtFullname.Size = New System.Drawing.Size(240, 23)
-        Me.txtFullname.TabIndex = 5
-        '
-        'lblPassword
-        '
-        Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(20, 375)
-        Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(60, 15)
-        Me.lblPassword.TabIndex = 6
-        Me.lblPassword.Text = "Password:"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Location = New System.Drawing.Point(110, 372)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(200, 23)
-        Me.txtPassword.TabIndex = 7
-        Me.txtPassword.UseSystemPasswordChar = True
-        '
-        'lblPasswordHint
-        '
-        Me.lblPasswordHint.AutoSize = True
-        Me.lblPasswordHint.ForeColor = System.Drawing.Color.Gray
-        Me.lblPasswordHint.Location = New System.Drawing.Point(110, 399)
-        Me.lblPasswordHint.Name = "lblPasswordHint"
-        Me.lblPasswordHint.Size = New System.Drawing.Size(268, 15)
-        Me.lblPasswordHint.TabIndex = 8
-        Me.lblPasswordHint.Text = "Min. 8 characters, with letters and numbers. When editing, leave blank to keep the current password"
-        '
-        'lblRole
-        '
-        Me.lblRole.AutoSize = True
-        Me.lblRole.Location = New System.Drawing.Point(340, 375)
-        Me.lblRole.Name = "lblRole"
-        Me.lblRole.Size = New System.Drawing.Size(34, 15)
-        Me.lblRole.TabIndex = 9
-        Me.lblRole.Text = "Role:"
-        '
-        'cboRole
-        '
-        Me.cboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboRole.FormattingEnabled = True
-        Me.cboRole.Location = New System.Drawing.Point(430, 372)
-        Me.cboRole.Name = "cboRole"
-        Me.cboRole.Size = New System.Drawing.Size(140, 23)
-        Me.cboRole.TabIndex = 10
-        '
-        'btnAdd
-        '
-        Me.btnAdd.BackColor = System.Drawing.Color.White
-        Me.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAdd.Location = New System.Drawing.Point(20, 440)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(120, 38)
-        Me.btnAdd.TabIndex = 11
-        Me.btnAdd.Text = "ADD"
-        Me.btnAdd.UseVisualStyleBackColor = False
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.BackColor = System.Drawing.Color.White
-        Me.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUpdate.Location = New System.Drawing.Point(150, 440)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(120, 38)
-        Me.btnUpdate.TabIndex = 12
-        Me.btnUpdate.Text = "UPDATE"
-        Me.btnUpdate.UseVisualStyleBackColor = False
-        '
-        'btnDeactivate
-        '
-        Me.btnDeactivate.BackColor = System.Drawing.Color.White
-        Me.btnDeactivate.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnDeactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDeactivate.Location = New System.Drawing.Point(280, 440)
-        Me.btnDeactivate.Name = "btnDeactivate"
-        Me.btnDeactivate.Size = New System.Drawing.Size(140, 38)
-        Me.btnDeactivate.TabIndex = 13
-        Me.btnDeactivate.Text = "DEACTIVATE"
-        Me.btnDeactivate.UseVisualStyleBackColor = False
-        '
-        'btnReactivate
-        '
-        Me.btnReactivate.BackColor = System.Drawing.Color.White
-        Me.btnReactivate.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnReactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReactivate.Location = New System.Drawing.Point(430, 440)
-        Me.btnReactivate.Name = "btnReactivate"
-        Me.btnReactivate.Size = New System.Drawing.Size(140, 38)
-        Me.btnReactivate.TabIndex = 15
-        Me.btnReactivate.Text = "REACTIVATE"
-        Me.btnReactivate.UseVisualStyleBackColor = False
-        '
-        'btnClose
-        '
-        Me.btnClose.BackColor = System.Drawing.Color.White
-        Me.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClose.Location = New System.Drawing.Point(740, 440)
-        Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(120, 38)
-        Me.btnClose.TabIndex = 14
-        Me.btnClose.Text = "CLOSE"
-        Me.btnClose.UseVisualStyleBackColor = False
-        '
-        'StaffManagementForm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(880, 500)
-        Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.btnReactivate)
-        Me.Controls.Add(Me.btnDeactivate)
-        Me.Controls.Add(Me.btnUpdate)
-        Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.cboRole)
-        Me.Controls.Add(Me.lblRole)
-        Me.Controls.Add(Me.lblPasswordHint)
-        Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.lblPassword)
-        Me.Controls.Add(Me.txtFullname)
-        Me.Controls.Add(Me.lblFullname)
-        Me.Controls.Add(Me.txtUsername)
-        Me.Controls.Add(Me.lblUsername)
-        Me.Controls.Add(Me.dgvStaff)
-        Me.Controls.Add(Me.btnClearFilter)
-        Me.Controls.Add(Me.cboRoleFilter)
-        Me.Controls.Add(Me.lblRoleFilter)
-        Me.Controls.Add(Me.cboStatusFilter)
-        Me.Controls.Add(Me.lblStatusFilter)
-        Me.Controls.Add(Me.txtSearch)
-        Me.Controls.Add(Me.lblSearch)
-        Me.Controls.Add(Me.lblTitle)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
-        Me.Name = "StaffManagementForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Staff Management"
-        CType(Me.dgvStaff, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        lblTitle = New Label()
+        lblSearch = New Label()
+        txtSearch = New TextBox()
+        lblStatusFilter = New Label()
+        cboStatusFilter = New ComboBox()
+        lblRoleFilter = New Label()
+        cboRoleFilter = New ComboBox()
+        btnClearFilter = New Button()
+        dgvStaff = New DataGridView()
+        lblUsername = New Label()
+        txtUsername = New TextBox()
+        lblFullname = New Label()
+        txtFullname = New TextBox()
+        lblPassword = New Label()
+        txtPassword = New TextBox()
+        lblPasswordHint = New Label()
+        lblRole = New Label()
+        cboRole = New ComboBox()
+        btnAdd = New Button()
+        btnUpdate = New Button()
+        btnDeactivate = New Button()
+        btnReactivate = New Button()
+        btnClose = New Button()
+        CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' lblTitle
+        ' 
+        lblTitle.AutoSize = True
+        lblTitle.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        lblTitle.Location = New Point(23, 21)
+        lblTitle.Name = "lblTitle"
+        lblTitle.Size = New Size(255, 37)
+        lblTitle.TabIndex = 0
+        lblTitle.Text = "Staff Management"
+        ' 
+        ' lblSearch
+        ' 
+        lblSearch.AutoSize = True
+        lblSearch.Location = New Point(23, 84)
+        lblSearch.Name = "lblSearch"
+        lblSearch.Size = New Size(56, 20)
+        lblSearch.TabIndex = 16
+        lblSearch.Text = "Search:"
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Location = New Point(86, 80)
+        txtSearch.Margin = New Padding(3, 4, 3, 4)
+        txtSearch.Name = "txtSearch"
+        txtSearch.PlaceholderText = "Username or full name"
+        txtSearch.Size = New Size(251, 27)
+        txtSearch.TabIndex = 17
+        ' 
+        ' lblStatusFilter
+        ' 
+        lblStatusFilter.AutoSize = True
+        lblStatusFilter.Location = New Point(360, 84)
+        lblStatusFilter.Name = "lblStatusFilter"
+        lblStatusFilter.Size = New Size(52, 20)
+        lblStatusFilter.TabIndex = 18
+        lblStatusFilter.Text = "Status:"
+        ' 
+        ' cboStatusFilter
+        ' 
+        cboStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
+        cboStatusFilter.FormattingEnabled = True
+        cboStatusFilter.Location = New Point(417, 80)
+        cboStatusFilter.Margin = New Padding(3, 4, 3, 4)
+        cboStatusFilter.Name = "cboStatusFilter"
+        cboStatusFilter.Size = New Size(125, 28)
+        cboStatusFilter.TabIndex = 19
+        ' 
+        ' lblRoleFilter
+        ' 
+        lblRoleFilter.AutoSize = True
+        lblRoleFilter.Location = New Point(566, 84)
+        lblRoleFilter.Name = "lblRoleFilter"
+        lblRoleFilter.Size = New Size(42, 20)
+        lblRoleFilter.TabIndex = 20
+        lblRoleFilter.Text = "Role:"
+        ' 
+        ' cboRoleFilter
+        ' 
+        cboRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList
+        cboRoleFilter.FormattingEnabled = True
+        cboRoleFilter.Location = New Point(617, 80)
+        cboRoleFilter.Margin = New Padding(3, 4, 3, 4)
+        cboRoleFilter.Name = "cboRoleFilter"
+        cboRoleFilter.Size = New Size(125, 28)
+        cboRoleFilter.TabIndex = 21
+        ' 
+        ' btnClearFilter
+        ' 
+        btnClearFilter.BackColor = Color.White
+        btnClearFilter.FlatAppearance.BorderColor = Color.Silver
+        btnClearFilter.FlatStyle = FlatStyle.Flat
+        btnClearFilter.Location = New Point(766, 77)
+        btnClearFilter.Margin = New Padding(3, 4, 3, 4)
+        btnClearFilter.Name = "btnClearFilter"
+        btnClearFilter.Size = New Size(114, 36)
+        btnClearFilter.TabIndex = 22
+        btnClearFilter.Text = "CLEAR"
+        btnClearFilter.UseVisualStyleBackColor = False
+        ' 
+        ' dgvStaff
+        ' 
+        dgvStaff.AllowUserToAddRows = False
+        dgvStaff.AllowUserToDeleteRows = False
+        dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvStaff.BackgroundColor = Color.White
+        dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvStaff.Location = New Point(23, 123)
+        dgvStaff.Margin = New Padding(3, 4, 3, 4)
+        dgvStaff.MultiSelect = False
+        dgvStaff.Name = "dgvStaff"
+        dgvStaff.ReadOnly = True
+        dgvStaff.RowHeadersVisible = False
+        dgvStaff.RowHeadersWidth = 51
+        dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvStaff.Size = New Size(960, 283)
+        dgvStaff.TabIndex = 1
+        ' 
+        ' lblUsername
+        ' 
+        lblUsername.AutoSize = True
+        lblUsername.Location = New Point(23, 440)
+        lblUsername.Name = "lblUsername"
+        lblUsername.Size = New Size(78, 20)
+        lblUsername.TabIndex = 2
+        lblUsername.Text = "Username:"
+        ' 
+        ' txtUsername
+        ' 
+        txtUsername.Location = New Point(126, 436)
+        txtUsername.Margin = New Padding(3, 4, 3, 4)
+        txtUsername.Name = "txtUsername"
+        txtUsername.Size = New Size(228, 27)
+        txtUsername.TabIndex = 3
+        ' 
+        ' lblFullname
+        ' 
+        lblFullname.AutoSize = True
+        lblFullname.Location = New Point(389, 440)
+        lblFullname.Name = "lblFullname"
+        lblFullname.Size = New Size(79, 20)
+        lblFullname.TabIndex = 4
+        lblFullname.Text = "Full Name:"
+        ' 
+        ' txtFullname
+        ' 
+        txtFullname.Location = New Point(491, 436)
+        txtFullname.Margin = New Padding(3, 4, 3, 4)
+        txtFullname.Name = "txtFullname"
+        txtFullname.Size = New Size(274, 27)
+        txtFullname.TabIndex = 5
+        ' 
+        ' lblPassword
+        ' 
+        lblPassword.AutoSize = True
+        lblPassword.Location = New Point(23, 500)
+        lblPassword.Name = "lblPassword"
+        lblPassword.Size = New Size(73, 20)
+        lblPassword.TabIndex = 6
+        lblPassword.Text = "Password:"
+        ' 
+        ' txtPassword
+        ' 
+        txtPassword.Location = New Point(126, 496)
+        txtPassword.Margin = New Padding(3, 4, 3, 4)
+        txtPassword.Name = "txtPassword"
+        txtPassword.Size = New Size(228, 27)
+        txtPassword.TabIndex = 7
+        txtPassword.UseSystemPasswordChar = True
+        ' 
+        ' lblPasswordHint
+        ' 
+        lblPasswordHint.AutoSize = True
+        lblPasswordHint.ForeColor = Color.Gray
+        lblPasswordHint.Location = New Point(126, 532)
+        lblPasswordHint.Name = "lblPasswordHint"
+        lblPasswordHint.Size = New Size(664, 20)
+        lblPasswordHint.TabIndex = 8
+        lblPasswordHint.Text = "Min. 8 characters, with letters and numbers. When editing, leave blank to keep the current password"
+        ' 
+        ' lblRole
+        ' 
+        lblRole.AutoSize = True
+        lblRole.Location = New Point(389, 500)
+        lblRole.Name = "lblRole"
+        lblRole.Size = New Size(42, 20)
+        lblRole.TabIndex = 9
+        lblRole.Text = "Role:"
+        ' 
+        ' cboRole
+        ' 
+        cboRole.DropDownStyle = ComboBoxStyle.DropDownList
+        cboRole.FormattingEnabled = True
+        cboRole.Location = New Point(491, 496)
+        cboRole.Margin = New Padding(3, 4, 3, 4)
+        cboRole.Name = "cboRole"
+        cboRole.Size = New Size(159, 28)
+        cboRole.TabIndex = 10
+        ' 
+        ' btnAdd
+        ' 
+        btnAdd.BackColor = Color.White
+        btnAdd.FlatAppearance.BorderColor = Color.Silver
+        btnAdd.FlatStyle = FlatStyle.Flat
+        btnAdd.Location = New Point(23, 587)
+        btnAdd.Margin = New Padding(3, 4, 3, 4)
+        btnAdd.Name = "btnAdd"
+        btnAdd.Size = New Size(137, 51)
+        btnAdd.TabIndex = 11
+        btnAdd.Text = "ADD"
+        btnAdd.UseVisualStyleBackColor = False
+        ' 
+        ' btnUpdate
+        ' 
+        btnUpdate.BackColor = Color.White
+        btnUpdate.FlatAppearance.BorderColor = Color.Silver
+        btnUpdate.FlatStyle = FlatStyle.Flat
+        btnUpdate.Location = New Point(171, 587)
+        btnUpdate.Margin = New Padding(3, 4, 3, 4)
+        btnUpdate.Name = "btnUpdate"
+        btnUpdate.Size = New Size(137, 51)
+        btnUpdate.TabIndex = 12
+        btnUpdate.Text = "UPDATE"
+        btnUpdate.UseVisualStyleBackColor = False
+        ' 
+        ' btnDeactivate
+        ' 
+        btnDeactivate.BackColor = Color.White
+        btnDeactivate.FlatAppearance.BorderColor = Color.Silver
+        btnDeactivate.FlatStyle = FlatStyle.Flat
+        btnDeactivate.Location = New Point(320, 587)
+        btnDeactivate.Margin = New Padding(3, 4, 3, 4)
+        btnDeactivate.Name = "btnDeactivate"
+        btnDeactivate.Size = New Size(160, 51)
+        btnDeactivate.TabIndex = 13
+        btnDeactivate.Text = "DEACTIVATE"
+        btnDeactivate.UseVisualStyleBackColor = False
+        ' 
+        ' btnReactivate
+        ' 
+        btnReactivate.BackColor = Color.White
+        btnReactivate.FlatAppearance.BorderColor = Color.Silver
+        btnReactivate.FlatStyle = FlatStyle.Flat
+        btnReactivate.Location = New Point(491, 587)
+        btnReactivate.Margin = New Padding(3, 4, 3, 4)
+        btnReactivate.Name = "btnReactivate"
+        btnReactivate.Size = New Size(160, 51)
+        btnReactivate.TabIndex = 15
+        btnReactivate.Text = "REACTIVATE"
+        btnReactivate.UseVisualStyleBackColor = False
+        ' 
+        ' btnClose
+        ' 
+        btnClose.BackColor = Color.White
+        btnClose.FlatAppearance.BorderColor = Color.Silver
+        btnClose.FlatStyle = FlatStyle.Flat
+        btnClose.Location = New Point(846, 587)
+        btnClose.Margin = New Padding(3, 4, 3, 4)
+        btnClose.Name = "btnClose"
+        btnClose.Size = New Size(137, 51)
+        btnClose.TabIndex = 14
+        btnClose.Text = "CLOSE"
+        btnClose.UseVisualStyleBackColor = False
+        ' 
+        ' StaffManagementForm
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(1182, 773)
+        Controls.Add(btnClose)
+        Controls.Add(btnReactivate)
+        Controls.Add(btnDeactivate)
+        Controls.Add(btnUpdate)
+        Controls.Add(btnAdd)
+        Controls.Add(cboRole)
+        Controls.Add(lblRole)
+        Controls.Add(lblPasswordHint)
+        Controls.Add(txtPassword)
+        Controls.Add(lblPassword)
+        Controls.Add(txtFullname)
+        Controls.Add(lblFullname)
+        Controls.Add(txtUsername)
+        Controls.Add(lblUsername)
+        Controls.Add(dgvStaff)
+        Controls.Add(btnClearFilter)
+        Controls.Add(cboRoleFilter)
+        Controls.Add(lblRoleFilter)
+        Controls.Add(cboStatusFilter)
+        Controls.Add(lblStatusFilter)
+        Controls.Add(txtSearch)
+        Controls.Add(lblSearch)
+        Controls.Add(lblTitle)
+        FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
+        MaximizeBox = False
+        Name = "StaffManagementForm"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Staff Management"
+        CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
 

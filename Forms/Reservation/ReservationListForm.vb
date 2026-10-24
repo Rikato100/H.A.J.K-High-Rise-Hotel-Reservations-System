@@ -2,10 +2,12 @@ Imports MySql.Data.MySqlClient
 
 Public Class ReservationListForm
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Me.TopLevel = False
         Me.Close()
     End Sub
 
     Private Sub ReservationListForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopLevel = False
         dgvReservations.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvReservations.MultiSelect = False
         dgvReservations.ReadOnly = True
@@ -548,12 +550,54 @@ Public Class ReservationListForm
     End Sub
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
+        Me.Controls.Clear()
+
         Dim guests As New GuestForm
-        guests.ShowDialog()
+        guests.TopLevel = False
+        guests.FormBorderStyle = FormBorderStyle.None
+        guests.Dock = DockStyle.Fill
+
+        Me.Controls.Add(guests)
+        guests.Show()
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        loginForm.Show()
-        Close()
+        Dim login As New loginForm()
+        login.Show()
+
+
+        Dim parentForm As Form = Me.FindForm()
+        If parentForm IsNot Nothing AndAlso Not TypeOf parentForm Is ReservationListForm Then
+            parentForm.Close()
+        Else
+            ' Fallback loop to catch any open dashboard variant
+            For Each frm As Form In Application.OpenForms
+                If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
+                    frm.Close()
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+
+    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
+        Me.Controls.Clear()
+
+        ' 2. Create an instance of your AdminDashboard
+        Dim mainDashboard As New StaffDashboard()
+        mainDashboard.TopLevel = False
+        mainDashboard.FormBorderStyle = FormBorderStyle.None
+        mainDashboard.Dock = DockStyle.Fill
+
+        Me.Controls.Add(mainDashboard)
+        mainDashboard.Show()
+    End Sub
+
+    Private Sub dgvReservations_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReservations.CellContentClick
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        MessageBox.Show("Design not done yet.")
     End Sub
 End Class

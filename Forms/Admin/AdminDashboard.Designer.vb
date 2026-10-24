@@ -275,6 +275,7 @@ Partial Class AdminDashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 773)
         Controls.Add(lblDailyRevenue)
         Controls.Add(lblOccupancyRate)
@@ -288,7 +289,7 @@ Partial Class AdminDashboard
         Margin = New Padding(3, 4, 3, 4)
         Name = "AdminDashboard"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "H.A.J.K. - Admin Dashboard"
+        Text = "H.A.J.K High Rise Hotel Reservation System"
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()

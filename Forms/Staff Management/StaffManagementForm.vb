@@ -6,6 +6,7 @@ Public Class StaffManagementForm
     Private isLoading As Boolean = True
 
     Private Sub StaffManagementForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopLevel = False
         cboRole.Items.Clear()
         cboRole.Items.Add("Admin")
         cboRole.Items.Add("Staff")

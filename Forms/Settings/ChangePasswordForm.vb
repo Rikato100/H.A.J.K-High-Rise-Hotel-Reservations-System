@@ -1,7 +1,16 @@
 Imports MySql.Data.MySqlClient
 
 Public Class ChangePasswordForm
+    '======================================================================
+    '======================================================================
+    '======================================================================
 
+    'THIS IS ALREADY COMBINED WITH DISCOUNTSETTINS.VB IN SETTINGSFORM.VB
+    '                   (delete after reading)
+
+    '======================================================================
+    '======================================================================
+    '======================================================================
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If CurrentUser.AccountID = 0 Then ' FIXED: Capital D
             MessageBox.Show("No logged-in account was found. Please log in again.", "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -71,5 +80,21 @@ Public Class ChangePasswordForm
         End If
         Return ""
     End Function
+
+    Private Sub ChangePasswordForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+
+    '======================================================================
+    '======================================================================
+    '======================================================================
+
+    'THIS IS ALREADY COMBINED WITH DISCOUNTSETTINS.VB IN SETTINGSFORM.VB
+    '                   (delete after reading)
+
+    '======================================================================
+    '======================================================================
+    '======================================================================
 
 End Class

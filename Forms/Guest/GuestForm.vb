@@ -2,6 +2,7 @@
 
 Public Class GuestForm
     Private Sub GuestForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopLevel = False
         dgvGuests.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvGuests.MultiSelect = False
         dgvGuests.ReadOnly = True
@@ -298,26 +299,6 @@ Public Class GuestForm
         LoadGuests()
     End Sub
 
-    Private Sub dgvGuests_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuests.CellContentClick
-
-    End Sub
-
-    Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
-
-    End Sub
-
-    Private Sub Button11_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
     Private Sub btnStayHistory_Click(sender As Object, e As EventArgs) Handles btnStayHistory.Click
         ' Check if a guest is selected
         If dgvGuests.SelectedRows.Count = 0 Then
@@ -348,5 +329,65 @@ Public Class GuestForm
         Dim historyForm As New GuestStayHistoryForm(guestID, guestName)
         historyForm.ShowDialog()
 
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Dim login As New loginForm()
+        login.Show()
+
+        'Loop through all open forms and close any active dashboards
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
+                frm.Close()
+                Exit For
+            End If
+        Next
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Controls.Clear()
+
+        ' 2. Create an instance of your AdminDashboard
+        Dim mainDashboard As New StaffDashboard()
+        mainDashboard.TopLevel = False
+        mainDashboard.FormBorderStyle = FormBorderStyle.None
+        mainDashboard.Dock = DockStyle.Fill
+
+        ' 3. Add it to this form and show it
+        Me.Controls.Add(mainDashboard)
+        mainDashboard.Show()
+
+    End Sub
+
+    Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
+        Me.Controls.Clear()
+
+        Dim reservations As New ReservationListForm()
+        reservations.TopLevel = False
+        reservations.FormBorderStyle = FormBorderStyle.None
+        reservations.Dock = DockStyle.Fill
+
+        Me.Controls.Add(reservations)
+        reservations.Show()
+    End Sub
+
+    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
+        Me.Controls.Clear()
+
+        Dim mainDashboard As New StaffDashboard()
+        mainDashboard.TopLevel = False
+        mainDashboard.FormBorderStyle = FormBorderStyle.None
+        mainDashboard.Dock = DockStyle.Fill
+
+        Me.Controls.Add(mainDashboard)
+        mainDashboard.Show()
+
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        MessageBox.Show("Design not done yet.")
     End Sub
 End Class

@@ -1,6 +1,6 @@
 is_global = true
 build_property.ApplicationManifest = 
-build_property.StartupObject = Sub Main
+build_property.StartupObject = 
 build_property.ApplicationDefaultFont = 
 build_property.ApplicationHighDpiMode = 
 build_property.ApplicationUseCompatibleTextRendering = 
@@ -17,7 +17,7 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EntryPointFilePath = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HajkHotel
-build_property.ProjectDir = C:\Users\User\OneDrive\Desktop\jade\BSCS 1B\VB.NetProject\102226v1\HAJK\H.A.J.K-High-Rise-Hotel-Reservations-System-main\HajkHotel\
+build_property.ProjectDir = C:\Users\Jasper Delacruz\source\repos\H.A.J.K-High-Rise-Hotel-Reservations-System-main\HajkHotel\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
