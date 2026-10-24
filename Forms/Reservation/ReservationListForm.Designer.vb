@@ -1,8 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ReservationListForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,17 +13,13 @@ Partial Class ReservationListForm
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReservationListForm))
         lblSearch = New Label()
         txtSearch = New TextBox()
@@ -61,9 +56,11 @@ Partial Class ReservationListForm
         btnCheckIn = New Button()
         btnCheckOut = New Button()
         btnProcessPayment = New Button()
-        btnPrintReceipt = New Button()
         printDoc = New Printing.PrintDocument()
         printPreview = New PrintPreviewDialog()
+        btnExport = New Button()
+        cmbInvoiceType = New ComboBox()
+        btnPrintInvoice = New Button()
         CType(dgvReservations, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -120,36 +117,36 @@ Partial Class ReservationListForm
         dgvReservations.AllowUserToResizeRows = False
         dgvReservations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvReservations.BackgroundColor = Color.Beige
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Maroon
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle1.ForeColor = Color.Beige
-        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = Color.Maroon
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle4.ForeColor = Color.Beige
+        DataGridViewCellStyle4.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle4.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         dgvReservations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvReservations.Columns.AddRange(New DataGridViewColumn() {colResID, colResCode, colGuest, colRoom, colStatus, colCheckIn, colCheckOut, colNights, colTotal})
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle2.ForeColor = Color.Maroon
-        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        dgvReservations.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.Beige
+        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle5.ForeColor = Color.Maroon
+        DataGridViewCellStyle5.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle5.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
+        dgvReservations.DefaultCellStyle = DataGridViewCellStyle5
         dgvReservations.EnableHeadersVisualStyles = False
         dgvReservations.Location = New Point(162, 281)
         dgvReservations.Margin = New Padding(3, 4, 3, 4)
         dgvReservations.Name = "dgvReservations"
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle3.ForeColor = Color.Maroon
-        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = Color.Beige
+        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle6.ForeColor = Color.Maroon
+        DataGridViewCellStyle6.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle6.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         dgvReservations.RowHeadersWidth = 51
         dgvReservations.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvReservations.Size = New Size(1008, 400)
@@ -416,7 +413,7 @@ Partial Class ReservationListForm
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic)
+        Label3.Font = New Font("Monotype Corsiva", 12.0F, FontStyle.Italic)
         Label3.ForeColor = Color.Beige
         Label3.Location = New Point(13, 59)
         Label3.Name = "Label3"
@@ -471,17 +468,27 @@ Partial Class ReservationListForm
         btnProcessPayment.Text = "Process Payment"
         btnProcessPayment.UseVisualStyleBackColor = False
         ' 
-        ' btnPrintReceipt
+        ' cmbInvoiceType
         ' 
-        btnPrintReceipt.BackColor = Color.OldLace
-        btnPrintReceipt.ForeColor = Color.Maroon
-        btnPrintReceipt.Location = New Point(694, 690)
-        btnPrintReceipt.Margin = New Padding(3, 4, 3, 4)
-        btnPrintReceipt.Name = "btnPrintReceipt"
-        btnPrintReceipt.Size = New Size(200, 50)
-        btnPrintReceipt.TabIndex = 27
-        btnPrintReceipt.Text = "Print Receipt"
-        btnPrintReceipt.UseVisualStyleBackColor = False
+        cmbInvoiceType.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbInvoiceType.FormattingEnabled = True
+        cmbInvoiceType.Items.AddRange(New Object() {"Pre-payment Quote", "Advance Payment Receipt", "Final Checkout Folio"})
+        cmbInvoiceType.Location = New Point(694, 690)
+        cmbInvoiceType.Name = "cmbInvoiceType"
+        cmbInvoiceType.Size = New Size(200, 28)
+        cmbInvoiceType.TabIndex = 29
+        ' 
+        ' btnPrintInvoice
+        ' 
+        btnPrintInvoice.BackColor = Color.OldLace
+        btnPrintInvoice.ForeColor = Color.Maroon
+        btnPrintInvoice.Location = New Point(900, 690)
+        btnPrintInvoice.Margin = New Padding(3, 4, 3, 4)
+        btnPrintInvoice.Name = "btnPrintInvoice"
+        btnPrintInvoice.Size = New Size(150, 50)
+        btnPrintInvoice.TabIndex = 30
+        btnPrintInvoice.Text = "Print Invoice"
+        btnPrintInvoice.UseVisualStyleBackColor = False
         ' 
         ' printPreview
         ' 
@@ -493,13 +500,27 @@ Partial Class ReservationListForm
         printPreview.Name = "printPreview"
         printPreview.Visible = False
         ' 
+        ' btnExport
+        ' 
+        btnExport.BackColor = Color.OldLace
+        btnExport.ForeColor = Color.Maroon
+        btnExport.Location = New Point(1000, 219)
+        btnExport.Margin = New Padding(3, 4, 3, 4)
+        btnExport.Name = "btnExport"
+        btnExport.Size = New Size(124, 45)
+        btnExport.TabIndex = 28
+        btnExport.Text = "EXPORT"
+        btnExport.UseVisualStyleBackColor = False
+        ' 
         ' ReservationListForm
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 784)
-        Controls.Add(btnPrintReceipt)
+        Controls.Add(btnPrintInvoice)
+        Controls.Add(cmbInvoiceType)
+        Controls.Add(btnExport)
         Controls.Add(btnProcessPayment)
         Controls.Add(btnCheckOut)
         Controls.Add(btnCheckIn)
@@ -566,12 +587,12 @@ Partial Class ReservationListForm
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-
-    ' Added Buttons & Print Controls
     Friend WithEvents btnCheckIn As Button
     Friend WithEvents btnCheckOut As Button
     Friend WithEvents btnProcessPayment As Button
-    Friend WithEvents btnPrintReceipt As Button
     Friend WithEvents printDoc As System.Drawing.Printing.PrintDocument
     Friend WithEvents printPreview As System.Windows.Forms.PrintPreviewDialog
+    Friend WithEvents btnExport As Button
+    Friend WithEvents cmbInvoiceType As ComboBox
+    Friend WithEvents btnPrintInvoice As Button
 End Class
