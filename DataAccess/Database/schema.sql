@@ -26,7 +26,7 @@ CREATE TABLE `account` (
 
 -- The hashes below are securely generated PBKDF2 hashes for "admin123" and "staff123"
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'YWRtaW5fYWRtaW5fYWRtaW5fMTIz:6j7O5k9xH3Y4m8R2t1P3w5Z8x9A0bC1dE2fG3hI4jK8=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
+(1, 'admin', '7ioOBY1J85cQDa8L/PouEg==:Izxscy+WJHK3CUbh6kHJg7FyT+hMzmEObmHHwBJuP5g=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-04 16:23:25'),
 (3, 'staff', 'c3RhZmZfc3RhZmZfc3RhZmZfMTIz:z1yX2wV3uT4sR5qP6oN7mM8lK9jI0hG1fE2dC3bA4z=', 'Staff Member', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-04 16:52:02');
 
 -- --------------------------------------------------------
