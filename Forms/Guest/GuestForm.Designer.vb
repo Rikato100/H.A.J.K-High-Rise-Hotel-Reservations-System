@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class GuestForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,479 +13,261 @@ Partial Class GuestForm
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GuestForm))
-        lblSearch = New Label()
-        txtSearch = New TextBox()
-        btnSearch = New Button()
-        btnRefresh = New Button()
-        dgvGuests = New DataGridView()
-        colGuestID = New DataGridViewTextBoxColumn()
-        colSurname = New DataGridViewTextBoxColumn()
-        colFirstName = New DataGridViewTextBoxColumn()
-        colMiddle = New DataGridViewTextBoxColumn()
-        colContact = New DataGridViewTextBoxColumn()
-        colEmail = New DataGridViewTextBoxColumn()
-        colValidIDType = New DataGridViewTextBoxColumn()
-        colValidIDNumber = New DataGridViewTextBoxColumn()
-        btnAdd = New Button()
-        btnEdit = New Button()
-        btnDelete = New Button()
-        Panel1 = New Panel()
-        btnSettings = New Button()
-        PictureBox3 = New PictureBox()
-        btnLogout = New Button()
-        btnDashboard = New Button()
-        btnGuests = New Button()
-        btnReservations = New Button()
-        PictureBox2 = New PictureBox()
-        Label4 = New Label()
-        Label1 = New Label()
-        Panel2 = New Panel()
-        PictureBox4 = New PictureBox()
-        Label3 = New Label()
-        Label2 = New Label()
-        btnStayHistory = New Button()
-        CType(dgvGuests, ComponentModel.ISupportInitialize).BeginInit()
-        Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
-        Panel2.SuspendLayout()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
-        SuspendLayout()
-        ' 
-        ' lblSearch
-        ' 
-        lblSearch.AutoSize = True
-        lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblSearch.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblSearch.Location = New Point(162, 183)
-        lblSearch.Name = "lblSearch"
-        lblSearch.Size = New Size(126, 25)
-        lblSearch.TabIndex = 0
-        lblSearch.Text = "Search Guest:"
-        ' 
-        ' txtSearch
-        ' 
-        txtSearch.Location = New Point(293, 182)
-        txtSearch.Margin = New Padding(3, 4, 3, 4)
-        txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(390, 27)
-        txtSearch.TabIndex = 2
-        ' 
-        ' btnSearch
-        ' 
-        btnSearch.BackColor = Color.OldLace
-        btnSearch.ForeColor = Color.Maroon
-        btnSearch.Location = New Point(714, 178)
-        btnSearch.Margin = New Padding(3, 4, 3, 4)
-        btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(98, 35)
-        btnSearch.TabIndex = 3
-        btnSearch.Text = "SEARCH"
-        btnSearch.UseVisualStyleBackColor = False
-        ' 
-        ' btnRefresh
-        ' 
-        btnRefresh.BackColor = Color.OldLace
-        btnRefresh.ForeColor = Color.Maroon
-        btnRefresh.Location = New Point(827, 178)
-        btnRefresh.Margin = New Padding(3, 4, 3, 4)
-        btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(98, 35)
-        btnRefresh.TabIndex = 4
-        btnRefresh.Text = "↻ REFRESH"
-        btnRefresh.UseVisualStyleBackColor = False
-        ' 
+        Me.dgvGuests = New System.Windows.Forms.DataGridView()
+        Me.colGuestID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSurname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFirstname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMiddlename = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colContact = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colIDType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colIDNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colVisits = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.lblSearch = New System.Windows.Forms.Label()
+        Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.btnStayHistory = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button11 = New System.Windows.Forms.Button()
+        CType(Me.dgvGuests, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.SuspendLayout()
+        '
         ' dgvGuests
-        ' 
-        dgvGuests.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvGuests.BackgroundColor = Color.Beige
-        dgvGuests.BorderStyle = BorderStyle.None
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Maroon
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle1.ForeColor = Color.Beige
-        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        dgvGuests.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        dgvGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvGuests.Columns.AddRange(New DataGridViewColumn() {colGuestID, colSurname, colFirstName, colMiddle, colContact, colEmail, colValidIDType, colValidIDNumber})
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle2.ForeColor = Color.Maroon
-        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        dgvGuests.DefaultCellStyle = DataGridViewCellStyle2
-        dgvGuests.EnableHeadersVisualStyles = False
-        dgvGuests.GridColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        dgvGuests.Location = New Point(162, 287)
-        dgvGuests.Margin = New Padding(3, 4, 3, 4)
-        dgvGuests.Name = "dgvGuests"
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle3.ForeColor = Color.Maroon
-        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        dgvGuests.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        dgvGuests.RowHeadersWidth = 51
-        dgvGuests.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        dgvGuests.Size = New Size(1008, 481)
-        dgvGuests.TabIndex = 5
-        ' 
+        '
+        Me.dgvGuests.AllowUserToAddRows = False
+        Me.dgvGuests.AllowUserToDeleteRows = False
+        Me.dgvGuests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvGuests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvGuests.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colGuestID, Me.colSurname, Me.colFirstname, Me.colMiddlename, Me.colContact, Me.colEmail, Me.colIDType, Me.colIDNumber, Me.colVisits})
+        Me.dgvGuests.Location = New System.Drawing.Point(20, 150)
+        Me.dgvGuests.Name = "dgvGuests"
+        Me.dgvGuests.ReadOnly = True
+        Me.dgvGuests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvGuests.Size = New System.Drawing.Size(900, 400)
+        Me.dgvGuests.TabIndex = 0
+        '
         ' colGuestID
-        ' 
-        colGuestID.HeaderText = "Guest ID"
-        colGuestID.MinimumWidth = 6
-        colGuestID.Name = "colGuestID"
-        colGuestID.ReadOnly = True
-        ' 
+        '
+        Me.colGuestID.HeaderText = "ID"
+        Me.colGuestID.Name = "colGuestID"
+        Me.colGuestID.ReadOnly = True
+        Me.colGuestID.Visible = False
+        '
         ' colSurname
-        ' 
-        colSurname.HeaderText = "Surname"
-        colSurname.MinimumWidth = 6
-        colSurname.Name = "colSurname"
-        colSurname.ReadOnly = True
-        ' 
-        ' colFirstName
-        ' 
-        colFirstName.HeaderText = "First Name"
-        colFirstName.MinimumWidth = 6
-        colFirstName.Name = "colFirstName"
-        colFirstName.ReadOnly = True
-        ' 
-        ' colMiddle
-        ' 
-        colMiddle.HeaderText = "Middle"
-        colMiddle.MinimumWidth = 6
-        colMiddle.Name = "colMiddle"
-        colMiddle.ReadOnly = True
-        ' 
+        '
+        Me.colSurname.HeaderText = "Surname"
+        Me.colSurname.Name = "colSurname"
+        Me.colSurname.ReadOnly = True
+        '
+        ' colFirstname
+        '
+        Me.colFirstname.HeaderText = "First Name"
+        Me.colFirstname.Name = "colFirstname"
+        Me.colFirstname.ReadOnly = True
+        '
+        ' colMiddlename
+        '
+        Me.colMiddlename.HeaderText = "Middle Name"
+        Me.colMiddlename.Name = "colMiddlename"
+        Me.colMiddlename.ReadOnly = True
+        '
         ' colContact
-        ' 
-        colContact.HeaderText = "Contact"
-        colContact.MinimumWidth = 6
-        colContact.Name = "colContact"
-        colContact.ReadOnly = True
-        ' 
+        '
+        Me.colContact.HeaderText = "Contact"
+        Me.colContact.Name = "colContact"
+        Me.colContact.ReadOnly = True
+        '
         ' colEmail
-        ' 
-        colEmail.HeaderText = "Email"
-        colEmail.MinimumWidth = 6
-        colEmail.Name = "colEmail"
-        colEmail.ReadOnly = True
-        ' 
-        ' colValidIDType
-        ' 
-        colValidIDType.HeaderText = "Valid ID Type"
-        colValidIDType.MinimumWidth = 6
-        colValidIDType.Name = "colValidIDType"
-        colValidIDType.ReadOnly = True
-        ' 
-        ' colValidIDNumber
-        ' 
-        colValidIDNumber.HeaderText = "Valid ID Number"
-        colValidIDNumber.MinimumWidth = 6
-        colValidIDNumber.Name = "colValidIDNumber"
-        colValidIDNumber.ReadOnly = True
-        ' 
+        '
+        Me.colEmail.HeaderText = "Email"
+        Me.colEmail.Name = "colEmail"
+        Me.colEmail.ReadOnly = True
+        '
+        ' colIDType
+        '
+        Me.colIDType.HeaderText = "ID Type"
+        Me.colIDType.Name = "colIDType"
+        Me.colIDType.ReadOnly = True
+        '
+        ' colIDNumber
+        '
+        Me.colIDNumber.HeaderText = "ID Number"
+        Me.colIDNumber.Name = "colIDNumber"
+        Me.colIDNumber.ReadOnly = True
+        '
+        ' colVisits
+        '
+        Me.colVisits.HeaderText = "Total Visits"
+        Me.colVisits.Name = "colVisits"
+        Me.colVisits.ReadOnly = True
+        '
+        ' btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(20, 570)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 30)
+        Me.btnBack.TabIndex = 1
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = True
+        '
         ' btnAdd
-        ' 
-        btnAdd.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        btnAdd.ForeColor = Color.Beige
-        btnAdd.Location = New Point(162, 221)
-        btnAdd.Margin = New Padding(3, 4, 3, 4)
-        btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(197, 61)
-        btnAdd.TabIndex = 8
-        btnAdd.Text = "＋ ADD"
-        btnAdd.UseVisualStyleBackColor = False
-        ' 
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(20, 100)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(100, 30)
+        Me.btnAdd.TabIndex = 2
+        Me.btnAdd.Text = "Add Guest"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
         ' btnEdit
-        ' 
-        btnEdit.BackColor = Color.OldLace
-        btnEdit.ForeColor = Color.Maroon
-        btnEdit.Location = New Point(366, 221)
-        btnEdit.Margin = New Padding(3, 4, 3, 4)
-        btnEdit.Name = "btnEdit"
-        btnEdit.Size = New Size(197, 61)
-        btnEdit.TabIndex = 9
-        btnEdit.Text = "EDIT"
-        btnEdit.UseVisualStyleBackColor = False
-        ' 
+        '
+        Me.btnEdit.Location = New System.Drawing.Point(130, 100)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(100, 30)
+        Me.btnEdit.TabIndex = 3
+        Me.btnEdit.Text = "Edit Guest"
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
         ' btnDelete
-        ' 
-        btnDelete.BackColor = Color.OldLace
-        btnDelete.ForeColor = Color.Maroon
-        btnDelete.Location = New Point(569, 221)
-        btnDelete.Margin = New Padding(3, 4, 3, 4)
-        btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(197, 61)
-        btnDelete.TabIndex = 10
-        btnDelete.Text = "DELETE"
-        btnDelete.UseVisualStyleBackColor = False
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        Panel1.Controls.Add(btnSettings)
-        Panel1.Controls.Add(PictureBox3)
-        Panel1.Controls.Add(btnLogout)
-        Panel1.Controls.Add(btnDashboard)
-        Panel1.Controls.Add(btnGuests)
-        Panel1.Controls.Add(btnReservations)
-        Panel1.Dock = DockStyle.Left
-        Panel1.Location = New Point(0, 0)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(150, 807)
-        Panel1.TabIndex = 13
-        ' 
-        ' btnSettings
-        ' 
-        btnSettings.BackColor = Color.Transparent
-        btnSettings.FlatStyle = FlatStyle.Flat
-        btnSettings.Font = New Font("Mongolian Baiti", 11.25F)
-        btnSettings.ForeColor = Color.Beige
-        btnSettings.Location = New Point(3, 277)
-        btnSettings.Name = "btnSettings"
-        btnSettings.Size = New Size(144, 56)
-        btnSettings.TabIndex = 21
-        btnSettings.Text = "⚙ Settings"
-        btnSettings.UseVisualStyleBackColor = False
-        ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(11, 8)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(125, 92)
-        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox3.TabIndex = 15
-        PictureBox3.TabStop = False
-        ' 
-        ' btnLogout
-        ' 
-        btnLogout.BackColor = Color.Transparent
-        btnLogout.FlatStyle = FlatStyle.Flat
-        btnLogout.ForeColor = Color.Beige
-        btnLogout.Location = New Point(3, 533)
-        btnLogout.Margin = New Padding(3, 4, 3, 4)
-        btnLogout.Name = "btnLogout"
-        btnLogout.Size = New Size(144, 56)
-        btnLogout.TabIndex = 24
-        btnLogout.Text = ChrW(9211) & " Logout"
-        btnLogout.UseVisualStyleBackColor = False
-        ' 
-        ' btnDashboard
-        ' 
-        btnDashboard.BackColor = Color.Transparent
-        btnDashboard.FlatStyle = FlatStyle.Flat
-        btnDashboard.Font = New Font("Mongolian Baiti", 11.25F)
-        btnDashboard.ForeColor = Color.Beige
-        btnDashboard.Location = New Point(3, 113)
-        btnDashboard.Name = "btnDashboard"
-        btnDashboard.Size = New Size(144, 56)
-        btnDashboard.TabIndex = 20
-        btnDashboard.Text = "🏠 Dashboard"
-        btnDashboard.UseVisualStyleBackColor = False
-        ' 
-        ' btnGuests
-        ' 
-        btnGuests.BackColor = Color.Transparent
-        btnGuests.FlatStyle = FlatStyle.Flat
-        btnGuests.Font = New Font("Mongolian Baiti", 11.25F)
-        btnGuests.ForeColor = Color.Beige
-        btnGuests.Location = New Point(3, 225)
-        btnGuests.Margin = New Padding(3, 4, 3, 4)
-        btnGuests.Name = "btnGuests"
-        btnGuests.Size = New Size(144, 56)
-        btnGuests.TabIndex = 23
-        btnGuests.Text = "♟ Guest Management"
-        btnGuests.UseVisualStyleBackColor = False
-        ' 
-        ' btnReservations
-        ' 
-        btnReservations.BackColor = Color.Transparent
-        btnReservations.FlatStyle = FlatStyle.Flat
-        btnReservations.Font = New Font("Mongolian Baiti", 11.25F)
-        btnReservations.ForeColor = Color.Beige
-        btnReservations.Location = New Point(3, 169)
-        btnReservations.Margin = New Padding(3, 4, 3, 4)
-        btnReservations.Name = "btnReservations"
-        btnReservations.Size = New Size(144, 56)
-        btnReservations.TabIndex = 22
-        btnReservations.Text = "▤ Reservation"
-        btnReservations.UseVisualStyleBackColor = False
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(162, 113)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(94, 61)
-        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox2.TabIndex = 19
-        PictureBox2.TabStop = False
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(269, 149)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(522, 20)
-        Label4.TabIndex = 18
-        Label4.Text = "Manage guest information, update guest details, and keep records organized."
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
-        Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(265, 116)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(258, 30)
-        Label1.TabIndex = 17
-        Label1.Text = "Guest Management"
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        Panel2.Controls.Add(PictureBox4)
-        Panel2.Controls.Add(Label3)
-        Panel2.Controls.Add(Label2)
-        Panel2.Dock = DockStyle.Top
-        Panel2.Location = New Point(150, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1032, 112)
-        Panel2.TabIndex = 20
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(510, 0)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(522, 112)
-        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox4.TabIndex = 16
-        PictureBox4.TabStop = False
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic)
-        Label3.ForeColor = Color.Beige
-        Label3.Location = New Point(13, 59)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(264, 24)
-        Label3.TabIndex = 15
-        Label3.Text = "Where every stay feels extraordinary"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Imprint MT Shadow", 19.8000011F, FontStyle.Bold)
-        Label2.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        Label2.Location = New Point(7, 12)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(404, 40)
-        Label2.TabIndex = 0
-        Label2.Text = "H.A.J.K High Rise Hotel"
-        ' 
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(240, 100)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(100, 30)
+        Me.btnDelete.TabIndex = 4
+        Me.btnDelete.Text = "Delete Guest"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        ' btnSearch
+        '
+        Me.btnSearch.Location = New System.Drawing.Point(400, 60)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(100, 30)
+        Me.btnSearch.TabIndex = 5
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        ' txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(200, 65)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(180, 20)
+        Me.txtSearch.TabIndex = 6
+        '
+        ' lblSearch
+        '
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Location = New System.Drawing.Point(150, 68)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Size = New System.Drawing.Size(44, 13)
+        Me.lblSearch.TabIndex = 7
+        Me.lblSearch.Text = "Search:"
+        '
+        ' btnRefresh
+        '
+        Me.btnRefresh.Location = New System.Drawing.Point(520, 60)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(100, 30)
+        Me.btnRefresh.TabIndex = 8
+        Me.btnRefresh.Text = "Refresh"
+        Me.btnRefresh.UseVisualStyleBackColor = True
+        '
         ' btnStayHistory
-        ' 
-        btnStayHistory.BackColor = Color.OldLace
-        btnStayHistory.ForeColor = Color.Maroon
-        btnStayHistory.Location = New Point(773, 221)
-        btnStayHistory.Margin = New Padding(3, 4, 3, 4)
-        btnStayHistory.Name = "btnStayHistory"
-        btnStayHistory.Size = New Size(197, 61)
-        btnStayHistory.TabIndex = 21
-        btnStayHistory.Text = "STAY HISTORY"
-        btnStayHistory.UseVisualStyleBackColor = False
-        ' 
+        '
+        Me.btnStayHistory.Location = New System.Drawing.Point(350, 100)
+        Me.btnStayHistory.Name = "btnStayHistory"
+        Me.btnStayHistory.Size = New System.Drawing.Size(120, 30)
+        Me.btnStayHistory.TabIndex = 9
+        Me.btnStayHistory.Text = "View Stay History"
+        Me.btnStayHistory.UseVisualStyleBackColor = True
+        '
+        ' Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Maroon
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.Button11)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(950, 50)
+        Me.Panel1.TabIndex = 10
+        '
+        ' Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(15, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(180, 25)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "GUEST MANAGEMENT"
+        '
+        ' Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(0, 0)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(0, 0)
+        Me.Button11.TabIndex = 1
+        Me.Button11.Text = "Button11"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         ' GuestForm
-        ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
-        AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
-        ClientSize = New Size(1182, 807)
-        Controls.Add(btnStayHistory)
-        Controls.Add(Panel2)
-        Controls.Add(PictureBox2)
-        Controls.Add(Label4)
-        Controls.Add(Label1)
-        Controls.Add(Panel1)
-        Controls.Add(btnDelete)
-        Controls.Add(btnEdit)
-        Controls.Add(btnAdd)
-        Controls.Add(dgvGuests)
-        Controls.Add(btnRefresh)
-        Controls.Add(btnSearch)
-        Controls.Add(txtSearch)
-        Controls.Add(lblSearch)
-        FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
-        Name = "GuestForm"
-        StartPosition = FormStartPosition.CenterParent
-        Text = "GuestManagement"
-        CType(dgvGuests, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
-        Panel2.ResumeLayout(False)
-        Panel2.PerformLayout()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
-        ResumeLayout(False)
-        PerformLayout()
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(950, 620)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.btnStayHistory)
+        Me.Controls.Add(Me.btnRefresh)
+        Me.Controls.Add(Me.lblSearch)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.btnSearch)
+        Me.Controls.Add(Me.btnDelete)
+        Me.Controls.Add(Me.btnEdit)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.dgvGuests)
+        Me.Name = "GuestForm"
+        Me.Text = "Guest Management"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.dgvGuests, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
     End Sub
 
-    Friend WithEvents lblSearch As Label
-    Friend WithEvents txtSearch As TextBox
-    Friend WithEvents btnSearch As Button
-    Friend WithEvents btnRefresh As Button
     Friend WithEvents dgvGuests As DataGridView
+    Friend WithEvents colGuestID As DataGridViewTextBoxColumn
+    Friend WithEvents colSurname As DataGridViewTextBoxColumn
+    Friend WithEvents colFirstname As DataGridViewTextBoxColumn
+    Friend WithEvents colMiddlename As DataGridViewTextBoxColumn
+    Friend WithEvents colContact As DataGridViewTextBoxColumn
+    Friend WithEvents colEmail As DataGridViewTextBoxColumn
+    Friend WithEvents colIDType As DataGridViewTextBoxColumn
+    Friend WithEvents colIDNumber As DataGridViewTextBoxColumn
+    Friend WithEvents colVisits As DataGridViewTextBoxColumn
+    Friend WithEvents btnBack As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnDelete As Button
-    Friend WithEvents colGuestID As DataGridViewTextBoxColumn
-    Friend WithEvents colSurname As DataGridViewTextBoxColumn
-    Friend WithEvents colFirstName As DataGridViewTextBoxColumn
-    Friend WithEvents colMiddle As DataGridViewTextBoxColumn
-    Friend WithEvents colContact As DataGridViewTextBoxColumn
-    Friend WithEvents colEmail As DataGridViewTextBoxColumn
-    Friend WithEvents colValidIDType As DataGridViewTextBoxColumn
-    Friend WithEvents colValidIDNumber As DataGridViewTextBoxColumn
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnSettings As Button
-    Friend WithEvents btnLogout As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents btnGuests As Button
-    Friend WithEvents btnReservations As Button
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents lblSearch As Label
+    Friend WithEvents btnRefresh As Button
     Friend WithEvents btnStayHistory As Button
-    Friend WithEvents btnDashboard As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Button11 As Button
 End Class
