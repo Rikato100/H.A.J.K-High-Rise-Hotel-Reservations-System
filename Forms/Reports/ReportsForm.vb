@@ -1,32 +1,41 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class ReportsForm
 
     Private Sub ReportsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Default date range: First day of current month to Today
-        dtpStartDate.Value = New DateTime(DateTime.Today.Year, DateTime.Today.Month, 1)
+        ' Default date range to today
+        dtpStartDate.Value = DateTime.Today
         dtpEndDate.Value = DateTime.Today
 
-        ' Set up the grid
-        dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvReports.ReadOnly = True
-        dgvReports.AllowUserToAddRows = False
+        ' Set up the dropdown
+        cmbReportType.Items.Clear()
+        cmbReportType.Items.Add("Daily")
+        cmbReportType.Items.Add("Monthly")
+        cmbReportType.Items.Add("Annual")
+        cmbReportType.SelectedIndex = 0 ' Default to Daily
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
-        If dtpStartDate.Value.Date > dtpEndDate.Value.Date Then
-            MessageBox.Show("Start Date cannot be after End Date.", "Invalid Dates", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Exit Sub
-        End If
+        Dim filterQuery As String = ""
+        Dim title As String = ""
 
-        Dim startDate As String = dtpStartDate.Value.ToString("yyyy-MM-dd")
-        Dim endDate As String = dtpEndDate.Value.ToString("yyyy-MM-dd")
+        ' 1. Choose the SQL filter based on the dropdown
+        Select Case cmbReportType.Text
+            Case "Daily"
+                filterQuery = "DATE(p.payment_date) = @selectedDate"
+                title = "Daily Report for " & dtpStartDate.Value.ToString("MMM dd, yyyy")
+            Case "Monthly"
+                filterQuery = "MONTH(p.payment_date) = MONTH(@selectedDate) AND YEAR(p.payment_date) = YEAR(@selectedDate)"
+                title = "Monthly Report for " & dtpStartDate.Value.ToString("MMMM yyyy")
+            Case "Annual"
+                filterQuery = "YEAR(p.payment_date) = YEAR(@selectedDate)"
+                title = "Annual Report for " & dtpStartDate.Value.ToString("yyyy")
+        End Select
 
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' Query to get payments joined with reservation and guest details
                 Dim query As String =
                     "SELECT p.payment_date, r.res_code, " &
                     "CONCAT(g.surname, ', ', g.firstname) AS guest_name, " &
@@ -34,12 +43,12 @@ Public Class ReportsForm
                     "FROM payment p " &
                     "INNER JOIN reservation r ON p.res_id = r.res_id " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
-                    "WHERE DATE(p.payment_date) BETWEEN @start AND @end " &
+                    "WHERE " & filterQuery & " " &
                     "ORDER BY p.payment_date DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@start", startDate)
-                    cmd.Parameters.AddWithValue("@end", endDate)
+                    ' We use dtpStartDate as the reference date for all reports
+                    cmd.Parameters.AddWithValue("@selectedDate", dtpStartDate.Value.Date)
 
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         dgvReports.Rows.Clear()
@@ -58,7 +67,7 @@ Public Class ReportsForm
                             )
                         End While
 
-                        lblTotalRevenue.Text = "Total Revenue: ₱" & grandTotal.ToString("N2")
+                        lblTotalRevenue.Text = title & " | Total Revenue: ₱" & grandTotal.ToString("N2")
                     End Using
                 End Using
             End Using
@@ -71,5 +80,4 @@ Public Class ReportsForm
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
-
 End Class
