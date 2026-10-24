@@ -2,6 +2,8 @@ Imports System.Security.Cryptography
 Imports System.Text
 
 Public Class PasswordHash
+
+    ' Static salt ensures the hash is always the same
     Private Const Salt As String = "HajkHotelSystemSalt123!"
 
     Public Shared Function HashPassword(password As String) As String
@@ -14,11 +16,7 @@ Public Class PasswordHash
     End Function
 
     Public Shared Function VerifyPassword(password As String, storedHash As String) As Boolean
-        ' Trim to remove any accidental invisible spaces
-        Dim inputHash As String = HashPassword(password).Trim()
-        Dim dbHash As String = storedHash.Trim()
-
-        Return inputHash = dbHash
+        Return HashPassword(password).Trim() = storedHash.Trim()
     End Function
 
 End Class
