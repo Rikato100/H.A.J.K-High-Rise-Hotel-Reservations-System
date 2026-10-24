@@ -1,11 +1,6 @@
 Imports MySql.Data.MySqlClient
 
 Public Class ReservationListForm
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Me.TopLevel = False
-        Me.Close()
-    End Sub
-
     Private Sub ReservationListForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TopLevel = False
         dgvReservations.SelectionMode = DataGridViewSelectionMode.FullRowSelect

@@ -22,9 +22,9 @@ Partial Class GuestForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GuestForm))
         lblSearch = New Label()
         txtSearch = New TextBox()
@@ -42,7 +42,6 @@ Partial Class GuestForm
         btnAdd = New Button()
         btnEdit = New Button()
         btnDelete = New Button()
-        btnBack = New Button()
         Panel1 = New Panel()
         btnSettings = New Button()
         PictureBox3 = New PictureBox()
@@ -114,37 +113,37 @@ Partial Class GuestForm
         dgvGuests.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvGuests.BackgroundColor = Color.Beige
         dgvGuests.BorderStyle = BorderStyle.None
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.Maroon
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle4.ForeColor = Color.Beige
-        DataGridViewCellStyle4.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle4.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        dgvGuests.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.Maroon
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvGuests.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvGuests.Columns.AddRange(New DataGridViewColumn() {colGuestID, colSurname, colFirstName, colMiddle, colContact, colEmail, colValidIDType, colValidIDNumber})
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.Beige
-        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle5.ForeColor = Color.Maroon
-        DataGridViewCellStyle5.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle5.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
-        dgvGuests.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Maroon
+        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvGuests.DefaultCellStyle = DataGridViewCellStyle2
         dgvGuests.EnableHeadersVisualStyles = False
         dgvGuests.GridColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         dgvGuests.Location = New Point(162, 287)
         dgvGuests.Margin = New Padding(3, 4, 3, 4)
         dgvGuests.Name = "dgvGuests"
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.Beige
-        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle6.ForeColor = Color.Maroon
-        DataGridViewCellStyle6.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle6.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        dgvGuests.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.Maroon
+        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
+        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvGuests.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvGuests.RowHeadersWidth = 51
         dgvGuests.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvGuests.Size = New Size(1008, 481)
@@ -241,18 +240,6 @@ Partial Class GuestForm
         btnDelete.TabIndex = 10
         btnDelete.Text = "DELETE"
         btnDelete.UseVisualStyleBackColor = False
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.OldLace
-        btnBack.ForeColor = Color.Maroon
-        btnBack.Location = New Point(976, 221)
-        btnBack.Margin = New Padding(3, 4, 3, 4)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(197, 61)
-        btnBack.TabIndex = 11
-        btnBack.Text = "← BACK"
-        btnBack.UseVisualStyleBackColor = False
         ' 
         ' Panel1
         ' 
@@ -445,7 +432,6 @@ Partial Class GuestForm
         Controls.Add(Label4)
         Controls.Add(Label1)
         Controls.Add(Panel1)
-        Controls.Add(btnBack)
         Controls.Add(btnDelete)
         Controls.Add(btnEdit)
         Controls.Add(btnAdd)
@@ -478,7 +464,6 @@ Partial Class GuestForm
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnDelete As Button
-    Friend WithEvents btnBack As Button
     Friend WithEvents colGuestID As DataGridViewTextBoxColumn
     Friend WithEvents colSurname As DataGridViewTextBoxColumn
     Friend WithEvents colFirstName As DataGridViewTextBoxColumn

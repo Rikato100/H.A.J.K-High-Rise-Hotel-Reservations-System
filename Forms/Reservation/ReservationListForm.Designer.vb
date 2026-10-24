@@ -43,7 +43,6 @@ Partial Class ReservationListForm
         btnAddReservation = New Button()
         btnEdit = New Button()
         btnCancelReservation = New Button()
-        btnBack = New Button()
         btnDelete = New Button()
         Panel1 = New Panel()
         btnLogout = New Button()
@@ -255,18 +254,6 @@ Partial Class ReservationListForm
         btnCancelReservation.TabIndex = 11
         btnCancelReservation.Text = "CANCEL RESERVATION"
         btnCancelReservation.UseVisualStyleBackColor = False
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.OldLace
-        btnBack.ForeColor = Color.Maroon
-        btnBack.Location = New Point(974, 219)
-        btnBack.Margin = New Padding(3, 4, 3, 4)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(197, 45)
-        btnBack.TabIndex = 12
-        btnBack.Text = "← BACK"
-        btnBack.UseVisualStyleBackColor = False
         ' 
         ' btnDelete
         ' 
@@ -522,7 +509,6 @@ Partial Class ReservationListForm
         Controls.Add(Label1)
         Controls.Add(Panel1)
         Controls.Add(btnDelete)
-        Controls.Add(btnBack)
         Controls.Add(btnCancelReservation)
         Controls.Add(btnEdit)
         Controls.Add(btnAddReservation)
@@ -556,7 +542,6 @@ Partial Class ReservationListForm
     Friend WithEvents btnAddReservation As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnCancelReservation As Button
-    Friend WithEvents btnBack As Button
     Friend WithEvents colResID As DataGridViewTextBoxColumn
     Friend WithEvents colResCode As DataGridViewTextBoxColumn
     Friend WithEvents colCheckIn As DataGridViewTextBoxColumn
