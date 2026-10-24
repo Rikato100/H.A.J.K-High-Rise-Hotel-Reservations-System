@@ -117,7 +117,7 @@ Partial Class RoomForm
         dgvRooms.RowHeadersWidth = 51
         dgvRooms.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvRooms.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvRooms.Size = New Size(882, 274)
+        dgvRooms.Size = New Size(873, 274)
         dgvRooms.TabIndex = 2
         ' 
         ' colRoomNumber

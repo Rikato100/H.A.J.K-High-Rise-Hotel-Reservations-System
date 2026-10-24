@@ -4,9 +4,12 @@
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim login As New loginForm()
-        login.Show()
-        Me.Close()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Dim login As New loginForm()
+            login.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click

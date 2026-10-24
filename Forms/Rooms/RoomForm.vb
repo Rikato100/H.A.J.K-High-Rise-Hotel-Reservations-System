@@ -129,16 +129,20 @@ Public Class RoomForm
     ' BACK
     ' =========================
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim login As New loginForm()
-        login.Show()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        'Loop through all open forms and close any active dashboards
-        For Each frm As Form In Application.OpenForms
-            If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
-                frm.Close()
-                Exit For
-            End If
-        Next
+        If result = DialogResult.Yes Then
+            Dim login As New loginForm()
+            login.Show()
+
+            ' Loop safely through a copy of open forms to close active dashboards
+            For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
+                If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
+                    frm.Close()
+                End If
+            Next
+        End If
+
     End Sub
 
     Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
@@ -154,11 +158,27 @@ Public Class RoomForm
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        MessageBox.Show("Design not done yet.")
+        Me.Controls.Clear()
+
+        Dim staffManagement As New StaffManagementForm()
+        staffManagement.TopLevel = False
+        staffManagement.FormBorderStyle = FormBorderStyle.None
+        staffManagement.Dock = DockStyle.Fill
+
+        Me.Controls.Add(staffManagement)
+        staffManagement.Show()
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        MessageBox.Show("Design not done yet.")
+        Me.Controls.Clear()
+
+        Dim reports As New ReportsForm()
+        reports.TopLevel = False
+        reports.FormBorderStyle = FormBorderStyle.None
+        reports.Dock = DockStyle.Fill
+
+        Me.Controls.Add(reports)
+        reports.Show()
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click

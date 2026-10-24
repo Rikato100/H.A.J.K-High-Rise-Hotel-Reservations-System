@@ -641,17 +641,16 @@ Public Class ReservationListForm
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim login As New loginForm()
-        login.Show()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        Dim parentForm As Form = Me.FindForm()
-        If parentForm IsNot Nothing AndAlso Not TypeOf parentForm Is ReservationListForm Then
-            parentForm.Close()
-        Else
-            For Each frm As Form In Application.OpenForms
+        If result = DialogResult.Yes Then
+            Dim login As New loginForm()
+            login.Show()
+
+            ' Loop safely through a copy of open forms to close active dashboards
+            For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
                 If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
                     frm.Close()
-                    Exit For
                 End If
             Next
         End If

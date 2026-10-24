@@ -3,6 +3,7 @@ Imports MySql.Data.MySqlClient
 Public Class ReportsForm
 
     Private Sub ReportsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopLevel = False
         ' Default date range to today
         dtpStartDate.Value = DateTime.Today
         dtpEndDate.Value = DateTime.Today
@@ -77,7 +78,58 @@ Public Class ReportsForm
         End Try
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        Me.Close()
+    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
+        Me.Controls.Clear()
+
+        Dim mainDashboard As New AdminDashboard()
+        mainDashboard.TopLevel = False
+        mainDashboard.FormBorderStyle = FormBorderStyle.None
+        mainDashboard.Dock = DockStyle.Fill
+
+        Me.Controls.Add(mainDashboard)
+        mainDashboard.Show()
+
+    End Sub
+
+    Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
+        Me.Controls.Clear()
+
+        Dim rooms As New RoomForm()
+        rooms.TopLevel = False
+        rooms.FormBorderStyle = FormBorderStyle.None
+        rooms.Dock = DockStyle.Fill
+
+        Me.Controls.Add(rooms)
+        rooms.Show()
+
+    End Sub
+
+    Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
+        Me.Controls.Clear()
+
+        Dim staffManagement As New StaffManagementForm()
+        staffManagement.TopLevel = False
+        staffManagement.FormBorderStyle = FormBorderStyle.None
+        staffManagement.Dock = DockStyle.Fill
+
+        Me.Controls.Add(staffManagement)
+        staffManagement.Show()
+
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            Dim login As New loginForm()
+            login.Show()
+
+            ' Loop safely through a copy of open forms to close active dashboards
+            For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
+                If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
+                    frm.Close()
+                End If
+            Next
+        End If
     End Sub
 End Class

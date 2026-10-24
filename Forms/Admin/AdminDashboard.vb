@@ -88,9 +88,12 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim login As New loginForm()
-        login.Show()
-        Me.Close()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Dim login As New loginForm()
+            login.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
@@ -109,15 +112,40 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        MessageBox.Show("Design not done yet.")
+        Me.Controls.Clear()
+
+        Dim staffManagement As New StaffManagementForm()
+        staffManagement.TopLevel = False
+        staffManagement.FormBorderStyle = FormBorderStyle.None
+        staffManagement.Dock = DockStyle.Fill
+
+        Me.Controls.Add(staffManagement)
+        staffManagement.Show()
+
+
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        MessageBox.Show("Design not done yet.")
+        Me.Controls.Clear()
+
+        Dim reports As New ReportsForm()
+        reports.TopLevel = False
+        reports.FormBorderStyle = FormBorderStyle.None
+        reports.Dock = DockStyle.Fill
+
+        Me.Controls.Add(reports)
+        reports.Show()
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         MessageBox.Show("Design not done yet.")
     End Sub
 
+    Private Sub cardDeparting_Paint(sender As Object, e As PaintEventArgs) Handles cardDeparting.Paint
+
+    End Sub
+
+    Private Sub lblArrivingToday_Click(sender As Object, e As EventArgs) Handles lblArrivingToday.Click
+
+    End Sub
 End Class

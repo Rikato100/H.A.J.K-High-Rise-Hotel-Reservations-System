@@ -53,7 +53,6 @@ Public Class SettingsForm
 
     Private Sub SetEditorEnabled(enabled As Boolean)
         numRate.Enabled = enabled
-        chkBoxVatExempt.Enabled = enabled
         dtpStartDate.Enabled = enabled
         dtpEndDate.Enabled = enabled
         btnSaveDiscount.Enabled = enabled
@@ -68,7 +67,6 @@ Public Class SettingsForm
         lblSelectDiscount.Text = row.Cells("discount_name").Value.ToString()
 
         numRate.Value = Convert.ToDecimal(row.Cells("discount_rate").Value)
-        chkBoxVatExempt.Checked = Convert.ToBoolean(row.Cells("vat_exempt").Value)
 
         LoadDate(dtpStartDate, row.Cells("start_date").Value)
         LoadDate(dtpEndDate, row.Cells("end_date").Value)
@@ -110,12 +108,11 @@ Public Class SettingsForm
                 conn.Open()
                 Dim query As String =
                     "UPDATE discount SET discount_rate = @rate, start_date = @start, " &
-                    "end_date = @end, vat_exempt = @vat WHERE discount_id = @id"
+                    "end_date = @end WHERE discount_id = @id"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@rate", numRate.Value)
                     cmd.Parameters.AddWithValue("@start", If(dtpStartDate.Checked, CObj(dtpStartDate.Value.Date), DBNull.Value))
                     cmd.Parameters.AddWithValue("@end", If(dtpEndDate.Checked, CObj(dtpEndDate.Value.Date), DBNull.Value))
-                    cmd.Parameters.AddWithValue("@vat", chkBoxVatExempt.Checked)
                     cmd.Parameters.AddWithValue("@id", selectedId)
                     cmd.ExecuteNonQuery()
                 End Using
@@ -211,23 +208,4 @@ Public Class SettingsForm
         Return ""
     End Function
 
-    Private Sub dgvDiscounts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDiscounts.CellContentClick
-
-    End Sub
-
-    Private Sub TabPageDiscounts_Click(sender As Object, e As EventArgs) Handles TabPageDiscounts.Click
-
-    End Sub
-
-    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
-
-    End Sub
-
-    Private Sub chkBoxVatExempt_CheckedChanged(sender As Object, e As EventArgs) Handles chkBoxVatExempt.CheckedChanged
-
-    End Sub
-
-    Private Sub TabPagePassword_Click(sender As Object, e As EventArgs) Handles TabPagePassword.Click
-
-    End Sub
 End Class
