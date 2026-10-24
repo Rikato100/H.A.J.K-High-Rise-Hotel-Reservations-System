@@ -1,9 +1,9 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class RoomForm
 
     Private Sub RoomForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TopLevel = False
+        Me.TopLevel = True
         LoadRooms()
     End Sub
 
