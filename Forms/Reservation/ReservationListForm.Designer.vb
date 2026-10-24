@@ -2,6 +2,7 @@
 Partial Class ReservationListForm
     Inherits System.Windows.Forms.Form
 
+    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -13,8 +14,12 @@ Partial Class ReservationListForm
         End Try
     End Sub
 
+    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -25,6 +30,7 @@ Partial Class ReservationListForm
         txtSearch = New TextBox()
         btnSearch = New Button()
         btnRefresh = New Button()
+        cmbStatusFilter = New ComboBox()
         dgvReservations = New DataGridView()
         colResID = New DataGridViewTextBoxColumn()
         colResCode = New DataGridViewTextBoxColumn()
@@ -111,6 +117,16 @@ Partial Class ReservationListForm
         btnRefresh.TabIndex = 6
         btnRefresh.Text = "↻ REFRESH"
         btnRefresh.UseVisualStyleBackColor = False
+        ' 
+        ' cmbStatusFilter
+        ' 
+        cmbStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbStatusFilter.FormattingEnabled = True
+        cmbStatusFilter.Items.AddRange(New Object() {"All", "Pending", "Check-In", "Check-Out", "No-Show", "Canceled"})
+        cmbStatusFilter.Location = New Point(898, 184)
+        cmbStatusFilter.Name = "cmbStatusFilter"
+        cmbStatusFilter.Size = New Size(140, 28)
+        cmbStatusFilter.TabIndex = 31
         ' 
         ' dgvReservations
         ' 
@@ -518,6 +534,7 @@ Partial Class ReservationListForm
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1182, 784)
+        Controls.Add(cmbStatusFilter)
         Controls.Add(btnPrintInvoice)
         Controls.Add(cmbInvoiceType)
         Controls.Add(btnExport)
@@ -559,6 +576,7 @@ Partial Class ReservationListForm
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents btnSearch As Button
     Friend WithEvents btnRefresh As Button
+    Friend WithEvents cmbStatusFilter As ComboBox
     Friend WithEvents dgvReservations As DataGridView
     Friend WithEvents btnAddReservation As Button
     Friend WithEvents btnEdit As Button
