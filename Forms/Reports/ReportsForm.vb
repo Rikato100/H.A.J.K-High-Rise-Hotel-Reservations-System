@@ -3,7 +3,6 @@ Imports MySql.Data.MySqlClient
 Public Class ReportsForm
 
     Private Sub ReportsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TopLevel = False
         ' Default date range to today
         dtpStartDate.Value = DateTime.Today
         dtpEndDate.Value = DateTime.Today
