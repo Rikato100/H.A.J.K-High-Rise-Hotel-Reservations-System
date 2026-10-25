@@ -210,10 +210,12 @@ Public Class Reservation
     End Sub
 
     Private Sub LoadRooms()
+        Dim keepRoomID As Integer = 0
+        If cmbRoom.SelectedItem IsNot Nothing Then keepRoomID = CType(cmbRoom.SelectedItem, RoomComboItem).RoomID
+
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                ' FIX #1: Proper Overbooking Date Overlap Check
                 Dim query As String =
                     "SELECT r.room_id, r.room_number, rt.type_name, " &
                     "rt.base_rate, rt.standard_capacity, rt.max_capacity, rt.amenities " &
@@ -223,11 +225,13 @@ Public Class Reservation
                     "AND r.room_id NOT IN (" &
                     "    SELECT room_id FROM reservation " &
                     "    WHERE res_status IN ('Pending', 'Check-In') " &
+                    "    AND res_id <> @resID " &
                     "    AND (@newCheckIn < check_out AND @newCheckOut > check_in)" &
                     ") " &
                     "ORDER BY r.room_number"
 
                 Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@resID", reservationID)
                     cmd.Parameters.AddWithValue("@newCheckIn", dtpCheckIn.Value.Date)
                     cmd.Parameters.AddWithValue("@newCheckOut", dtpCheckOut.Value.Date)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
@@ -246,6 +250,14 @@ Public Class Reservation
                     End Using
                 End Using
             End Using
+
+            ' Keep the chosen room if it is still free for the new dates
+            For i As Integer = 0 To cmbRoom.Items.Count - 1
+                If CType(cmbRoom.Items(i), RoomComboItem).RoomID = keepRoomID Then
+                    cmbRoom.SelectedIndex = i
+                    Exit For
+                End If
+            Next
         Catch ex As Exception
             MessageBox.Show("Error loading rooms: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -428,6 +440,9 @@ Public Class Reservation
             Exit Sub
         End If
 
+        Dim newResID As Integer = 0
+        Dim totalForPayment As Decimal = 0D
+
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
@@ -505,29 +520,8 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
                         cmd.ExecuteNonQuery()
 
-                        ' FIX #2: Allow Cash payments without a reference AND allow partial payments
-                        Dim downpayment As Decimal = 0
-                        ' Assuming you added a txtDownpayment textbox. If not, this defaults to 0.
-                        ' If txtDownpayment.Text is empty or invalid, it stays 0.
-                        ' Decimal.TryParse(txtDownpayment.Text, downpayment) 
-                        
-                        ' For now, if you want to fix the "Cash" bug without adding a textbox, 
-                        ' we just check if a payment method was selected.
-                        If cmbPaymentMethod.SelectedIndex > -1 AndAlso downpayment > 0 Then
-                            Dim newResID As Integer = CInt(cmd.LastInsertedId)
-                            Dim payQuery As String = "INSERT INTO payment (res_id, amount, payment_method, reference_no) VALUES (@resID, @amount, @method, @refNo)"
-                            Using payCmd As New MySqlCommand(payQuery, conn)
-                                payCmd.Parameters.AddWithValue("@resID", newResID)
-                                payCmd.Parameters.AddWithValue("@amount", downpayment)
-                                payCmd.Parameters.AddWithValue("@method", cmbPaymentMethod.Text)
-                                If String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
-                                    payCmd.Parameters.AddWithValue("@refNo", DBNull.Value)
-                                Else
-                                    payCmd.Parameters.AddWithValue("@refNo", txtReferenceNo.Text.Trim())
-                                End If
-                                payCmd.ExecuteNonQuery()
-                            End Using
-                        End If
+                        newResID = CInt(cmd.LastInsertedId)
+                        totalForPayment = totalAmount
                     End Using
 
                     If dtpCheckIn.Value.Date = DateTime.Today Then
@@ -594,6 +588,17 @@ Public Class Reservation
                 End If
             End Using
 
+            ' New reservation: offer to record a payment (partial payments allowed)
+            If newResID > 0 Then
+                If MessageBox.Show("Record a payment for this reservation now?", "Payment",
+                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    Dim fullName As String = (txtFirstName.Text.Trim() & " " & txtSurname.Text.Trim()).Trim()
+                    Using pf As New PaymentForm(newResID, fullName, totalForPayment)
+                        pf.ShowDialog(Me)
+                    End Using
+                End If
+            End If
+
             Me.DialogResult = DialogResult.OK
             Me.Close()
 
@@ -643,6 +648,9 @@ Public Class Reservation
                                 txtValidIdNumber.Text = If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             End If
 
+                            ' Dates first, so the room list is loaded for these dates before the room is selected
+                            dtpCheckIn.Value = Convert.ToDateTime(reader("check_in"))
+                            dtpCheckOut.Value = Convert.ToDateTime(reader("check_out"))
                             Dim roomID As Integer = Convert.ToInt32(reader("room_id"))
                             For i As Integer = 0 To cmbRoom.Items.Count - 1
                                 Dim room As RoomComboItem = CType(cmbRoom.Items(i), RoomComboItem)
@@ -652,8 +660,6 @@ Public Class Reservation
                                 End If
                             Next
 
-                            dtpCheckIn.Value = Convert.ToDateTime(reader("check_in"))
-                            dtpCheckOut.Value = Convert.ToDateTime(reader("check_out"))
                             numAdults.Value = Math.Max(numAdults.Minimum, Math.Min(numAdults.Maximum, Convert.ToDecimal(reader("adults"))))
                             numChildren.Value = Math.Max(numChildren.Minimum, Math.Min(numChildren.Maximum, Convert.ToDecimal(reader("children"))))
 
