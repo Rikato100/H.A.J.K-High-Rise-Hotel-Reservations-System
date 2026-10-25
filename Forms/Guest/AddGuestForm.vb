@@ -18,6 +18,8 @@ Public Class AddGuestForm
         cmbValidIDType.Items.Clear()
         cmbValidIDType.Items.Add("Senior Citizen ID")
         cmbValidIDType.Items.Add("PWD ID")
+        cmbValidIDType.Items.Add("Voter's ID")
+        cmbValidIDType.Items.Add("Student ID")
         cmbValidIDType.Items.Add("Driver's License")
         cmbValidIDType.Items.Add("Passport")
         cmbValidIDType.Items.Add("National ID")
@@ -79,6 +81,22 @@ Public Class AddGuestForm
 
         If txtContact.Text.Trim() = "" Then
             MessageBox.Show("Please enter the contact number.")
+            Exit Sub
+        End If
+
+        ' Contact: digits only (spaces and dashes allowed, optional leading +), 7 to 15 digits
+        Dim contactDigits As String = txtContact.Text.Trim().Replace(" ", "").Replace("-", "")
+        If Not System.Text.RegularExpressions.Regex.IsMatch(contactDigits, "^\+?[0-9]{7,15}$") Then
+            MessageBox.Show("Please enter a valid contact number (digits only, 7 to 15 digits).", "Invalid Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtContact.Focus()
+            Exit Sub
+        End If
+
+        ' Email is optional, but if typed it must look like an email
+        If txtEmail.Text.Trim() <> "" AndAlso
+           Not System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text.Trim(), "^[^@\s]+@[^@\s]+\.[^@\s]+$") Then
+            MessageBox.Show("Please enter a valid email address, or leave it blank.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtEmail.Focus()
             Exit Sub
         End If
 
