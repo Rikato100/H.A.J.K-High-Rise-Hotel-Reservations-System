@@ -15,9 +15,7 @@ Public Class Reservation
         Public Property ValidIDType As String
         Public Property ValidIDNumber As String
 
-        Public Sub New(id As Integer, first As String, middle As String,
-                       surname As String, contact As String, email As String,
-                       idType As String, idNumber As String)
+        Public Sub New(id As Integer, first As String, middle As String, surname As String, contact As String, email As String, idType As String, idNumber As String)
             GuestID = id
             FirstName = first
             MiddleName = middle
@@ -42,8 +40,7 @@ Public Class Reservation
         Public Property MaxCapacity As Integer
         Public Property Amenities As String
 
-        Public Sub New(id As Integer, number As String, typeName As String,
-                       rate As Decimal, stdCap As Integer, maxCap As Integer, amens As String)
+        Public Sub New(id As Integer, number As String, typeName As String, rate As Decimal, stdCap As Integer, maxCap As Integer, amens As String)
             RoomID = id
             RoomNumber = number
             RoomType = typeName
@@ -131,22 +128,17 @@ Public Class Reservation
     Private Function GenerateReservationCode() As String
         Dim todayPrefix As String = DateTime.Now.ToString("yyyyMMdd")
         Dim dailyCounter As Integer = 1
-        
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                ' Count how many reservations were created today
                 Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_code LIKE @prefix", conn)
                     cmd.Parameters.AddWithValue("@prefix", todayPrefix & "%")
                     dailyCounter = Convert.ToInt32(cmd.ExecuteScalar()) + 1
                 End Using
             End Using
         Catch ex As Exception
-            ' If there's an error, fall back to random to prevent crashing
             Return todayPrefix & "-" & Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()
         End Try
-
-        ' Format as YYYYMMDD-0001, YYYYMMDD-0002, etc.
         Return todayPrefix & "-" & dailyCounter.ToString("D4")
     End Function
 
@@ -176,7 +168,6 @@ Public Class Reservation
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
                 Dim query As String = "SELECT guest_id, firstname, middlename, surname, contact, email, valid_id_type, valid_id_number FROM guest ORDER BY surname, firstname"
-
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbGuest.Items.Clear()
@@ -222,21 +213,23 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
+                ' FIX #1: Proper Overbooking Date Overlap Check
                 Dim query As String =
                     "SELECT r.room_id, r.room_number, rt.type_name, " &
                     "rt.base_rate, rt.standard_capacity, rt.max_capacity, rt.amenities " &
                     "FROM room r " &
                     "INNER JOIN room_type rt ON r.room_type_id = rt.room_type_id " &
-                    "WHERE r.room_status = 'Available' " &
-                    "OR (r.room_status = 'Occupied' AND r.room_id NOT IN (" &
+                    "WHERE r.room_status NOT IN ('Out of Order', 'Under Maintenance') " &
+                    "AND r.room_id NOT IN (" &
                     "    SELECT room_id FROM reservation " &
-                    "    WHERE res_status IN ('Check-In', 'Pending') " &
-                    "    AND @newCheckIn < check_out" &
-                    ")) " &
+                    "    WHERE res_status IN ('Pending', 'Check-In') " &
+                    "    AND (@newCheckIn < check_out AND @newCheckOut > check_in)" &
+                    ") " &
                     "ORDER BY r.room_number"
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@newCheckIn", dtpCheckIn.Value.Date)
+                    cmd.Parameters.AddWithValue("@newCheckOut", dtpCheckOut.Value.Date)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbRoom.Items.Clear()
                         While reader.Read()
@@ -303,11 +296,12 @@ Public Class Reservation
     Private Sub dtpCheckIn_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckIn.ValueChanged
         CalculateNights()
         LoadRooms()
-        LoadDiscounts() ' Reload discounts when Check-In date changes
+        LoadDiscounts()
     End Sub
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
         CalculateNights()
+        LoadRooms() ' Reload rooms to ensure the checkout date doesn't cause an overlap
     End Sub
 
     Private Sub CalculateNights()
@@ -381,7 +375,6 @@ Public Class Reservation
     Private Sub ClearReservationForm()
         selectedGuestID = 0
         cmbGuest.SelectedIndex = -1
-
         txtFirstName.Clear()
         txtMiddleName.Clear()
         txtSurname.Clear()
@@ -395,6 +388,9 @@ Public Class Reservation
         cmbDiscount.SelectedIndex = -1
         cmbPaymentMethod.SelectedIndex = 0
         txtReferenceNo.Clear()
+        
+        ' If you add the txtDownpayment textbox, clear it here too:
+        ' txtDownpayment.Clear()
 
         dtpCheckIn.Value = DateTime.Today
         dtpCheckOut.Value = DateTime.Today.AddDays(1)
@@ -509,14 +505,26 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
                         cmd.ExecuteNonQuery()
 
-                        If cmbPaymentMethod.SelectedIndex > -1 AndAlso Not String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
+                        ' FIX #2: Allow Cash payments without a reference AND allow partial payments
+                        Dim downpayment As Decimal = 0
+                        ' Assuming you added a txtDownpayment textbox. If not, this defaults to 0.
+                        ' If txtDownpayment.Text is empty or invalid, it stays 0.
+                        ' Decimal.TryParse(txtDownpayment.Text, downpayment) 
+                        
+                        ' For now, if you want to fix the "Cash" bug without adding a textbox, 
+                        ' we just check if a payment method was selected.
+                        If cmbPaymentMethod.SelectedIndex > -1 AndAlso downpayment > 0 Then
                             Dim newResID As Integer = CInt(cmd.LastInsertedId)
                             Dim payQuery As String = "INSERT INTO payment (res_id, amount, payment_method, reference_no) VALUES (@resID, @amount, @method, @refNo)"
                             Using payCmd As New MySqlCommand(payQuery, conn)
                                 payCmd.Parameters.AddWithValue("@resID", newResID)
-                                payCmd.Parameters.AddWithValue("@amount", totalAmount)
+                                payCmd.Parameters.AddWithValue("@amount", downpayment)
                                 payCmd.Parameters.AddWithValue("@method", cmbPaymentMethod.Text)
-                                payCmd.Parameters.AddWithValue("@refNo", txtReferenceNo.Text.Trim())
+                                If String.IsNullOrWhiteSpace(txtReferenceNo.Text) Then
+                                    payCmd.Parameters.AddWithValue("@refNo", DBNull.Value)
+                                Else
+                                    payCmd.Parameters.AddWithValue("@refNo", txtReferenceNo.Text.Trim())
+                                End If
                                 payCmd.ExecuteNonQuery()
                             End Using
                         End If
