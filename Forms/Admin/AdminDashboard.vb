@@ -96,49 +96,32 @@ Public Class AdminDashboard
         End If
     End Sub
 
+    ' Rooms, Staff, Reports and Settings open as pop-ups so the dashboard is not wiped
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
-        'clears out the current screen's contents
-        Me.Controls.Clear()
-
-        Dim rooms As New RoomForm()
-        rooms.TopLevel = False
-        rooms.FormBorderStyle = FormBorderStyle.None
-        rooms.Dock = DockStyle.Fill
-
-        Me.Controls.Add(rooms)
-        rooms.Show()
-
+        Using f As New RoomForm()
+            f.ShowDialog(Me)
+        End Using
         LoadDashboardCounts()
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        Me.Controls.Clear()
-
-        Dim staffManagement As New StaffManagementForm()
-        staffManagement.TopLevel = False
-        staffManagement.FormBorderStyle = FormBorderStyle.None
-        staffManagement.Dock = DockStyle.Fill
-
-        Me.Controls.Add(staffManagement)
-        staffManagement.Show()
-
-
+        Using f As New StaffManagementForm()
+            f.ShowDialog(Me)
+        End Using
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        Me.Controls.Clear()
-
-        Dim reports As New ReportsForm()
-        reports.TopLevel = False
-        reports.FormBorderStyle = FormBorderStyle.None
-        reports.Dock = DockStyle.Fill
-
-        Me.Controls.Add(reports)
-        reports.Show()
+        Using f As New ReportsForm()
+            f.ShowDialog(Me)
+        End Using
     End Sub
 
+    ' Settings contains Discounts, Change Password and (Admin only) System Reset
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        MessageBox.Show("Design not done yet.")
+        Using f As New SettingsForm()
+            f.ShowDialog(Me)
+        End Using
+        LoadDashboardCounts()
     End Sub
 
     Private Sub cardDeparting_Paint(sender As Object, e As PaintEventArgs) Handles cardDeparting.Paint
