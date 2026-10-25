@@ -116,9 +116,7 @@ Public Class AdminDashboard
 
     ' Settings contains Discounts, Change Password and (Admin only) System Reset
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        Using f As New SettingsForm()
-            f.ShowDialog(Me)
-        End Using
+        MessageBox.Show("Design not done yet.")
         LoadDashboardCounts()
     End Sub
 
