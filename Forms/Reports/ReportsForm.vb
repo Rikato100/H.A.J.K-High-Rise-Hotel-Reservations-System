@@ -76,7 +76,7 @@ Public Class ReportsForm
         Dim width As Integer = e.MarginBounds.Width
         Dim y As Single = e.MarginBounds.Top
 
-        Dim widths() As Single = {0.22F, 0.22F, 0.28F, 0.14F, 0.14F}
+        Dim widths() As Single = {0.19F, 0.2F, 0.27F, 0.15F, 0.19F}
 
         Using fTitle As New Font("Arial", 16, FontStyle.Bold),
               fHead As New Font("Arial", 10, FontStyle.Bold),
