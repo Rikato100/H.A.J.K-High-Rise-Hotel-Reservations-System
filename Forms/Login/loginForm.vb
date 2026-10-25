@@ -25,9 +25,8 @@ Public Class loginForm
 
                 ' The password is checked in code (hashed), not in SQL
                 Dim query As String =
-                "SELECT account_id, role, password_hash FROM account " &
-                "WHERE username = @username " &
-                "AND account_status = 'Active'"
+                "SELECT account_id, role, password_hash, account_status FROM account " &
+                "WHERE username = @username"
 
                 Using cmd As New MySqlCommand(query, conn)
 
@@ -36,6 +35,13 @@ Public Class loginForm
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
 
                         If reader.Read() AndAlso PasswordHash.VerifyPassword(password, reader("password_hash").ToString()) Then
+
+                            ' Correct password but the account is switched off
+                            If reader("account_status").ToString() <> "Active" Then
+                                MessageBox.Show("This account has been deactivated. Please contact the administrator.",
+                                                "Account Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                                Exit Sub
+                            End If
 
                             Dim role As String = reader("role").ToString()
 
