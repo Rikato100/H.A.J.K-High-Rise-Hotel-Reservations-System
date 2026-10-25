@@ -131,8 +131,9 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_code LIKE @prefix", conn)
-                    cmd.Parameters.AddWithValue("@prefix", todayPrefix & "%")
+                ' Highest number used today + 1 (a COUNT would repeat a code after rows are deleted)
+                Using cmd As New MySqlCommand("SELECT IFNULL(MAX(CAST(SUBSTRING(res_code, 10) AS UNSIGNED)), 0) FROM reservation WHERE res_code LIKE @prefix", conn)
+                    cmd.Parameters.AddWithValue("@prefix", todayPrefix & "-%")
                     dailyCounter = Convert.ToInt32(cmd.ExecuteScalar()) + 1
                 End Using
             End Using
