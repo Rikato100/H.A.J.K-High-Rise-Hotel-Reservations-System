@@ -2,7 +2,9 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS `hajk`;
+-- Rebuilds the whole database from scratch (safe to run again; it wipes existing hajk data)
+DROP DATABASE IF EXISTS `hajk`;
+CREATE DATABASE `hajk` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `hajk`;
 
 -- --------------------------------------------------------
@@ -50,12 +52,15 @@ CREATE TABLE `discount` (
   CONSTRAINT `fk_discount_account` FOREIGN KEY (`created_by`) REFERENCES `account` (`account_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_rate`, `discount_type`, `start_date`, `end_date`, `vat_exempt`, `created_at`) VALUES
-(1, 1, 'None', 0.00, 'None', NULL, NULL, 0, '2026-10-04 16:26:45'),
-(2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1, '2026-10-04 16:26:45'),
-(3, 1, 'Lean Season', 15.00, 'Lean Season', '2024-06-01', '2024-10-31', 0, '2026-10-04 16:26:45'),
-(4, 1, 'Peak Season', 10.00, 'Peak Season', '2024-11-01', '2025-01-31', 0, '2026-10-04 16:26:45'),
-(5, 1, 'Peak Season (April)', 10.00, 'Peak Season', '2024-04-01', '2024-04-30', 0, '2026-10-04 16:26:45');
+-- Seasons are matched by MONTH only (the year in start_date/end_date is ignored by the app),
+-- so they keep working every year. Ranges must not cross New Year, so Peak is two rows.
+INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_rate`, `discount_type`, `start_date`, `end_date`, `vat_exempt`) VALUES
+(1, 1, 'None', 0.00, 'None', NULL, NULL, 0),
+(2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1),
+(3, 1, 'Lean Season', 15.00, 'Lean Season', '2024-06-01', '2024-10-31', 0),
+(4, 1, 'Peak Season (Nov-Dec)', 10.00, 'Peak Season', '2024-11-01', '2024-12-31', 0),
+(5, 1, 'Peak Season (Jan)', 10.00, 'Peak Season', '2024-01-01', '2024-01-31', 0),
+(6, 1, 'Peak Season (April)', 10.00, 'Peak Season', '2024-04-01', '2024-04-30', 0);
 
 -- --------------------------------------------------------
 
@@ -172,10 +177,13 @@ CREATE TABLE `reservation` (
   KEY `fk_reservation_room` (`room_id`),
   KEY `fk_reservation_discount` (`discount_id`),
   KEY `fk_reservation_account` (`created_by`),
+  KEY `idx_reservation_room_dates` (`room_id`, `res_status`, `check_in`, `check_out`),
   CONSTRAINT `fk_reservation_account` FOREIGN KEY (`created_by`) REFERENCES `account` (`account_id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_reservation_discount` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`discount_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `fk_reservation_guest` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`guest_id`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE
+  CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE,
+  CONSTRAINT `chk_reservation_dates` CHECK (`check_out` > `check_in`),
+  CONSTRAINT `chk_reservation_adults` CHECK (`adults` >= 1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -193,7 +201,8 @@ CREATE TABLE `payment` (
   `payment_date` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`payment_id`),
   KEY `fk_payment_reservation` (`res_id`),
-  CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE
+  CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE,
+  CONSTRAINT `chk_payment_amount` CHECK (`amount` > 0)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 COMMIT;
