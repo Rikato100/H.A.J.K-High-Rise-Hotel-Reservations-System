@@ -1,4 +1,5 @@
 Imports MySql.Data.MySqlClient
+Imports System.Drawing.Printing
 
 Public Class ReportsForm
 
@@ -13,6 +14,115 @@ Public Class ReportsForm
         cmbReportType.Items.Add("Monthly")
         cmbReportType.Items.Add("Annual")
         cmbReportType.SelectedIndex = 0 ' Default to Daily
+
+        ' "Export PDF" button, created here (placed under the Generate button)
+        Dim btnPdf As New Button()
+        btnPdf.Text = "EXPORT PDF"
+        btnPdf.BackColor = btnGenerate.BackColor
+        btnPdf.ForeColor = btnGenerate.ForeColor
+        btnPdf.Font = btnGenerate.Font
+        btnPdf.Size = btnGenerate.Size
+        btnPdf.Margin = btnGenerate.Margin
+        btnPdf.Location = New Point(btnGenerate.Left, btnGenerate.Bottom + 10)
+        btnPdf.UseVisualStyleBackColor = False
+        AddHandler btnPdf.Click, AddressOf btnExportPdf_Click
+        btnGenerate.Parent.Controls.Add(btnPdf)
+    End Sub
+
+    ' ==========================================
+    ' PDF EXPORT (prints the grid to the "Microsoft Print to PDF" printer)
+    ' ==========================================
+    Private printRowIndex As Integer = 0
+
+    Private Sub btnExportPdf_Click(sender As Object, e As EventArgs)
+        If dgvReports.Rows.Count = 0 OrElse (dgvReports.Rows.Count = 1 AndAlso dgvReports.Rows(0).IsNewRow) Then
+            MessageBox.Show("Generate a report first.", "Nothing to export", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        Using sfd As New SaveFileDialog()
+            sfd.Filter = "PDF file (*.pdf)|*.pdf"
+            sfd.FileName = "Report_" & DateTime.Now.ToString("yyyyMMdd_HHmm") & ".pdf"
+            If sfd.ShowDialog() <> DialogResult.OK Then Return
+
+            Try
+                printRowIndex = 0
+                Dim doc As New PrintDocument()
+                AddHandler doc.PrintPage, AddressOf reportDoc_PrintPage
+                doc.PrinterSettings.PrinterName = "Microsoft Print to PDF"
+
+                If doc.PrinterSettings.IsValid Then
+                    doc.PrinterSettings.PrintToFile = True
+                    doc.PrinterSettings.PrintFileName = sfd.FileName
+                    doc.Print()
+                    MessageBox.Show("Saved to:" & vbCrLf & sfd.FileName, "PDF exported", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    ' No PDF printer on this PC: show a preview; choose a PDF printer from there
+                    MessageBox.Show("The 'Microsoft Print to PDF' printer was not found. A print preview will open instead.", "PDF printer missing", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Using preview As New PrintPreviewDialog()
+                        preview.Document = doc
+                        preview.ShowDialog(Me)
+                    End Using
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Could not export the PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub reportDoc_PrintPage(sender As Object, e As PrintPageEventArgs)
+        Dim g As Graphics = e.Graphics
+        Dim left As Integer = e.MarginBounds.Left
+        Dim width As Integer = e.MarginBounds.Width
+        Dim y As Single = e.MarginBounds.Top
+
+        Dim widths() As Single = {0.22F, 0.22F, 0.28F, 0.14F, 0.14F}
+
+        Using fTitle As New Font("Arial", 16, FontStyle.Bold),
+              fHead As New Font("Arial", 10, FontStyle.Bold),
+              fBody As New Font("Arial", 10)
+
+            g.DrawString("H.A.J.K High Rise Hotel", fTitle, Brushes.Black, left, y)
+            y += 32
+            g.DrawString(lblTotalRevenue.Text, fHead, Brushes.Black, New RectangleF(left, y, width, 40))
+            y += 45
+
+            ' column headings on every page
+            Dim x As Single = left
+            For c As Integer = 0 To dgvReports.Columns.Count - 1
+                g.DrawString(dgvReports.Columns(c).HeaderText, fHead, Brushes.Black, New RectangleF(x, y, width * widths(c), 20))
+                x += width * widths(c)
+            Next
+            y += 22
+            g.DrawLine(Pens.Black, left, y, left + width, y)
+            y += 4
+
+            ' rows
+            While printRowIndex < dgvReports.Rows.Count
+                Dim row As DataGridViewRow = dgvReports.Rows(printRowIndex)
+                If row.IsNewRow Then
+                    printRowIndex += 1
+                    Continue While
+                End If
+                If y + 22 > e.MarginBounds.Bottom Then Exit While
+
+                x = left
+                For c As Integer = 0 To dgvReports.Columns.Count - 1
+                    Dim text As String = If(row.Cells(c).Value Is Nothing, "", row.Cells(c).Value.ToString())
+                    g.DrawString(text, fBody, Brushes.Black, New RectangleF(x, y, width * widths(c) - 4, 20))
+                    x += width * widths(c)
+                Next
+                y += 22
+                printRowIndex += 1
+            End While
+        End Using
+
+        If printRowIndex < dgvReports.Rows.Count Then
+            e.HasMorePages = True
+        Else
+            e.HasMorePages = False
+            printRowIndex = 0
+        End If
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
