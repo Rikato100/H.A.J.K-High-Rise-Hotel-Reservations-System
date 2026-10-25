@@ -82,8 +82,11 @@ CREATE TABLE `guest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `guest` (`guest_id`, `surname`, `firstname`, `middlename`, `contact`, `email`, `valid_id_type`, `valid_id_number`, `notes`) VALUES
-(1, 'Galzote', 'Jd', 'Jalbuna', '09673490318', 'jdgalzote24@gmail.com', 'National ID', '2345678', 'VIP Guest'),
-(2, 'Blabla', 'BleBle', 'BliBli', '124567987234', 'BloBlo@gmail.com', 'Senior Citizen ID', '123426787', NULL);
+(1, 'Olaes', 'Hans Norman', 'Tahad', '09602896489', 'hansolaes1019@gmail.com', 'Student ID', '306151019', 'VIP Guest'),
+(2, 'Galzote', 'Jd', 'Jalbuna', '09673490318', 'jdgalzote24@gmail.com', 'National ID', '2345678', 'VIP Guest'),
+(3, 'Dela Cruz', 'Jasper', 'Ergina', '09982746352', 'jasperdelacruz30@gmail.com', 'PWD ID', '425364543', NULL)
+(4, 'Cortal', 'Kirk Patrick', 'Sigara', '09453629485', 'cortalpatrick783@gmail.com', 'Drivers License ID', '4635423', NULL)
+(5, 'Ferolino', 'Abegail', 'Timogtimog', '09382940577', 'AbeFerolino9910@gmail.com', 'Philippine Passport ID', '78269867', 'VIP Guest');
 
 -- --------------------------------------------------------
 
