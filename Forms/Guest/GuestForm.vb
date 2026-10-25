@@ -14,7 +14,7 @@ Public Class GuestForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' FIX #3: Subquery to count total visits
+                ' Subquery to count total visits
                 Dim query As String =
                     "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
                     "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
@@ -36,7 +36,7 @@ Public Class GuestForm
                                 reader("email"),
                                 reader("valid_id_type"),
                                 reader("valid_id_number"),
-                                reader("total_visits") ' FIX #3: Add to grid
+                                reader("total_visits")
                             )
                         End While
                     End Using
@@ -49,7 +49,7 @@ Public Class GuestForm
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Me.Close()
+        SessionHelper.GoToDashboard()
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -130,7 +130,6 @@ Public Class GuestForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
-                ' FIX #3: Include total_visits in search query
                 Dim query As String =
                     "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
                     "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
