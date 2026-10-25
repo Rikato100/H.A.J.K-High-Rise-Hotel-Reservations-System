@@ -1,4 +1,4 @@
-﻿Public Class StaffDashboard
+Public Class StaffDashboard
     Private Sub StaffDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -6,9 +6,7 @@
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
-            Dim login As New loginForm()
-            login.Show()
-            Me.Close()
+            SessionHelper.Logout()
         End If
     End Sub
 
