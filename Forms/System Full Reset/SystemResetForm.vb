@@ -12,33 +12,6 @@ Public Class SettingsForm
         numRate.Maximum = 100
         SetEditorEnabled(False)
         LoadDiscounts()
-
-        ' Only admins get the System Reset tab
-        If CurrentUser.Role = "Admin" Then AddResetTab()
-    End Sub
-
-    ' ==========================================
-    ' ADMIN ONLY: SYSTEM RESET TAB
-    ' ==========================================
-    Private resetPage As TabPage
-
-    Private Sub AddResetTab()
-        resetPage = New TabPage("System Reset")
-        resetPage.BackColor = Color.FromArgb(243, 232, 210)
-        TabControl1.TabPages.Add(resetPage)
-        EmbedResetForm()
-    End Sub
-
-    Private Sub EmbedResetForm()
-        Dim f As New SystemResetForm()
-        f.TopLevel = False
-        f.FormBorderStyle = FormBorderStyle.None
-        f.Dock = DockStyle.Fill
-        ' The reset form closes itself after a reset; put a fresh one back in the tab
-        AddHandler f.FormClosed, Sub() EmbedResetForm()
-        resetPage.Controls.Clear()
-        resetPage.Controls.Add(f)
-        f.Show()
     End Sub
 
     ' ==========================================
