@@ -121,7 +121,7 @@ Partial Class AdminDashboard
         ' lblTagline
         ' 
         lblTagline.AutoSize = True
-        lblTagline.Font = New Font("Monotype Corsiva", 12.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        lblTagline.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         lblTagline.ForeColor = Color.Beige
         lblTagline.Location = New Point(11, 44)
         lblTagline.Name = "lblTagline"
@@ -298,7 +298,7 @@ Partial Class AdminDashboard
         ' lblReservationsGroupTitle
         ' 
         lblReservationsGroupTitle.AutoSize = True
-        lblReservationsGroupTitle.Font = New Font("Segoe UI Black", 13.0F, FontStyle.Bold)
+        lblReservationsGroupTitle.Font = New Font("Segoe UI Black", 13F, FontStyle.Bold)
         lblReservationsGroupTitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblReservationsGroupTitle.Location = New Point(69, 8)
         lblReservationsGroupTitle.Name = "lblReservationsGroupTitle"
@@ -353,7 +353,7 @@ Partial Class AdminDashboard
         ' lblArrivingToday
         ' 
         lblArrivingToday.AutoSize = True
-        lblArrivingToday.Font = New Font("Segoe UI", 18.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblArrivingToday.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblArrivingToday.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblArrivingToday.Location = New Point(90, 42)
         lblArrivingToday.Name = "lblArrivingToday"
@@ -408,7 +408,7 @@ Partial Class AdminDashboard
         ' lblInHouse
         ' 
         lblInHouse.AutoSize = True
-        lblInHouse.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
+        lblInHouse.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
         lblInHouse.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblInHouse.Location = New Point(90, 45)
         lblInHouse.Name = "lblInHouse"
@@ -463,7 +463,7 @@ Partial Class AdminDashboard
         ' lblDepartingToday
         ' 
         lblDepartingToday.AutoSize = True
-        lblDepartingToday.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
+        lblDepartingToday.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
         lblDepartingToday.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblDepartingToday.Location = New Point(90, 45)
         lblDepartingToday.Name = "lblDepartingToday"
@@ -518,7 +518,7 @@ Partial Class AdminDashboard
         ' lblMonthlyRevenue
         ' 
         lblMonthlyRevenue.AutoSize = True
-        lblMonthlyRevenue.Font = New Font("Segoe UI", 26.0F, FontStyle.Bold)
+        lblMonthlyRevenue.Font = New Font("Segoe UI", 26F, FontStyle.Bold)
         lblMonthlyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblMonthlyRevenue.Location = New Point(35, 75)
         lblMonthlyRevenue.Name = "lblMonthlyRevenue"
@@ -573,7 +573,7 @@ Partial Class AdminDashboard
         ' lblOccupancyRate
         ' 
         lblOccupancyRate.AutoSize = True
-        lblOccupancyRate.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold)
+        lblOccupancyRate.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
         lblOccupancyRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblOccupancyRate.Location = New Point(85, 69)
         lblOccupancyRate.Name = "lblOccupancyRate"
@@ -628,7 +628,7 @@ Partial Class AdminDashboard
         ' lblDailyRevenue
         ' 
         lblDailyRevenue.AutoSize = True
-        lblDailyRevenue.Font = New Font("Segoe UI", 26.0F, FontStyle.Bold)
+        lblDailyRevenue.Font = New Font("Segoe UI", 26F, FontStyle.Bold)
         lblDailyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblDailyRevenue.Location = New Point(35, 75)
         lblDailyRevenue.Name = "lblDailyRevenue"
@@ -683,7 +683,7 @@ Partial Class AdminDashboard
         ' lblAvailableRooms
         ' 
         lblAvailableRooms.AutoSize = True
-        lblAvailableRooms.Font = New Font("Segoe UI", 36.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblAvailableRooms.Font = New Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAvailableRooms.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblAvailableRooms.Location = New Point(100, 69)
         lblAvailableRooms.Name = "lblAvailableRooms"
@@ -695,9 +695,9 @@ Partial Class AdminDashboard
         ' 
         lblDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblDateTime.AutoSize = True
-        lblDateTime.Font = New Font("Segoe UI", 9.0F)
+        lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(762, 11)
+        lblDateTime.Location = New Point(687, 11)
         lblDateTime.Name = "lblDateTime"
         lblDateTime.Size = New Size(104, 15)
         lblDateTime.TabIndex = 24
@@ -707,7 +707,7 @@ Partial Class AdminDashboard
         ' lblSubtitle
         ' 
         lblSubtitle.AutoSize = True
-        lblSubtitle.Font = New Font("Segoe UI", 9.0F)
+        lblSubtitle.Font = New Font("Segoe UI", 9F)
         lblSubtitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblSubtitle.Location = New Point(24, 38)
         lblSubtitle.Name = "lblSubtitle"
@@ -728,7 +728,7 @@ Partial Class AdminDashboard
         ' 
         ' AdminDashboard
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1034, 562)
