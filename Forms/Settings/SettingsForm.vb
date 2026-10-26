@@ -321,9 +321,4 @@ Public Class SettingsControl
         If String.IsNullOrEmpty(storedHash) Then Return False
         Return PasswordHash.VerifyPassword(inputPassword, storedHash)
     End Function
-
-    Private Sub lblSelectDiscount_Click(sender As Object, e As EventArgs) Handles lblSelectDiscount.Click
-
-    End Sub
-
 End Class

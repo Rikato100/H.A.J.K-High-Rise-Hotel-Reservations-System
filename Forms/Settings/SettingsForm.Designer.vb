@@ -58,7 +58,7 @@ Partial Class SettingsControl
         btnCancelPassword = New Button()
         TabPageReset = New TabPage()
         PanelResetHeader = New Panel()
-        PictureBoxReset = New PictureBox()
+        PictureBox3 = New PictureBox()
         LabelResetDesc = New Label()
         LabelResetTitle = New Label()
         grpResetConfig = New GroupBox()
@@ -87,7 +87,7 @@ Partial Class SettingsControl
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         TabPageReset.SuspendLayout()
         PanelResetHeader.SuspendLayout()
-        CType(PictureBoxReset, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         grpResetConfig.SuspendLayout()
         SuspendLayout()
         ' 
@@ -199,7 +199,7 @@ Partial Class SettingsControl
         ' lblRate
         ' 
         lblRate.AutoSize = True
-        lblRate.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblRate.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblRate.Location = New Point(43, 87)
         lblRate.Name = "lblRate"
@@ -218,7 +218,7 @@ Partial Class SettingsControl
         ' lblStartDate
         ' 
         lblStartDate.AutoSize = True
-        lblStartDate.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        lblStartDate.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         lblStartDate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblStartDate.Location = New Point(43, 146)
         lblStartDate.Name = "lblStartDate"
@@ -237,7 +237,7 @@ Partial Class SettingsControl
         ' btnSaveDiscount
         ' 
         btnSaveDiscount.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnSaveDiscount.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        btnSaveDiscount.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         btnSaveDiscount.ForeColor = Color.Beige
         btnSaveDiscount.Location = New Point(70, 318)
         btnSaveDiscount.Name = "btnSaveDiscount"
@@ -259,7 +259,7 @@ Partial Class SettingsControl
         ' lblEndDate
         ' 
         lblEndDate.AutoSize = True
-        lblEndDate.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        lblEndDate.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         lblEndDate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblEndDate.Location = New Point(43, 206)
         lblEndDate.Name = "lblEndDate"
@@ -366,7 +366,7 @@ Partial Class SettingsControl
         Label3.AutoSize = True
         Label3.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label3.ForeColor = Color.Beige
-        Label3.Location = New Point(98, 9)
+        Label3.Location = New Point(106, 4)
         Label3.Name = "Label3"
         Label3.Size = New Size(237, 30)
         Label3.TabIndex = 37
@@ -375,9 +375,9 @@ Partial Class SettingsControl
         ' lblCurrentPwd
         ' 
         lblCurrentPwd.AutoSize = True
-        lblCurrentPwd.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lblCurrentPwd.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         lblCurrentPwd.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblCurrentPwd.Location = New Point(144, 115)
+        lblCurrentPwd.Location = New Point(19, 97)
         lblCurrentPwd.Name = "lblCurrentPwd"
         lblCurrentPwd.Size = New Size(177, 28)
         lblCurrentPwd.TabIndex = 1
@@ -385,7 +385,7 @@ Partial Class SettingsControl
         ' 
         ' txtCurrentPwd
         ' 
-        txtCurrentPwd.Location = New Point(394, 118)
+        txtCurrentPwd.Location = New Point(269, 100)
         txtCurrentPwd.Name = "txtCurrentPwd"
         txtCurrentPwd.PasswordChar = "*"c
         txtCurrentPwd.Size = New Size(307, 27)
@@ -394,9 +394,9 @@ Partial Class SettingsControl
         ' lblNewPwd
         ' 
         lblNewPwd.AutoSize = True
-        lblNewPwd.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lblNewPwd.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         lblNewPwd.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblNewPwd.Location = New Point(144, 175)
+        lblNewPwd.Location = New Point(19, 157)
         lblNewPwd.Name = "lblNewPwd"
         lblNewPwd.Size = New Size(150, 28)
         lblNewPwd.TabIndex = 3
@@ -404,7 +404,7 @@ Partial Class SettingsControl
         ' 
         ' txtNewPwd
         ' 
-        txtNewPwd.Location = New Point(394, 179)
+        txtNewPwd.Location = New Point(269, 161)
         txtNewPwd.Name = "txtNewPwd"
         txtNewPwd.PasswordChar = "*"c
         txtNewPwd.Size = New Size(307, 27)
@@ -413,9 +413,9 @@ Partial Class SettingsControl
         ' lblConfirmPwd
         ' 
         lblConfirmPwd.AutoSize = True
-        lblConfirmPwd.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lblConfirmPwd.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         lblConfirmPwd.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblConfirmPwd.Location = New Point(144, 235)
+        lblConfirmPwd.Location = New Point(19, 217)
         lblConfirmPwd.Name = "lblConfirmPwd"
         lblConfirmPwd.Size = New Size(226, 28)
         lblConfirmPwd.TabIndex = 5
@@ -423,7 +423,7 @@ Partial Class SettingsControl
         ' 
         ' txtConfirmPwd
         ' 
-        txtConfirmPwd.Location = New Point(394, 239)
+        txtConfirmPwd.Location = New Point(269, 221)
         txtConfirmPwd.Name = "txtConfirmPwd"
         txtConfirmPwd.PasswordChar = "*"c
         txtConfirmPwd.Size = New Size(307, 27)
@@ -433,7 +433,7 @@ Partial Class SettingsControl
         ' 
         lblPwdHint.AutoSize = True
         lblPwdHint.ForeColor = Color.Gray
-        lblPwdHint.Location = New Point(394, 273)
+        lblPwdHint.Location = New Point(269, 255)
         lblPwdHint.Name = "lblPwdHint"
         lblPwdHint.Size = New Size(293, 20)
         lblPwdHint.TabIndex = 7
@@ -442,9 +442,9 @@ Partial Class SettingsControl
         ' btnSavePassword
         ' 
         btnSavePassword.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnSavePassword.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        btnSavePassword.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         btnSavePassword.ForeColor = Color.Beige
-        btnSavePassword.Location = New Point(394, 310)
+        btnSavePassword.Location = New Point(270, 429)
         btnSavePassword.Name = "btnSavePassword"
         btnSavePassword.Size = New Size(140, 38)
         btnSavePassword.TabIndex = 8
@@ -454,9 +454,9 @@ Partial Class SettingsControl
         ' btnCancelPassword
         ' 
         btnCancelPassword.BackColor = Color.Beige
-        btnCancelPassword.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        btnCancelPassword.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         btnCancelPassword.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnCancelPassword.Location = New Point(560, 310)
+        btnCancelPassword.Location = New Point(436, 429)
         btnCancelPassword.Name = "btnCancelPassword"
         btnCancelPassword.Size = New Size(140, 38)
         btnCancelPassword.TabIndex = 9
@@ -479,7 +479,7 @@ Partial Class SettingsControl
         ' PanelResetHeader
         ' 
         PanelResetHeader.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        PanelResetHeader.Controls.Add(PictureBoxReset)
+        PanelResetHeader.Controls.Add(PictureBox3)
         PanelResetHeader.Controls.Add(LabelResetDesc)
         PanelResetHeader.Controls.Add(LabelResetTitle)
         PanelResetHeader.Dock = DockStyle.Top
@@ -488,20 +488,22 @@ Partial Class SettingsControl
         PanelResetHeader.Size = New Size(1018, 69)
         PanelResetHeader.TabIndex = 14
         ' 
-        ' PictureBoxReset
+        ' PictureBox3
         ' 
-        PictureBoxReset.Location = New Point(8, 7)
-        PictureBoxReset.Name = "PictureBoxReset"
-        PictureBoxReset.Size = New Size(82, 46)
-        PictureBoxReset.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBoxReset.TabIndex = 39
-        PictureBoxReset.TabStop = False
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(16, 2)
+        PictureBox3.Margin = New Padding(3, 2, 3, 2)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(84, 63)
+        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox3.TabIndex = 40
+        PictureBox3.TabStop = False
         ' 
         ' LabelResetDesc
         ' 
         LabelResetDesc.AutoSize = True
         LabelResetDesc.ForeColor = Color.Beige
-        LabelResetDesc.Location = New Point(102, 34)
+        LabelResetDesc.Location = New Point(109, 41)
         LabelResetDesc.Name = "LabelResetDesc"
         LabelResetDesc.Size = New Size(376, 20)
         LabelResetDesc.TabIndex = 38
@@ -512,7 +514,7 @@ Partial Class SettingsControl
         LabelResetTitle.AutoSize = True
         LabelResetTitle.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         LabelResetTitle.ForeColor = Color.Beige
-        LabelResetTitle.Location = New Point(98, 9)
+        LabelResetTitle.Location = New Point(106, 4)
         LabelResetTitle.Name = "LabelResetTitle"
         LabelResetTitle.Size = New Size(182, 30)
         LabelResetTitle.TabIndex = 37
@@ -544,7 +546,7 @@ Partial Class SettingsControl
         ' 
         rbFactoryReset.AutoSize = True
         rbFactoryReset.Checked = True
-        rbFactoryReset.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        rbFactoryReset.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         rbFactoryReset.Location = New Point(25, 35)
         rbFactoryReset.Name = "rbFactoryReset"
         rbFactoryReset.Size = New Size(276, 24)
@@ -556,7 +558,7 @@ Partial Class SettingsControl
         ' rbSelectiveReset
         ' 
         rbSelectiveReset.AutoSize = True
-        rbSelectiveReset.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        rbSelectiveReset.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         rbSelectiveReset.Location = New Point(25, 75)
         rbSelectiveReset.Name = "rbSelectiveReset"
         rbSelectiveReset.Size = New Size(244, 24)
@@ -631,7 +633,7 @@ Partial Class SettingsControl
         ' lblAdminPwdConfirm
         ' 
         lblAdminPwdConfirm.AutoSize = True
-        lblAdminPwdConfirm.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lblAdminPwdConfirm.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblAdminPwdConfirm.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblAdminPwdConfirm.Location = New Point(25, 275)
         lblAdminPwdConfirm.Name = "lblAdminPwdConfirm"
@@ -650,7 +652,7 @@ Partial Class SettingsControl
         ' btnExecuteReset
         ' 
         btnExecuteReset.BackColor = Color.FromArgb(CByte(165), CByte(42), CByte(42))
-        btnExecuteReset.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        btnExecuteReset.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnExecuteReset.ForeColor = Color.Beige
         btnExecuteReset.Location = New Point(25, 355)
         btnExecuteReset.Name = "btnExecuteReset"
@@ -661,7 +663,7 @@ Partial Class SettingsControl
         ' 
         ' SettingsControl
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(TabControl1)
@@ -686,7 +688,7 @@ Partial Class SettingsControl
         TabPageReset.ResumeLayout(False)
         PanelResetHeader.ResumeLayout(False)
         PanelResetHeader.PerformLayout()
-        CType(PictureBoxReset, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         grpResetConfig.ResumeLayout(False)
         grpResetConfig.PerformLayout()
         ResumeLayout(False)
@@ -727,7 +729,6 @@ Partial Class SettingsControl
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents PanelResetHeader As Panel
-    Friend WithEvents PictureBoxReset As PictureBox
     Friend WithEvents LabelResetDesc As Label
     Friend WithEvents LabelResetTitle As Label
     Friend WithEvents grpResetConfig As GroupBox
@@ -743,4 +744,5 @@ Partial Class SettingsControl
     Friend WithEvents lblAdminPwdConfirm As Label
     Friend WithEvents txtAdminPwdConfirm As TextBox
     Friend WithEvents btnExecuteReset As Button
+    Friend WithEvents PictureBox3 As PictureBox
 End Class
