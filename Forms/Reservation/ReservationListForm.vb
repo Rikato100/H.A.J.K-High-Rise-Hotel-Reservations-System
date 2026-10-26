@@ -1,8 +1,8 @@
 Imports MySql.Data.MySqlClient
 
-Public Class ReservationListForm
-    Private Sub ReservationListForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TopLevel = False
+Public Class ReservationListControl
+
+    Private Sub ReservationListControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvReservations.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvReservations.MultiSelect = False
         dgvReservations.ReadOnly = True
@@ -510,14 +510,12 @@ Public Class ReservationListForm
                     End Using
                 End Using
 
-                ' FIX #3: Get the SUM of all payments
                 Using paidCmd As New MySqlCommand("SELECT SUM(amount) FROM payment WHERE res_id = @resID", conn)
                     paidCmd.Parameters.AddWithValue("@resID", resID)
                     Dim result = paidCmd.ExecuteScalar()
                     If result IsNot DBNull.Value Then totalPaid = Convert.ToDecimal(result)
                 End Using
 
-                ' FIX #3: Get the LATEST payment method and reference
                 Dim q2 As String = "SELECT payment_method, reference_no FROM payment WHERE res_id = @resID ORDER BY payment_id DESC LIMIT 1"
                 Using cmd As New MySqlCommand(q2, conn)
                     cmd.Parameters.AddWithValue("@resID", resID)
@@ -628,47 +626,4 @@ Public Class ReservationListForm
         GridExporter.ExportToCsv(dgvReservations, "Reservations")
     End Sub
 
-    Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
-        Me.Controls.Clear()
-
-        Dim guests As New GuestForm
-        guests.TopLevel = False
-        guests.FormBorderStyle = FormBorderStyle.None
-        guests.Dock = DockStyle.Fill
-
-        Me.Controls.Add(guests)
-        guests.Show()
-    End Sub
-
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If result = DialogResult.Yes Then
-            Dim login As New loginForm()
-            login.Show()
-
-            ' Loop safely through a copy of open forms to close active dashboards
-            For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
-                If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
-                    frm.Close()
-                End If
-            Next
-        End If
-    End Sub
-
-    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
-        Me.Controls.Clear()
-
-        Dim mainDashboard As New StaffDashboard()
-        mainDashboard.TopLevel = False
-        mainDashboard.FormBorderStyle = FormBorderStyle.None
-        mainDashboard.Dock = DockStyle.Fill
-
-        Me.Controls.Add(mainDashboard)
-        mainDashboard.Show()
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        MessageBox.Show("Design not done yet.")
-    End Sub
 End Class

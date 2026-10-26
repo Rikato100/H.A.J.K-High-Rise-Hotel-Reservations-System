@@ -17,4 +17,19 @@
         login.Show()
         login.Activate()
     End Sub
+
+    Public Sub GoToDashboard()
+        ' Open the appropriate dashboard based on the logged-in user's role
+        If CurrentUser.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase) Then
+            Dim adminDash As New AdminDashboard()
+            adminDash.Show()
+        Else
+            Dim staffDash As New StaffDashboard() ' Change to ReceptionistDashboard if that's your form name
+            staffDash.Show()
+        End If
+
+        ' Close the current form that triggered the navigation if needed
+        ' (e.g., GuestForm.Close())
+    End Sub
+
 End Module

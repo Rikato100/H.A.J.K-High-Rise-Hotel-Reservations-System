@@ -30,11 +30,11 @@ Partial Class StaffDashboard
         PictureBox3 = New PictureBox()
         btnSettings = New Button()
         btnDashboard = New Button()
-        Label1 = New Label()
         Panel2 = New Panel()
         PictureBox4 = New PictureBox()
         Label3 = New Label()
         Label4 = New Label()
+        pnlContent = New Panel()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -52,7 +52,7 @@ Partial Class StaffDashboard
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(144, 56)
         btnLogout.TabIndex = 16
-        btnLogout.Text = ChrW(9211) & " Logout"
+        btnLogout.Text = "🚪 Logout"
         btnLogout.UseVisualStyleBackColor = False
         ' 
         ' btnGuests
@@ -134,17 +134,6 @@ Partial Class StaffDashboard
         btnDashboard.Text = "🏠 Dashboard"
         btnDashboard.UseVisualStyleBackColor = False
         ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
-        Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(157, 121)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(318, 30)
-        Label1.TabIndex = 20
-        Label1.Text = "Welcome Recieptionist!"
-        ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -170,7 +159,7 @@ Partial Class StaffDashboard
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic)
+        Label3.Font = New Font("Monotype Corsiva", 12.0F, FontStyle.Italic)
         Label3.ForeColor = Color.Beige
         Label3.Location = New Point(13, 59)
         Label3.Name = "Label3"
@@ -189,13 +178,22 @@ Partial Class StaffDashboard
         Label4.TabIndex = 0
         Label4.Text = "H.A.J.K High Rise Hotel"
         ' 
+        ' pnlContent
+        ' 
+        pnlContent.BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
+        pnlContent.Dock = DockStyle.Fill
+        pnlContent.Location = New Point(150, 112)
+        pnlContent.Name = "pnlContent"
+        pnlContent.Size = New Size(1032, 667)
+        pnlContent.TabIndex = 22
+        ' 
         ' StaffDashboard
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1182, 779)
+        Controls.Add(pnlContent)
         Controls.Add(Panel2)
-        Controls.Add(Label1)
         Controls.Add(Panel1)
         Margin = New Padding(3, 4, 3, 4)
         Name = "StaffDashboard"
@@ -207,22 +205,17 @@ Partial Class StaffDashboard
         Panel2.PerformLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
     Friend WithEvents btnLogout As Button
     Friend WithEvents btnGuests As Button
-    Friend WithEvents btnReset As Button
-    Friend WithEvents btnReports As Button
     Friend WithEvents btnReservations As Button
-    Friend WithEvents btnRooms As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents btnSettings As Button
-    Friend WithEvents Button3 As Button
     Friend WithEvents btnDashboard As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents pnlContent As Panel
 End Class

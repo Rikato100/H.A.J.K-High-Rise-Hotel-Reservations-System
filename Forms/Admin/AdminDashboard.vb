@@ -1,9 +1,10 @@
+Imports System.Data.SqlTypes
 Imports MySql.Data.MySqlClient
 
 Public Class AdminDashboard
 
     Private Sub AdminDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        LoadView(New DashboardHomeControl())
         ' Checks if Current User is Admin
         If CurrentUser.Role <> "Admin" Then
             MessageBox.Show("Access Denied. Admin privileges required.",
@@ -31,6 +32,14 @@ Public Class AdminDashboard
     Private Sub tmrDashboard_Tick(sender As Object, e As EventArgs) Handles tmrDashboard.Tick
         ' Updates the date and time label every second
         lblDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy hh:mm:ss tt")
+    End Sub
+
+    ' Helper method to swap views seamlessly inside pnlContent without losing the title bar or sidebar
+    Public Sub LoadView(userControl As UserControl)
+        pnlContent.Controls.Clear()
+        userControl.Dock = DockStyle.Fill
+        pnlContent.Controls.Add(userControl)
+        userControl.BringToFront()
     End Sub
 
     Private Sub LoadDashboardCounts()
@@ -94,27 +103,23 @@ Public Class AdminDashboard
         End If
     End Sub
 
-    ' Rooms, Staff, Reports and Settings open as pop-ups so the dashboard is not wiped
+    ' Navigation: Switch content cleanly inside pnlContent instead of opening a separate popup window
+    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
+        LoadView(New DashboardHomeControl())
+    End Sub
+
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
-        Using f As New RoomForm()
-            f.ShowDialog(Me)
-        End Using
-        LoadDashboardCounts()
+        LoadView(New RoomControl())
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
-        Using f As New StaffManagementForm()
-            f.ShowDialog(Me)
-        End Using
+        LoadView(New StaffManagementControl())
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        Using f As New ReportsForm()
-            f.ShowDialog(Me)
-        End Using
+        LoadView(New ReportsControl())
     End Sub
 
-    ' Settings contains Discounts, Change Password and (Admin only) System Reset
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         MessageBox.Show("Design not done yet.")
         LoadDashboardCounts()
@@ -127,4 +132,4 @@ Public Class AdminDashboard
     Private Sub lblArrivingToday_Click(sender As Object, e As EventArgs) Handles lblArrivingToday.Click
 
     End Sub
-End Class   
+End Class

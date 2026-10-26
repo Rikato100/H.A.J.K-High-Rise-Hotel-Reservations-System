@@ -4,6 +4,9 @@
     <Compile Update="Forms\Admin\AdminDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Admin\DashboardHomeControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\Guest\AddGuestForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -20,28 +23,31 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Reports\ReportsForm.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Reservation\Reservation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Reservation\ReservationListForm.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Rooms\AddRoomForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Rooms\RoomForm.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Settings\SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Staff Management\StaffManagementForm.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Staff\StaffDashboard.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Staff\StaffDashboardHomeControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\System Full Reset\SystemResetForm.vb">
       <SubType>Form</SubType>

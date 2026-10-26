@@ -1,11 +1,11 @@
-Public Class StaffManagementForm
+Public Class StaffManagementControl
 
     Private selectedAccountId As Integer = 0
     Private selectedRole As String = ""
     Private selectedStatus As String = ""
     Private isLoading As Boolean = True
 
-    Private Sub StaffManagementForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub StaffManagementControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboRole.Items.Clear()
         cboRole.Items.Add("Admin")
         cboRole.Items.Add("Staff")
@@ -68,10 +68,6 @@ Public Class StaffManagementForm
         LoadStaffGrid()
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs)
-        Close()
-    End Sub
-
     ' Clicking a row loads that account's details into the form for editing
     Private Sub dgvStaff_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvStaff.CellClick
         If e.RowIndex < 0 Then Exit Sub
@@ -83,7 +79,7 @@ Public Class StaffManagementForm
         selectedStatus = row.Cells("account_status").Value.ToString()
 
         txtUsername.Text = row.Cells("username").Value.ToString()
-        txtFullname.Text = row.Cells("fullname").Value.ToString()
+        txtFullName.Text = row.Cells("fullname").Value.ToString()
         cboRole.Text = selectedRole
         txtPassword.Text = "" ' never show the stored password
     End Sub
@@ -111,7 +107,7 @@ Public Class StaffManagementForm
     ' ---------- Add / Update / Deactivate / Reactivate ----------
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtUsername.Text.Trim() = "" OrElse txtPassword.Text = "" OrElse txtFullname.Text.Trim() = "" OrElse cboRole.Text = "" Then
+        If txtUsername.Text.Trim() = "" OrElse txtPassword.Text = "" OrElse txtFullName.Text.Trim() = "" OrElse cboRole.Text = "" Then
             ShowWarning("Please fill in username, password, full name, and role.")
             Exit Sub
         End If
@@ -127,7 +123,7 @@ Public Class StaffManagementForm
             Dim success As Boolean = StaffRepository.AddAccount(
                 txtUsername.Text.Trim(),
                 txtPassword.Text,
-                txtFullname.Text.Trim(),
+                txtFullName.Text.Trim(),
                 cboRole.Text
             )
 
@@ -149,7 +145,7 @@ Public Class StaffManagementForm
             Exit Sub
         End If
 
-        If txtFullname.Text.Trim() = "" OrElse cboRole.Text = "" Then
+        If txtFullName.Text.Trim() = "" OrElse cboRole.Text = "" Then
             ShowWarning("Full name and role cannot be empty.")
             Exit Sub
         End If
@@ -165,7 +161,7 @@ Public Class StaffManagementForm
             ' Lockout protection: don't remove the Admin role from yourself or the last active Admin
             Dim demoting As Boolean = (selectedRole = "Admin" AndAlso cboRole.Text <> "Admin")
             If demoting Then
-                If selectedAccountId = CurrentUser.AccountId Then
+                If selectedAccountId = CurrentUser.AccountID Then
                     ShowWarning("You can't remove your own Admin role.")
                     Exit Sub
                 End If
@@ -178,7 +174,7 @@ Public Class StaffManagementForm
             Dim success As Boolean = StaffRepository.UpdateAccount(
                 selectedAccountId,
                 txtUsername.Text.Trim(),
-                txtFullname.Text.Trim(),
+                txtFullName.Text.Trim(),
                 cboRole.Text,
                 txtPassword.Text ' blank = password unchanged
             )
@@ -208,7 +204,7 @@ Public Class StaffManagementForm
 
         Try
             ' Lockout protection
-            If selectedAccountId = CurrentUser.AccountId Then
+            If selectedAccountId = CurrentUser.AccountID Then
                 ShowWarning("You can't deactivate the account you are logged in with.")
                 Exit Sub
             End If
@@ -265,61 +261,8 @@ Public Class StaffManagementForm
         selectedStatus = ""
         txtUsername.Text = ""
         txtPassword.Text = ""
-        txtFullname.Text = ""
+        txtFullName.Text = ""
         cboRole.Text = ""
     End Sub
 
-    Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
-        Me.Controls.Clear()
-
-        Dim mainDashboard As New AdminDashboard()
-        mainDashboard.TopLevel = False
-        mainDashboard.FormBorderStyle = FormBorderStyle.None
-        mainDashboard.Dock = DockStyle.Fill
-
-        Me.Controls.Add(mainDashboard)
-        mainDashboard.Show()
-
-    End Sub
-
-    Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
-        Me.Controls.Clear()
-
-        Dim rooms As New RoomForm()
-        rooms.TopLevel = False
-        rooms.FormBorderStyle = FormBorderStyle.None
-        rooms.Dock = DockStyle.Fill
-
-        Me.Controls.Add(rooms)
-        rooms.Show()
-
-    End Sub
-
-    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If result = DialogResult.Yes Then
-            Dim login As New loginForm()
-            login.Show()
-
-            ' Loop safely through a copy of open forms to close active dashboards
-            For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
-                If TypeOf frm Is AdminDashboard OrElse TypeOf frm Is StaffDashboard Then
-                    frm.Close()
-                End If
-            Next
-        End If
-    End Sub
-
-    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        Me.Controls.Clear()
-
-        Dim reports As New ReportsForm()
-        reports.TopLevel = False
-        reports.FormBorderStyle = FormBorderStyle.None
-        reports.Dock = DockStyle.Fill
-
-        Me.Controls.Add(reports)
-        reports.Show()
-    End Sub
 End Class
