@@ -121,8 +121,7 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        MessageBox.Show("Design not done yet.")
-        LoadDashboardCounts()
+        LoadView(New SettingsControl())
     End Sub
 
     Private Sub cardDeparting_Paint(sender As Object, e As PaintEventArgs) Handles cardDeparting.Paint

@@ -1,17 +1,24 @@
 Imports MySql.Data.MySqlClient
 
-Public Class SettingsForm
+Public Class SettingsControl
 
     ' --- Discount Settings State Variables ---
     Private selectedId As Integer = 0
     Private selectedType As String = ""
 
-    Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub SettingsControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize Discount Tab
         numRate.Minimum = 0
         numRate.Maximum = 100
         SetEditorEnabled(False)
         LoadDiscounts()
+
+        ' Initialize System Reset Defaults
+        dtpResetStartDate.Enabled = False
+        dtpResetEndDate.Enabled = False
+        chkDeleteGuestHistory.Enabled = False
+        chkDeleteFinancial.Enabled = False
+        chkResetRoomStatus.Enabled = False
     End Sub
 
     ' ==========================================
@@ -25,7 +32,7 @@ Public Class SettingsForm
                 conn.Open()
                 Dim query As String =
                     "SELECT discount_id, discount_name, discount_type, discount_rate, " &
-                    "start_date, end_date, vat_exempt FROM discount ORDER BY discount_id"
+                    "start_date, end_date FROM discount ORDER BY discount_id"
                 Using cmd As New MySqlCommand(query, conn)
                     Using adapter As New MySqlDataAdapter(cmd)
                         adapter.Fill(dt)
@@ -34,8 +41,15 @@ Public Class SettingsForm
             End Using
 
             dgvDiscounts.DataSource = dt
-            dgvDiscounts.Columns("discount_id").HeaderText = "ID"
-            dgvDiscounts.Columns("discount_id").FillWeight = 25
+
+            ' Make columns stretch evenly across the grid width
+            dgvDiscounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+            ' Hide the ID column so it doesn't appear or look cut off
+            If dgvDiscounts.Columns.Contains("discount_id") Then
+                dgvDiscounts.Columns("discount_id").Visible = False
+            End If
+
             dgvDiscounts.Columns("discount_name").HeaderText = "Name"
             dgvDiscounts.Columns("discount_type").HeaderText = "Type"
             dgvDiscounts.Columns("discount_rate").HeaderText = "Rate (%)"
@@ -44,7 +58,6 @@ Public Class SettingsForm
             dgvDiscounts.Columns("start_date").DefaultCellStyle.Format = "yyyy-MM-dd"
             dgvDiscounts.Columns("end_date").HeaderText = "End Date"
             dgvDiscounts.Columns("end_date").DefaultCellStyle.Format = "yyyy-MM-dd"
-            dgvDiscounts.Columns("vat_exempt").HeaderText = "VAT Exempt"
 
         Catch ex As Exception
             MessageBox.Show("Could not load discounts: " & ex.Message, "Discount Settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -62,11 +75,13 @@ Public Class SettingsForm
         If e.RowIndex < 0 Then Exit Sub
 
         Dim row As DataGridViewRow = dgvDiscounts.Rows(e.RowIndex)
-        selectedId = Convert.ToInt32(row.Cells("discount_id").Value)
-        selectedType = row.Cells("discount_type").Value.ToString()
-        lblSelectDiscount.Text = row.Cells("discount_name").Value.ToString()
 
-        numRate.Value = Convert.ToDecimal(row.Cells("discount_rate").Value)
+        selectedId = If(IsDBNull(row.Cells("discount_id").Value), 0, Convert.ToInt32(row.Cells("discount_id").Value))
+        selectedType = If(IsDBNull(row.Cells("discount_type").Value), "", row.Cells("discount_type").Value.ToString())
+        lblSelectDiscount.Text = If(IsDBNull(row.Cells("discount_name").Value), "", row.Cells("discount_name").Value.ToString())
+
+        Dim rateValue = row.Cells("discount_rate").Value
+        numRate.Value = If(IsDBNull(rateValue), 0D, Convert.ToDecimal(rateValue))
 
         LoadDate(dtpStartDate, row.Cells("start_date").Value)
         LoadDate(dtpEndDate, row.Cells("end_date").Value)
@@ -76,11 +91,11 @@ Public Class SettingsForm
     End Sub
 
     Private Sub LoadDate(picker As DateTimePicker, value As Object)
-        If value Is Nothing OrElse IsDBNull(value) Then
+        If value Is Nothing OrElse IsDBNull(value) OrElse String.IsNullOrEmpty(value.ToString()) Then
             picker.Value = DateTime.Today
             picker.Checked = False
         Else
-            picker.Value = Convert.ToDateTime(value)
+            DateTime.TryParse(value.ToString(), picker.Value)
             picker.Checked = True
         End If
     End Sub
@@ -127,10 +142,6 @@ Public Class SettingsForm
         Catch ex As Exception
             MessageBox.Show("Could not save the discount: " & ex.Message, "Discount Settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub btnCloseDiscount_Click(sender As Object, e As EventArgs)
-        Close()
     End Sub
 
 
@@ -189,7 +200,7 @@ Public Class SettingsForm
             End Using
 
             MessageBox.Show("Your password has been changed.", "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Close()
+            ClearPasswordFields()
 
         Catch ex As Exception
             MessageBox.Show("Could not change the password: " & ex.Message, "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -197,7 +208,13 @@ Public Class SettingsForm
     End Sub
 
     Private Sub btnCancelPassword_Click(sender As Object, e As EventArgs) Handles btnCancelPassword.Click
-        Me.Close()
+        ClearPasswordFields()
+    End Sub
+
+    Private Sub ClearPasswordFields()
+        txtCurrentPwd.Clear()
+        txtNewPwd.Clear()
+        txtConfirmPwd.Clear()
     End Sub
 
     Private Function GetPasswordProblem(password As String) As String
@@ -207,5 +224,106 @@ Public Class SettingsForm
         End If
         Return ""
     End Function
+
+
+    ' ==========================================
+    ' TAB 3: SYSTEM RESET LOGIC
+    ' ==========================================
+
+    Private Sub rbSelectiveReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbSelectiveReset.CheckedChanged
+        Dim isSelective As Boolean = rbSelectiveReset.Checked
+        dtpResetStartDate.Enabled = isSelective
+        dtpResetEndDate.Enabled = isSelective
+        chkDeleteGuestHistory.Enabled = isSelective
+        chkDeleteFinancial.Enabled = isSelective
+        chkResetRoomStatus.Enabled = isSelective
+    End Sub
+
+    Private Sub rbFactoryReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbFactoryReset.CheckedChanged
+        Dim isSelective As Boolean = rbSelectiveReset.Checked
+        dtpResetStartDate.Enabled = isSelective
+        dtpResetEndDate.Enabled = isSelective
+        chkDeleteGuestHistory.Enabled = isSelective
+        chkDeleteFinancial.Enabled = isSelective
+        chkResetRoomStatus.Enabled = isSelective
+    End Sub
+
+    Private Sub btnExecuteReset_Click(sender As Object, e As EventArgs) Handles btnExecuteReset.Click
+        If String.IsNullOrWhiteSpace(txtAdminPwdConfirm.Text) Then
+            MessageBox.Show("Please enter your Admin password to proceed.", "Password Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If Not VerifyAdminPassword(txtAdminPwdConfirm.Text) Then
+            MessageBox.Show("Incorrect password. Reset aborted.", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtAdminPwdConfirm.Clear()
+            Return
+        End If
+
+        Dim repo As New AdminRepository()
+
+        If rbFactoryReset.Checked Then
+            Dim result As DialogResult = MessageBox.Show(
+                "WARNING: This will permanently delete ALL reservations, guests and payments, and set every room to Available." & vbCrLf & vbCrLf &
+                "Staff accounts and discount settings are kept." & vbCrLf & vbCrLf &
+                "Are you absolutely sure you want to proceed?",
+                "Confirm Factory Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)
+
+            If result = DialogResult.Yes Then
+                If repo.FactoryReset() Then
+                    MessageBox.Show("Factory reset completed." & vbCrLf & vbCrLf & repo.LastSummary, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+
+        ElseIf rbSelectiveReset.Checked Then
+            If dtpResetStartDate.Value.Date > dtpResetEndDate.Value.Date Then
+                MessageBox.Show("Start Date cannot be after End Date.", "Invalid Dates", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            If Not chkDeleteGuestHistory.Checked AndAlso Not chkDeleteFinancial.Checked AndAlso Not chkResetRoomStatus.Checked Then
+                MessageBox.Show("Please select at least one option to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to perform the selected actions for " & dtpResetStartDate.Value.ToShortDateString() & " to " & dtpResetEndDate.Value.ToShortDateString() & "? This cannot be undone." & vbCrLf & vbCrLf &
+                "(Room statuses are not limited by the date range.)",
+                "Confirm Selective Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                If repo.SelectiveResetByCheckboxes(dtpResetStartDate.Value, dtpResetEndDate.Value, chkDeleteGuestHistory.Checked, chkDeleteFinancial.Checked, chkResetRoomStatus.Checked) Then
+                    MessageBox.Show("Selective reset completed." & vbCrLf & vbCrLf & repo.LastSummary, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+        Else
+            MessageBox.Show("Please select a reset type.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
+        txtAdminPwdConfirm.Clear()
+    End Sub
+
+    Private Function VerifyAdminPassword(inputPassword As String) As Boolean
+        Dim storedHash As String = ""
+        Using conn As MySqlConnection = DbConnection.GetConnection()
+            Dim query As String = "SELECT password_hash FROM account WHERE account_id = @id"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@id", CurrentUser.AccountID)
+                conn.Open()
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        storedHash = reader("password_hash").ToString()
+                    End If
+                End Using
+            End Using
+        End Using
+
+        If String.IsNullOrEmpty(storedHash) Then Return False
+        Return PasswordHash.VerifyPassword(inputPassword, storedHash)
+    End Function
+
+    Private Sub lblSelectDiscount_Click(sender As Object, e As EventArgs) Handles lblSelectDiscount.Click
+
+    End Sub
 
 End Class

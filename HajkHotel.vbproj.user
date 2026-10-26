@@ -38,7 +38,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Settings\SettingsForm.vb">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Staff Management\StaffManagementForm.vb">
       <SubType>UserControl</SubType>
