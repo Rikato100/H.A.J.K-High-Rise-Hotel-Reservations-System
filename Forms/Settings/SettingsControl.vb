@@ -8,6 +8,7 @@ Public Class SettingsControl
 
     Private Sub SettingsControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvDiscounts.AllowUserToAddRows = False
+        
         ' Initialize Discount Tab
         numRate.Minimum = 0
         numRate.Maximum = 100
