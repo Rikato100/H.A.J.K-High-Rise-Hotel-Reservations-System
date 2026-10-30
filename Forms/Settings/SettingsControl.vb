@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class SettingsControl
 
@@ -19,7 +19,32 @@ Public Class SettingsControl
         chkDeleteGuestHistory.Enabled = False
         chkDeleteFinancial.Enabled = False
         chkResetRoomStatus.Enabled = False
+
+        ' Staff only get Change Password: remove the Discount and System Reset tabs
+        If CurrentUser.Role <> "Admin" Then HideAdminTabs()
     End Sub
+
+    ' Finds the tab pages that hold the discount grid and the reset options (by the controls
+    ' inside them, so it does not depend on what the tabs are named) and removes them.
+    Private Sub HideAdminTabs()
+        For Each tc As TabControl In GetAllTabControls(Me)
+            For Each page As TabPage In tc.TabPages.Cast(Of TabPage)().ToList()
+                If page.Controls.Find("dgvDiscounts", True).Length > 0 OrElse
+                   page.Controls.Find("rbFactoryReset", True).Length > 0 Then
+                    tc.TabPages.Remove(page)
+                End If
+            Next
+        Next
+    End Sub
+
+    Private Function GetAllTabControls(parent As Control) As List(Of TabControl)
+        Dim found As New List(Of TabControl)()
+        For Each c As Control In parent.Controls
+            If TypeOf c Is TabControl Then found.Add(DirectCast(c, TabControl))
+            found.AddRange(GetAllTabControls(c))
+        Next
+        Return found
+    End Function
 
     ' ==========================================
     ' TAB 1: DISCOUNT SETTINGS LOGIC
@@ -101,6 +126,8 @@ Public Class SettingsControl
     End Sub
 
     Private Sub btnSaveDiscount_Click(sender As Object, e As EventArgs) Handles btnSaveDiscount.Click
+        If CurrentUser.Role <> "Admin" Then Exit Sub
+
         If selectedId = 0 Then
             MessageBox.Show("Select a discount from the list first.", "Discount Settings", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -249,6 +276,8 @@ Public Class SettingsControl
     End Sub
 
     Private Sub btnExecuteReset_Click(sender As Object, e As EventArgs) Handles btnExecuteReset.Click
+        If CurrentUser.Role <> "Admin" Then Exit Sub
+
         If String.IsNullOrWhiteSpace(txtAdminPwdConfirm.Text) Then
             MessageBox.Show("Please enter your Admin password to proceed.", "Password Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
