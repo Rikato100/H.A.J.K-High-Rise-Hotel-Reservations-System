@@ -3,6 +3,7 @@
 Public Class RoomControl
 
     Private Sub RoomControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvRooms.AllowUserToAddRows = False
         LoadRooms()
     End Sub
 
