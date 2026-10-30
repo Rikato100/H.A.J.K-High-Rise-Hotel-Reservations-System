@@ -22,10 +22,9 @@ Partial Class RoomControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoomControl))
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Label1 = New Label()
         dgvRooms = New DataGridView()
         colRoomNumber = New DataGridViewTextBoxColumn()
@@ -51,58 +50,59 @@ Partial Class RoomControl
         Label1.AutoSize = True
         Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(105, 18)
+        Label1.Location = New Point(120, 24)
         Label1.Name = "Label1"
-        Label1.Size = New Size(208, 24)
+        Label1.Size = New Size(261, 30)
         Label1.TabIndex = 1
         Label1.Text = "Room Management"
         Label1.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' dgvRooms
         ' 
-        dgvRooms.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right), AnchorStyles)
+        dgvRooms.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvRooms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvRooms.BackgroundColor = Color.Beige
         dgvRooms.BorderStyle = BorderStyle.None
         dgvRooms.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = Color.Maroon
-        DataGridViewCellStyle7.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle7.ForeColor = Color.Beige
-        DataGridViewCellStyle7.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle7.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle7.WrapMode = DataGridViewTriState.True
-        dgvRooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvRooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvRooms.ColumnHeadersHeight = 47
         dgvRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         dgvRooms.Columns.AddRange(New DataGridViewColumn() {colRoomNumber, colRoomType, colStatus, colRoomSize, colStandardCapacity, colMaxCapacity, colRate, colAmenities})
-        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = Color.Beige
-        DataGridViewCellStyle8.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle8.ForeColor = Color.Maroon
-        DataGridViewCellStyle8.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle8.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.False
-        dgvRooms.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvRooms.DefaultCellStyle = DataGridViewCellStyle2
         dgvRooms.EditMode = DataGridViewEditMode.EditProgrammatically
         dgvRooms.EnableHeadersVisualStyles = False
         dgvRooms.GridColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        dgvRooms.Location = New Point(17, 119)
+        dgvRooms.Location = New Point(19, 159)
+        dgvRooms.Margin = New Padding(3, 4, 3, 4)
         dgvRooms.MultiSelect = False
         dgvRooms.Name = "dgvRooms"
         dgvRooms.ReadOnly = True
-        DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = Color.Beige
-        DataGridViewCellStyle9.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle9.ForeColor = Color.Maroon
-        DataGridViewCellStyle9.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle9.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle9.WrapMode = DataGridViewTriState.True
-        dgvRooms.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvRooms.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvRooms.RowHeadersWidth = 51
         dgvRooms.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvRooms.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvRooms.Size = New Size(869, 340)
+        dgvRooms.Size = New Size(993, 453)
         dgvRooms.TabIndex = 2
         ' 
         ' colRoomNumber
@@ -172,9 +172,10 @@ Partial Class RoomControl
         ' 
         btnAdd.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         btnAdd.ForeColor = Color.Beige
-        btnAdd.Location = New Point(17, 67)
+        btnAdd.Location = New Point(19, 89)
+        btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(172, 46)
+        btnAdd.Size = New Size(197, 61)
         btnAdd.TabIndex = 6
         btnAdd.Text = "＋ ADD"
         btnAdd.UseVisualStyleBackColor = False
@@ -183,9 +184,10 @@ Partial Class RoomControl
         ' 
         btnEdit.BackColor = Color.OldLace
         btnEdit.ForeColor = Color.Maroon
-        btnEdit.Location = New Point(195, 67)
+        btnEdit.Location = New Point(223, 89)
+        btnEdit.Margin = New Padding(3, 4, 3, 4)
         btnEdit.Name = "btnEdit"
-        btnEdit.Size = New Size(172, 46)
+        btnEdit.Size = New Size(197, 61)
         btnEdit.TabIndex = 7
         btnEdit.Text = "EDIT"
         btnEdit.UseVisualStyleBackColor = False
@@ -193,9 +195,10 @@ Partial Class RoomControl
         ' btnRefresh
         ' 
         btnRefresh.BackColor = Color.OldLace
-        btnRefresh.Location = New Point(551, 67)
+        btnRefresh.Location = New Point(630, 89)
+        btnRefresh.Margin = New Padding(3, 4, 3, 4)
         btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(172, 46)
+        btnRefresh.Size = New Size(197, 61)
         btnRefresh.TabIndex = 9
         btnRefresh.Text = "↻ REFRESH"
         btnRefresh.UseVisualStyleBackColor = False
@@ -204,9 +207,10 @@ Partial Class RoomControl
         ' 
         btnDelete.BackColor = Color.OldLace
         btnDelete.ForeColor = Color.Maroon
-        btnDelete.Location = New Point(373, 67)
+        btnDelete.Location = New Point(426, 89)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(172, 46)
+        btnDelete.Size = New Size(197, 61)
         btnDelete.TabIndex = 10
         btnDelete.Text = "DELETE"
         btnDelete.UseVisualStyleBackColor = False
@@ -215,26 +219,24 @@ Partial Class RoomControl
         ' 
         Label4.AutoSize = True
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(108, 44)
+        Label4.Location = New Point(123, 59)
         Label4.Name = "Label4"
-        Label4.Size = New Size(370, 15)
+        Label4.Size = New Size(472, 20)
         Label4.TabIndex = 16
         Label4.Text = "Manage hotel rooms, update details, and keep track of the availability"
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(17, 17)
-        PictureBox2.Margin = New Padding(3, 2, 3, 2)
+        PictureBox2.Location = New Point(19, 23)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 46)
+        PictureBox2.Size = New Size(94, 61)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 16
         PictureBox2.TabStop = False
         ' 
         ' RoomControl
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(PictureBox2)
@@ -245,8 +247,9 @@ Partial Class RoomControl
         Controls.Add(btnAdd)
         Controls.Add(dgvRooms)
         Controls.Add(Label1)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "RoomControl"
-        Size = New Size(903, 478)
+        Size = New Size(1032, 637)
         CType(dgvRooms, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

@@ -40,9 +40,9 @@ Partial Class GuestStayHistoryForm
         PanelTop.SuspendLayout()
         CType(dgvStayHistory, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        '
+        ' 
         ' PanelTop
-        '
+        ' 
         PanelTop.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         PanelTop.Controls.Add(lblTitle)
         PanelTop.Dock = DockStyle.Top
@@ -50,21 +50,21 @@ Partial Class GuestStayHistoryForm
         PanelTop.Name = "PanelTop"
         PanelTop.Size = New Size(950, 70)
         PanelTop.TabIndex = 0
-        '
+        ' 
         ' lblTitle
-        '
+        ' 
         lblTitle.Dock = DockStyle.Fill
         lblTitle.Font = New Font("Mongolian Baiti", 18.0F, FontStyle.Bold)
-        lblTitle.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        lblTitle.ForeColor = Color.Beige
         lblTitle.Location = New Point(0, 0)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(950, 70)
         lblTitle.TabIndex = 0
         lblTitle.Text = "GUEST STAY HISTORY"
         lblTitle.TextAlign = ContentAlignment.MiddleCenter
-        '
+        ' 
         ' lblGuestName
-        '
+        ' 
         lblGuestName.AutoSize = True
         lblGuestName.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold)
         lblGuestName.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
@@ -73,9 +73,9 @@ Partial Class GuestStayHistoryForm
         lblGuestName.Size = New Size(73, 25)
         lblGuestName.TabIndex = 1
         lblGuestName.Text = "Guest: "
-        '
+        ' 
         ' lblGuestID
-        '
+        ' 
         lblGuestID.AutoSize = True
         lblGuestID.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold)
         lblGuestID.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
@@ -84,17 +84,17 @@ Partial Class GuestStayHistoryForm
         lblGuestID.Size = New Size(98, 25)
         lblGuestID.TabIndex = 2
         lblGuestID.Text = "Guest ID: "
-        '
+        ' 
         ' dgvStayHistory
-        '
+        ' 
         dgvStayHistory.AllowUserToResizeRows = False
         dgvStayHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvStayHistory.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.Maroon
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle1.ForeColor = Color.Beige
-        DataGridViewCellStyle1.SelectionBackColor = Color.Maroon
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle1.SelectionForeColor = Color.Beige
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         dgvStayHistory.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
@@ -103,9 +103,9 @@ Partial Class GuestStayHistoryForm
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle2.ForeColor = Color.Maroon
-        DataGridViewCellStyle2.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle2.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         dgvStayHistory.DefaultCellStyle = DataGridViewCellStyle2
         dgvStayHistory.EnableHeadersVisualStyles = False
@@ -115,63 +115,64 @@ Partial Class GuestStayHistoryForm
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle3.ForeColor = Color.Maroon
-        DataGridViewCellStyle3.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle3.SelectionForeColor = Color.Maroon
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
         dgvStayHistory.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvStayHistory.RowHeadersWidth = 51
         dgvStayHistory.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        dgvStayHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvStayHistory.Size = New Size(890, 400)
         dgvStayHistory.TabIndex = 3
-        '
+        ' 
         ' colResCode
-        '
+        ' 
         colResCode.HeaderText = "Reservation Code"
         colResCode.MinimumWidth = 6
         colResCode.Name = "colResCode"
         colResCode.ReadOnly = True
-        '
+        ' 
         ' colRoomNumber
-        '
+        ' 
         colRoomNumber.HeaderText = "Room Number"
         colRoomNumber.MinimumWidth = 6
         colRoomNumber.Name = "colRoomNumber"
         colRoomNumber.ReadOnly = True
-        '
+        ' 
         ' colCheckIn
-        '
+        ' 
         colCheckIn.HeaderText = "Check-In"
         colCheckIn.MinimumWidth = 6
         colCheckIn.Name = "colCheckIn"
         colCheckIn.ReadOnly = True
-        '
+        ' 
         ' colCheckOut
-        '
+        ' 
         colCheckOut.HeaderText = "Check-Out"
         colCheckOut.MinimumWidth = 6
         colCheckOut.Name = "colCheckOut"
         colCheckOut.ReadOnly = True
-        '
+        ' 
         ' colStatus
-        '
+        ' 
         colStatus.HeaderText = "Status"
         colStatus.MinimumWidth = 6
         colStatus.Name = "colStatus"
         colStatus.ReadOnly = True
-        '
+        ' 
         ' colTotalAmount
-        '
+        ' 
         colTotalAmount.HeaderText = "Total Amount"
         colTotalAmount.MinimumWidth = 6
         colTotalAmount.Name = "colTotalAmount"
         colTotalAmount.ReadOnly = True
-        '
+        ' 
         ' btnClose
-        '
+        ' 
         btnClose.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnClose.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
-        btnClose.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
+        btnClose.ForeColor = Color.Beige
         btnClose.Location = New Point(775, 555)
         btnClose.Margin = New Padding(3, 4, 3, 4)
         btnClose.Name = "btnClose"
@@ -179,10 +180,10 @@ Partial Class GuestStayHistoryForm
         btnClose.TabIndex = 4
         btnClose.Text = "BACK"
         btnClose.UseVisualStyleBackColor = False
-        '
+        ' 
         ' GuestStayHistoryForm
-        '
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(950, 620)

@@ -22,9 +22,9 @@ Partial Class ReservationListControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReservationListControl))
         lblSearch = New Label()
         txtSearch = New TextBox()
@@ -116,40 +116,39 @@ Partial Class ReservationListControl
         ' dgvReservations
         ' 
         dgvReservations.AllowUserToResizeRows = False
-        dgvReservations.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right), AnchorStyles)
+        dgvReservations.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvReservations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvReservations.BackgroundColor = Color.Beige
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.Maroon
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle4.ForeColor = Color.Beige
-        DataGridViewCellStyle4.SelectionBackColor = Color.Maroon
-        DataGridViewCellStyle4.SelectionForeColor = Color.Beige
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvReservations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvReservations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvReservations.Columns.AddRange(New DataGridViewColumn() {colResID, colResCode, colGuest, colRoom, colStatus, colCheckIn, colCheckOut, colNights, colTotal})
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.Beige
-        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle5.ForeColor = Color.Maroon
-        DataGridViewCellStyle5.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle5.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
-        dgvReservations.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvReservations.DefaultCellStyle = DataGridViewCellStyle2
         dgvReservations.EnableHeadersVisualStyles = False
         dgvReservations.Location = New Point(12, 165)
         dgvReservations.Margin = New Padding(3, 4, 3, 4)
         dgvReservations.Name = "dgvReservations"
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.Beige
-        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle6.ForeColor = Color.Maroon
-        DataGridViewCellStyle6.SelectionBackColor = Color.Beige
-        DataGridViewCellStyle6.SelectionForeColor = Color.Maroon
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
-        dgvReservations.RowHeadersVisible = False
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvReservations.RowHeadersWidth = 51
         dgvReservations.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvReservations.Size = New Size(1008, 410)
@@ -267,21 +266,8 @@ Partial Class ReservationListControl
         btnDelete.Text = "DELETE"
         btnDelete.UseVisualStyleBackColor = False
         ' 
-        ' btnExport
-        ' 
-        btnExport.BackColor = Color.OldLace
-        btnExport.ForeColor = Color.Maroon
-        btnExport.Location = New Point(614, 115)
-        btnExport.Margin = New Padding(3, 4, 3, 4)
-        btnExport.Name = "btnExport"
-        btnExport.Size = New Size(100, 40)
-        btnExport.TabIndex = 28
-        btnExport.Text = "EXPORT"
-        btnExport.UseVisualStyleBackColor = False
-        ' 
         ' PictureBox2
         ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(12, 10)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(82, 46)
@@ -312,7 +298,7 @@ Partial Class ReservationListControl
         ' 
         ' btnCheckIn
         ' 
-        btnCheckIn.Anchor = CType((AnchorStyles.Bottom Or AnchorStyles.Left), AnchorStyles)
+        btnCheckIn.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnCheckIn.BackColor = Color.OldLace
         btnCheckIn.ForeColor = Color.Maroon
         btnCheckIn.Location = New Point(12, 595)
@@ -325,7 +311,7 @@ Partial Class ReservationListControl
         ' 
         ' btnCheckOut
         ' 
-        btnCheckOut.Anchor = CType((AnchorStyles.Bottom Or AnchorStyles.Left), AnchorStyles)
+        btnCheckOut.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnCheckOut.BackColor = Color.OldLace
         btnCheckOut.ForeColor = Color.Maroon
         btnCheckOut.Location = New Point(160, 595)
@@ -338,7 +324,7 @@ Partial Class ReservationListControl
         ' 
         ' btnProcessPayment
         ' 
-        btnProcessPayment.Anchor = CType((AnchorStyles.Bottom Or AnchorStyles.Left), AnchorStyles)
+        btnProcessPayment.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnProcessPayment.BackColor = Color.OldLace
         btnProcessPayment.ForeColor = Color.Maroon
         btnProcessPayment.Location = New Point(308, 595)
@@ -349,29 +335,8 @@ Partial Class ReservationListControl
         btnProcessPayment.Text = "Process Payment"
         btnProcessPayment.UseVisualStyleBackColor = False
         ' 
-        ' cmbInvoiceType
+        ' printDoc
         ' 
-        cmbInvoiceType.Anchor = CType((AnchorStyles.Bottom Or AnchorStyles.Right), AnchorStyles)
-        cmbInvoiceType.DropDownStyle = ComboBoxStyle.DropDownList
-        cmbInvoiceType.FormattingEnabled = True
-        cmbInvoiceType.Items.AddRange(New Object() {"Pre-payment Quote", "Advance Payment Receipt", "Final Checkout Folio"})
-        cmbInvoiceType.Location = New Point(610, 602)
-        cmbInvoiceType.Name = "cmbInvoiceType"
-        cmbInvoiceType.Size = New Size(240, 28)
-        cmbInvoiceType.TabIndex = 29
-        ' 
-        ' btnPrintInvoice
-        ' 
-        btnPrintInvoice.Anchor = CType((AnchorStyles.Bottom Or AnchorStyles.Right), AnchorStyles)
-        btnPrintInvoice.BackColor = Color.OldLace
-        btnPrintInvoice.ForeColor = Color.Maroon
-        btnPrintInvoice.Location = New Point(858, 595)
-        btnPrintInvoice.Margin = New Padding(3, 4, 3, 4)
-        btnPrintInvoice.Name = "btnPrintInvoice"
-        btnPrintInvoice.Size = New Size(162, 45)
-        btnPrintInvoice.TabIndex = 30
-        btnPrintInvoice.Text = "Print Invoice"
-        btnPrintInvoice.UseVisualStyleBackColor = False
         ' 
         ' printPreview
         ' 
@@ -383,9 +348,45 @@ Partial Class ReservationListControl
         printPreview.Name = "printPreview"
         printPreview.Visible = False
         ' 
+        ' btnExport
+        ' 
+        btnExport.BackColor = Color.OldLace
+        btnExport.ForeColor = Color.Maroon
+        btnExport.Location = New Point(614, 115)
+        btnExport.Margin = New Padding(3, 4, 3, 4)
+        btnExport.Name = "btnExport"
+        btnExport.Size = New Size(100, 40)
+        btnExport.TabIndex = 28
+        btnExport.Text = "EXPORT"
+        btnExport.UseVisualStyleBackColor = False
+        ' 
+        ' cmbInvoiceType
+        ' 
+        cmbInvoiceType.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        cmbInvoiceType.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbInvoiceType.FormattingEnabled = True
+        cmbInvoiceType.Items.AddRange(New Object() {"Pre-payment Quote", "Advance Payment Receipt", "Final Checkout Folio"})
+        cmbInvoiceType.Location = New Point(610, 602)
+        cmbInvoiceType.Name = "cmbInvoiceType"
+        cmbInvoiceType.Size = New Size(240, 28)
+        cmbInvoiceType.TabIndex = 29
+        ' 
+        ' btnPrintInvoice
+        ' 
+        btnPrintInvoice.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        btnPrintInvoice.BackColor = Color.OldLace
+        btnPrintInvoice.ForeColor = Color.Maroon
+        btnPrintInvoice.Location = New Point(858, 595)
+        btnPrintInvoice.Margin = New Padding(3, 4, 3, 4)
+        btnPrintInvoice.Name = "btnPrintInvoice"
+        btnPrintInvoice.Size = New Size(162, 45)
+        btnPrintInvoice.TabIndex = 30
+        btnPrintInvoice.Text = "Print Invoice"
+        btnPrintInvoice.UseVisualStyleBackColor = False
+        ' 
         ' ReservationListControl
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(cmbStatusFilter)

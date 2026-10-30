@@ -17,195 +17,240 @@ Partial Class PaymentForm
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.lblGuestName = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblTotalAmount = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblTotalPaid = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblBalance = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtAmount = New System.Windows.Forms.TextBox()
-        Me.cmbMethod = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtReference = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.SuspendLayout()
-        '
-        'lblGuestName
-        '
-        Me.lblGuestName.AutoSize = True
-        Me.lblGuestName.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblGuestName.Location = New System.Drawing.Point(20, 20)
-        Me.lblGuestName.Name = "lblGuestName"
-        Me.lblGuestName.Size = New System.Drawing.Size(100, 21)
-        Me.lblGuestName.TabIndex = 0
-        Me.lblGuestName.Text = "Guest Name"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 60)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Total Amount:"
-        '
-        'lblTotalAmount
-        '
-        Me.lblTotalAmount.AutoSize = True
-        Me.lblTotalAmount.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTotalAmount.Location = New System.Drawing.Point(120, 60)
-        Me.lblTotalAmount.Name = "lblTotalAmount"
-        Me.lblTotalAmount.Size = New System.Drawing.Size(31, 15)
-        Me.lblTotalAmount.TabIndex = 2
-        Me.lblTotalAmount.Text = "0.00"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 85)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 13)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Total Paid:"
-        '
-        'lblTotalPaid
-        '
-        Me.lblTotalPaid.AutoSize = True
-        Me.lblTotalPaid.Location = New System.Drawing.Point(120, 85)
-        Me.lblTotalPaid.Name = "lblTotalPaid"
-        Me.lblTotalPaid.Size = New System.Drawing.Size(28, 13)
-        Me.lblTotalPaid.TabIndex = 4
-        Me.lblTotalPaid.Text = "0.00"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(20, 110)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 13)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Balance:"
-        '
-        'lblBalance
-        '
-        Me.lblBalance.AutoSize = True
-        Me.lblBalance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblBalance.ForeColor = System.Drawing.Color.Firebrick
-        Me.lblBalance.Location = New System.Drawing.Point(120, 110)
-        Me.lblBalance.Name = "lblBalance"
-        Me.lblBalance.Size = New System.Drawing.Size(31, 15)
-        Me.lblBalance.TabIndex = 6
-        Me.lblBalance.Text = "0.00"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(20, 150)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(87, 13)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Amount Paying:"
-        '
-        'txtAmount
-        '
-        Me.txtAmount.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtAmount.Location = New System.Drawing.Point(120, 147)
-        Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(150, 23)
-        Me.txtAmount.TabIndex = 8
-        '
-        'cmbMethod
-        '
-        Me.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMethod.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.cmbMethod.FormattingEnabled = True
-        Me.cmbMethod.Location = New System.Drawing.Point(120, 180)
-        Me.cmbMethod.Name = "cmbMethod"
-        Me.cmbMethod.Size = New System.Drawing.Size(150, 23)
-        Me.cmbMethod.TabIndex = 9
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(20, 183)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(90, 13)
-        Me.Label8.TabIndex = 10
-        Me.Label8.Text = "Payment Method:"
-        '
-        'txtReference
-        '
-        Me.txtReference.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtReference.Location = New System.Drawing.Point(120, 213)
-        Me.txtReference.Name = "txtReference"
-        Me.txtReference.Size = New System.Drawing.Size(150, 23)
-        Me.txtReference.TabIndex = 11
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(20, 216)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(61, 13)
-        Me.Label9.TabIndex = 12
-        Me.Label9.Text = "Reference #:"
-        '
-        'btnSave
-        '
-        Me.btnSave.BackColor = System.Drawing.Color.SeaGreen
-        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSave.ForeColor = System.Drawing.Color.White
-        Me.btnSave.Location = New System.Drawing.Point(20, 260)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(110, 35)
-        Me.btnSave.TabIndex = 13
-        Me.btnSave.Text = "Save Payment"
-        Me.btnSave.UseVisualStyleBackColor = False
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(160, 260)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(110, 35)
-        Me.btnCancel.TabIndex = 14
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'PaymentForm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(300, 320)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.txtReference)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.cmbMethod)
-        Me.Controls.Add(Me.txtAmount)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.lblBalance)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.lblTotalPaid)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.lblTotalAmount)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lblGuestName)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "PaymentForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Process Payment"
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
-
+        pnlHeader = New Panel()
+        lblGuestName = New Label()
+        Label1 = New Label()
+        lblTotalAmount = New Label()
+        Label3 = New Label()
+        lblTotalPaid = New Label()
+        Label5 = New Label()
+        lblBalance = New Label()
+        Label7 = New Label()
+        txtAmount = New TextBox()
+        cmbMethod = New ComboBox()
+        Label8 = New Label()
+        txtReference = New TextBox()
+        Label9 = New Label()
+        btnSave = New Button()
+        btnCancel = New Button()
+        pnlHeader.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' pnlHeader
+        ' 
+        pnlHeader.BackColor = Color.FromArgb(64, 0, 0)
+        pnlHeader.Controls.Add(lblGuestName)
+        pnlHeader.Dock = DockStyle.Top
+        pnlHeader.Location = New Point(0, 0)
+        pnlHeader.Margin = New Padding(4, 5, 4, 5)
+        pnlHeader.Name = "pnlHeader"
+        pnlHeader.Size = New Size(427, 100)
+        pnlHeader.TabIndex = 0
+        ' 
+        ' lblGuestName
+        ' 
+        lblGuestName.AutoSize = True
+        lblGuestName.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0)
+        lblGuestName.ForeColor = Color.Beige
+        lblGuestName.Location = New Point(27, 28)
+        lblGuestName.Margin = New Padding(4, 0, 4, 0)
+        lblGuestName.Name = "lblGuestName"
+        lblGuestName.Size = New Size(153, 32)
+        lblGuestName.TabIndex = 0
+        lblGuestName.Text = "Guest Name"
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label1.Location = New Point(27, 131)
+        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(117, 23)
+        Label1.TabIndex = 1
+        Label1.Text = "Total Amount:"
+        ' 
+        ' lblTotalAmount
+        ' 
+        lblTotalAmount.AutoSize = True
+        lblTotalAmount.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0)
+        lblTotalAmount.Location = New Point(173, 131)
+        lblTotalAmount.Margin = New Padding(4, 0, 4, 0)
+        lblTotalAmount.Name = "lblTotalAmount"
+        lblTotalAmount.Size = New Size(45, 23)
+        lblTotalAmount.TabIndex = 2
+        lblTotalAmount.Text = "0.00"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label3.Location = New Point(27, 177)
+        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(87, 23)
+        Label3.TabIndex = 3
+        Label3.Text = "Total Paid:"
+        ' 
+        ' lblTotalPaid
+        ' 
+        lblTotalPaid.AutoSize = True
+        lblTotalPaid.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        lblTotalPaid.Location = New Point(173, 177)
+        lblTotalPaid.Margin = New Padding(4, 0, 4, 0)
+        lblTotalPaid.Name = "lblTotalPaid"
+        lblTotalPaid.Size = New Size(41, 23)
+        lblTotalPaid.TabIndex = 4
+        lblTotalPaid.Text = "0.00"
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label5.Location = New Point(27, 223)
+        Label5.Margin = New Padding(4, 0, 4, 0)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(73, 23)
+        Label5.TabIndex = 5
+        Label5.Text = "Balance:"
+        ' 
+        ' lblBalance
+        ' 
+        lblBalance.AutoSize = True
+        lblBalance.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0)
+        lblBalance.ForeColor = Color.Firebrick
+        lblBalance.Location = New Point(173, 223)
+        lblBalance.Margin = New Padding(4, 0, 4, 0)
+        lblBalance.Name = "lblBalance"
+        lblBalance.Size = New Size(45, 23)
+        lblBalance.TabIndex = 6
+        lblBalance.Text = "0.00"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label7.Location = New Point(27, 292)
+        Label7.Margin = New Padding(4, 0, 4, 0)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(131, 23)
+        Label7.TabIndex = 7
+        Label7.Text = "Amount Paying:"
+        ' 
+        ' txtAmount
+        ' 
+        txtAmount.Font = New Font("Segoe UI", 9.0F)
+        txtAmount.Location = New Point(173, 289)
+        txtAmount.Margin = New Padding(4, 5, 4, 5)
+        txtAmount.Name = "txtAmount"
+        txtAmount.Size = New Size(212, 27)
+        txtAmount.TabIndex = 8
+        ' 
+        ' cmbMethod
+        ' 
+        cmbMethod.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbMethod.Font = New Font("Segoe UI", 9.0F)
+        cmbMethod.FormattingEnabled = True
+        cmbMethod.Location = New Point(173, 343)
+        cmbMethod.Margin = New Padding(4, 5, 4, 5)
+        cmbMethod.Name = "cmbMethod"
+        cmbMethod.Size = New Size(212, 28)
+        cmbMethod.TabIndex = 9
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label8.Location = New Point(27, 346)
+        Label8.Margin = New Padding(4, 0, 4, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(145, 23)
+        Label8.TabIndex = 10
+        Label8.Text = "Payment Method:"
+        ' 
+        ' txtReference
+        ' 
+        txtReference.Font = New Font("Segoe UI", 9.0F)
+        txtReference.Location = New Point(173, 397)
+        txtReference.Margin = New Padding(4, 5, 4, 5)
+        txtReference.Name = "txtReference"
+        txtReference.Size = New Size(212, 27)
+        txtReference.TabIndex = 11
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        Label9.Location = New Point(27, 400)
+        Label9.Margin = New Padding(4, 0, 4, 0)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(104, 23)
+        Label9.TabIndex = 12
+        Label9.Text = "Reference #:"
+        ' 
+        ' btnSave
+        ' 
+        btnSave.BackColor = Color.FromArgb(64, 0, 0)
+        btnSave.FlatStyle = FlatStyle.Flat
+        btnSave.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, 0)
+        btnSave.ForeColor = Color.Beige
+        btnSave.Location = New Point(60, 485)
+        btnSave.Margin = New Padding(4, 5, 4, 5)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(147, 54)
+        btnSave.TabIndex = 13
+        btnSave.Text = "Save Payment"
+        btnSave.UseVisualStyleBackColor = False
+        ' 
+        ' btnCancel
+        ' 
+        btnCancel.BackColor = Color.FromArgb(64, 0, 0)
+        btnCancel.FlatStyle = FlatStyle.Flat
+        btnCancel.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, 0)
+        btnCancel.ForeColor = Color.Beige
+        btnCancel.Location = New Point(220, 485)
+        btnCancel.Margin = New Padding(4, 5, 4, 5)
+        btnCancel.Name = "btnCancel"
+        btnCancel.Size = New Size(147, 54)
+        btnCancel.TabIndex = 14
+        btnCancel.Text = "CANCEL"
+        btnCancel.UseVisualStyleBackColor = False
+        ' 
+        ' PaymentForm
+        ' 
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(245, 239, 221)
+        ClientSize = New Size(427, 577)
+        Controls.Add(btnCancel)
+        Controls.Add(btnSave)
+        Controls.Add(Label9)
+        Controls.Add(txtReference)
+        Controls.Add(Label8)
+        Controls.Add(cmbMethod)
+        Controls.Add(txtAmount)
+        Controls.Add(Label7)
+        Controls.Add(lblBalance)
+        Controls.Add(Label5)
+        Controls.Add(lblTotalPaid)
+        Controls.Add(Label3)
+        Controls.Add(lblTotalAmount)
+        Controls.Add(Label1)
+        Controls.Add(pnlHeader)
+        FormBorderStyle = FormBorderStyle.FixedDialog
+        Margin = New Padding(4, 5, 4, 5)
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "PaymentForm"
+        StartPosition = FormStartPosition.CenterParent
+        Text = "Process Payment"
+        pnlHeader.ResumeLayout(False)
+        pnlHeader.PerformLayout()
+        ResumeLayout(False)
+        PerformLayout()
     End Sub
 
+    Friend WithEvents pnlHeader As Panel
     Friend WithEvents lblGuestName As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblTotalAmount As System.Windows.Forms.Label

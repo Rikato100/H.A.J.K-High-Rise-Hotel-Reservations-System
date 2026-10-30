@@ -44,10 +44,10 @@ Partial Class AddRoomForm
         ' 
         lblTitle.AutoSize = True
         lblTitle.Font = New Font("Mongolian Baiti", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitle.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        lblTitle.Location = New Point(170, 21)
+        lblTitle.ForeColor = Color.Beige
+        lblTitle.Location = New Point(194, 28)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(195, 34)
+        lblTitle.Size = New Size(245, 43)
         lblTitle.TabIndex = 0
         lblTitle.Text = "ADD ROOM"
         ' 
@@ -56,9 +56,9 @@ Partial Class AddRoomForm
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         Label2.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label2.Location = New Point(70, 101)
+        Label2.Location = New Point(80, 135)
         Label2.Name = "Label2"
-        Label2.Size = New Size(118, 20)
+        Label2.Size = New Size(150, 25)
         Label2.TabIndex = 1
         Label2.Text = "Room Number:"
         ' 
@@ -66,9 +66,10 @@ Partial Class AddRoomForm
         ' 
         txtRoomNumber.BackColor = Color.White
         txtRoomNumber.ForeColor = Color.Maroon
-        txtRoomNumber.Location = New Point(219, 100)
+        txtRoomNumber.Location = New Point(250, 133)
+        txtRoomNumber.Margin = New Padding(3, 4, 3, 4)
         txtRoomNumber.Name = "txtRoomNumber"
-        txtRoomNumber.Size = New Size(219, 23)
+        txtRoomNumber.Size = New Size(250, 27)
         txtRoomNumber.TabIndex = 2
         ' 
         ' Label3
@@ -76,9 +77,9 @@ Partial Class AddRoomForm
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         Label3.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label3.Location = New Point(70, 139)
+        Label3.Location = New Point(80, 185)
         Label3.Name = "Label3"
-        Label3.Size = New Size(92, 20)
+        Label3.Size = New Size(117, 25)
         Label3.TabIndex = 3
         Label3.Text = "Room Type:"
         ' 
@@ -88,9 +89,10 @@ Partial Class AddRoomForm
         cmbRoomType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRoomType.ForeColor = Color.Black
         cmbRoomType.FormattingEnabled = True
-        cmbRoomType.Location = New Point(219, 138)
+        cmbRoomType.Location = New Point(250, 184)
+        cmbRoomType.Margin = New Padding(3, 4, 3, 4)
         cmbRoomType.Name = "cmbRoomType"
-        cmbRoomType.Size = New Size(219, 23)
+        cmbRoomType.Size = New Size(250, 28)
         cmbRoomType.TabIndex = 4
         ' 
         ' Label4
@@ -98,9 +100,9 @@ Partial Class AddRoomForm
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(70, 176)
+        Label4.Location = New Point(80, 235)
         Label4.Name = "Label4"
-        Label4.Size = New Size(50, 20)
+        Label4.Size = New Size(65, 25)
         Label4.TabIndex = 5
         Label4.Text = "Floor:"
         ' 
@@ -109,9 +111,9 @@ Partial Class AddRoomForm
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         Label5.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label5.Location = New Point(70, 214)
+        Label5.Location = New Point(80, 285)
         Label5.Name = "Label5"
-        Label5.Size = New Size(57, 20)
+        Label5.Size = New Size(72, 25)
         Label5.TabIndex = 6
         Label5.Text = "Status:"
         ' 
@@ -120,9 +122,9 @@ Partial Class AddRoomForm
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 11F, FontStyle.Bold)
         Label6.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label6.Location = New Point(70, 251)
+        Label6.Location = New Point(80, 335)
         Label6.Name = "Label6"
-        Label6.Size = New Size(84, 20)
+        Label6.Size = New Size(104, 25)
         Label6.TabIndex = 7
         Label6.Text = "Amenities:"
         ' 
@@ -130,9 +132,10 @@ Partial Class AddRoomForm
         ' 
         numFloor.BackColor = Color.White
         numFloor.ForeColor = Color.Maroon
-        numFloor.Location = New Point(219, 176)
+        numFloor.Location = New Point(250, 235)
+        numFloor.Margin = New Padding(3, 4, 3, 4)
         numFloor.Name = "numFloor"
-        numFloor.Size = New Size(219, 23)
+        numFloor.Size = New Size(250, 27)
         numFloor.TabIndex = 8
         numFloor.Value = New Decimal(New Integer() {1, 0, 0, 0})
         ' 
@@ -142,29 +145,32 @@ Partial Class AddRoomForm
         cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cmbStatus.ForeColor = Color.Black
         cmbStatus.FormattingEnabled = True
-        cmbStatus.Location = New Point(219, 213)
+        cmbStatus.Location = New Point(250, 284)
+        cmbStatus.Margin = New Padding(3, 4, 3, 4)
         cmbStatus.Name = "cmbStatus"
-        cmbStatus.Size = New Size(219, 23)
+        cmbStatus.Size = New Size(250, 28)
         cmbStatus.TabIndex = 10
         ' 
         ' txtAmenities
         ' 
         txtAmenities.BackColor = Color.White
         txtAmenities.ForeColor = Color.Maroon
-        txtAmenities.Location = New Point(219, 250)
+        txtAmenities.Location = New Point(250, 333)
+        txtAmenities.Margin = New Padding(3, 4, 3, 4)
         txtAmenities.Multiline = True
         txtAmenities.Name = "txtAmenities"
-        txtAmenities.Size = New Size(219, 52)
+        txtAmenities.Size = New Size(250, 68)
         txtAmenities.TabIndex = 11
         ' 
         ' btnSave
         ' 
         btnSave.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         btnSave.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
-        btnSave.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        btnSave.Location = New Point(140, 322)
+        btnSave.ForeColor = Color.Beige
+        btnSave.Location = New Point(160, 429)
+        btnSave.Margin = New Padding(3, 4, 3, 4)
         btnSave.Name = "btnSave"
-        btnSave.Size = New Size(114, 36)
+        btnSave.Size = New Size(130, 48)
         btnSave.TabIndex = 12
         btnSave.Text = "SAVE"
         btnSave.UseVisualStyleBackColor = False
@@ -174,9 +180,10 @@ Partial Class AddRoomForm
         btnCancel.BackColor = Color.OldLace
         btnCancel.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         btnCancel.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        btnCancel.Location = New Point(271, 322)
+        btnCancel.Location = New Point(310, 429)
+        btnCancel.Margin = New Padding(3, 4, 3, 4)
         btnCancel.Name = "btnCancel"
-        btnCancel.Size = New Size(114, 36)
+        btnCancel.Size = New Size(130, 48)
         btnCancel.TabIndex = 13
         btnCancel.Text = "CANCEL"
         btnCancel.UseVisualStyleBackColor = False
@@ -188,17 +195,16 @@ Partial Class AddRoomForm
         Panel1.Dock = DockStyle.Top
         Panel1.ForeColor = Color.Maroon
         Panel1.Location = New Point(0, 0)
-        Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(539, 76)
+        Panel1.Size = New Size(616, 101)
         Panel1.TabIndex = 15
         ' 
         ' AddRoomForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
-        ClientSize = New Size(539, 385)
+        ClientSize = New Size(616, 513)
         Controls.Add(Panel1)
         Controls.Add(btnCancel)
         Controls.Add(btnSave)
@@ -213,6 +219,7 @@ Partial Class AddRoomForm
         Controls.Add(txtRoomNumber)
         Controls.Add(Label2)
         FormBorderStyle = FormBorderStyle.FixedDialog
+        Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
         MinimizeBox = False
         Name = "AddRoomForm"

@@ -31,12 +31,11 @@ Public Class StaffDashboard
     End Sub
 
     Private Sub btnGuests_Click(sender As Object, e As EventArgs) Handles btnGuests.Click
-        MessageBox.Show("Design not done yet.", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ' LoadView(New GuestControl())
+        LoadView(New GuestControl())
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        MessageBox.Show("Design not done yet.", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        LoadView(New SettingsControl())
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class AddGuestForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class AddGuestForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        pnlHeader = New Panel()
         lblTitle = New Label()
         Label2 = New Label()
         txtSurname = New TextBox()
@@ -41,110 +42,136 @@ Partial Class AddGuestForm
         btnCancel = New Button()
         txtNotes = New TextBox()
         lblNotes = New Label()
+        pnlHeader.SuspendLayout()
         SuspendLayout()
+        ' 
+        ' pnlHeader
+        ' 
+        pnlHeader.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        pnlHeader.Controls.Add(lblTitle)
+        pnlHeader.Dock = DockStyle.Top
+        pnlHeader.Font = New Font("Mongolian Baiti", 18.0F, FontStyle.Bold)
+        pnlHeader.Location = New Point(0, 0)
+        pnlHeader.Margin = New Padding(3, 4, 3, 4)
+        pnlHeader.Name = "pnlHeader"
+        pnlHeader.Size = New Size(862, 100)
+        pnlHeader.TabIndex = 0
         ' 
         ' lblTitle
         ' 
+        lblTitle.Anchor = AnchorStyles.None
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitle.Location = New Point(164, 35)
+        lblTitle.Font = New Font("Mongolian Baiti", 18.0F, FontStyle.Bold)
+        lblTitle.ForeColor = Color.Beige
+        lblTitle.Location = New Point(334, 33)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(148, 32)
+        lblTitle.Size = New Size(194, 31)
         lblTitle.TabIndex = 1
         lblTitle.Text = "ADD GUEST"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(62, 112)
+        Label2.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label2.Location = New Point(14, 163)
         Label2.Name = "Label2"
-        Label2.Size = New Size(76, 21)
+        Label2.Size = New Size(97, 25)
         Label2.TabIndex = 2
         Label2.Text = "Surname:"
         ' 
         ' txtSurname
         ' 
-        txtSurname.Location = New Point(164, 112)
+        txtSurname.Location = New Point(187, 163)
+        txtSurname.Margin = New Padding(3, 4, 3, 4)
         txtSurname.Name = "txtSurname"
-        txtSurname.Size = New Size(253, 23)
+        txtSurname.Size = New Size(289, 27)
         txtSurname.TabIndex = 3
         ' 
         ' txtFirstName
         ' 
-        txtFirstName.Location = New Point(164, 154)
+        txtFirstName.Location = New Point(187, 219)
+        txtFirstName.Margin = New Padding(3, 4, 3, 4)
         txtFirstName.Name = "txtFirstName"
-        txtFirstName.Size = New Size(253, 23)
+        txtFirstName.Size = New Size(289, 27)
         txtFirstName.TabIndex = 4
         ' 
         ' txtMiddle
         ' 
-        txtMiddle.Location = New Point(164, 196)
+        txtMiddle.Location = New Point(187, 275)
+        txtMiddle.Margin = New Padding(3, 4, 3, 4)
         txtMiddle.Name = "txtMiddle"
-        txtMiddle.Size = New Size(253, 23)
+        txtMiddle.Size = New Size(289, 27)
         txtMiddle.TabIndex = 5
         ' 
         ' txtContact
         ' 
-        txtContact.Location = New Point(164, 237)
+        txtContact.Location = New Point(187, 329)
+        txtContact.Margin = New Padding(3, 4, 3, 4)
         txtContact.Name = "txtContact"
-        txtContact.Size = New Size(253, 23)
+        txtContact.Size = New Size(289, 27)
         txtContact.TabIndex = 6
         ' 
         ' txtEmail
         ' 
-        txtEmail.Location = New Point(164, 276)
+        txtEmail.Location = New Point(187, 381)
+        txtEmail.Margin = New Padding(3, 4, 3, 4)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(253, 23)
+        txtEmail.Size = New Size(289, 27)
         txtEmail.TabIndex = 7
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(49, 156)
+        Label1.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label1.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label1.Location = New Point(14, 221)
         Label1.Name = "Label1"
-        Label1.Size = New Size(89, 21)
+        Label1.Size = New Size(112, 25)
         Label1.TabIndex = 8
         Label1.Text = "First Name:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(31, 198)
+        Label3.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label3.Location = New Point(14, 277)
         Label3.Name = "Label3"
-        Label3.Size = New Size(107, 21)
+        Label3.Size = New Size(136, 25)
         Label3.TabIndex = 9
         Label3.Text = "Middle Name:"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(12, 237)
+        Label4.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label4.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label4.Location = New Point(14, 329)
         Label4.Name = "Label4"
-        Label4.Size = New Size(128, 21)
+        Label4.Size = New Size(166, 25)
         Label4.TabIndex = 10
         Label4.Text = "Contact Number:"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(89, 276)
+        Label5.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label5.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label5.Location = New Point(14, 381)
         Label5.Name = "Label5"
-        Label5.Size = New Size(51, 21)
+        Label5.Size = New Size(64, 25)
         Label5.TabIndex = 11
         Label5.Text = "Email:"
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(38, 319)
+        Label6.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label6.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label6.Location = New Point(14, 439)
         Label6.Name = "Label6"
-        Label6.Size = New Size(102, 21)
+        Label6.Size = New Size(133, 25)
         Label6.TabIndex = 12
         Label6.Text = "Valid ID Type:"
         ' 
@@ -153,69 +180,86 @@ Partial Class AddGuestForm
         cmbValidIDType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbValidIDType.FormattingEnabled = True
         cmbValidIDType.Items.AddRange(New Object() {"Senior Citizen ID", "PWD ID", "Driver's License", "Passport", "National ID", "Other"})
-        cmbValidIDType.Location = New Point(164, 318)
+        cmbValidIDType.Location = New Point(187, 437)
+        cmbValidIDType.Margin = New Padding(3, 4, 3, 4)
         cmbValidIDType.Name = "cmbValidIDType"
-        cmbValidIDType.Size = New Size(253, 23)
+        cmbValidIDType.Size = New Size(289, 28)
         cmbValidIDType.TabIndex = 13
         ' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(12, 360)
+        Label7.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        Label7.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Label7.Location = New Point(14, 493)
         Label7.Name = "Label7"
-        Label7.Size = New Size(128, 21)
+        Label7.Size = New Size(166, 25)
         Label7.TabIndex = 14
         Label7.Text = "Valid ID Number:"
         ' 
         ' txtValidIDNumber
         ' 
-        txtValidIDNumber.Location = New Point(164, 360)
+        txtValidIDNumber.Location = New Point(187, 493)
+        txtValidIDNumber.Margin = New Padding(3, 4, 3, 4)
         txtValidIDNumber.Name = "txtValidIDNumber"
-        txtValidIDNumber.Size = New Size(253, 23)
+        txtValidIDNumber.Size = New Size(289, 27)
         txtValidIDNumber.TabIndex = 15
         ' 
         ' btnSave
         ' 
-        btnSave.Location = New Point(119, 414)
+        btnSave.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        btnSave.FlatStyle = FlatStyle.Flat
+        btnSave.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSave.ForeColor = Color.Beige
+        btnSave.Location = New Point(571, 587)
+        btnSave.Margin = New Padding(3, 4, 3, 4)
         btnSave.Name = "btnSave"
-        btnSave.Size = New Size(104, 40)
+        btnSave.Size = New Size(109, 51)
         btnSave.TabIndex = 16
         btnSave.Text = "SAVE"
-        btnSave.UseVisualStyleBackColor = True
+        btnSave.UseVisualStyleBackColor = False
         ' 
         ' btnCancel
         ' 
-        btnCancel.Location = New Point(229, 414)
+        btnCancel.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        btnCancel.FlatStyle = FlatStyle.Flat
+        btnCancel.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnCancel.ForeColor = Color.Beige
+        btnCancel.Location = New Point(695, 587)
+        btnCancel.Margin = New Padding(3, 4, 3, 4)
         btnCancel.Name = "btnCancel"
-        btnCancel.Size = New Size(104, 40)
+        btnCancel.Size = New Size(109, 51)
         btnCancel.TabIndex = 17
         btnCancel.Text = "CANCEL"
-        btnCancel.UseVisualStyleBackColor = True
+        btnCancel.UseVisualStyleBackColor = False
         ' 
         ' txtNotes
         ' 
-        txtNotes.Location = New Point(467, 239)
+        txtNotes.BackColor = Color.Beige
+        txtNotes.Location = New Point(534, 199)
+        txtNotes.Margin = New Padding(3, 4, 3, 4)
         txtNotes.Multiline = True
         txtNotes.Name = "txtNotes"
-        txtNotes.Size = New Size(223, 146)
+        txtNotes.Size = New Size(269, 324)
         txtNotes.TabIndex = 18
         ' 
         ' lblNotes
         ' 
         lblNotes.AutoSize = True
-        lblNotes.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblNotes.Location = New Point(467, 198)
+        lblNotes.Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
+        lblNotes.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        lblNotes.Location = New Point(534, 163)
         lblNotes.Name = "lblNotes"
-        lblNotes.Size = New Size(54, 21)
+        lblNotes.Size = New Size(69, 25)
         lblNotes.TabIndex = 19
         lblNotes.Text = "Notes:"
         ' 
         ' AddGuestForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(754, 519)
+        BackColor = Color.FromArgb(CByte(245), CByte(239), CByte(221))
+        ClientSize = New Size(862, 692)
         Controls.Add(lblNotes)
         Controls.Add(txtNotes)
         Controls.Add(btnCancel)
@@ -234,14 +278,19 @@ Partial Class AddGuestForm
         Controls.Add(txtFirstName)
         Controls.Add(txtSurname)
         Controls.Add(Label2)
-        Controls.Add(lblTitle)
+        Controls.Add(pnlHeader)
+        ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        Margin = New Padding(3, 4, 3, 4)
         Name = "AddGuestForm"
         StartPosition = FormStartPosition.CenterParent
-        Text = "AddGuestForm"
+        Text = "Add Guest"
+        pnlHeader.ResumeLayout(False)
+        pnlHeader.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
+    Friend WithEvents pnlHeader As Panel
     Friend WithEvents lblTitle As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents txtSurname As TextBox

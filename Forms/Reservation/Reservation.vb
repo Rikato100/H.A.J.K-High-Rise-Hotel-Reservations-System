@@ -401,7 +401,7 @@ Public Class Reservation
         cmbDiscount.SelectedIndex = -1
         cmbPaymentMethod.SelectedIndex = 0
         txtReferenceNo.Clear()
-        
+
         ' If you add the txtDownpayment textbox, clear it here too:
         ' txtDownpayment.Clear()
 
@@ -484,7 +484,7 @@ Public Class Reservation
                 Dim netAmount As Decimal = subtotal - discountAmount
                 Dim vatAmount As Decimal = Convert.ToDecimal(txtVAT.Text)
                 Dim totalAmount As Decimal = Convert.ToDecimal(txtTotal.Text)
-                
+
                 Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
                 Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
@@ -571,7 +571,7 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@resID", reservationID)
                         cmd.ExecuteNonQuery()
                     End Using
-                    
+
                     If dtpCheckIn.Value.Date = DateTime.Today Then
                         If oldRoomID <> roomID Then
                             Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID", conn)
@@ -695,4 +695,7 @@ Public Class Reservation
     Private Sub grpGuest_Enter(sender As Object, e As EventArgs) Handles grpGuest.Enter
     End Sub
 
+    Private Sub grpGeneral_Enter(sender As Object, e As EventArgs) Handles grpGeneral.Enter
+
+    End Sub
 End Class

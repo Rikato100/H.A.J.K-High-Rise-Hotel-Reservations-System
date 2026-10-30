@@ -22,7 +22,9 @@ Partial Class StaffManagementControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StaffManagementControl))
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         lblSearch = New Label()
         txtSearch = New TextBox()
         lblStatusFilter = New Label()
@@ -61,19 +63,20 @@ Partial Class StaffManagementControl
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F)
         lblSearch.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblSearch.Location = New Point(13, 62)
+        lblSearch.Location = New Point(15, 83)
         lblSearch.Name = "lblSearch"
-        lblSearch.Size = New Size(56, 20)
+        lblSearch.Size = New Size(73, 25)
         lblSearch.TabIndex = 16
         lblSearch.Text = "Search:"
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(82, 62)
+        txtSearch.Location = New Point(94, 83)
+        txtSearch.Margin = New Padding(3, 4, 3, 4)
         txtSearch.Multiline = True
         txtSearch.Name = "txtSearch"
         txtSearch.PlaceholderText = "Username or full name"
-        txtSearch.Size = New Size(200, 22)
+        txtSearch.Size = New Size(228, 28)
         txtSearch.TabIndex = 17
         ' 
         ' lblStatusFilter
@@ -81,9 +84,9 @@ Partial Class StaffManagementControl
         lblStatusFilter.AutoSize = True
         lblStatusFilter.Font = New Font("Segoe UI", 11.25F)
         lblStatusFilter.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblStatusFilter.Location = New Point(291, 62)
+        lblStatusFilter.Location = New Point(333, 83)
         lblStatusFilter.Name = "lblStatusFilter"
-        lblStatusFilter.Size = New Size(52, 20)
+        lblStatusFilter.Size = New Size(66, 25)
         lblStatusFilter.TabIndex = 18
         lblStatusFilter.Text = "Status:"
         ' 
@@ -91,9 +94,10 @@ Partial Class StaffManagementControl
         ' 
         cboStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboStatusFilter.FormattingEnabled = True
-        cboStatusFilter.Location = New Point(346, 60)
+        cboStatusFilter.Location = New Point(395, 80)
+        cboStatusFilter.Margin = New Padding(3, 4, 3, 4)
         cboStatusFilter.Name = "cboStatusFilter"
-        cboStatusFilter.Size = New Size(130, 23)
+        cboStatusFilter.Size = New Size(148, 28)
         cboStatusFilter.TabIndex = 19
         ' 
         ' lblRoleFilter
@@ -101,9 +105,9 @@ Partial Class StaffManagementControl
         lblRoleFilter.AutoSize = True
         lblRoleFilter.Font = New Font("Segoe UI", 11.25F)
         lblRoleFilter.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblRoleFilter.Location = New Point(485, 62)
+        lblRoleFilter.Location = New Point(554, 83)
         lblRoleFilter.Name = "lblRoleFilter"
-        lblRoleFilter.Size = New Size(42, 20)
+        lblRoleFilter.Size = New Size(52, 25)
         lblRoleFilter.TabIndex = 20
         lblRoleFilter.Text = "Role:"
         ' 
@@ -111,9 +115,10 @@ Partial Class StaffManagementControl
         ' 
         cboRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cboRoleFilter.FormattingEnabled = True
-        cboRoleFilter.Location = New Point(533, 60)
+        cboRoleFilter.Location = New Point(609, 80)
+        cboRoleFilter.Margin = New Padding(3, 4, 3, 4)
         cboRoleFilter.Name = "cboRoleFilter"
-        cboRoleFilter.Size = New Size(130, 23)
+        cboRoleFilter.Size = New Size(148, 28)
         cboRoleFilter.TabIndex = 21
         ' 
         ' btnClearFilter
@@ -122,9 +127,10 @@ Partial Class StaffManagementControl
         btnClearFilter.FlatAppearance.BorderColor = Color.Silver
         btnClearFilter.FlatStyle = FlatStyle.Flat
         btnClearFilter.ForeColor = Color.Beige
-        btnClearFilter.Location = New Point(675, 61)
+        btnClearFilter.Location = New Point(771, 81)
+        btnClearFilter.Margin = New Padding(3, 4, 3, 4)
         btnClearFilter.Name = "btnClearFilter"
-        btnClearFilter.Size = New Size(85, 23)
+        btnClearFilter.Size = New Size(97, 31)
         btnClearFilter.TabIndex = 22
         btnClearFilter.Text = "✕ CLEAR"
         btnClearFilter.UseVisualStyleBackColor = False
@@ -133,78 +139,106 @@ Partial Class StaffManagementControl
         ' 
         dgvStaff.AllowUserToAddRows = False
         dgvStaff.AllowUserToDeleteRows = False
-        dgvStaff.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right), AnchorStyles)
+        dgvStaff.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvStaff.BackgroundColor = Color.White
+        dgvStaff.BackgroundColor = Color.Beige
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = Color.Beige
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle1.SelectionForeColor = Color.Beige
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        dgvStaff.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvStaff.Location = New Point(13, 92)
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.Beige
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        dgvStaff.DefaultCellStyle = DataGridViewCellStyle2
+        dgvStaff.EnableHeadersVisualStyles = False
+        dgvStaff.Location = New Point(15, 123)
+        dgvStaff.Margin = New Padding(3, 4, 3, 4)
         dgvStaff.MultiSelect = False
         dgvStaff.Name = "dgvStaff"
         dgvStaff.ReadOnly = True
-        dgvStaff.RowHeadersVisible = False
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.Beige
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
+        DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        dgvStaff.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvStaff.RowHeadersWidth = 51
         dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvStaff.Size = New Size(585, 368)
+        dgvStaff.Size = New Size(669, 491)
         dgvStaff.TabIndex = 1
         ' 
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
         lblUsername.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblUsername.Location = New Point(8, 39)
+        lblUsername.Location = New Point(9, 52)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(74, 19)
+        lblUsername.Size = New Size(91, 23)
         lblUsername.TabIndex = 2
         lblUsername.Text = "Username:"
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(12, 62)
+        txtUsername.Location = New Point(14, 83)
+        txtUsername.Margin = New Padding(3, 4, 3, 4)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(250, 23)
+        txtUsername.Size = New Size(285, 27)
         txtUsername.TabIndex = 3
         ' 
         ' lblFullname
         ' 
         lblFullname.AutoSize = True
         lblFullname.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblFullname.Location = New Point(8, 90)
+        lblFullname.Location = New Point(9, 120)
         lblFullname.Name = "lblFullname"
-        lblFullname.Size = New Size(76, 19)
+        lblFullname.Size = New Size(92, 23)
         lblFullname.TabIndex = 4
         lblFullname.Text = "Full Name:"
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(12, 162)
+        txtPassword.Location = New Point(14, 216)
+        txtPassword.Margin = New Padding(3, 4, 3, 4)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(250, 23)
+        txtPassword.Size = New Size(285, 27)
         txtPassword.TabIndex = 5
         ' 
         ' lblPassword
         ' 
         lblPassword.AutoSize = True
         lblPassword.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblPassword.Location = New Point(8, 140)
+        lblPassword.Location = New Point(9, 187)
         lblPassword.Name = "lblPassword"
-        lblPassword.Size = New Size(71, 19)
+        lblPassword.Size = New Size(86, 23)
         lblPassword.TabIndex = 6
         lblPassword.Text = "Password:"
         ' 
         ' txtFullName
         ' 
-        txtFullName.Location = New Point(12, 112)
+        txtFullName.Location = New Point(14, 149)
+        txtFullName.Margin = New Padding(3, 4, 3, 4)
         txtFullName.Name = "txtFullName"
-        txtFullName.Size = New Size(250, 23)
+        txtFullName.Size = New Size(285, 27)
         txtFullName.TabIndex = 7
         ' 
         ' lblPasswordHint
         ' 
         lblPasswordHint.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPasswordHint.ForeColor = Color.Gray
-        lblPasswordHint.Location = New Point(12, 186)
+        lblPasswordHint.Location = New Point(14, 248)
         lblPasswordHint.Name = "lblPasswordHint"
-        lblPasswordHint.Size = New Size(245, 30)
+        lblPasswordHint.Size = New Size(280, 40)
         lblPasswordHint.TabIndex = 8
         lblPasswordHint.Text = "Min. 8 chars. When editing, leave blank to keep current password."
         ' 
@@ -212,9 +246,9 @@ Partial Class StaffManagementControl
         ' 
         lblRole.AutoSize = True
         lblRole.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblRole.Location = New Point(12, 219)
+        lblRole.Location = New Point(14, 292)
         lblRole.Name = "lblRole"
-        lblRole.Size = New Size(40, 19)
+        lblRole.Size = New Size(48, 23)
         lblRole.TabIndex = 9
         lblRole.Text = "Role:"
         ' 
@@ -222,70 +256,75 @@ Partial Class StaffManagementControl
         ' 
         cboRole.DropDownStyle = ComboBoxStyle.DropDownList
         cboRole.FormattingEnabled = True
-        cboRole.Location = New Point(12, 239)
+        cboRole.Location = New Point(14, 319)
+        cboRole.Margin = New Padding(3, 4, 3, 4)
         cboRole.Name = "cboRole"
-        cboRole.Size = New Size(250, 23)
+        cboRole.Size = New Size(285, 28)
         cboRole.TabIndex = 10
         ' 
         ' btnAdd
         ' 
-        btnAdd.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        btnAdd.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnAdd.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnAdd.FlatAppearance.BorderColor = Color.Silver
         btnAdd.FlatStyle = FlatStyle.Flat
         btnAdd.ForeColor = Color.Beige
-        btnAdd.Location = New Point(610, 370)
+        btnAdd.Location = New Point(697, 493)
+        btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(130, 34)
+        btnAdd.Size = New Size(149, 45)
         btnAdd.TabIndex = 11
         btnAdd.Text = "⊕ ADD"
         btnAdd.UseVisualStyleBackColor = False
         ' 
         ' btnUpdate
         ' 
-        btnUpdate.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        btnUpdate.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnUpdate.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnUpdate.FlatAppearance.BorderColor = Color.Silver
         btnUpdate.FlatStyle = FlatStyle.Flat
         btnUpdate.ForeColor = Color.Beige
-        btnUpdate.Location = New Point(755, 370)
+        btnUpdate.Location = New Point(863, 493)
+        btnUpdate.Margin = New Padding(3, 4, 3, 4)
         btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(130, 34)
+        btnUpdate.Size = New Size(149, 45)
         btnUpdate.TabIndex = 12
         btnUpdate.Text = "✎ UPDATE"
         btnUpdate.UseVisualStyleBackColor = False
         ' 
         ' btnDeactivate
         ' 
-        btnDeactivate.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        btnDeactivate.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnDeactivate.BackColor = Color.Maroon
         btnDeactivate.FlatAppearance.BorderColor = Color.Silver
         btnDeactivate.FlatStyle = FlatStyle.Flat
         btnDeactivate.ForeColor = Color.Beige
-        btnDeactivate.Location = New Point(610, 415)
+        btnDeactivate.Location = New Point(697, 553)
+        btnDeactivate.Margin = New Padding(3, 4, 3, 4)
         btnDeactivate.Name = "btnDeactivate"
-        btnDeactivate.Size = New Size(130, 34)
+        btnDeactivate.Size = New Size(149, 45)
         btnDeactivate.TabIndex = 13
         btnDeactivate.Text = "⊖ DEACTIVATE"
         btnDeactivate.UseVisualStyleBackColor = False
         ' 
         ' btnReactivate
         ' 
-        btnReactivate.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        btnReactivate.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btnReactivate.BackColor = Color.AntiqueWhite
         btnReactivate.FlatAppearance.BorderColor = Color.Silver
         btnReactivate.FlatStyle = FlatStyle.Flat
         btnReactivate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnReactivate.Location = New Point(755, 415)
+        btnReactivate.Location = New Point(863, 553)
+        btnReactivate.Margin = New Padding(3, 4, 3, 4)
         btnReactivate.Name = "btnReactivate"
-        btnReactivate.Size = New Size(130, 34)
+        btnReactivate.Size = New Size(149, 45)
         btnReactivate.TabIndex = 15
         btnReactivate.Text = "↻ REACTIVATE"
         btnReactivate.UseVisualStyleBackColor = False
         ' 
         ' Panel3
         ' 
-        Panel3.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        Panel3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Panel3.BackColor = Color.AntiqueWhite
         Panel3.Controls.Add(Panel4)
         Panel3.Controls.Add(lblUsername)
@@ -297,9 +336,10 @@ Partial Class StaffManagementControl
         Panel3.Controls.Add(lblPasswordHint)
         Panel3.Controls.Add(lblRole)
         Panel3.Controls.Add(cboRole)
-        Panel3.Location = New Point(610, 92)
+        Panel3.Location = New Point(697, 123)
+        Panel3.Margin = New Padding(3, 4, 3, 4)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(275, 272)
+        Panel3.Size = New Size(314, 363)
         Panel3.TabIndex = 25
         ' 
         ' Panel4
@@ -308,8 +348,9 @@ Partial Class StaffManagementControl
         Panel4.Controls.Add(Label2)
         Panel4.Dock = DockStyle.Top
         Panel4.Location = New Point(0, 0)
+        Panel4.Margin = New Padding(3, 4, 3, 4)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(275, 34)
+        Panel4.Size = New Size(314, 45)
         Panel4.TabIndex = 11
         ' 
         ' Label2
@@ -317,18 +358,18 @@ Partial Class StaffManagementControl
         Label2.AutoSize = True
         Label2.Font = New Font("Mongolian Baiti", 15.75F, FontStyle.Bold)
         Label2.ForeColor = Color.Beige
-        Label2.Location = New Point(43, 5)
+        Label2.Location = New Point(49, 7)
         Label2.Name = "Label2"
-        Label2.Size = New Size(170, 23)
+        Label2.Size = New Size(222, 29)
         Label2.TabIndex = 31
         Label2.Text = "Staff Information"
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(13, 5)
+        PictureBox2.Location = New Point(15, 7)
+        PictureBox2.Margin = New Padding(3, 4, 3, 4)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 46)
+        PictureBox2.Size = New Size(94, 61)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 30
         PictureBox2.TabStop = False
@@ -337,9 +378,9 @@ Partial Class StaffManagementControl
         ' 
         Label4.AutoSize = True
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(105, 32)
+        Label4.Location = New Point(120, 43)
         Label4.Name = "Label4"
-        Label4.Size = New Size(307, 15)
+        Label4.Size = New Size(356, 20)
         Label4.TabIndex = 29
         Label4.Text = "Manage staff accounts, roles, and status information."
         ' 
@@ -348,15 +389,15 @@ Partial Class StaffManagementControl
         Label1.AutoSize = True
         Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(101, 7)
+        Label1.Location = New Point(115, 9)
         Label1.Name = "Label1"
-        Label1.Size = New Size(197, 24)
+        Label1.Size = New Size(247, 30)
         Label1.TabIndex = 28
         Label1.Text = "Staff Management"
         ' 
         ' StaffManagementControl
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(PictureBox2)
@@ -375,8 +416,9 @@ Partial Class StaffManagementControl
         Controls.Add(lblStatusFilter)
         Controls.Add(txtSearch)
         Controls.Add(lblSearch)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "StaffManagementControl"
-        Size = New Size(903, 478)
+        Size = New Size(1032, 637)
         CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()

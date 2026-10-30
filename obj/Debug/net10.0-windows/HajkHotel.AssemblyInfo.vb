@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("HajkHotel"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f38f8151a436d91b7b9f4230b98e6320a3f05591"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e469a380041c78b7783d349a34aab3a5385a2e83"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("HajkHotel"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("HajkHotel"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
