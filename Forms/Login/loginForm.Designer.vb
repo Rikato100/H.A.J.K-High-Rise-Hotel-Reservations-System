@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class loginForm
     Inherits System.Windows.Forms.Form
 
@@ -43,9 +43,9 @@ Partial Class loginForm
         lblUsername.AutoSize = True
         lblUsername.Font = New Font("Mongolian Baiti", 11.25F)
         lblUsername.ForeColor = Color.White
-        lblUsername.Location = New Point(59, 200)
+        lblUsername.Location = New Point(67, 267)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(74, 16)
+        lblUsername.Size = New Size(90, 20)
         lblUsername.TabIndex = 0
         lblUsername.Text = "Username:"
         ' 
@@ -54,24 +54,26 @@ Partial Class loginForm
         lblPassword.AutoSize = True
         lblPassword.Font = New Font("Mongolian Baiti", 11.25F)
         lblPassword.ForeColor = Color.White
-        lblPassword.Location = New Point(59, 238)
+        lblPassword.Location = New Point(67, 317)
         lblPassword.Name = "lblPassword"
-        lblPassword.Size = New Size(70, 16)
+        lblPassword.Size = New Size(87, 20)
         lblPassword.TabIndex = 2
         lblPassword.Text = "Password:"
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(154, 198)
+        txtUsername.Location = New Point(176, 264)
+        txtUsername.Margin = New Padding(3, 4, 3, 4)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(277, 23)
+        txtUsername.Size = New Size(316, 27)
         txtUsername.TabIndex = 3
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(154, 236)
+        txtPassword.Location = New Point(176, 315)
+        txtPassword.Margin = New Padding(3, 4, 3, 4)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(277, 23)
+        txtPassword.Size = New Size(316, 27)
         txtPassword.TabIndex = 4
         txtPassword.UseSystemPasswordChar = True
         ' 
@@ -79,9 +81,10 @@ Partial Class loginForm
         ' 
         btnLogin.BackColor = Color.Beige
         btnLogin.ForeColor = Color.Maroon
-        btnLogin.Location = New Point(108, 282)
+        btnLogin.Location = New Point(123, 376)
+        btnLogin.Margin = New Padding(3, 4, 3, 4)
         btnLogin.Name = "btnLogin"
-        btnLogin.Size = New Size(107, 34)
+        btnLogin.Size = New Size(122, 45)
         btnLogin.TabIndex = 5
         btnLogin.Text = "LOGIN"
         btnLogin.UseVisualStyleBackColor = False
@@ -90,9 +93,10 @@ Partial Class loginForm
         ' 
         btnExit.BackColor = Color.Beige
         btnExit.ForeColor = Color.Maroon
-        btnExit.Location = New Point(287, 282)
+        btnExit.Location = New Point(328, 376)
+        btnExit.Margin = New Padding(3, 4, 3, 4)
         btnExit.Name = "btnExit"
-        btnExit.Size = New Size(107, 34)
+        btnExit.Size = New Size(122, 45)
         btnExit.TabIndex = 6
         btnExit.Text = "EXIT"
         btnExit.UseVisualStyleBackColor = False
@@ -102,9 +106,9 @@ Partial Class loginForm
         Label1.AutoSize = True
         Label1.Font = New Font("Times New Roman", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        Label1.Location = New Point(44, 69)
+        Label1.Location = New Point(50, 92)
         Label1.Name = "Label1"
-        Label1.Size = New Size(387, 40)
+        Label1.Size = New Size(486, 51)
         Label1.TabIndex = 0
         Label1.Text = "H.A.J.K High Rise Hotel"
         ' 
@@ -113,9 +117,9 @@ Partial Class loginForm
         Label2.AutoSize = True
         Label2.Font = New Font("Mongolian Baiti", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.White
-        Label2.Location = New Point(108, 160)
+        Label2.Location = New Point(123, 213)
         Label2.Name = "Label2"
-        Label2.Size = New Size(265, 25)
+        Label2.Size = New Size(326, 31)
         Label2.TabIndex = 7
         Label2.Text = "Hotel Reservation System"
         ' 
@@ -124,19 +128,18 @@ Partial Class loginForm
         Label3.AutoSize = True
         Label3.Font = New Font("Monotype Corsiva", 16.2F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.White
-        Label3.Location = New Point(86, 110)
+        Label3.Location = New Point(98, 147)
         Label3.Name = "Label3"
-        Label3.Size = New Size(292, 26)
+        Label3.Size = New Size(374, 34)
         Label3.TabIndex = 8
         Label3.Text = "Where every stay feels extraordinary"
         ' 
         ' PictureBox3
         ' 
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(202, 4)
-        PictureBox3.Margin = New Padding(3, 2, 3, 2)
+        PictureBox3.Location = New Point(231, 5)
         PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(109, 69)
+        PictureBox3.Size = New Size(125, 92)
         PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox3.TabIndex = 16
         PictureBox3.TabStop = False
@@ -144,20 +147,19 @@ Partial Class loginForm
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(493, -2)
-        PictureBox1.Margin = New Padding(3, 2, 3, 2)
+        PictureBox1.Location = New Point(563, -3)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(434, 353)
+        PictureBox1.Size = New Size(496, 471)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 17
         PictureBox1.TabStop = False
         ' 
         ' loginForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        ClientSize = New Size(925, 349)
+        ClientSize = New Size(1057, 465)
         Controls.Add(PictureBox1)
         Controls.Add(PictureBox3)
         Controls.Add(Label3)
@@ -169,6 +171,9 @@ Partial Class loginForm
         Controls.Add(txtUsername)
         Controls.Add(lblPassword)
         Controls.Add(lblUsername)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "loginForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Login Form"
