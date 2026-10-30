@@ -177,7 +177,7 @@ Partial Class StaffManagementControl
         dgvStaff.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvStaff.RowHeadersWidth = 51
         dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvStaff.Size = New Size(669, 523)
+        dgvStaff.Size = New Size(669, 491)
         dgvStaff.TabIndex = 1
         ' 
         ' lblUsername
@@ -192,7 +192,7 @@ Partial Class StaffManagementControl
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(14, 83)
+        txtUsername.Location = New Point(14, 79)
         txtUsername.Margin = New Padding(3, 4, 3, 4)
         txtUsername.Name = "txtUsername"
         txtUsername.Size = New Size(285, 27)
@@ -202,7 +202,7 @@ Partial Class StaffManagementControl
         ' 
         lblFullname.AutoSize = True
         lblFullname.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblFullname.Location = New Point(9, 120)
+        lblFullname.Location = New Point(9, 114)
         lblFullname.Name = "lblFullname"
         lblFullname.Size = New Size(92, 23)
         lblFullname.TabIndex = 4
@@ -210,7 +210,7 @@ Partial Class StaffManagementControl
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(14, 216)
+        txtPassword.Location = New Point(14, 205)
         txtPassword.Margin = New Padding(3, 4, 3, 4)
         txtPassword.Name = "txtPassword"
         txtPassword.Size = New Size(285, 27)
@@ -220,7 +220,7 @@ Partial Class StaffManagementControl
         ' 
         lblPassword.AutoSize = True
         lblPassword.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblPassword.Location = New Point(9, 187)
+        lblPassword.Location = New Point(9, 178)
         lblPassword.Name = "lblPassword"
         lblPassword.Size = New Size(86, 23)
         lblPassword.TabIndex = 6
@@ -228,7 +228,7 @@ Partial Class StaffManagementControl
         ' 
         ' txtFullName
         ' 
-        txtFullName.Location = New Point(14, 149)
+        txtFullName.Location = New Point(14, 141)
         txtFullName.Margin = New Padding(3, 4, 3, 4)
         txtFullName.Name = "txtFullName"
         txtFullName.Size = New Size(285, 27)
@@ -238,7 +238,7 @@ Partial Class StaffManagementControl
         ' 
         lblPasswordHint.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPasswordHint.ForeColor = Color.Gray
-        lblPasswordHint.Location = New Point(14, 248)
+        lblPasswordHint.Location = New Point(14, 236)
         lblPasswordHint.Name = "lblPasswordHint"
         lblPasswordHint.Size = New Size(280, 40)
         lblPasswordHint.TabIndex = 8
@@ -248,7 +248,7 @@ Partial Class StaffManagementControl
         ' 
         lblRole.AutoSize = True
         lblRole.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        lblRole.Location = New Point(14, 292)
+        lblRole.Location = New Point(14, 281)
         lblRole.Name = "lblRole"
         lblRole.Size = New Size(48, 23)
         lblRole.TabIndex = 9
@@ -258,7 +258,7 @@ Partial Class StaffManagementControl
         ' 
         cboRole.DropDownStyle = ComboBoxStyle.DropDownList
         cboRole.FormattingEnabled = True
-        cboRole.Location = New Point(14, 319)
+        cboRole.Location = New Point(14, 308)
         cboRole.Margin = New Padding(3, 4, 3, 4)
         cboRole.Name = "cboRole"
         cboRole.Size = New Size(285, 28)
@@ -271,7 +271,7 @@ Partial Class StaffManagementControl
         btnAdd.FlatAppearance.BorderColor = Color.Silver
         btnAdd.FlatStyle = FlatStyle.Flat
         btnAdd.ForeColor = Color.Beige
-        btnAdd.Location = New Point(697, 493)
+        btnAdd.Location = New Point(697, 478)
         btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(149, 45)
@@ -286,7 +286,7 @@ Partial Class StaffManagementControl
         btnUpdate.FlatAppearance.BorderColor = Color.Silver
         btnUpdate.FlatStyle = FlatStyle.Flat
         btnUpdate.ForeColor = Color.Beige
-        btnUpdate.Location = New Point(863, 493)
+        btnUpdate.Location = New Point(863, 478)
         btnUpdate.Margin = New Padding(3, 4, 3, 4)
         btnUpdate.Name = "btnUpdate"
         btnUpdate.Size = New Size(149, 45)
@@ -301,7 +301,7 @@ Partial Class StaffManagementControl
         btnDeactivate.FlatAppearance.BorderColor = Color.Silver
         btnDeactivate.FlatStyle = FlatStyle.Flat
         btnDeactivate.ForeColor = Color.Beige
-        btnDeactivate.Location = New Point(697, 553)
+        btnDeactivate.Location = New Point(697, 528)
         btnDeactivate.Margin = New Padding(3, 4, 3, 4)
         btnDeactivate.Name = "btnDeactivate"
         btnDeactivate.Size = New Size(149, 45)
@@ -316,7 +316,7 @@ Partial Class StaffManagementControl
         btnReactivate.FlatAppearance.BorderColor = Color.Silver
         btnReactivate.FlatStyle = FlatStyle.Flat
         btnReactivate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnReactivate.Location = New Point(863, 553)
+        btnReactivate.Location = New Point(863, 528)
         btnReactivate.Margin = New Padding(3, 4, 3, 4)
         btnReactivate.Name = "btnReactivate"
         btnReactivate.Size = New Size(149, 45)
@@ -341,7 +341,7 @@ Partial Class StaffManagementControl
         Panel3.Location = New Point(697, 123)
         Panel3.Margin = New Padding(3, 4, 3, 4)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(314, 363)
+        Panel3.Size = New Size(314, 347)
         Panel3.TabIndex = 25
         ' 
         ' Panel4
@@ -405,10 +405,10 @@ Partial Class StaffManagementControl
         btnDelete.FlatAppearance.BorderColor = Color.Silver
         btnDelete.FlatStyle = FlatStyle.Flat
         btnDelete.ForeColor = Color.Beige
-        btnDelete.Location = New Point(697, 606)
+        btnDelete.Location = New Point(698, 577)
         btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(314, 45)
+        btnDelete.Size = New Size(314, 37)
         btnDelete.TabIndex = 31
         btnDelete.Text = "⌧ DELETE"
         btnDelete.UseVisualStyleBackColor = False
@@ -437,7 +437,7 @@ Partial Class StaffManagementControl
         Controls.Add(lblSearch)
         Margin = New Padding(3, 4, 3, 4)
         Name = "StaffManagementControl"
-        Size = New Size(1032, 669)
+        Size = New Size(1032, 637)
         CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
