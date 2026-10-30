@@ -25,6 +25,7 @@ Partial Class ReportsControl
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReportsControl))
         dtpStartDate = New DateTimePicker()
         dtpEndDate = New DateTimePicker()
         Label1 = New Label()
@@ -61,7 +62,7 @@ Partial Class ReportsControl
         ' 
         dtpStartDate.Format = DateTimePickerFormat.Short
         dtpStartDate.Location = New Point(10, 183)
-        dtpStartDate.Margin = New Padding(5, 5, 5, 5)
+        dtpStartDate.Margin = New Padding(5)
         dtpStartDate.Name = "dtpStartDate"
         dtpStartDate.Size = New Size(233, 27)
         dtpStartDate.TabIndex = 1
@@ -70,7 +71,7 @@ Partial Class ReportsControl
         ' 
         dtpEndDate.Format = DateTimePickerFormat.Short
         dtpEndDate.Location = New Point(10, 263)
-        dtpEndDate.Margin = New Padding(5, 5, 5, 5)
+        dtpEndDate.Margin = New Padding(5)
         dtpEndDate.Name = "dtpEndDate"
         dtpEndDate.Size = New Size(233, 27)
         dtpEndDate.TabIndex = 2
@@ -103,7 +104,7 @@ Partial Class ReportsControl
         cmbReportType.FormattingEnabled = True
         cmbReportType.Items.AddRange(New Object() {"Daily", "Monthly", "Annual"})
         cmbReportType.Location = New Point(10, 101)
-        cmbReportType.Margin = New Padding(5, 5, 5, 5)
+        cmbReportType.Margin = New Padding(5)
         cmbReportType.Name = "cmbReportType"
         cmbReportType.Size = New Size(233, 28)
         cmbReportType.TabIndex = 0
@@ -114,7 +115,7 @@ Partial Class ReportsControl
         btnGenerate.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnGenerate.ForeColor = Color.Beige
         btnGenerate.Location = New Point(29, 324)
-        btnGenerate.Margin = New Padding(5, 5, 5, 5)
+        btnGenerate.Margin = New Padding(5)
         btnGenerate.Name = "btnGenerate"
         btnGenerate.Size = New Size(203, 45)
         btnGenerate.TabIndex = 5
@@ -148,7 +149,7 @@ Partial Class ReportsControl
         dgvReports.DefaultCellStyle = DataGridViewCellStyle2
         dgvReports.EnableHeadersVisualStyles = False
         dgvReports.Location = New Point(280, 92)
-        dgvReports.Margin = New Padding(5, 5, 5, 5)
+        dgvReports.Margin = New Padding(5)
         dgvReports.Name = "dgvReports"
         dgvReports.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -282,7 +283,8 @@ Partial Class ReportsControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(11, 5)
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(25, 10)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(74, 49)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
@@ -291,9 +293,10 @@ Partial Class ReportsControl
         ' 
         ' PictureBox5
         ' 
-        PictureBox5.Location = New Point(15, 9)
+        PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
+        PictureBox5.Location = New Point(22, 9)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(94, 61)
+        PictureBox5.Size = New Size(80, 56)
         PictureBox5.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox5.TabIndex = 33
         PictureBox5.TabStop = False
@@ -302,7 +305,7 @@ Partial Class ReportsControl
         ' 
         Label5.AutoSize = True
         Label5.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label5.Location = New Point(121, 45)
+        Label5.Location = New Point(111, 45)
         Label5.Name = "Label5"
         Label5.Size = New Size(543, 20)
         Label5.TabIndex = 32
@@ -313,7 +316,7 @@ Partial Class ReportsControl
         Label6.AutoSize = True
         Label6.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label6.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label6.Location = New Point(118, 12)
+        Label6.Location = New Point(108, 12)
         Label6.Name = "Label6"
         Label6.Size = New Size(237, 30)
         Label6.TabIndex = 31

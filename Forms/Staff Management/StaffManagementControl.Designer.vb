@@ -25,6 +25,7 @@ Partial Class StaffManagementControl
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StaffManagementControl))
         lblSearch = New Label()
         txtSearch = New TextBox()
         lblStatusFilter = New Label()
@@ -366,7 +367,8 @@ Partial Class StaffManagementControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(15, 7)
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(21, 7)
         PictureBox2.Margin = New Padding(3, 4, 3, 4)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(94, 61)

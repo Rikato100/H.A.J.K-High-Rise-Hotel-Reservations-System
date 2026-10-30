@@ -25,6 +25,7 @@ Partial Class RoomControl
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoomControl))
         Label1 = New Label()
         dgvRooms = New DataGridView()
         colRoomNumber = New DataGridViewTextBoxColumn()
@@ -50,7 +51,7 @@ Partial Class RoomControl
         Label1.AutoSize = True
         Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(120, 24)
+        Label1.Location = New Point(120, 13)
         Label1.Name = "Label1"
         Label1.Size = New Size(261, 30)
         Label1.TabIndex = 1
@@ -219,7 +220,7 @@ Partial Class RoomControl
         ' 
         Label4.AutoSize = True
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(123, 59)
+        Label4.Location = New Point(123, 48)
         Label4.Name = "Label4"
         Label4.Size = New Size(472, 20)
         Label4.TabIndex = 16
@@ -227,9 +228,10 @@ Partial Class RoomControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(19, 23)
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(30, 9)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(94, 61)
+        PictureBox2.Size = New Size(87, 59)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 16
         PictureBox2.TabStop = False

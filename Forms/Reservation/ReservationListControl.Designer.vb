@@ -268,9 +268,10 @@ Partial Class ReservationListControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(12, 10)
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(18, 8)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 46)
+        PictureBox2.Size = New Size(82, 62)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 22
         PictureBox2.TabStop = False

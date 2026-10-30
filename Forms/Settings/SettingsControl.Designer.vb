@@ -25,6 +25,7 @@ Partial Class SettingsControl
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsControl))
         TabControl1 = New TabControl()
         TabPageDiscounts = New TabPage()
         dgvDiscounts = New DataGridView()
@@ -301,6 +302,7 @@ Partial Class SettingsControl
         ' 
         ' PictureBox5
         ' 
+        PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
         PictureBox5.Location = New Point(16, 3)
         PictureBox5.Name = "PictureBox5"
         PictureBox5.Size = New Size(85, 63)
@@ -363,6 +365,7 @@ Partial Class SettingsControl
         ' 
         ' PictureBox2
         ' 
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(16, 3)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(85, 63)
@@ -509,6 +512,7 @@ Partial Class SettingsControl
         ' 
         ' PictureBox3
         ' 
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
         PictureBox3.Location = New Point(16, 3)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(85, 63)

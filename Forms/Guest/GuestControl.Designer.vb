@@ -24,6 +24,7 @@ Partial Class GuestControl
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GuestControl))
         dgvGuests = New DataGridView()
         colGuestID = New DataGridViewTextBoxColumn()
         colSurname = New DataGridViewTextBoxColumn()
@@ -58,7 +59,7 @@ Partial Class GuestControl
         dgvGuests.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle1.ForeColor = Color.Beige
         DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle1.SelectionForeColor = Color.Beige
@@ -68,7 +69,7 @@ Partial Class GuestControl
         dgvGuests.Columns.AddRange(New DataGridViewColumn() {colGuestID, colSurname, colFirstname, colMiddlename, colContact, colEmail, colIDType, colIDNumber, colVisits})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -81,7 +82,7 @@ Partial Class GuestControl
         dgvGuests.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -260,9 +261,10 @@ Partial Class GuestControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(13, 9)
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(18, 6)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 46)
+        PictureBox2.Size = New Size(87, 66)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 25
         PictureBox2.TabStop = False
@@ -290,7 +292,7 @@ Partial Class GuestControl
         ' 
         ' GuestControl
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(PictureBox2)
