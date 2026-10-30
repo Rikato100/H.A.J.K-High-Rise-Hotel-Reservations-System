@@ -1,3 +1,5 @@
+Imports MySql.Data.MySqlClient
+
 Public Class StaffManagementControl
 
     Private selectedAccountId As Integer = 0
@@ -61,15 +63,15 @@ Public Class StaffManagementControl
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
         isLoading = True
-        
+
         ' Reset the search and filters
         txtSearch.Text = ""
         cboStatusFilter.SelectedIndex = 0
         cboRoleFilter.SelectedIndex = 0
-        
-        ' FIX: Clear the form textboxes and reset selections
+
+        ' Clear the form textboxes and reset selections
         ClearForm()
-        
+
         isLoading = False
         LoadStaffGrid()
     End Sub
@@ -110,7 +112,7 @@ Public Class StaffManagementControl
         MessageBox.Show(message, "Cannot Continue", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
-    ' ---------- Add / Update / Deactivate / Reactivate ----------
+    ' ---------- Add / Update / Deactivate / Reactivate / Delete ----------
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         If txtUsername.Text.Trim() = "" OrElse txtPassword.Text = "" OrElse txtFullName.Text.Trim() = "" OrElse cboRole.Text = "" Then
@@ -219,7 +221,7 @@ Public Class StaffManagementControl
                 Exit Sub
             End If
 
-            Dim confirm As DialogResult = MessageBox.Show(
+            Dim confirm = MessageBox.Show(
                 "Deactivate this account? They will no longer be able to log in.",
                 "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
@@ -259,6 +261,58 @@ Public Class StaffManagementControl
         Catch ex As Exception
             MessageBox.Show("Could not reactivate account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    ' ---------- NEW DELETE BUTTON ----------
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If selectedAccountId = 0 Then
+            ShowWarning("Select an account from the list first.")
+            Exit Sub
+        End If
+
+        ' Lockout protection: Don't let them delete themselves
+        If selectedAccountId = CurrentUser.AccountID Then
+            ShowWarning("You cannot delete the account you are currently logged in with.")
+            Exit Sub
+        End If
+
+        ' Lockout protection: Don't let them delete the last Admin
+        If selectedRole = "Admin" AndAlso StaffRepository.CountOtherActiveAdmins(selectedAccountId) = 0 Then
+            ShowWarning("This is the only active Admin account and cannot be deleted.")
+            Exit Sub
+        End If
+
+        Dim confirm As DialogResult = MessageBox.Show(
+            "Are you absolutely sure you want to PERMANENTLY delete this account? This cannot be undone.",
+            "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)
+
+        If confirm = DialogResult.Yes Then
+            Try
+                Using conn As MySqlConnection = DbConnection.GetConnection()
+                    conn.Open()
+                    Dim query As String = "DELETE FROM account WHERE account_id = @id"
+                    Using cmd As New MySqlCommand(query, conn)
+                        cmd.Parameters.AddWithValue("@id", selectedAccountId)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End Using
+
+                MessageBox.Show("Account deleted permanently.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ClearForm()
+                LoadStaffGrid()
+
+            Catch ex As MySqlException
+                ' Error 1451 means the account is tied to a reservation
+                If ex.Number = 1451 Then
+                    MessageBox.Show("This account cannot be deleted because they have processed reservations in the system. You must deactivate them instead.",
+                                    "Cannot Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error deleting account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
     End Sub
 
     Private Sub ClearForm()
