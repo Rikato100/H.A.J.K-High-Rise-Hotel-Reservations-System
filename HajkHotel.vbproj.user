@@ -10,8 +10,8 @@
     <Compile Update="Forms\Guest\AddGuestForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Guest\GuestForm.vb">
-      <SubType>Form</SubType>
+    <Compile Update="Forms\Guest\GuestControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Guest\GuestStayHistoryForm.vb">
       <SubType>Form</SubType>
@@ -22,25 +22,25 @@
     <Compile Update="Forms\Payments\PaymentForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Reports\ReportsForm.vb">
+    <Compile Update="Forms\Reports\ReportsControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Reservation\Reservation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Reservation\ReservationListForm.vb">
+    <Compile Update="Forms\Reservation\ReservationListControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Rooms\AddRoomForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Rooms\RoomForm.vb">
+    <Compile Update="Forms\Rooms\RoomControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Forms\Settings\SettingsForm.vb">
+    <Compile Update="Forms\Settings\SettingsControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Forms\Staff Management\StaffManagementForm.vb">
+    <Compile Update="Forms\Staff Management\StaffManagementControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Staff\StaffDashboard.vb">

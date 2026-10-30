@@ -22,7 +22,6 @@ Partial Class SettingsControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsControl))
         TabControl1 = New TabControl()
         TabPageDiscounts = New TabPage()
         dgvDiscounts = New DataGridView()
@@ -168,7 +167,6 @@ Partial Class SettingsControl
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(3, 2)
         PictureBox1.Margin = New Padding(3, 2, 3, 2)
         PictureBox1.Name = "PictureBox1"
@@ -284,7 +282,6 @@ Partial Class SettingsControl
         ' 
         ' PictureBox5
         ' 
-        PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
         PictureBox5.Location = New Point(14, 2)
         PictureBox5.Margin = New Padding(3, 2, 3, 2)
         PictureBox5.Name = "PictureBox5"
@@ -350,7 +347,6 @@ Partial Class SettingsControl
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(14, 2)
         PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
@@ -505,7 +501,6 @@ Partial Class SettingsControl
         ' 
         ' PictureBox3
         ' 
-        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
         PictureBox3.Location = New Point(14, 2)
         PictureBox3.Margin = New Padding(3, 2, 3, 2)
         PictureBox3.Name = "PictureBox3"
@@ -550,11 +545,11 @@ Partial Class SettingsControl
         grpResetConfig.Controls.Add(txtAdminPwdConfirm)
         grpResetConfig.Controls.Add(btnExecuteReset)
         grpResetConfig.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        grpResetConfig.Location = New Point(126, 68)
+        grpResetConfig.Location = New Point(32, 68)
         grpResetConfig.Margin = New Padding(3, 2, 3, 2)
         grpResetConfig.Name = "grpResetConfig"
         grpResetConfig.Padding = New Padding(3, 2, 3, 2)
-        grpResetConfig.Size = New Size(542, 322)
+        grpResetConfig.Size = New Size(810, 322)
         grpResetConfig.TabIndex = 0
         grpResetConfig.TabStop = False
         grpResetConfig.Text = "Reset Configuration"
@@ -659,7 +654,7 @@ Partial Class SettingsControl
         lblAdminPwdConfirm.AutoSize = True
         lblAdminPwdConfirm.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         lblAdminPwdConfirm.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblAdminPwdConfirm.Location = New Point(22, 206)
+        lblAdminPwdConfirm.Location = New Point(22, 258)
         lblAdminPwdConfirm.Name = "lblAdminPwdConfirm"
         lblAdminPwdConfirm.Size = New Size(222, 19)
         lblAdminPwdConfirm.TabIndex = 9
@@ -667,7 +662,7 @@ Partial Class SettingsControl
         ' 
         ' txtAdminPwdConfirm
         ' 
-        txtAdminPwdConfirm.Location = New Point(22, 229)
+        txtAdminPwdConfirm.Location = New Point(22, 281)
         txtAdminPwdConfirm.Margin = New Padding(3, 2, 3, 2)
         txtAdminPwdConfirm.Name = "txtAdminPwdConfirm"
         txtAdminPwdConfirm.PasswordChar = "*"c
@@ -679,7 +674,7 @@ Partial Class SettingsControl
         btnExecuteReset.BackColor = Color.FromArgb(CByte(165), CByte(42), CByte(42))
         btnExecuteReset.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         btnExecuteReset.ForeColor = Color.Beige
-        btnExecuteReset.Location = New Point(22, 266)
+        btnExecuteReset.Location = New Point(633, 272)
         btnExecuteReset.Margin = New Padding(3, 2, 3, 2)
         btnExecuteReset.Name = "btnExecuteReset"
         btnExecuteReset.Size = New Size(158, 34)

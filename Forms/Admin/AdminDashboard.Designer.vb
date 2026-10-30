@@ -697,7 +697,7 @@ Partial Class AdminDashboard
         lblDateTime.AutoSize = True
         lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(687, 11)
+        lblDateTime.Location = New Point(698, 11)
         lblDateTime.Name = "lblDateTime"
         lblDateTime.Size = New Size(104, 15)
         lblDateTime.TabIndex = 24

@@ -1,4 +1,4 @@
-Public Class StaffManagementControl
+﻿Public Class StaffManagementControl
 
     Private selectedAccountId As Integer = 0
     Private selectedRole As String = ""
