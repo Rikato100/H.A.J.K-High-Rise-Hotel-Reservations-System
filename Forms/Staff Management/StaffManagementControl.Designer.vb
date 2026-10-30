@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class StaffManagementControl
     Inherits System.Windows.Forms.UserControl
 
@@ -53,6 +53,7 @@ Partial Class StaffManagementControl
         PictureBox2 = New PictureBox()
         Label4 = New Label()
         Label1 = New Label()
+        btnDelete = New Button()
         CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
         Panel3.SuspendLayout()
         Panel4.SuspendLayout()
@@ -145,7 +146,7 @@ Partial Class StaffManagementControl
         dgvStaff.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle1.ForeColor = Color.Beige
         DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle1.SelectionForeColor = Color.Beige
@@ -154,7 +155,7 @@ Partial Class StaffManagementControl
         dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -168,7 +169,7 @@ Partial Class StaffManagementControl
         dgvStaff.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -176,7 +177,7 @@ Partial Class StaffManagementControl
         dgvStaff.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvStaff.RowHeadersWidth = 51
         dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvStaff.Size = New Size(669, 491)
+        dgvStaff.Size = New Size(669, 523)
         dgvStaff.TabIndex = 1
         ' 
         ' lblUsername
@@ -397,11 +398,27 @@ Partial Class StaffManagementControl
         Label1.TabIndex = 28
         Label1.Text = "Staff Management"
         ' 
+        ' btnDelete
+        ' 
+        btnDelete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnDelete.BackColor = Color.Red
+        btnDelete.FlatAppearance.BorderColor = Color.Silver
+        btnDelete.FlatStyle = FlatStyle.Flat
+        btnDelete.ForeColor = Color.Beige
+        btnDelete.Location = New Point(697, 606)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
+        btnDelete.Name = "btnDelete"
+        btnDelete.Size = New Size(314, 45)
+        btnDelete.TabIndex = 31
+        btnDelete.Text = "⌧ DELETE"
+        btnDelete.UseVisualStyleBackColor = False
+        ' 
         ' StaffManagementControl
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
+        Controls.Add(btnDelete)
         Controls.Add(PictureBox2)
         Controls.Add(Label4)
         Controls.Add(Label1)
@@ -420,7 +437,7 @@ Partial Class StaffManagementControl
         Controls.Add(lblSearch)
         Margin = New Padding(3, 4, 3, 4)
         Name = "StaffManagementControl"
-        Size = New Size(1032, 637)
+        Size = New Size(1032, 669)
         CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
@@ -458,4 +475,6 @@ Partial Class StaffManagementControl
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents txtFullName As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnDelete As Button
 End Class
