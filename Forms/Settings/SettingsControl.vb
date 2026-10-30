@@ -1,14 +1,13 @@
 Imports MySql.Data.MySqlClient
 
 Public Class SettingsControl
-
     ' --- Discount Settings State Variables ---
     Private selectedId As Integer = 0
     Private selectedType As String = ""
 
     Private Sub SettingsControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvDiscounts.AllowUserToAddRows = False
-        
+
         ' Initialize Discount Tab
         numRate.Minimum = 0
         numRate.Maximum = 100
@@ -36,6 +35,13 @@ Public Class SettingsControl
                     tc.TabPages.Remove(page)
                 End If
             Next
+
+            ' Hide the header of the single remaining tab (Change Password)
+            If tc.TabPages.Count = 1 Then
+                tc.SizeMode = TabSizeMode.Fixed
+                tc.ItemSize = New Size(0, 1)
+            End If
+
         Next
     End Sub
 

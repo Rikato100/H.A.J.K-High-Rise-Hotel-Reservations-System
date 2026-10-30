@@ -123,12 +123,4 @@ Public Class AdminDashboard
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         LoadView(New SettingsControl())
     End Sub
-
-    Private Sub cardDeparting_Paint(sender As Object, e As PaintEventArgs) Handles cardDeparting.Paint
-
-    End Sub
-
-    Private Sub lblArrivingToday_Click(sender As Object, e As EventArgs) Handles lblArrivingToday.Click
-
-    End Sub
 End Class

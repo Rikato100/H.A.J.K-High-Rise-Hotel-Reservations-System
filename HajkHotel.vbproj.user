@@ -49,8 +49,5 @@
     <Compile Update="Forms\Staff\StaffDashboardHomeControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Forms\System Full Reset\SystemResetForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

@@ -79,9 +79,9 @@ Partial Class DashboardHomeControl
         Label1.AutoSize = True
         Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(27, 15)
+        Label1.Location = New Point(24, 11)
         Label1.Name = "Label1"
-        Label1.Size = New Size(246, 30)
+        Label1.Size = New Size(198, 24)
         Label1.TabIndex = 17
         Label1.Text = "Welcome, Admin!"
         ' 
@@ -90,9 +90,9 @@ Partial Class DashboardHomeControl
         lblSubtitle.AutoSize = True
         lblSubtitle.Font = New Font("Segoe UI", 9F)
         lblSubtitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblSubtitle.Location = New Point(27, 51)
+        lblSubtitle.Location = New Point(24, 38)
         lblSubtitle.Name = "lblSubtitle"
-        lblSubtitle.Size = New Size(388, 20)
+        lblSubtitle.Size = New Size(311, 15)
         lblSubtitle.TabIndex = 25
         lblSubtitle.Text = "Here's what's happening at H.A.J.K High Rise Hotel today."
         ' 
@@ -102,9 +102,9 @@ Partial Class DashboardHomeControl
         lblDateTime.AutoSize = True
         lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(871, 15)
+        lblDateTime.Location = New Point(714, 11)
         lblDateTime.Name = "lblDateTime"
-        lblDateTime.Size = New Size(131, 20)
+        lblDateTime.Size = New Size(104, 15)
         lblDateTime.TabIndex = 24
         lblDateTime.Text = "Mon, Mar 19, 2026"
         lblDateTime.TextAlign = ContentAlignment.MiddleRight
@@ -117,10 +117,9 @@ Partial Class DashboardHomeControl
         cardRooms.Controls.Add(lblIconRooms)
         cardRooms.Controls.Add(lblTitleAvailableRooms)
         cardRooms.Controls.Add(lblAvailableRooms)
-        cardRooms.Location = New Point(27, 96)
-        cardRooms.Margin = New Padding(3, 4, 3, 4)
+        cardRooms.Location = New Point(24, 72)
         cardRooms.Name = "cardRooms"
-        cardRooms.Size = New Size(303, 213)
+        cardRooms.Size = New Size(265, 160)
         cardRooms.TabIndex = 18
         ' 
         ' topStrip1
@@ -128,18 +127,17 @@ Partial Class DashboardHomeControl
         topStrip1.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip1.Dock = DockStyle.Top
         topStrip1.Location = New Point(0, 0)
-        topStrip1.Margin = New Padding(3, 4, 3, 4)
         topStrip1.Name = "topStrip1"
-        topStrip1.Size = New Size(301, 4)
+        topStrip1.Size = New Size(263, 3)
         topStrip1.TabIndex = 0
         ' 
         ' lblIconRooms
         ' 
         lblIconRooms.AutoSize = True
         lblIconRooms.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconRooms.Location = New Point(17, 24)
+        lblIconRooms.Location = New Point(15, 18)
         lblIconRooms.Name = "lblIconRooms"
-        lblIconRooms.Size = New Size(48, 32)
+        lblIconRooms.Size = New Size(34, 25)
         lblIconRooms.TabIndex = 1
         lblIconRooms.Text = "🛏️"
         ' 
@@ -148,9 +146,9 @@ Partial Class DashboardHomeControl
         lblTitleAvailableRooms.AutoSize = True
         lblTitleAvailableRooms.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitleAvailableRooms.ForeColor = Color.DimGray
-        lblTitleAvailableRooms.Location = New Point(59, 24)
+        lblTitleAvailableRooms.Location = New Point(52, 18)
         lblTitleAvailableRooms.Name = "lblTitleAvailableRooms"
-        lblTitleAvailableRooms.Size = New Size(209, 32)
+        lblTitleAvailableRooms.Size = New Size(169, 25)
         lblTitleAvailableRooms.TabIndex = 2
         lblTitleAvailableRooms.Text = "Available Rooms"
         ' 
@@ -159,9 +157,9 @@ Partial Class DashboardHomeControl
         lblAvailableRooms.AutoSize = True
         lblAvailableRooms.Font = New Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAvailableRooms.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblAvailableRooms.Location = New Point(114, 92)
+        lblAvailableRooms.Location = New Point(92, 69)
         lblAvailableRooms.Name = "lblAvailableRooms"
-        lblAvailableRooms.Size = New Size(70, 81)
+        lblAvailableRooms.Size = New Size(56, 65)
         lblAvailableRooms.TabIndex = 3
         lblAvailableRooms.Text = "0"
         ' 
@@ -173,10 +171,9 @@ Partial Class DashboardHomeControl
         cardOccupancy.Controls.Add(lblIconOccupancy)
         cardOccupancy.Controls.Add(lblTitleOccupancyRate)
         cardOccupancy.Controls.Add(lblOccupancyRate)
-        cardOccupancy.Location = New Point(363, 96)
-        cardOccupancy.Margin = New Padding(3, 4, 3, 4)
+        cardOccupancy.Location = New Point(318, 72)
         cardOccupancy.Name = "cardOccupancy"
-        cardOccupancy.Size = New Size(303, 213)
+        cardOccupancy.Size = New Size(265, 160)
         cardOccupancy.TabIndex = 23
         ' 
         ' topStrip6
@@ -184,18 +181,17 @@ Partial Class DashboardHomeControl
         topStrip6.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip6.Dock = DockStyle.Top
         topStrip6.Location = New Point(0, 0)
-        topStrip6.Margin = New Padding(3, 4, 3, 4)
         topStrip6.Name = "topStrip6"
-        topStrip6.Size = New Size(301, 4)
+        topStrip6.Size = New Size(263, 3)
         topStrip6.TabIndex = 0
         ' 
         ' lblIconOccupancy
         ' 
         lblIconOccupancy.AutoSize = True
         lblIconOccupancy.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconOccupancy.Location = New Point(17, 24)
+        lblIconOccupancy.Location = New Point(15, 18)
         lblIconOccupancy.Name = "lblIconOccupancy"
-        lblIconOccupancy.Size = New Size(48, 32)
+        lblIconOccupancy.Size = New Size(34, 25)
         lblIconOccupancy.TabIndex = 1
         lblIconOccupancy.Text = "📈"
         ' 
@@ -204,9 +200,9 @@ Partial Class DashboardHomeControl
         lblTitleOccupancyRate.AutoSize = True
         lblTitleOccupancyRate.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitleOccupancyRate.ForeColor = Color.DimGray
-        lblTitleOccupancyRate.Location = New Point(59, 24)
+        lblTitleOccupancyRate.Location = New Point(52, 18)
         lblTitleOccupancyRate.Name = "lblTitleOccupancyRate"
-        lblTitleOccupancyRate.Size = New Size(199, 32)
+        lblTitleOccupancyRate.Size = New Size(160, 25)
         lblTitleOccupancyRate.TabIndex = 2
         lblTitleOccupancyRate.Text = "Occupancy Rate"
         ' 
@@ -215,9 +211,9 @@ Partial Class DashboardHomeControl
         lblOccupancyRate.AutoSize = True
         lblOccupancyRate.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
         lblOccupancyRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblOccupancyRate.Location = New Point(97, 92)
+        lblOccupancyRate.Location = New Point(80, 69)
         lblOccupancyRate.Name = "lblOccupancyRate"
-        lblOccupancyRate.Size = New Size(122, 81)
+        lblOccupancyRate.Size = New Size(98, 65)
         lblOccupancyRate.TabIndex = 3
         lblOccupancyRate.Text = "0%"
         ' 
@@ -229,10 +225,9 @@ Partial Class DashboardHomeControl
         groupReservations.Controls.Add(cardArriving)
         groupReservations.Controls.Add(cardInHouse)
         groupReservations.Controls.Add(cardDeparting)
-        groupReservations.Location = New Point(691, 96)
-        groupReservations.Margin = New Padding(3, 4, 3, 4)
+        groupReservations.Location = New Point(605, 72)
         groupReservations.Name = "groupReservations"
-        groupReservations.Size = New Size(303, 446)
+        groupReservations.Size = New Size(265, 335)
         groupReservations.TabIndex = 27
         ' 
         ' lblReservationsGroupTitle
@@ -240,9 +235,9 @@ Partial Class DashboardHomeControl
         lblReservationsGroupTitle.AutoSize = True
         lblReservationsGroupTitle.Font = New Font("Segoe UI Black", 13F, FontStyle.Bold)
         lblReservationsGroupTitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblReservationsGroupTitle.Location = New Point(79, 11)
+        lblReservationsGroupTitle.Location = New Point(69, 8)
         lblReservationsGroupTitle.Name = "lblReservationsGroupTitle"
-        lblReservationsGroupTitle.Size = New Size(153, 30)
+        lblReservationsGroupTitle.Size = New Size(127, 25)
         lblReservationsGroupTitle.TabIndex = 0
         lblReservationsGroupTitle.Text = "Reservations"
         ' 
@@ -254,10 +249,9 @@ Partial Class DashboardHomeControl
         cardArriving.Controls.Add(lblIconArriving)
         cardArriving.Controls.Add(lblTitleArrivingToday)
         cardArriving.Controls.Add(lblArrivingToday)
-        cardArriving.Location = New Point(26, 57)
-        cardArriving.Margin = New Padding(3, 4, 3, 4)
+        cardArriving.Location = New Point(23, 43)
         cardArriving.Name = "cardArriving"
-        cardArriving.Size = New Size(247, 113)
+        cardArriving.Size = New Size(216, 85)
         cardArriving.TabIndex = 19
         ' 
         ' topStrip2
@@ -265,18 +259,17 @@ Partial Class DashboardHomeControl
         topStrip2.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip2.Dock = DockStyle.Top
         topStrip2.Location = New Point(0, 0)
-        topStrip2.Margin = New Padding(3, 4, 3, 4)
         topStrip2.Name = "topStrip2"
-        topStrip2.Size = New Size(245, 4)
+        topStrip2.Size = New Size(214, 3)
         topStrip2.TabIndex = 0
         ' 
         ' lblIconArriving
         ' 
         lblIconArriving.AutoSize = True
         lblIconArriving.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconArriving.Location = New Point(11, 16)
+        lblIconArriving.Location = New Point(10, 12)
         lblIconArriving.Name = "lblIconArriving"
-        lblIconArriving.Size = New Size(48, 32)
+        lblIconArriving.Size = New Size(34, 25)
         lblIconArriving.TabIndex = 1
         lblIconArriving.Text = "📥"
         ' 
@@ -285,9 +278,9 @@ Partial Class DashboardHomeControl
         lblTitleArrivingToday.AutoSize = True
         lblTitleArrivingToday.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
         lblTitleArrivingToday.ForeColor = Color.DimGray
-        lblTitleArrivingToday.Location = New Point(51, 16)
+        lblTitleArrivingToday.Location = New Point(45, 12)
         lblTitleArrivingToday.Name = "lblTitleArrivingToday"
-        lblTitleArrivingToday.Size = New Size(110, 32)
+        lblTitleArrivingToday.Size = New Size(89, 25)
         lblTitleArrivingToday.TabIndex = 2
         lblTitleArrivingToday.Text = "Arriving"
         ' 
@@ -296,9 +289,9 @@ Partial Class DashboardHomeControl
         lblArrivingToday.AutoSize = True
         lblArrivingToday.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblArrivingToday.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblArrivingToday.Location = New Point(103, 56)
+        lblArrivingToday.Location = New Point(90, 42)
         lblArrivingToday.Name = "lblArrivingToday"
-        lblArrivingToday.Size = New Size(35, 41)
+        lblArrivingToday.Size = New Size(28, 32)
         lblArrivingToday.TabIndex = 3
         lblArrivingToday.Text = "0"
         ' 
@@ -310,10 +303,9 @@ Partial Class DashboardHomeControl
         cardInHouse.Controls.Add(lblIconInHouse)
         cardInHouse.Controls.Add(lblTitleInHouse)
         cardInHouse.Controls.Add(lblInHouse)
-        cardInHouse.Location = New Point(26, 183)
-        cardInHouse.Margin = New Padding(3, 4, 3, 4)
+        cardInHouse.Location = New Point(23, 137)
         cardInHouse.Name = "cardInHouse"
-        cardInHouse.Size = New Size(247, 113)
+        cardInHouse.Size = New Size(216, 85)
         cardInHouse.TabIndex = 21
         ' 
         ' topStrip4
@@ -321,18 +313,17 @@ Partial Class DashboardHomeControl
         topStrip4.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip4.Dock = DockStyle.Top
         topStrip4.Location = New Point(0, 0)
-        topStrip4.Margin = New Padding(3, 4, 3, 4)
         topStrip4.Name = "topStrip4"
-        topStrip4.Size = New Size(245, 4)
+        topStrip4.Size = New Size(214, 3)
         topStrip4.TabIndex = 0
         ' 
         ' lblIconInHouse
         ' 
         lblIconInHouse.AutoSize = True
         lblIconInHouse.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconInHouse.Location = New Point(11, 16)
+        lblIconInHouse.Location = New Point(10, 12)
         lblIconInHouse.Name = "lblIconInHouse"
-        lblIconInHouse.Size = New Size(48, 32)
+        lblIconInHouse.Size = New Size(34, 25)
         lblIconInHouse.TabIndex = 1
         lblIconInHouse.Text = "👥"
         ' 
@@ -341,9 +332,9 @@ Partial Class DashboardHomeControl
         lblTitleInHouse.AutoSize = True
         lblTitleInHouse.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
         lblTitleInHouse.ForeColor = Color.DimGray
-        lblTitleInHouse.Location = New Point(51, 16)
+        lblTitleInHouse.Location = New Point(45, 12)
         lblTitleInHouse.Name = "lblTitleInHouse"
-        lblTitleInHouse.Size = New Size(117, 32)
+        lblTitleInHouse.Size = New Size(95, 25)
         lblTitleInHouse.TabIndex = 2
         lblTitleInHouse.Text = "In-house"
         ' 
@@ -352,9 +343,9 @@ Partial Class DashboardHomeControl
         lblInHouse.AutoSize = True
         lblInHouse.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
         lblInHouse.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblInHouse.Location = New Point(103, 60)
+        lblInHouse.Location = New Point(90, 45)
         lblInHouse.Name = "lblInHouse"
-        lblInHouse.Size = New Size(33, 37)
+        lblInHouse.Size = New Size(26, 30)
         lblInHouse.TabIndex = 3
         lblInHouse.Text = "0"
         ' 
@@ -366,10 +357,9 @@ Partial Class DashboardHomeControl
         cardDeparting.Controls.Add(lblIconDeparting)
         cardDeparting.Controls.Add(lblTitleDepartingToday)
         cardDeparting.Controls.Add(lblDepartingToday)
-        cardDeparting.Location = New Point(26, 307)
-        cardDeparting.Margin = New Padding(3, 4, 3, 4)
+        cardDeparting.Location = New Point(23, 230)
         cardDeparting.Name = "cardDeparting"
-        cardDeparting.Size = New Size(247, 113)
+        cardDeparting.Size = New Size(216, 85)
         cardDeparting.TabIndex = 20
         ' 
         ' topStrip3
@@ -377,18 +367,17 @@ Partial Class DashboardHomeControl
         topStrip3.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip3.Dock = DockStyle.Top
         topStrip3.Location = New Point(0, 0)
-        topStrip3.Margin = New Padding(3, 4, 3, 4)
         topStrip3.Name = "topStrip3"
-        topStrip3.Size = New Size(245, 4)
+        topStrip3.Size = New Size(214, 3)
         topStrip3.TabIndex = 0
         ' 
         ' lblIconDeparting
         ' 
         lblIconDeparting.AutoSize = True
         lblIconDeparting.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconDeparting.Location = New Point(11, 16)
+        lblIconDeparting.Location = New Point(10, 12)
         lblIconDeparting.Name = "lblIconDeparting"
-        lblIconDeparting.Size = New Size(48, 32)
+        lblIconDeparting.Size = New Size(34, 25)
         lblIconDeparting.TabIndex = 1
         lblIconDeparting.Text = "📤"
         ' 
@@ -397,9 +386,9 @@ Partial Class DashboardHomeControl
         lblTitleDepartingToday.AutoSize = True
         lblTitleDepartingToday.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
         lblTitleDepartingToday.ForeColor = Color.DimGray
-        lblTitleDepartingToday.Location = New Point(51, 16)
+        lblTitleDepartingToday.Location = New Point(45, 12)
         lblTitleDepartingToday.Name = "lblTitleDepartingToday"
-        lblTitleDepartingToday.Size = New Size(130, 32)
+        lblTitleDepartingToday.Size = New Size(106, 25)
         lblTitleDepartingToday.TabIndex = 2
         lblTitleDepartingToday.Text = "Departing"
         ' 
@@ -408,9 +397,9 @@ Partial Class DashboardHomeControl
         lblDepartingToday.AutoSize = True
         lblDepartingToday.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
         lblDepartingToday.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblDepartingToday.Location = New Point(103, 60)
+        lblDepartingToday.Location = New Point(90, 45)
         lblDepartingToday.Name = "lblDepartingToday"
-        lblDepartingToday.Size = New Size(33, 37)
+        lblDepartingToday.Size = New Size(26, 30)
         lblDepartingToday.TabIndex = 3
         lblDepartingToday.Text = "0"
         ' 
@@ -422,10 +411,9 @@ Partial Class DashboardHomeControl
         cardRevenue.Controls.Add(lblIconRevenue)
         cardRevenue.Controls.Add(lblTitleDailyRevenue)
         cardRevenue.Controls.Add(lblDailyRevenue)
-        cardRevenue.Location = New Point(27, 329)
-        cardRevenue.Margin = New Padding(3, 4, 3, 4)
+        cardRevenue.Location = New Point(24, 247)
         cardRevenue.Name = "cardRevenue"
-        cardRevenue.Size = New Size(303, 213)
+        cardRevenue.Size = New Size(265, 160)
         cardRevenue.TabIndex = 22
         ' 
         ' topStrip5
@@ -433,18 +421,17 @@ Partial Class DashboardHomeControl
         topStrip5.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip5.Dock = DockStyle.Top
         topStrip5.Location = New Point(0, 0)
-        topStrip5.Margin = New Padding(3, 4, 3, 4)
         topStrip5.Name = "topStrip5"
-        topStrip5.Size = New Size(301, 4)
+        topStrip5.Size = New Size(263, 3)
         topStrip5.TabIndex = 0
         ' 
         ' lblIconRevenue
         ' 
         lblIconRevenue.AutoSize = True
         lblIconRevenue.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconRevenue.Location = New Point(17, 24)
+        lblIconRevenue.Location = New Point(15, 18)
         lblIconRevenue.Name = "lblIconRevenue"
-        lblIconRevenue.Size = New Size(48, 32)
+        lblIconRevenue.Size = New Size(34, 25)
         lblIconRevenue.TabIndex = 1
         lblIconRevenue.Text = "💵"
         ' 
@@ -453,9 +440,9 @@ Partial Class DashboardHomeControl
         lblTitleDailyRevenue.AutoSize = True
         lblTitleDailyRevenue.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitleDailyRevenue.ForeColor = Color.DimGray
-        lblTitleDailyRevenue.Location = New Point(62, 24)
+        lblTitleDailyRevenue.Location = New Point(54, 18)
         lblTitleDailyRevenue.Name = "lblTitleDailyRevenue"
-        lblTitleDailyRevenue.Size = New Size(179, 32)
+        lblTitleDailyRevenue.Size = New Size(146, 25)
         lblTitleDailyRevenue.TabIndex = 2
         lblTitleDailyRevenue.Text = "Daily Revenue"
         ' 
@@ -464,9 +451,9 @@ Partial Class DashboardHomeControl
         lblDailyRevenue.AutoSize = True
         lblDailyRevenue.Font = New Font("Segoe UI", 26F, FontStyle.Bold)
         lblDailyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblDailyRevenue.Location = New Point(40, 100)
+        lblDailyRevenue.Location = New Point(35, 75)
         lblDailyRevenue.Name = "lblDailyRevenue"
-        lblDailyRevenue.Size = New Size(140, 60)
+        lblDailyRevenue.Size = New Size(111, 47)
         lblDailyRevenue.TabIndex = 3
         lblDailyRevenue.Text = "₱0.00"
         ' 
@@ -478,10 +465,9 @@ Partial Class DashboardHomeControl
         cardMonthlyRevenue.Controls.Add(lblIconMonthlyRevenue)
         cardMonthlyRevenue.Controls.Add(lblTitleMonthlyRevenue)
         cardMonthlyRevenue.Controls.Add(lblMonthlyRevenue)
-        cardMonthlyRevenue.Location = New Point(363, 329)
-        cardMonthlyRevenue.Margin = New Padding(3, 4, 3, 4)
+        cardMonthlyRevenue.Location = New Point(318, 247)
         cardMonthlyRevenue.Name = "cardMonthlyRevenue"
-        cardMonthlyRevenue.Size = New Size(303, 213)
+        cardMonthlyRevenue.Size = New Size(265, 160)
         cardMonthlyRevenue.TabIndex = 26
         ' 
         ' topStrip7
@@ -489,18 +475,17 @@ Partial Class DashboardHomeControl
         topStrip7.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         topStrip7.Dock = DockStyle.Top
         topStrip7.Location = New Point(0, 0)
-        topStrip7.Margin = New Padding(3, 4, 3, 4)
         topStrip7.Name = "topStrip7"
-        topStrip7.Size = New Size(301, 4)
+        topStrip7.Size = New Size(263, 3)
         topStrip7.TabIndex = 0
         ' 
         ' lblIconMonthlyRevenue
         ' 
         lblIconMonthlyRevenue.AutoSize = True
         lblIconMonthlyRevenue.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold)
-        lblIconMonthlyRevenue.Location = New Point(17, 24)
+        lblIconMonthlyRevenue.Location = New Point(15, 18)
         lblIconMonthlyRevenue.Name = "lblIconMonthlyRevenue"
-        lblIconMonthlyRevenue.Size = New Size(48, 32)
+        lblIconMonthlyRevenue.Size = New Size(34, 25)
         lblIconMonthlyRevenue.TabIndex = 1
         lblIconMonthlyRevenue.Text = "💰"
         ' 
@@ -509,9 +494,9 @@ Partial Class DashboardHomeControl
         lblTitleMonthlyRevenue.AutoSize = True
         lblTitleMonthlyRevenue.Font = New Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitleMonthlyRevenue.ForeColor = Color.DimGray
-        lblTitleMonthlyRevenue.Location = New Point(59, 24)
+        lblTitleMonthlyRevenue.Location = New Point(52, 18)
         lblTitleMonthlyRevenue.Name = "lblTitleMonthlyRevenue"
-        lblTitleMonthlyRevenue.Size = New Size(220, 32)
+        lblTitleMonthlyRevenue.Size = New Size(178, 25)
         lblTitleMonthlyRevenue.TabIndex = 2
         lblTitleMonthlyRevenue.Text = "Monthly Revenue"
         ' 
@@ -520,9 +505,9 @@ Partial Class DashboardHomeControl
         lblMonthlyRevenue.AutoSize = True
         lblMonthlyRevenue.Font = New Font("Segoe UI", 26F, FontStyle.Bold)
         lblMonthlyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblMonthlyRevenue.Location = New Point(40, 100)
+        lblMonthlyRevenue.Location = New Point(35, 75)
         lblMonthlyRevenue.Name = "lblMonthlyRevenue"
-        lblMonthlyRevenue.Size = New Size(140, 60)
+        lblMonthlyRevenue.Size = New Size(111, 47)
         lblMonthlyRevenue.TabIndex = 3
         lblMonthlyRevenue.Text = "₱0.00"
         ' 
@@ -532,7 +517,7 @@ Partial Class DashboardHomeControl
         ' 
         ' DashboardHomeControl
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(groupReservations)
@@ -543,9 +528,8 @@ Partial Class DashboardHomeControl
         Controls.Add(lblDateTime)
         Controls.Add(lblSubtitle)
         Controls.Add(Label1)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "DashboardHomeControl"
-        Size = New Size(1032, 637)
+        Size = New Size(903, 478)
         cardRooms.ResumeLayout(False)
         cardRooms.PerformLayout()
         cardOccupancy.ResumeLayout(False)

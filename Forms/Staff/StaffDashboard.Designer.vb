@@ -52,7 +52,7 @@ Partial Class StaffDashboard
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(126, 42)
         btnLogout.TabIndex = 16
-        btnLogout.Text = "🚪 Logout"
+        btnLogout.Text = ChrW(9211) & " Logout"
         btnLogout.UseVisualStyleBackColor = False
         ' 
         ' btnGuests
