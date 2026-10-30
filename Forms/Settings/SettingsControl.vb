@@ -88,9 +88,9 @@ Public Class SettingsControl
             dgvDiscounts.Columns("discount_rate").HeaderText = "Rate (%)"
             dgvDiscounts.Columns("discount_rate").DefaultCellStyle.Format = "0.00"
             dgvDiscounts.Columns("start_date").HeaderText = "Start Date"
-            dgvDiscounts.Columns("start_date").DefaultCellStyle.Format = "yyyy-MM-dd"
+            dgvDiscounts.Columns("start_date").DefaultCellStyle.Format = "MMM dd"
             dgvDiscounts.Columns("end_date").HeaderText = "End Date"
-            dgvDiscounts.Columns("end_date").DefaultCellStyle.Format = "yyyy-MM-dd"
+            dgvDiscounts.Columns("end_date").DefaultCellStyle.Format = "MMM dd"
 
         Catch ex As Exception
             MessageBox.Show("Could not load discounts: " & ex.Message, "Discount Settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
