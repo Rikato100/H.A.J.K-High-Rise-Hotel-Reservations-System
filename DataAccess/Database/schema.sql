@@ -109,8 +109,8 @@ CREATE TABLE `guest` (
 INSERT INTO `guest` (`guest_id`,`surname`,`firstname`,`middlename`,`contact`,`email`,`valid_id_type`,`valid_id_number`,`notes`) VALUES
 (1,'Olaes','Hans Norman','Tahad','09602896489','hansolaes1019@gmail.com','Student ID','306151019','VIP Guest'),
 (2,'Galzote','Jd','Jalbuna','09673490318','jdgalzote24@gmail.com','National ID','2345678','VIP Guest'),
-(3,'Dela Cruz','Jasper','Ergina','09982746352','jasperdelacruz30@gmail.com','PWD ID','425364543',NULL),
-(4,'Cortal','Kirk Patrick','Sigara','09453629485','cortalpatrick783@gmail.com','Drivers License ID','4635423',NULL),
+(3,'Dela Cruz','Jasper','Ergina','09982746352','jasperdelacruz30@gmail.com','PWD ID','425364543','VIP GUEST'),
+(4,'Cortal','Kirk Patrick','Sigara','09453629485','cortalpatrick783@gmail.com','Drivers License ID','4635423','VIP GUEST'),
 (5,'Ferolino','Abegail','Timogtimog','09382940577','AbeFerolino9910@gmail.com','Philippine Passport ID','78269867','VIP Guest'),
 (6,'Santos','Maria Clara','Reyes','09171234567','mariaclara.santos@gmail.com','National ID','1234-5678-9012-3456',NULL),
 (7,'Reyes','Juan Miguel','Dela Torre','09285550142','juanmiguel.reyes@yahoo.com','Driver''s License','N03-21-004512','VIP Guest'),
