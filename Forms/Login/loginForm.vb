@@ -5,9 +5,19 @@ Public Class loginForm
         Me.AcceptButton = btnLogin
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblUsername.Click
+Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
+    If e.KeyCode = Keys.Down Then
+        txtPassword.Focus()
+        e.SuppressKeyPress = True
+    End If
+End Sub
 
-    End Sub
+Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
+    If e.KeyCode = Keys.Up Then
+        txtUsername.Focus()
+        e.SuppressKeyPress = True
+    End If
+End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = txtUsername.Text.Trim()
