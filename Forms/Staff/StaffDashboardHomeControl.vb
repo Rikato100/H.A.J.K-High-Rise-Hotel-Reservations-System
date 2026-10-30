@@ -30,10 +30,29 @@ Public Class StaffDashboardHomeControl
                 Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_status = 'Check-In'", conn)
                     lblInHouse.Text = cmd.ExecuteScalar().ToString()
                 End Using
+
+                ' ---> OCCUPANCY RATE <---
+                Dim totalRooms As Integer = 0
+                Dim occupiedRooms As Integer = 0
+
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM room", conn)
+                    totalRooms = Convert.ToInt32(cmd.ExecuteScalar())
+                End Using
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM room WHERE room_status = 'Occupied'", conn)
+                    occupiedRooms = Convert.ToInt32(cmd.ExecuteScalar())
+                End Using
+
+                If totalRooms > 0 Then
+                    Dim occupancy As Decimal = (CDec(occupiedRooms) / totalRooms) * 100
+                    lblOccupancyRate.Text = occupancy.ToString("0.0") & "%"
+                Else
+                    lblOccupancyRate.Text = "0%"
+                End If
+                ' -----------------------------------
+
             End Using
         Catch ex As Exception
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 End Class
