@@ -2,7 +2,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class loginForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.AcceptButton = btnLogin
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblUsername.Click
