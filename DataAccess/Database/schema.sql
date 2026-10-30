@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
 (1, 'admin0001', 'yRFgi7hDoN0N1aMUGubsMgc+p7v7WEDQ/Zwjdx/fd4Y=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-25 15:36:15'),
-(2, 'staff0001', 'vnitWNhKnuJxGaA6g7l0/J3n+tVCqDDTagwmhNn8WFA=', 'staff0001', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-30 15:08:56'),
+(2, 'staff0001', 'vnitWNhKnuJxGaA6g7l0/J3n+tVCqDDTagwmhNn8WFA=', 'Receptionist', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-30 15:08:56'),
 (3, 'admin3104', 'urah44qwPYSJcfcWDAsNcDrxJ5ML73EvIXqYloNyiL4=', 'Hans Norman Olaes', 'Admin', 'Active', '2026-10-25 15:37:02', '2026-10-30 15:25:34'),
 (4, 'staff1003', 'AR+jXrlTRfurSn3ryAuOuZPrl8x6iOhRXLEcfl593rY=', 'Jasper Dela Cruz', 'Staff', 'Active', '2026-10-25 15:37:52', '2026-10-30 15:07:02'),
 (5, 'staff0839', '3dv5hrBIFCKp1c1s+vsfNEq5CEO3pca7N4S9FDdDH3A=', 'Kirk Patrick Cortal', 'Staff', 'Inactive', '2026-10-25 15:41:11', '2026-10-30 15:12:08'),
