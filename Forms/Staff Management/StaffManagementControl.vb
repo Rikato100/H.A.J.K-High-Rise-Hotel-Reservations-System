@@ -1,4 +1,4 @@
-﻿Public Class StaffManagementControl
+Public Class StaffManagementControl
 
     Private selectedAccountId As Integer = 0
     Private selectedRole As String = ""
@@ -61,9 +61,15 @@
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
         isLoading = True
+        
+        ' Reset the search and filters
         txtSearch.Text = ""
         cboStatusFilter.SelectedIndex = 0
         cboRoleFilter.SelectedIndex = 0
+        
+        ' FIX: Clear the form textboxes and reset selections
+        ClearForm()
+        
         isLoading = False
         LoadStaffGrid()
     End Sub
