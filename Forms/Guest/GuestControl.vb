@@ -16,11 +16,11 @@ Public Class GuestControl
 
                 ' Subquery to count total visits
                 Dim query As String =
-                    "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
-                    "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
-                    "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
-                    "FROM guest g " &
-                    "ORDER BY g.surname, g.firstname"
+                        "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
+                        "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
+                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
+                        "FROM guest g " &
+                        "ORDER BY g.surname, g.firstname"
 
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
@@ -28,16 +28,16 @@ Public Class GuestControl
 
                         While reader.Read()
                             dgvGuests.Rows.Add(
-                                reader("guest_id"),
-                                reader("surname"),
-                                reader("firstname"),
-                                reader("middlename"),
-                                reader("contact"),
-                                reader("email"),
-                                reader("valid_id_type"),
-                                reader("valid_id_number"),
-                                reader("total_visits")
-                            )
+                                    reader("guest_id"),
+                                    reader("surname"),
+                                    reader("firstname"),
+                                    reader("middlename"),
+                                    reader("contact"),
+                                    reader("email"),
+                                    reader("valid_id_type"),
+                                    reader("valid_id_number"),
+                                    reader("total_visits")
+                                )
                         End While
                     End Using
                 End Using
@@ -84,8 +84,8 @@ Public Class GuestControl
         Dim firstname = dgvGuests.SelectedRows(0).Cells("colFirstname").Value.ToString
 
         Dim answer = MessageBox.Show(
-            "Are you sure you want to delete " & firstname & " " & surname & "?",
-            "Delete Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                "Are you sure you want to delete " & firstname & " " & surname & "?",
+                "Delete Guest", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
         If answer <> DialogResult.Yes Then Exit Sub
 
@@ -105,7 +105,7 @@ Public Class GuestControl
         Catch ex As MySqlException
             If ex.Number = 1451 Then
                 MessageBox.Show("This guest cannot be deleted because they are connected to an existing reservation.",
-                    "Cannot Delete Guest", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        "Cannot Delete Guest", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
                 MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -131,17 +131,17 @@ Public Class GuestControl
                 conn.Open()
 
                 Dim query As String =
-                    "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
-                    "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
-                    "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
-                    "FROM guest g " &
-                    "WHERE g.surname LIKE @search " &
-                    "OR g.firstname LIKE @search " &
-                    "OR g.middlename LIKE @search " &
-                    "OR g.contact LIKE @search " &
-                    "OR g.email LIKE @search " &
-                    "OR g.valid_id_number LIKE @search " &
-                    "ORDER BY g.surname, g.firstname"
+                        "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
+                        "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
+                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
+                        "FROM guest g " &
+                        "WHERE g.surname LIKE @search " &
+                        "OR g.firstname LIKE @search " &
+                        "OR g.middlename LIKE @search " &
+                        "OR g.contact LIKE @search " &
+                        "OR g.email LIKE @search " &
+                        "OR g.valid_id_number LIKE @search " &
+                        "ORDER BY g.surname, g.firstname"
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@search", "%" & searchText & "%")
@@ -151,16 +151,16 @@ Public Class GuestControl
 
                         While reader.Read()
                             dgvGuests.Rows.Add(
-                                reader("guest_id"),
-                                reader("surname"),
-                                reader("firstname"),
-                                reader("middlename"),
-                                reader("contact"),
-                                reader("email"),
-                                reader("valid_id_type"),
-                                reader("valid_id_number"),
-                                reader("total_visits")
-                            )
+                                    reader("guest_id"),
+                                    reader("surname"),
+                                    reader("firstname"),
+                                    reader("middlename"),
+                                    reader("contact"),
+                                    reader("email"),
+                                    reader("valid_id_type"),
+                                    reader("valid_id_number"),
+                                    reader("total_visits")
+                                )
                         End While
                     End Using
                 End Using
@@ -190,13 +190,5 @@ Public Class GuestControl
 
         Dim historyForm As New GuestStayHistoryForm(guestID, guestName)
         historyForm.ShowDialog()
-    End Sub
-
-    ' Empty events
-    Private Sub dgvGuests_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuests.CellContentClick
-    End Sub
-    Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
-    End Sub
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
     End Sub
 End Class

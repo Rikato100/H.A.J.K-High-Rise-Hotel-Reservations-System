@@ -66,8 +66,4 @@ Public Class StaffDashboardHomeControl
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub groupReservations_Paint(sender As Object, e As PaintEventArgs) Handles groupReservations.Paint
-
-    End Sub
 End Class

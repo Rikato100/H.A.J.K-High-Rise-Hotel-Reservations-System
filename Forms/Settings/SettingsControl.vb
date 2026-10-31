@@ -345,13 +345,14 @@ Public Class SettingsControl
         End If
 
         Dim repo As New AdminRepository()
+        Dim result As DialogResult
 
         If rbFactoryReset.Checked Then
-            Dim result As DialogResult = MessageBox.Show(
-                "WARNING: This will permanently delete ALL reservations, guests and payments, and set every room to Available." & vbCrLf & vbCrLf &
-                "Staff accounts and discount settings are kept." & vbCrLf & vbCrLf &
-                "Are you absolutely sure you want to proceed?",
-                "Confirm Factory Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)
+            result = MessageBox.Show(
+            "WARNING: This will permanently delete ALL reservations, guests and payments, and set every room to Available." & vbCrLf & vbCrLf &
+            "Staff accounts and discount settings are kept." & vbCrLf & vbCrLf &
+            "Are you absolutely sure you want to proceed?",
+            "Confirm Factory Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)
 
             If result = DialogResult.Yes Then
                 If repo.FactoryReset() Then
@@ -370,10 +371,26 @@ Public Class SettingsControl
                 Return
             End If
 
-            Dim result As DialogResult = MessageBox.Show(
-                "Are you sure you want to perform the selected actions for " & dtpResetStartDate.Value.ToShortDateString() & " to " & dtpResetEndDate.Value.ToShortDateString() & "? This cannot be undone." & vbCrLf & vbCrLf &
-                "(Room statuses are not limited by the date range.)",
-                "Confirm Selective Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            ' --- BUILD CUSTOM MESSAGE BASED ON CHECKBOXES ---
+            Dim messageDetails As String = "Are you sure you want to perform the selected actions?" & vbCrLf & vbCrLf
+
+            If chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked Then
+                messageDetails &= "• Date Range: " & dtpResetStartDate.Value.ToShortDateString() & " to " & dtpResetEndDate.Value.ToShortDateString() & vbCrLf
+            End If
+
+            messageDetails &= "Selected items to reset:" & vbCrLf
+            If chkDeleteGuestHistory.Checked Then messageDetails &= " - Guest History & Reservations" & vbCrLf
+            If chkDeleteFinancial.Checked Then messageDetails &= " - Financial & Payment Records" & vbCrLf
+            If chkResetRoomStatus.Checked Then messageDetails &= " - Room Statuses (Reset to Available)" & vbCrLf
+
+            messageDetails &= vbCrLf & "This action cannot be undone."
+
+            If chkResetRoomStatus.Checked AndAlso Not chkDeleteGuestHistory.Checked AndAlso Not chkDeleteFinancial.Checked Then
+                messageDetails &= vbCrLf & "(Room statuses are not limited by the date range.)"
+            End If
+            ' ------------------------------------------------
+
+            result = MessageBox.Show(messageDetails, "Confirm Selective Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
             If result = DialogResult.Yes Then
                 If repo.SelectiveResetByCheckboxes(dtpResetStartDate.Value, dtpResetEndDate.Value, chkDeleteGuestHistory.Checked, chkDeleteFinancial.Checked, chkResetRoomStatus.Checked) Then
