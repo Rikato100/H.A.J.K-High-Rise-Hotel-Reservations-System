@@ -24,12 +24,11 @@
             Dim adminDash As New AdminDashboard()
             adminDash.Show()
         Else
-            Dim staffDash As New StaffDashboard() ' Change to ReceptionistDashboard if that's your form name
+            Dim staffDash As New StaffDashboard()
             staffDash.Show()
         End If
 
         ' Close the current form that triggered the navigation if needed
-        ' (e.g., GuestForm.Close())
     End Sub
 
 End Module
