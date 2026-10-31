@@ -21,6 +21,33 @@ Public Class StaffManagementControl
         LoadStaffGrid()
     End Sub
 
+     Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
+     If e.KeyCode = Keys.Down Then
+         txtFullName.Focus()
+         e.SuppressKeyPress = True
+     End If
+ End Sub
+
+ Private Sub txtFullName_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFullName.KeyDown
+     If e.KeyCode = Keys.Down Then
+         txtPassword.Focus()
+         e.SuppressKeyPress = True
+     ElseIf e.KeyCode = Keys.Up Then
+         txtUsername.Focus()
+         e.SuppressKeyPress = True
+     End If
+ End Sub
+
+ Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
+     If e.KeyCode = Keys.Down Then
+         cboRole.Focus()
+         e.SuppressKeyPress = True
+     ElseIf e.KeyCode = Keys.Up Then
+         txtFullName.Focus()
+         e.SuppressKeyPress = True
+     End If
+ End Sub
+
     ' ---------- Grid, search and filters ----------
 
     Private Sub LoadStaffGrid()
