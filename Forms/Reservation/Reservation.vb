@@ -6,6 +6,11 @@ Public Class Reservation
     Private reservationID As Integer = 0
     Private selectedGuestID As Integer = 0
 
+    Private rawSubtotal As Decimal = 0D
+    Private rawDiscountAmount As Decimal = 0D
+    Private rawVatAmount As Decimal = 0D
+    Private rawTotal As Decimal = 0D
+
     Public Class GuestComboItem
         Public Property GuestID As Integer
         Public Property FirstName As String
@@ -347,6 +352,11 @@ Public Class Reservation
             txtSubtotal.Text = "0.00"
             txtVAT.Text = "0.00"
             txtDiscountAmount.Text = "0.00"
+
+            rawSubtotal = 0D
+            rawDiscountAmount = 0D
+            rawVatAmount = 0D
+            rawTotal = 0D
             Exit Sub
         End If
 
@@ -371,6 +381,13 @@ Public Class Reservation
 
         Dim net As Decimal = subtotal - discountAmount
         Dim total As Decimal = net + vatAmount
+
+        ' Store raw values globally to save them directly to the database
+        rawSubtotal = subtotal
+        rawDiscountAmount = discountAmount
+        rawVatAmount = vatAmount
+        rawTotal = total
+
         Dim phCurrency As New CultureInfo("en-PH")
 
         txtSubtotal.Text = subtotal.ToString("C2", phCurrency)
@@ -481,25 +498,22 @@ Public Class Reservation
                 Dim nights As Integer = Convert.ToInt32(txtNights.Text)
                 Dim adults As Integer = Convert.ToInt32(numAdults.Value)
                 Dim children As Integer = Convert.ToInt32(numChildren.Value)
-                Dim subtotal As Decimal = Convert.ToDecimal(txtSubtotal.Text)
-                Dim discountAmount As Decimal = Convert.ToDecimal(txtDiscountAmount.Text)
-                Dim netAmount As Decimal = subtotal - discountAmount
-                Dim vatAmount As Decimal = Convert.ToDecimal(txtVAT.Text)
-                Dim totalAmount As Decimal = Convert.ToDecimal(txtTotal.Text)
 
+                ' Use raw class-level decimals instead of parsing formatted textbox strings
+                Dim netAmount As Decimal = rawSubtotal - rawDiscountAmount
                 Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
                 Dim extraPersonFee As Decimal = extraAdults * 800D * nights
 
                 If reservationID = 0 Then
                     Dim resCode As String = txtResCode.Text.Trim()
                     Dim query As String =
-                        "INSERT INTO reservation " &
-                        "(guest_id, room_id, discount_id, created_by, res_code, res_status, " &
-                        "check_in, check_out, num_nights, adults, children, base_rate, " &
-                        "extra_adult_fee, extra_person, subtotal, discount_amount, net_amount, vat_amount, total_amount) " &
-                        "VALUES (@guestID, @roomID, @discountID, @createdBy, @resCode, @status, " &
-                        "@checkIn, @checkOut, @nights, @adults, @children, @baseRate, " &
-                        "@extraAdultFee, @extraPerson, @subtotal, @discountAmount, @netAmount, @vatAmount, @totalAmount)"
+                    "INSERT INTO reservation " &
+                    "(guest_id, room_id, discount_id, created_by, res_code, res_status, " &
+                    "check_in, check_out, num_nights, adults, children, base_rate, " &
+                    "extra_adult_fee, extra_person, subtotal, discount_amount, net_amount, vat_amount, total_amount) " &
+                    "VALUES (@guestID, @roomID, @discountID, @createdBy, @resCode, @status, " &
+                    "@checkIn, @checkOut, @nights, @adults, @children, @baseRate, " &
+                    "@extraAdultFee, @extraPerson, @subtotal, @discountAmount, @netAmount, @vatAmount, @totalAmount)"
 
                     Using cmd As New MySqlCommand(query, conn)
                         cmd.Parameters.AddWithValue("@guestID", guestId)
@@ -516,15 +530,18 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
-                        cmd.Parameters.AddWithValue("@subtotal", subtotal)
-                        cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
+
+                        ' Pass raw unformatted decimals directly to database parameters
+                        cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
+                        cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
-                        cmd.Parameters.AddWithValue("@vatAmount", vatAmount)
-                        cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
+                        cmd.Parameters.AddWithValue("@vatAmount", rawVatAmount)
+                        cmd.Parameters.AddWithValue("@totalAmount", rawTotal)
+
                         cmd.ExecuteNonQuery()
 
                         newResID = CInt(cmd.LastInsertedId)
-                        totalForPayment = totalAmount
+                        totalForPayment = rawTotal
                     End Using
 
                     If dtpCheckIn.Value.Date = DateTime.Today Then
@@ -544,13 +561,13 @@ Public Class Reservation
                     End Using
 
                     Dim query As String =
-                        "UPDATE reservation SET " &
-                        "guest_id = @guestID, room_id = @roomID, discount_id = @discountID, " &
-                        "res_status = @status, check_in = @checkIn, check_out = @checkOut, " &
-                        "num_nights = @nights, adults = @adults, children = @children, " &
-                        "base_rate = @baseRate, extra_adult_fee = @extraAdultFee, extra_person = @extraPerson, subtotal = @subtotal, discount_amount = @discountAmount, " &
-                        "net_amount = @netAmount, vat_amount = @vatAmount, total_amount = @totalAmount " &
-                        "WHERE res_id = @resID"
+                    "UPDATE reservation SET " &
+                    "guest_id = @guestID, room_id = @roomID, discount_id = @discountID, " &
+                    "res_status = @status, check_in = @checkIn, check_out = @checkOut, " &
+                    "num_nights = @nights, adults = @adults, children = @children, " &
+                    "base_rate = @baseRate, extra_adult_fee = @extraAdultFee, extra_person = @extraPerson, subtotal = @subtotal, discount_amount = @discountAmount, " &
+                    "net_amount = @netAmount, vat_amount = @vatAmount, total_amount = @totalAmount " &
+                    "WHERE res_id = @resID"
 
                     Using cmd As New MySqlCommand(query, conn)
                         cmd.Parameters.AddWithValue("@guestID", guestId)
@@ -565,11 +582,14 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
-                        cmd.Parameters.AddWithValue("@subtotal", subtotal)
-                        cmd.Parameters.AddWithValue("@discountAmount", discountAmount)
+
+                        ' Pass raw unformatted decimals directly to update parameters
+                        cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
+                        cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
-                        cmd.Parameters.AddWithValue("@vatAmount", vatAmount)
-                        cmd.Parameters.AddWithValue("@totalAmount", totalAmount)
+                        cmd.Parameters.AddWithValue("@vatAmount", rawVatAmount)
+                        cmd.Parameters.AddWithValue("@totalAmount", rawTotal)
+
                         cmd.Parameters.AddWithValue("@resID", reservationID)
                         cmd.ExecuteNonQuery()
                     End Using
@@ -591,10 +611,9 @@ Public Class Reservation
                 End If
             End Using
 
-            ' New reservation: offer to record a payment (partial payments allowed)
             If newResID > 0 Then
                 If MessageBox.Show("Record a payment for this reservation now?", "Payment",
-                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     Dim fullName As String = (txtFirstName.Text.Trim() & " " & txtSurname.Text.Trim()).Trim()
                     Using pf As New PaymentForm(newResID, fullName, totalForPayment)
                         pf.ShowDialog(Me)
