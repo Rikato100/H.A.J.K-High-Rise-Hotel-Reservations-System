@@ -51,7 +51,7 @@ Public Class AdminDashboard
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
         LoadView(New RoomControl())
-        Me.Text = "Rooms Management - Logged in as: " & CurrentUser.Username
+        Me.Text = "Room Management - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
