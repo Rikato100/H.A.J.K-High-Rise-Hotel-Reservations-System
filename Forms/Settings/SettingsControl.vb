@@ -5,6 +5,30 @@ Public Class SettingsControl
     Private selectedId As Integer = 0
     Private selectedType As String = ""
 
+    Private Sub txtCurrentPwd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCurrentPwd.KeyDown
+    If e.KeyCode = Keys.Down Then
+        txtNewPwd.Focus()
+        e.SuppressKeyPress = True
+    End If
+End Sub
+
+Private Sub txtNewPwd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNewPwd.KeyDown
+    If e.KeyCode = Keys.Down Then
+        txtConfirmPwd.Focus()
+        e.SuppressKeyPress = True
+    ElseIf e.KeyCode = Keys.Up Then
+        txtCurrentPwd.Focus()
+        e.SuppressKeyPress = True
+    End If
+End Sub
+
+Private Sub txtConfirmPwd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConfirmPwd.KeyDown
+    If e.KeyCode = Keys.Up Then
+        txtNewPwd.Focus()
+        e.SuppressKeyPress = True
+    End If
+End Sub
+
     Private Sub SettingsControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvDiscounts.AllowUserToAddRows = False
 
