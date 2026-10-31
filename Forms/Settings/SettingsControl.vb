@@ -26,6 +26,9 @@ Private Sub txtConfirmPwd_KeyDown(sender As Object, e As KeyEventArgs) Handles t
     If e.KeyCode = Keys.Up Then
         txtNewPwd.Focus()
         e.SuppressKeyPress = True
+    ElseIf e.KeyCode = Keys.Enter Then
+        btnSavePassword.PerformClick()
+        e.SuppressKeyPress = True
     End If
 End Sub
 
