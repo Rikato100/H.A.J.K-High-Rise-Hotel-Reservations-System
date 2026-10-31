@@ -12,7 +12,7 @@ Public Class StaffRepository
             Dim query As String =
                 "SELECT account_id, username, fullname, role, account_status " &
                 "FROM account " &
-                "WHERE (@search = '' OR username LIKE @like OR fullname LIKE @like) " &
+                "WHERE is_deleted = 0 AND (@search = '' OR username LIKE @like OR fullname LIKE @like) " &
                 "AND (@status = '' OR account_status = @status) " &
                 "AND (@role = '' OR role = @role) " &
                 "ORDER BY account_id"
