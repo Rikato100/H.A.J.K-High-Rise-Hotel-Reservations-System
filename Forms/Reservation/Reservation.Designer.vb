@@ -105,7 +105,7 @@ Partial Class Reservation
         grpGuest.Controls.Add(txtValidIdNumber)
         grpGuest.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         grpGuest.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        grpGuest.Location = New Point(18, 65)
+        grpGuest.Location = New Point(12, 65)
         grpGuest.Name = "grpGuest"
         grpGuest.Size = New Size(325, 360)
         grpGuest.TabIndex = 1
@@ -119,7 +119,7 @@ Partial Class Reservation
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label1.Location = New Point(18, 35)
         Label1.Name = "Label1"
-        Label1.Size = New Size(139, 17)
+        Label1.Size = New Size(116, 13)
         Label1.TabIndex = 15
         Label1.Text = "Select existing guest:"
         ' 
@@ -130,7 +130,7 @@ Partial Class Reservation
         cmbGuest.FormattingEnabled = True
         cmbGuest.Location = New Point(18, 60)
         cmbGuest.Name = "cmbGuest"
-        cmbGuest.Size = New Size(282, 29)
+        cmbGuest.Size = New Size(282, 25)
         cmbGuest.TabIndex = 14
         cmbGuest.Tag = ""
         ' 
@@ -141,7 +141,7 @@ Partial Class Reservation
         lblFirstName.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblFirstName.Location = New Point(18, 105)
         lblFirstName.Name = "lblFirstName"
-        lblFirstName.Size = New Size(79, 17)
+        lblFirstName.Size = New Size(66, 13)
         lblFirstName.TabIndex = 0
         lblFirstName.Text = "First Name:"
         ' 
@@ -150,7 +150,7 @@ Partial Class Reservation
         txtFirstName.Font = New Font("Segoe UI", 9.5F)
         txtFirstName.Location = New Point(115, 100)
         txtFirstName.Name = "txtFirstName"
-        txtFirstName.Size = New Size(185, 29)
+        txtFirstName.Size = New Size(185, 24)
         txtFirstName.TabIndex = 1
         ' 
         ' lblMiddleName
@@ -160,7 +160,7 @@ Partial Class Reservation
         lblMiddleName.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblMiddleName.Location = New Point(18, 140)
         lblMiddleName.Name = "lblMiddleName"
-        lblMiddleName.Size = New Size(95, 17)
+        lblMiddleName.Size = New Size(81, 13)
         lblMiddleName.TabIndex = 2
         lblMiddleName.Text = "Middle Name:"
         ' 
@@ -169,7 +169,7 @@ Partial Class Reservation
         txtMiddleName.Font = New Font("Segoe UI", 9.5F)
         txtMiddleName.Location = New Point(115, 135)
         txtMiddleName.Name = "txtMiddleName"
-        txtMiddleName.Size = New Size(185, 29)
+        txtMiddleName.Size = New Size(185, 24)
         txtMiddleName.TabIndex = 3
         ' 
         ' lblSurname
@@ -179,7 +179,7 @@ Partial Class Reservation
         lblSurname.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblSurname.Location = New Point(18, 175)
         lblSurname.Name = "lblSurname"
-        lblSurname.Size = New Size(66, 17)
+        lblSurname.Size = New Size(56, 13)
         lblSurname.TabIndex = 4
         lblSurname.Text = "Surname:"
         ' 
@@ -188,7 +188,7 @@ Partial Class Reservation
         txtSurname.Font = New Font("Segoe UI", 9.5F)
         txtSurname.Location = New Point(115, 170)
         txtSurname.Name = "txtSurname"
-        txtSurname.Size = New Size(185, 29)
+        txtSurname.Size = New Size(185, 24)
         txtSurname.TabIndex = 5
         ' 
         ' lblContact
@@ -198,7 +198,7 @@ Partial Class Reservation
         lblContact.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblContact.Location = New Point(18, 210)
         lblContact.Name = "lblContact"
-        lblContact.Size = New Size(59, 17)
+        lblContact.Size = New Size(50, 13)
         lblContact.TabIndex = 6
         lblContact.Text = "Contact:"
         ' 
@@ -207,7 +207,7 @@ Partial Class Reservation
         txtContact.Font = New Font("Segoe UI", 9.5F)
         txtContact.Location = New Point(115, 205)
         txtContact.Name = "txtContact"
-        txtContact.Size = New Size(185, 29)
+        txtContact.Size = New Size(185, 24)
         txtContact.TabIndex = 7
         ' 
         ' lblEmail
@@ -217,7 +217,7 @@ Partial Class Reservation
         lblEmail.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblEmail.Location = New Point(18, 245)
         lblEmail.Name = "lblEmail"
-        lblEmail.Size = New Size(46, 17)
+        lblEmail.Size = New Size(38, 13)
         lblEmail.TabIndex = 8
         lblEmail.Text = "Email:"
         ' 
@@ -226,7 +226,7 @@ Partial Class Reservation
         txtEmail.Font = New Font("Segoe UI", 9.5F)
         txtEmail.Location = New Point(115, 240)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(185, 29)
+        txtEmail.Size = New Size(185, 24)
         txtEmail.TabIndex = 9
         ' 
         ' lblIdType
@@ -236,7 +236,7 @@ Partial Class Reservation
         lblIdType.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblIdType.Location = New Point(18, 280)
         lblIdType.Name = "lblIdType"
-        lblIdType.Size = New Size(59, 17)
+        lblIdType.Size = New Size(49, 13)
         lblIdType.TabIndex = 10
         lblIdType.Text = "ID Type:"
         ' 
@@ -245,7 +245,7 @@ Partial Class Reservation
         txtValidIdType.Font = New Font("Segoe UI", 9.5F)
         txtValidIdType.Location = New Point(115, 275)
         txtValidIdType.Name = "txtValidIdType"
-        txtValidIdType.Size = New Size(185, 29)
+        txtValidIdType.Size = New Size(185, 24)
         txtValidIdType.TabIndex = 11
         ' 
         ' lblIdNumber
@@ -255,7 +255,7 @@ Partial Class Reservation
         lblIdNumber.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblIdNumber.Location = New Point(18, 315)
         lblIdNumber.Name = "lblIdNumber"
-        lblIdNumber.Size = New Size(81, 17)
+        lblIdNumber.Size = New Size(67, 13)
         lblIdNumber.TabIndex = 12
         lblIdNumber.Text = "ID Number:"
         ' 
@@ -264,7 +264,7 @@ Partial Class Reservation
         txtValidIdNumber.Font = New Font("Segoe UI", 9.5F)
         txtValidIdNumber.Location = New Point(115, 310)
         txtValidIdNumber.Name = "txtValidIdNumber"
-        txtValidIdNumber.Size = New Size(185, 29)
+        txtValidIdNumber.Size = New Size(185, 24)
         txtValidIdNumber.TabIndex = 13
         ' 
         ' grpGeneral
@@ -289,9 +289,9 @@ Partial Class Reservation
         grpGeneral.Controls.Add(numChildren)
         grpGeneral.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         grpGeneral.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        grpGeneral.Location = New Point(358, 65)
+        grpGeneral.Location = New Point(355, 65)
         grpGeneral.Name = "grpGeneral"
-        grpGeneral.Size = New Size(325, 360)
+        grpGeneral.Size = New Size(308, 360)
         grpGeneral.TabIndex = 2
         grpGeneral.TabStop = False
         grpGeneral.Text = "Booking Information"
@@ -303,7 +303,7 @@ Partial Class Reservation
         lblCode.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblCode.Location = New Point(18, 35)
         lblCode.Name = "lblCode"
-        lblCode.Size = New Size(72, 17)
+        lblCode.Size = New Size(61, 13)
         lblCode.TabIndex = 0
         lblCode.Text = "Res. Code:"
         ' 
@@ -313,7 +313,7 @@ Partial Class Reservation
         txtResCode.Location = New Point(115, 30)
         txtResCode.Name = "txtResCode"
         txtResCode.ReadOnly = True
-        txtResCode.Size = New Size(185, 29)
+        txtResCode.Size = New Size(185, 24)
         txtResCode.TabIndex = 1
         ' 
         ' lblStatus
@@ -323,7 +323,7 @@ Partial Class Reservation
         lblStatus.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblStatus.Location = New Point(18, 70)
         lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(50, 17)
+        lblStatus.Size = New Size(42, 13)
         lblStatus.TabIndex = 2
         lblStatus.Text = "Status:"
         ' 
@@ -334,7 +334,7 @@ Partial Class Reservation
         cmbStatus.FormattingEnabled = True
         cmbStatus.Location = New Point(115, 65)
         cmbStatus.Name = "cmbStatus"
-        cmbStatus.Size = New Size(185, 29)
+        cmbStatus.Size = New Size(185, 25)
         cmbStatus.TabIndex = 3
         ' 
         ' lblRoomSelect
@@ -344,7 +344,7 @@ Partial Class Reservation
         lblRoomSelect.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblRoomSelect.Location = New Point(18, 105)
         lblRoomSelect.Name = "lblRoomSelect"
-        lblRoomSelect.Size = New Size(48, 17)
+        lblRoomSelect.Size = New Size(41, 13)
         lblRoomSelect.TabIndex = 4
         lblRoomSelect.Text = "Room:"
         ' 
@@ -355,7 +355,7 @@ Partial Class Reservation
         cmbRoom.FormattingEnabled = True
         cmbRoom.Location = New Point(115, 100)
         cmbRoom.Name = "cmbRoom"
-        cmbRoom.Size = New Size(185, 29)
+        cmbRoom.Size = New Size(185, 25)
         cmbRoom.TabIndex = 5
         ' 
         ' lblRoomRate
@@ -365,7 +365,7 @@ Partial Class Reservation
         lblRoomRate.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblRoomRate.Location = New Point(18, 140)
         lblRoomRate.Name = "lblRoomRate"
-        lblRoomRate.Size = New Size(71, 17)
+        lblRoomRate.Size = New Size(60, 13)
         lblRoomRate.TabIndex = 6
         lblRoomRate.Text = "Base Rate:"
         ' 
@@ -375,7 +375,7 @@ Partial Class Reservation
         txtRoomRate.Location = New Point(115, 135)
         txtRoomRate.Name = "txtRoomRate"
         txtRoomRate.ReadOnly = True
-        txtRoomRate.Size = New Size(185, 29)
+        txtRoomRate.Size = New Size(185, 24)
         txtRoomRate.TabIndex = 7
         ' 
         ' lblCheckIn
@@ -385,7 +385,7 @@ Partial Class Reservation
         lblCheckIn.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblCheckIn.Location = New Point(18, 175)
         lblCheckIn.Name = "lblCheckIn"
-        lblCheckIn.Size = New Size(64, 17)
+        lblCheckIn.Size = New Size(54, 13)
         lblCheckIn.TabIndex = 8
         lblCheckIn.Text = "Check In:"
         ' 
@@ -395,7 +395,7 @@ Partial Class Reservation
         dtpCheckIn.Format = DateTimePickerFormat.Short
         dtpCheckIn.Location = New Point(115, 170)
         dtpCheckIn.Name = "dtpCheckIn"
-        dtpCheckIn.Size = New Size(185, 29)
+        dtpCheckIn.Size = New Size(185, 24)
         dtpCheckIn.TabIndex = 9
         ' 
         ' lblCheckOut
@@ -405,7 +405,7 @@ Partial Class Reservation
         lblCheckOut.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblCheckOut.Location = New Point(18, 210)
         lblCheckOut.Name = "lblCheckOut"
-        lblCheckOut.Size = New Size(75, 17)
+        lblCheckOut.Size = New Size(63, 13)
         lblCheckOut.TabIndex = 10
         lblCheckOut.Text = "Check Out:"
         ' 
@@ -415,7 +415,7 @@ Partial Class Reservation
         dtpCheckOut.Format = DateTimePickerFormat.Short
         dtpCheckOut.Location = New Point(115, 205)
         dtpCheckOut.Name = "dtpCheckOut"
-        dtpCheckOut.Size = New Size(185, 29)
+        dtpCheckOut.Size = New Size(185, 24)
         dtpCheckOut.TabIndex = 11
         ' 
         ' lblNights
@@ -425,7 +425,7 @@ Partial Class Reservation
         lblNights.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblNights.Location = New Point(18, 245)
         lblNights.Name = "lblNights"
-        lblNights.Size = New Size(53, 17)
+        lblNights.Size = New Size(45, 13)
         lblNights.TabIndex = 12
         lblNights.Text = "Nights:"
         ' 
@@ -435,7 +435,7 @@ Partial Class Reservation
         txtNights.Location = New Point(115, 240)
         txtNights.Name = "txtNights"
         txtNights.ReadOnly = True
-        txtNights.Size = New Size(185, 29)
+        txtNights.Size = New Size(185, 24)
         txtNights.TabIndex = 13
         ' 
         ' lblAdults
@@ -445,7 +445,7 @@ Partial Class Reservation
         lblAdults.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblAdults.Location = New Point(18, 280)
         lblAdults.Name = "lblAdults"
-        lblAdults.Size = New Size(52, 17)
+        lblAdults.Size = New Size(44, 13)
         lblAdults.TabIndex = 14
         lblAdults.Text = "Adults:"
         ' 
@@ -455,7 +455,7 @@ Partial Class Reservation
         numAdults.Location = New Point(115, 275)
         numAdults.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         numAdults.Name = "numAdults"
-        numAdults.Size = New Size(185, 29)
+        numAdults.Size = New Size(185, 24)
         numAdults.TabIndex = 15
         numAdults.Value = New Decimal(New Integer() {1, 0, 0, 0})
         ' 
@@ -466,7 +466,7 @@ Partial Class Reservation
         lblChildren.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblChildren.Location = New Point(18, 315)
         lblChildren.Name = "lblChildren"
-        lblChildren.Size = New Size(64, 17)
+        lblChildren.Size = New Size(54, 13)
         lblChildren.TabIndex = 16
         lblChildren.Text = "Children:"
         ' 
@@ -475,7 +475,7 @@ Partial Class Reservation
         numChildren.Font = New Font("Segoe UI", 9.5F)
         numChildren.Location = New Point(115, 310)
         numChildren.Name = "numChildren"
-        numChildren.Size = New Size(185, 29)
+        numChildren.Size = New Size(185, 24)
         numChildren.TabIndex = 17
         ' 
         ' grpPayment
@@ -496,9 +496,9 @@ Partial Class Reservation
         grpPayment.Controls.Add(txtTotal)
         grpPayment.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         grpPayment.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        grpPayment.Location = New Point(698, 65)
+        grpPayment.Location = New Point(681, 65)
         grpPayment.Name = "grpPayment"
-        grpPayment.Size = New Size(325, 360)
+        grpPayment.Size = New Size(321, 360)
         grpPayment.TabIndex = 3
         grpPayment.TabStop = False
         grpPayment.Text = "Payment Information"
@@ -510,7 +510,7 @@ Partial Class Reservation
         lblDiscount.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblDiscount.Location = New Point(18, 35)
         lblDiscount.Name = "lblDiscount"
-        lblDiscount.Size = New Size(67, 17)
+        lblDiscount.Size = New Size(56, 13)
         lblDiscount.TabIndex = 0
         lblDiscount.Text = "Discount:"
         ' 
@@ -521,7 +521,7 @@ Partial Class Reservation
         cmbDiscount.FormattingEnabled = True
         cmbDiscount.Location = New Point(125, 30)
         cmbDiscount.Name = "cmbDiscount"
-        cmbDiscount.Size = New Size(180, 29)
+        cmbDiscount.Size = New Size(180, 25)
         cmbDiscount.TabIndex = 1
         ' 
         ' lblPayMethod
@@ -531,7 +531,7 @@ Partial Class Reservation
         lblPayMethod.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblPayMethod.Location = New Point(18, 70)
         lblPayMethod.Name = "lblPayMethod"
-        lblPayMethod.Size = New Size(86, 17)
+        lblPayMethod.Size = New Size(74, 13)
         lblPayMethod.TabIndex = 2
         lblPayMethod.Text = "Pay Method:"
         ' 
@@ -542,7 +542,7 @@ Partial Class Reservation
         cmbPaymentMethod.FormattingEnabled = True
         cmbPaymentMethod.Location = New Point(125, 65)
         cmbPaymentMethod.Name = "cmbPaymentMethod"
-        cmbPaymentMethod.Size = New Size(180, 29)
+        cmbPaymentMethod.Size = New Size(180, 25)
         cmbPaymentMethod.TabIndex = 3
         ' 
         ' lblRefNo
@@ -552,7 +552,7 @@ Partial Class Reservation
         lblRefNo.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblRefNo.Location = New Point(18, 105)
         lblRefNo.Name = "lblRefNo"
-        lblRefNo.Size = New Size(94, 17)
+        lblRefNo.Size = New Size(80, 13)
         lblRefNo.TabIndex = 4
         lblRefNo.Text = "Reference No:"
         ' 
@@ -561,7 +561,7 @@ Partial Class Reservation
         txtReferenceNo.Font = New Font("Segoe UI", 9.5F)
         txtReferenceNo.Location = New Point(125, 100)
         txtReferenceNo.Name = "txtReferenceNo"
-        txtReferenceNo.Size = New Size(180, 29)
+        txtReferenceNo.Size = New Size(180, 24)
         txtReferenceNo.TabIndex = 5
         ' 
         ' lblSubtotal
@@ -571,7 +571,7 @@ Partial Class Reservation
         lblSubtotal.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblSubtotal.Location = New Point(18, 155)
         lblSubtotal.Name = "lblSubtotal"
-        lblSubtotal.Size = New Size(64, 17)
+        lblSubtotal.Size = New Size(54, 13)
         lblSubtotal.TabIndex = 6
         lblSubtotal.Text = "Subtotal:"
         ' 
@@ -581,7 +581,7 @@ Partial Class Reservation
         txtSubtotal.Location = New Point(125, 150)
         txtSubtotal.Name = "txtSubtotal"
         txtSubtotal.ReadOnly = True
-        txtSubtotal.Size = New Size(180, 29)
+        txtSubtotal.Size = New Size(180, 24)
         txtSubtotal.TabIndex = 7
         ' 
         ' lblDiscountAmt
@@ -591,7 +591,7 @@ Partial Class Reservation
         lblDiscountAmt.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblDiscountAmt.Location = New Point(18, 190)
         lblDiscountAmt.Name = "lblDiscountAmt"
-        lblDiscountAmt.Size = New Size(97, 17)
+        lblDiscountAmt.Size = New Size(81, 13)
         lblDiscountAmt.TabIndex = 8
         lblDiscountAmt.Text = "Discount Amt:"
         ' 
@@ -601,7 +601,7 @@ Partial Class Reservation
         txtDiscountAmount.Location = New Point(125, 185)
         txtDiscountAmount.Name = "txtDiscountAmount"
         txtDiscountAmount.ReadOnly = True
-        txtDiscountAmount.Size = New Size(180, 29)
+        txtDiscountAmount.Size = New Size(180, 24)
         txtDiscountAmount.TabIndex = 9
         ' 
         ' lblVAT
@@ -611,7 +611,7 @@ Partial Class Reservation
         lblVAT.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblVAT.Location = New Point(18, 225)
         lblVAT.Name = "lblVAT"
-        lblVAT.Size = New Size(36, 17)
+        lblVAT.Size = New Size(29, 13)
         lblVAT.TabIndex = 10
         lblVAT.Text = "VAT:"
         ' 
@@ -621,7 +621,7 @@ Partial Class Reservation
         txtVAT.Location = New Point(125, 220)
         txtVAT.Name = "txtVAT"
         txtVAT.ReadOnly = True
-        txtVAT.Size = New Size(180, 29)
+        txtVAT.Size = New Size(180, 24)
         txtVAT.TabIndex = 11
         ' 
         ' lblTotal
@@ -631,7 +631,7 @@ Partial Class Reservation
         lblTotal.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblTotal.Location = New Point(18, 262)
         lblTotal.Name = "lblTotal"
-        lblTotal.Size = New Size(52, 21)
+        lblTotal.Size = New Size(43, 17)
         lblTotal.TabIndex = 12
         lblTotal.Text = "Total:"
         ' 
@@ -642,7 +642,7 @@ Partial Class Reservation
         txtTotal.Location = New Point(125, 258)
         txtTotal.Name = "txtTotal"
         txtTotal.ReadOnly = True
-        txtTotal.Size = New Size(180, 29)
+        txtTotal.Size = New Size(180, 24)
         txtTotal.TabIndex = 13
         ' 
         ' btnSave
@@ -651,7 +651,7 @@ Partial Class Reservation
         btnSave.FlatStyle = FlatStyle.Flat
         btnSave.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         btnSave.ForeColor = Color.Beige
-        btnSave.Location = New Point(680, 442)
+        btnSave.Location = New Point(663, 442)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(105, 38)
         btnSave.TabIndex = 4
@@ -664,7 +664,7 @@ Partial Class Reservation
         btnClear.FlatStyle = FlatStyle.Flat
         btnClear.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         btnClear.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        btnClear.Location = New Point(797, 442)
+        btnClear.Location = New Point(780, 442)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(105, 38)
         btnClear.TabIndex = 5
@@ -677,7 +677,7 @@ Partial Class Reservation
         btnCancel.FlatStyle = FlatStyle.Flat
         btnCancel.Font = New Font("Segoe UI", 9.5F, FontStyle.Bold)
         btnCancel.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        btnCancel.Location = New Point(914, 442)
+        btnCancel.Location = New Point(897, 442)
         btnCancel.Name = "btnCancel"
         btnCancel.Size = New Size(105, 38)
         btnCancel.TabIndex = 6
@@ -692,7 +692,7 @@ Partial Class Reservation
         lblTitle.ForeColor = Color.Beige
         lblTitle.Location = New Point(401, 9)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(300, 30)
+        lblTitle.Size = New Size(243, 24)
         lblTitle.TabIndex = 7
         lblTitle.Text = "ADD RESERVATION"
         ' 
@@ -706,10 +706,10 @@ Partial Class Reservation
         ' 
         ' Reservation
         ' 
-        AutoScaleDimensions = New SizeF(9F, 21F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
-        ClientSize = New Size(1045, 500)
+        ClientSize = New Size(1014, 500)
         Controls.Add(lblTitle)
         Controls.Add(btnCancel)
         Controls.Add(btnClear)
@@ -719,6 +719,7 @@ Partial Class Reservation
         Controls.Add(grpGuest)
         Controls.Add(FlowLayoutPanel1)
         Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        FormBorderStyle = FormBorderStyle.Fixed3D
         Name = "Reservation"
         StartPosition = FormStartPosition.CenterParent
         Text = "Add Reservation"
