@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2026 at 01:48 PM
+-- Generation Time: Oct 31, 2026 at 02:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,21 +35,23 @@ CREATE TABLE `account` (
   `role` enum('Admin','Staff') NOT NULL,
   `account_status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'admin0001', 'yRFgi7hDoN0N1aMUGubsMgc+p7v7WEDQ/Zwjdx/fd4Y=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-25 15:36:15'),
-(2, 'staff0001', 'vnitWNhKnuJxGaA6g7l0/J3n+tVCqDDTagwmhNn8WFA=', 'Receptionist', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-30 15:08:56'),
-(3, 'admin3104', 'urah44qwPYSJcfcWDAsNcDrxJ5ML73EvIXqYloNyiL4=', 'Hans Norman Olaes', 'Admin', 'Active', '2026-10-25 15:37:02', '2026-10-30 15:25:34'),
-(4, 'staff1003', 'AR+jXrlTRfurSn3ryAuOuZPrl8x6iOhRXLEcfl593rY=', 'Jasper Dela Cruz', 'Staff', 'Active', '2026-10-25 15:37:52', '2026-10-30 15:07:02'),
-(5, 'staff0839', '3dv5hrBIFCKp1c1s+vsfNEq5CEO3pca7N4S9FDdDH3A=', 'Kirk Patrick Cortal', 'Staff', 'Inactive', '2026-10-25 15:41:11', '2026-10-30 15:12:08'),
-(6, 'admin1268', 'bAtGcUhNLhZLCA1lqtAo09EtU3TXSRbgnmgIt8oqVDI=', 'Abegail Ferolino', 'Admin', 'Inactive', '2026-10-30 15:09:42', '2026-10-30 15:12:20'),
-(7, 'staff1332', 'VQT7EW/zjFyStYks34v9NkcWCiy6RvZWkjibdXYdcK0=', 'John Dave Galzote', 'Staff', 'Inactive', '2026-10-30 15:10:45', '2026-10-30 15:12:14');
+INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `role`, `account_status`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(1, 'admin0001', 'yRFgi7hDoN0N1aMUGubsMgc+p7v7WEDQ/Zwjdx/fd4Y=', 'Administrator', 'Admin', 'Active', '2026-10-04 16:23:25', '2026-10-25 15:36:15', 0),
+(2, 'staff0001', 'vnitWNhKnuJxGaA6g7l0/J3n+tVCqDDTagwmhNn8WFA=', 'Receptionist', 'Staff', 'Active', '2026-10-04 16:52:02', '2026-10-30 21:07:38', 0),
+(3, 'admin3104', 'urah44qwPYSJcfcWDAsNcDrxJ5ML73EvIXqYloNyiL4=', 'Hans Norman Olaes', 'Admin', 'Active', '2026-10-25 15:37:02', '2026-10-30 15:25:34', 0),
+(4, 'staff1003', 'AR+jXrlTRfurSn3ryAuOuZPrl8x6iOhRXLEcfl593rY=', 'Jasper Dela Cruz', 'Staff', 'Active', '2026-10-25 15:37:52', '2026-10-30 21:06:28', 0),
+(5, 'staff0839', '3dv5hrBIFCKp1c1s+vsfNEq5CEO3pca7N4S9FDdDH3A=', 'Kirk Patrick Cortal', 'Staff', 'Inactive', '2026-10-25 15:41:11', '2026-10-30 15:12:08', 0),
+(6, 'admin1268', 'bAtGcUhNLhZLCA1lqtAo09EtU3TXSRbgnmgIt8oqVDI=', 'Abegail Ferolino', 'Admin', 'Inactive', '2026-10-30 15:09:42', '2026-10-30 15:12:20', 0),
+(7, 'staff1332', 'VQT7EW/zjFyStYks34v9NkcWCiy6RvZWkjibdXYdcK0=', 'John Dave Galzote', 'Staff', 'Inactive', '2026-10-30 22:09:16', '2026-10-30 22:10:22', 0),
+(8, 'staff1786', 'LVNNOSkcAftNnGdoNTRrQDmujpC7XcAxHJ4OAkPkjvQ=', 'Yonix Chloe Rubio', 'Admin', 'Inactive', '2026-10-30 22:59:31', '2026-10-30 23:06:22', 0);
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,9 @@ INSERT INTO `payment` (`payment_id`, `res_id`, `amount`, `payment_method`, `refe
 (2, 3, 5600.00, 'GCash', 'GC123456', '2026-10-30 20:45:37'),
 (3, 5, 6080.00, 'Card', 'AUTH-1111', '2026-10-30 20:45:37'),
 (4, 9, 39200.00, 'Bank Transfer', 'BT-987654', '2026-10-30 20:45:37'),
-(5, 12, 5600.00, 'Cash', NULL, '2026-10-30 20:45:37');
+(5, 12, 5600.00, 'Cash', NULL, '2026-10-30 20:45:37'),
+(6, 17, 3040.00, 'Cash', NULL, '2026-10-30 20:58:56'),
+(7, 4, 14470.40, 'Cash', NULL, '2026-10-30 22:12:44');
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,7 @@ INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `crea
 (1, 1, 1, 1, 1, '20261025-0001', 'Check-In', '2026-10-25', '2026-10-28', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37'),
 (2, 2, 2, 1, 2, '20261025-0002', 'Pending', '2026-11-01', '2026-11-03', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
 (3, 3, 3, 1, 1, '20261025-0003', 'Check-Out', '2026-10-20', '2026-10-22', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(4, 4, 5, 3, 2, '20261025-0004', 'Pending', '2026-12-01', '2026-12-05', 4, 2, 1, 3800.00, 800.00, 0.00, 15200.00, 2280.00, 12920.00, 1550.40, 14470.40, '2026-10-30 20:45:37'),
+(4, 4, 5, 3, 2, '20261025-0004', 'Check-Out', '2026-12-01', '2026-12-05', 4, 2, 1, 3800.00, 800.00, 0.00, 15200.00, 2280.00, 12920.00, 1550.40, 14470.40, '2026-10-30 20:45:37'),
 (5, 5, 6, 2, 1, '20261025-0005', 'Check-In', '2026-10-24', '2026-10-26', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 1520.00, 6080.00, 0.00, 6080.00, '2026-10-30 20:45:37'),
 (6, 6, 9, 1, 2, '20261025-0006', 'Canceled', '2026-10-15', '2026-10-18', 3, 2, 0, 5500.00, 800.00, 0.00, 16500.00, 0.00, 16500.00, 1980.00, 18480.00, '2026-10-30 20:45:37'),
 (7, 7, 10, 1, 1, '20261025-0007', 'Pending', '2026-11-10', '2026-11-12', 2, 3, 0, 5500.00, 800.00, 1600.00, 12600.00, 0.00, 12600.00, 1512.00, 14112.00, '2026-10-30 20:45:37'),
@@ -203,9 +207,11 @@ INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `crea
 (10, 10, 1, 1, 2, '20261025-0010', 'No-Show', '2026-10-10', '2026-10-12', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
 (11, 11, 2, 1, 1, '20261025-0011', 'Pending', '2026-11-15', '2026-11-18', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37'),
 (12, 12, 3, 1, 2, '20261025-0012', 'Check-Out', '2026-10-21', '2026-10-23', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(13, 13, 5, 1, 1, '20261025-0013', 'Pending', '2026-12-10', '2026-12-12', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37'),
+(13, 13, 5, 1, 1, '20261025-0013', 'Check-In', '2026-12-10', '2026-12-12', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37'),
 (14, 14, 6, 1, 2, '20261025-0014', 'Check-In', '2026-10-26', '2026-10-28', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37'),
-(15, 15, 9, 1, 1, '20261025-0015', 'Pending', '2026-11-20', '2026-11-22', 2, 2, 0, 5500.00, 800.00, 0.00, 11000.00, 0.00, 11000.00, 1320.00, 12320.00, '2026-10-30 20:45:37');
+(15, 15, 9, 1, 1, '20261025-0015', 'Check-In', '2026-11-20', '2026-11-22', 2, 2, 0, 5500.00, 800.00, 0.00, 11000.00, 0.00, 11000.00, 1320.00, 12320.00, '2026-10-30 20:45:37'),
+(16, 21, 6, 3, 4, '20261030-0001', 'Pending', '2026-10-30', '2026-10-31', 1, 2, 0, 3800.00, 800.00, 0.00, 3800.00, 570.00, 3230.00, 387.60, 3617.60, '2026-10-30 20:57:49'),
+(17, 19, 24, 2, 4, '20261030-0002', 'Check-In', '2026-10-30', '2026-10-31', 1, 2, 2, 3800.00, 800.00, 0.00, 3800.00, 760.00, 3040.00, 0.00, 3040.00, '2026-10-30 20:58:48');
 
 -- --------------------------------------------------------
 
@@ -231,11 +237,11 @@ INSERT INTO `room` (`room_id`, `room_type_id`, `room_number`, `floor`, `room_sta
 (2, 1, '102', 1, 'Available', '2026-10-04 16:25:53'),
 (3, 1, '103', 1, 'Available', '2026-10-04 16:25:53'),
 (4, 1, '104', 1, 'Available', '2026-10-04 16:25:53'),
-(5, 2, '201', 2, 'Under Maintenance', '2026-10-04 16:25:53'),
+(5, 2, '201', 2, 'Available', '2026-10-04 16:25:53'),
 (6, 2, '202', 2, 'Occupied', '2026-10-04 16:25:53'),
 (7, 2, '203', 2, 'Available', '2026-10-04 16:25:53'),
 (8, 2, '204', 2, 'Available', '2026-10-04 16:25:53'),
-(9, 3, '301', 3, 'Available', '2026-10-04 16:25:53'),
+(9, 3, '301', 3, 'Occupied', '2026-10-04 16:25:53'),
 (10, 3, '302', 3, 'Available', '2026-10-04 16:25:53'),
 (11, 4, '401', 4, 'Available', '2026-10-04 16:25:53'),
 (12, 4, '402', 4, 'Occupied', '2026-10-04 16:25:53'),
@@ -250,7 +256,7 @@ INSERT INTO `room` (`room_id`, `room_type_id`, `room_number`, `floor`, `room_sta
 (21, 1, '109', 1, 'Available', '2026-10-30 19:48:18'),
 (22, 1, '110', 1, 'Available', '2026-10-30 19:48:33'),
 (23, 2, '205', 2, 'Under Maintenance', '2026-10-30 19:49:25'),
-(24, 2, '206', 2, 'Available', '2026-10-30 19:49:45'),
+(24, 2, '206', 2, 'Occupied', '2026-10-30 19:49:45'),
 (25, 2, '207', 2, 'Available', '2026-10-30 19:50:23'),
 (26, 2, '208', 2, 'Available', '2026-10-30 19:50:48'),
 (27, 2, '209', 2, 'Available', '2026-10-30 19:51:10'),
@@ -362,7 +368,7 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `discount`
