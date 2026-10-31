@@ -265,55 +265,45 @@ Public Class StaffManagementControl
 
     ' ---------- NEW DELETE BUTTON ----------
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If selectedAccountId = 0 Then
-            ShowWarning("Select an account from the list first.")
-            Exit Sub
-        End If
+    If selectedAccountId = 0 Then
+        ShowWarning("Select an account from the list first.")
+        Exit Sub
+    End If
 
-        ' Lockout protection: Don't let them delete themselves
-        If selectedAccountId = CurrentUser.AccountID Then
-            ShowWarning("You cannot delete the account you are currently logged in with.")
-            Exit Sub
-        End If
+    If selectedAccountId = CurrentUser.AccountID Then
+        ShowWarning("You cannot delete the account you are currently logged in with.")
+        Exit Sub
+    End If
 
-        ' Lockout protection: Don't let them delete the last Admin
-        If selectedRole = "Admin" AndAlso StaffRepository.CountOtherActiveAdmins(selectedAccountId) = 0 Then
-            ShowWarning("This is the only active Admin account and cannot be deleted.")
-            Exit Sub
-        End If
+    ' Admin accounts can only be deactivated, never deleted
+    If selectedRole = "Admin" Then
+        ShowWarning("Admin accounts can't be deleted. Use Deactivate instead.")
+        Exit Sub
+    End If
 
-        Dim confirm As DialogResult = MessageBox.Show(
-            "Are you absolutely sure you want to PERMANENTLY delete this account? This cannot be undone.",
-            "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Stop)
+    Dim confirm As DialogResult = MessageBox.Show(
+        "Delete this staff account? It will be removed from the list and can no longer log in.",
+        "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-        If confirm = DialogResult.Yes Then
-            Try
-                Using conn As MySqlConnection = DbConnection.GetConnection()
-                    conn.Open()
-                    Dim query As String = "DELETE FROM account WHERE account_id = @id"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@id", selectedAccountId)
-                        cmd.ExecuteNonQuery()
-                    End Using
+    If confirm = DialogResult.Yes Then
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+                ' Soft delete: keep the row (reservations still point to it), just hide it and switch it off
+                Using cmd As New MySqlCommand("UPDATE account SET is_deleted = 1, account_status = 'Inactive' WHERE account_id = @id AND role = 'Staff'", conn)
+                    cmd.Parameters.AddWithValue("@id", selectedAccountId)
+                    cmd.ExecuteNonQuery()
                 End Using
+            End Using
 
-                MessageBox.Show("Account deleted permanently.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                ClearForm()
-                LoadStaffGrid()
-
-            Catch ex As MySqlException
-                ' Error 1451 means the account is tied to a reservation
-                If ex.Number = 1451 Then
-                    MessageBox.Show("This account cannot be deleted because they have processed reservations in the system. You must deactivate them instead.",
-                                    "Cannot Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Else
-                    MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-            Catch ex As Exception
-                MessageBox.Show("Error deleting account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End If
-    End Sub
+            MessageBox.Show("Account deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ClearForm()
+            LoadStaffGrid()
+        Catch ex As Exception
+            MessageBox.Show("Error deleting account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End If
+End Sub
 
     Private Sub ClearForm()
         selectedAccountId = 0
