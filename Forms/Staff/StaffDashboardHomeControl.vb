@@ -3,7 +3,18 @@ Imports MySql.Data.MySqlClient
 Public Class StaffDashboardHomeControl
 
     Private Sub StaffDashboardHomeControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Initialize and Start the Live Date & Time Timer
+        tmrDashboard.Interval = 1000
+        tmrDashboard.Start()
+
+        ' Set initial timestamp immediately upon loading
+        lblDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy hh:mm:ss tt")
+
         LoadCounts()
+    End Sub
+
+    Private Sub tmrDashboard_Tick(sender As Object, e As EventArgs) Handles tmrDashboard.Tick
+        lblDateTime.Text = DateTime.Now.ToString("ddd, MMM dd, yyyy hh:mm:ss tt")
     End Sub
 
     Private Sub LoadCounts()
@@ -54,5 +65,9 @@ Public Class StaffDashboardHomeControl
         Catch ex As Exception
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub groupReservations_Paint(sender As Object, e As PaintEventArgs) Handles groupReservations.Paint
+
     End Sub
 End Class

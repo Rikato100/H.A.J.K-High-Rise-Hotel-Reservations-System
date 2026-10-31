@@ -267,20 +267,33 @@ Public Class SettingsControl
 
     Private Sub rbSelectiveReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbSelectiveReset.CheckedChanged
         Dim isSelective As Boolean = rbSelectiveReset.Checked
-        dtpResetStartDate.Enabled = isSelective
-        dtpResetEndDate.Enabled = isSelective
+        ' Date pickers are enabled only if selective reset is chosen AND guest history is checked
+        dtpResetStartDate.Enabled = isSelective AndAlso chkDeleteGuestHistory.Checked
+        dtpResetEndDate.Enabled = isSelective AndAlso chkDeleteGuestHistory.Checked
+
         chkDeleteGuestHistory.Enabled = isSelective
         chkDeleteFinancial.Enabled = isSelective
         chkResetRoomStatus.Enabled = isSelective
     End Sub
 
+    Private Sub chkDeleteGuestHistory_CheckedChanged(sender As Object, e As EventArgs) Handles chkDeleteGuestHistory.CheckedChanged
+        ' Update date pickers instantly when guest history is checked/unchecked
+        dtpResetStartDate.Enabled = rbSelectiveReset.Checked AndAlso chkDeleteGuestHistory.Checked
+        dtpResetEndDate.Enabled = rbSelectiveReset.Checked AndAlso chkDeleteGuestHistory.Checked
+    End Sub
     Private Sub rbFactoryReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbFactoryReset.CheckedChanged
-        Dim isSelective As Boolean = rbSelectiveReset.Checked
-        dtpResetStartDate.Enabled = isSelective
-        dtpResetEndDate.Enabled = isSelective
-        chkDeleteGuestHistory.Enabled = isSelective
-        chkDeleteFinancial.Enabled = isSelective
-        chkResetRoomStatus.Enabled = isSelective
+        If rbFactoryReset.Checked Then
+            ' Factory Reset disables all selective sub-options and date pickers
+            chkDeleteGuestHistory.Checked = False
+            chkDeleteFinancial.Checked = False
+            chkResetRoomStatus.Checked = False
+
+            chkDeleteGuestHistory.Enabled = False
+            chkDeleteFinancial.Enabled = False
+            chkResetRoomStatus.Enabled = False
+            dtpResetStartDate.Enabled = False
+            dtpResetEndDate.Enabled = False
+        End If
     End Sub
 
     Private Sub btnExecuteReset_Click(sender As Object, e As EventArgs) Handles btnExecuteReset.Click

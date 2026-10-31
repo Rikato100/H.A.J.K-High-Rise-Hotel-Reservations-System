@@ -17,6 +17,7 @@ Partial Class StaffDashboardHomeControl
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         LabelWelcome = New Label()
         lblSubtitle = New Label()
         groupReservations = New Panel()
@@ -46,6 +47,7 @@ Partial Class StaffDashboardHomeControl
         lblIconRooms = New Label()
         lblTitleAvailableRooms = New Label()
         lblAvailableRooms = New Label()
+        tmrDashboard = New Timer(components)
         lblDateTime = New Label()
         groupReservations.SuspendLayout()
         cardArriving.SuspendLayout()
@@ -85,9 +87,9 @@ Partial Class StaffDashboardHomeControl
         groupReservations.Controls.Add(cardArriving)
         groupReservations.Controls.Add(cardInHouse)
         groupReservations.Controls.Add(cardDeparting)
-        groupReservations.Location = New Point(595, 64)
+        groupReservations.Location = New Point(587, 69)
         groupReservations.Name = "groupReservations"
-        groupReservations.Size = New Size(285, 394)
+        groupReservations.Size = New Size(285, 389)
         groupReservations.TabIndex = 30
         ' 
         ' lblReservationsGroupTitle
@@ -274,9 +276,9 @@ Partial Class StaffDashboardHomeControl
         cardOccupancy.Controls.Add(lblIconOccupancy)
         cardOccupancy.Controls.Add(lblTitleOccupancyRate)
         cardOccupancy.Controls.Add(lblOccupancyRate)
-        cardOccupancy.Location = New Point(19, 262)
+        cardOccupancy.Location = New Point(23, 262)
         cardOccupancy.Name = "cardOccupancy"
-        cardOccupancy.Size = New Size(556, 196)
+        cardOccupancy.Size = New Size(535, 196)
         cardOccupancy.TabIndex = 29
         ' 
         ' topStrip6
@@ -286,7 +288,7 @@ Partial Class StaffDashboardHomeControl
         topStrip6.Location = New Point(0, 0)
         topStrip6.Margin = New Padding(3, 2, 3, 2)
         topStrip6.Name = "topStrip6"
-        topStrip6.Size = New Size(554, 2)
+        topStrip6.Size = New Size(533, 2)
         topStrip6.TabIndex = 0
         ' 
         ' lblIconOccupancy
@@ -329,9 +331,9 @@ Partial Class StaffDashboardHomeControl
         cardRooms.Controls.Add(lblIconRooms)
         cardRooms.Controls.Add(lblTitleAvailableRooms)
         cardRooms.Controls.Add(lblAvailableRooms)
-        cardRooms.Location = New Point(19, 64)
+        cardRooms.Location = New Point(22, 68)
         cardRooms.Name = "cardRooms"
-        cardRooms.Size = New Size(556, 188)
+        cardRooms.Size = New Size(536, 188)
         cardRooms.TabIndex = 28
         ' 
         ' topStrip1
@@ -341,7 +343,7 @@ Partial Class StaffDashboardHomeControl
         topStrip1.Location = New Point(0, 0)
         topStrip1.Margin = New Padding(3, 2, 3, 2)
         topStrip1.Name = "topStrip1"
-        topStrip1.Size = New Size(554, 2)
+        topStrip1.Size = New Size(534, 2)
         topStrip1.TabIndex = 0
         ' 
         ' lblIconRooms
@@ -376,17 +378,19 @@ Partial Class StaffDashboardHomeControl
         lblAvailableRooms.TabIndex = 3
         lblAvailableRooms.Text = "0"
         ' 
+        ' tmrDashboard
+        ' 
+        ' 
         ' lblDateTime
         ' 
         lblDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblDateTime.AutoSize = True
         lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(714, 11)
+        lblDateTime.Location = New Point(712, 11)
         lblDateTime.Name = "lblDateTime"
-        lblDateTime.Size = New Size(104, 15)
+        lblDateTime.Size = New Size(0, 15)
         lblDateTime.TabIndex = 31
-        lblDateTime.Text = "Mon, Mar 19, 2026"
         lblDateTime.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' StaffDashboardHomeControl
@@ -447,5 +451,6 @@ Partial Class StaffDashboardHomeControl
     Friend WithEvents lblIconRooms As Label
     Friend WithEvents lblTitleAvailableRooms As Label
     Friend WithEvents lblAvailableRooms As Label
+    Friend WithEvents tmrDashboard As Timer
     Friend WithEvents lblDateTime As Label
 End Class

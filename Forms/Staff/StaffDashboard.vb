@@ -1,3 +1,5 @@
+Imports System.Data.SqlTypes
+
 Public Class StaffDashboard
 
     Private Sub StaffDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -8,7 +10,7 @@ Public Class StaffDashboard
             Exit Sub
         End If
 
-        Me.Text = "Staff Dashboard - Logged in as: " & CurrentUser.Username
+        Me.Text = "Logged in as: " & CurrentUser.Username
 
         ' Load default home view inside pnlContent
         LoadView(New StaffDashboardHomeControl())
@@ -44,5 +46,5 @@ Public Class StaffDashboard
             SessionHelper.Logout()
         End If
     End Sub
-    
+
 End Class
