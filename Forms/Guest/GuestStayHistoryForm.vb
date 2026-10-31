@@ -42,7 +42,7 @@ Public Class GuestStayHistoryForm
                                 Convert.ToDateTime(reader("check_in")).ToString("MMM dd, yyyy"),
                                 Convert.ToDateTime(reader("check_out")).ToString("MMM dd, yyyy"),
                                 reader("res_status").ToString(),
-                                Convert.ToDecimal(reader("total_amount")).ToString("N2")
+                                Convert.ToDecimal(reader("total_amount")).ToString("₱#,##0.00")
                             )
                         End While
                     End Using

@@ -35,7 +35,7 @@ Public Class RoomControl
                                 reader("room_size"),
                                 reader("standard_capacity"),
                                 reader("max_capacity"),
-                                reader("base_rate"),
+                                Convert.ToDecimal(reader("base_rate")).ToString("₱#,##0.00"),
                                 reader("amenities")
                             )
                         End While

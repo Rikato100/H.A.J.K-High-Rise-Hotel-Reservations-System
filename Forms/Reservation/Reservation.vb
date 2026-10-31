@@ -1,3 +1,4 @@
+Imports System.Globalization
 Imports MySql.Data.MySqlClient
 
 Public Class Reservation
@@ -370,11 +371,12 @@ Public Class Reservation
 
         Dim net As Decimal = subtotal - discountAmount
         Dim total As Decimal = net + vatAmount
+        Dim phCurrency As New CultureInfo("en-PH")
 
-        txtSubtotal.Text = subtotal.ToString("N2")
-        txtDiscountAmount.Text = discountAmount.ToString("N2")
-        txtVAT.Text = vatAmount.ToString("N2")
-        txtTotal.Text = total.ToString("N2")
+        txtSubtotal.Text = subtotal.ToString("C2", phCurrency)
+        txtDiscountAmount.Text = discountAmount.ToString("C2", phCurrency)
+        txtVAT.Text = vatAmount.ToString("C2", phCurrency)
+        txtTotal.Text = total.ToString("C2", phCurrency)
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -687,15 +689,5 @@ Public Class Reservation
         Catch ex As Exception
             MessageBox.Show("Error loading reservation: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub txtMiddleName_TextChanged(sender As Object, e As EventArgs) Handles txtMiddleName.TextChanged
-    End Sub
-
-    Private Sub grpGuest_Enter(sender As Object, e As EventArgs) Handles grpGuest.Enter
-    End Sub
-
-    Private Sub grpGeneral_Enter(sender As Object, e As EventArgs) Handles grpGeneral.Enter
-
     End Sub
 End Class

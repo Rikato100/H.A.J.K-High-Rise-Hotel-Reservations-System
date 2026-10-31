@@ -54,7 +54,7 @@ Public Class ReservationListControl
                                 Convert.ToDateTime(reader("check_in")).ToString("yyyy-MM-dd"),
                                 Convert.ToDateTime(reader("check_out")).ToString("yyyy-MM-dd"),
                                 reader("num_nights"),
-                                Convert.ToDecimal(reader("total_amount")).ToString("N2")
+                                Convert.ToDecimal(reader("total_amount")).ToString("₱#,##0.00")
                             )
                         End While
                     End Using
@@ -624,9 +624,5 @@ Public Class ReservationListControl
     ' ==========================================
     Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
         GridExporter.ExportToCsv(dgvReservations, "Reservations")
-    End Sub
-
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-
     End Sub
 End Class

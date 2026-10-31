@@ -172,7 +172,7 @@ Public Class ReportsControl
                                 Convert.ToDateTime(reader("payment_date")).ToString("yyyy-MM-dd HH:mm"),
                                 reader("res_code").ToString(),
                                 reader("guest_name").ToString(),
-                                amount.ToString("N2"),
+                                "₱" & amount.ToString("N2"),
                                 reader("payment_method").ToString()
                             )
                         End While

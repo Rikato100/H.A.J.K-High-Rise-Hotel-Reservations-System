@@ -77,7 +77,7 @@ Partial Class GuestControl
         dgvGuests.DefaultCellStyle = DataGridViewCellStyle2
         dgvGuests.EnableHeadersVisualStyles = False
         dgvGuests.Location = New Point(14, 128)
-        dgvGuests.Margin = New Padding(4, 4, 4, 4)
+        dgvGuests.Margin = New Padding(4)
         dgvGuests.Name = "dgvGuests"
         dgvGuests.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -160,7 +160,7 @@ Partial Class GuestControl
         ' btnBack
         ' 
         btnBack.Location = New Point(24, 658)
-        btnBack.Margin = New Padding(4, 4, 4, 4)
+        btnBack.Margin = New Padding(4)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(116, 34)
         btnBack.TabIndex = 1
@@ -172,7 +172,7 @@ Partial Class GuestControl
         btnAdd.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnAdd.ForeColor = Color.Beige
         btnAdd.Location = New Point(14, 90)
-        btnAdd.Margin = New Padding(4, 4, 4, 4)
+        btnAdd.Margin = New Padding(4)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(116, 30)
         btnAdd.TabIndex = 2
@@ -184,7 +184,7 @@ Partial Class GuestControl
         btnEdit.BackColor = Color.OldLace
         btnEdit.ForeColor = Color.Maroon
         btnEdit.Location = New Point(150, 90)
-        btnEdit.Margin = New Padding(4, 4, 4, 4)
+        btnEdit.Margin = New Padding(4)
         btnEdit.Name = "btnEdit"
         btnEdit.Size = New Size(116, 30)
         btnEdit.TabIndex = 3
@@ -196,7 +196,7 @@ Partial Class GuestControl
         btnDelete.BackColor = Color.OldLace
         btnDelete.ForeColor = Color.Maroon
         btnDelete.Location = New Point(287, 90)
-        btnDelete.Margin = New Padding(4, 4, 4, 4)
+        btnDelete.Margin = New Padding(4)
         btnDelete.Name = "btnDelete"
         btnDelete.Size = New Size(116, 30)
         btnDelete.TabIndex = 4
@@ -208,7 +208,7 @@ Partial Class GuestControl
         btnSearch.BackColor = Color.OldLace
         btnSearch.ForeColor = Color.Maroon
         btnSearch.Location = New Point(297, 60)
-        btnSearch.Margin = New Padding(4, 4, 4, 4)
+        btnSearch.Margin = New Padding(4)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(79, 24)
         btnSearch.TabIndex = 5
@@ -218,7 +218,7 @@ Partial Class GuestControl
         ' txtSearch
         ' 
         txtSearch.Location = New Point(74, 62)
-        txtSearch.Margin = New Padding(4, 4, 4, 4)
+        txtSearch.Margin = New Padding(4)
         txtSearch.Name = "txtSearch"
         txtSearch.Size = New Size(210, 23)
         txtSearch.TabIndex = 6
@@ -240,7 +240,7 @@ Partial Class GuestControl
         btnRefresh.BackColor = Color.OldLace
         btnRefresh.ForeColor = Color.Maroon
         btnRefresh.Location = New Point(382, 60)
-        btnRefresh.Margin = New Padding(4, 4, 4, 4)
+        btnRefresh.Margin = New Padding(4)
         btnRefresh.Name = "btnRefresh"
         btnRefresh.Size = New Size(79, 24)
         btnRefresh.TabIndex = 8
@@ -252,7 +252,7 @@ Partial Class GuestControl
         btnStayHistory.BackColor = Color.OldLace
         btnStayHistory.ForeColor = Color.Maroon
         btnStayHistory.Location = New Point(424, 90)
-        btnStayHistory.Margin = New Padding(4, 4, 4, 4)
+        btnStayHistory.Margin = New Padding(4)
         btnStayHistory.Name = "btnStayHistory"
         btnStayHistory.Size = New Size(140, 30)
         btnStayHistory.TabIndex = 9
@@ -276,9 +276,9 @@ Partial Class GuestControl
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label4.Location = New Point(92, 34)
         Label4.Name = "Label4"
-        Label4.Size = New Size(432, 15)
+        Label4.Size = New Size(388, 15)
         Label4.TabIndex = 24
-        Label4.Text = "Manage reservations, track check-in schedules, and keep stay records up to date."
+        Label4.Text = "Maintain guest directories, track stay history, and update contact details."
         ' 
         ' Label1
         ' 
@@ -309,7 +309,7 @@ Partial Class GuestControl
         Controls.Add(btnAdd)
         Controls.Add(btnBack)
         Controls.Add(dgvGuests)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         Name = "GuestControl"
         Size = New Size(903, 478)
         CType(dgvGuests, ComponentModel.ISupportInitialize).EndInit()
