@@ -12,6 +12,13 @@ Public Class StaffDashboard
 
         Me.Text = "Logged in as: " & CurrentUser.Username
 
+        ' Sidebar tab order (top to bottom)
+        btnDashboard.TabIndex = 0
+        btnReservations.TabIndex = 1
+        btnGuests.TabIndex = 2
+        btnSettings.TabIndex = 3
+        btnLogout.TabIndex = 4
+
         ' Load default home view inside pnlContent
         LoadView(New StaffDashboardHomeControl())
     End Sub
