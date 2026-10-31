@@ -103,7 +103,7 @@ Partial Class AdminDashboard
         btnRooms.Name = "btnRooms"
         btnRooms.Size = New Size(126, 42)
         btnRooms.TabIndex = 2
-        btnRooms.Text = "🛏 Rooms Management"
+        btnRooms.Text = "🛏 Room Management"
         btnRooms.UseVisualStyleBackColor = False
         ' 
         ' btnStaff

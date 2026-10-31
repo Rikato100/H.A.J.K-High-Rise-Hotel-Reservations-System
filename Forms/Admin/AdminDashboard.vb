@@ -46,21 +46,26 @@ Public Class AdminDashboard
     ' Navigation: Switch content cleanly inside pnlContent instead of opening a separate popup window
     Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
         LoadView(New DashboardHomeControl())
+        Me.Text = "Admin Dashboard - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnRooms_Click(sender As Object, e As EventArgs) Handles btnRooms.Click
         LoadView(New RoomControl())
+        Me.Text = "Rooms Management - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
         LoadView(New StaffManagementControl())
+        Me.Text = "Staff Management - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
         LoadView(New ReportsControl())
+        Me.Text = "Reports - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
         LoadView(New SettingsControl())
+        Me.Text = "Settings - Logged in as: " & CurrentUser.Username
     End Sub
 End Class
