@@ -387,7 +387,7 @@ Partial Class StaffDashboardHomeControl
         lblDateTime.AutoSize = True
         lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(712, 11)
+        lblDateTime.Location = New Point(696, 11)
         lblDateTime.Name = "lblDateTime"
         lblDateTime.Size = New Size(0, 15)
         lblDateTime.TabIndex = 31

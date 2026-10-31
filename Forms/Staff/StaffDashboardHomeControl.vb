@@ -55,7 +55,7 @@ Public Class StaffDashboardHomeControl
 
                 If totalRooms > 0 Then
                     Dim occupancy As Decimal = (CDec(occupiedRooms) / totalRooms) * 100
-                    lblOccupancyRate.Text = occupancy.ToString("0.0") & "%"
+                    lblOccupancyRate.Text = occupancy.ToString("0") & "%"
                 Else
                     lblOccupancyRate.Text = "0%"
                 End If

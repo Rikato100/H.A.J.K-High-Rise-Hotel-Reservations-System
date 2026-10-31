@@ -102,7 +102,7 @@ Partial Class DashboardHomeControl
         lblDateTime.AutoSize = True
         lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblDateTime.Location = New Point(712, 11)
+        lblDateTime.Location = New Point(696, 11)
         lblDateTime.Name = "lblDateTime"
         lblDateTime.Size = New Size(0, 15)
         lblDateTime.TabIndex = 24
@@ -156,7 +156,7 @@ Partial Class DashboardHomeControl
         lblAvailableRooms.AutoSize = True
         lblAvailableRooms.Font = New Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAvailableRooms.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblAvailableRooms.Location = New Point(92, 69)
+        lblAvailableRooms.Location = New Point(84, 69)
         lblAvailableRooms.Name = "lblAvailableRooms"
         lblAvailableRooms.Size = New Size(56, 65)
         lblAvailableRooms.TabIndex = 3
@@ -210,11 +210,12 @@ Partial Class DashboardHomeControl
         lblOccupancyRate.AutoSize = True
         lblOccupancyRate.Font = New Font("Segoe UI", 36F, FontStyle.Bold)
         lblOccupancyRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblOccupancyRate.Location = New Point(80, 69)
+        lblOccupancyRate.Location = New Point(64, 69)
         lblOccupancyRate.Name = "lblOccupancyRate"
         lblOccupancyRate.Size = New Size(98, 65)
         lblOccupancyRate.TabIndex = 3
         lblOccupancyRate.Text = "0%"
+        lblOccupancyRate.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' groupReservations
         ' 

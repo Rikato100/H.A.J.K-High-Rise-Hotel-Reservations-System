@@ -66,7 +66,7 @@ Public Class DashboardHomeControl
 
                 If totalRooms > 0 Then
                     Dim occupancy As Decimal = (CDec(occupiedRooms) / totalRooms) * 100
-                    lblOccupancyRate.Text = occupancy.ToString("0.0") & "%"
+                    lblOccupancyRate.Text = occupancy.ToString("0") & "%"
                 Else
                     lblOccupancyRate.Text = "0%"
                 End If
@@ -76,5 +76,4 @@ Public Class DashboardHomeControl
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 End Class
