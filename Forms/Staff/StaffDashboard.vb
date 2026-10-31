@@ -10,7 +10,7 @@ Public Class StaffDashboard
             Exit Sub
         End If
 
-        Me.Text = "Staff Dashboard - Logged in as: " & CurrentUser.Username
+        Me.Text = "Receptionist Dashboard - Logged in as: " & CurrentUser.Username
 
         ' Sidebar tab order (top to bottom)
         btnDashboard.TabIndex = 0
@@ -33,7 +33,7 @@ Public Class StaffDashboard
 
     Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
         LoadView(New StaffDashboardHomeControl())
-        Me.Text = "Staff Dashboard - Logged in as: " & CurrentUser.Username
+        Me.Text = "Receptionist Dashboard - Logged in as: " & CurrentUser.Username
     End Sub
 
     Private Sub btnReservations_Click(sender As Object, e As EventArgs) Handles btnReservations.Click
