@@ -65,28 +65,26 @@ Partial Class ReservationListControl
         lblSearch.AutoSize = True
         lblSearch.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSearch.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblSearch.Location = New Point(12, 75)
+        lblSearch.Location = New Point(10, 56)
         lblSearch.Name = "lblSearch"
-        lblSearch.Size = New Size(175, 25)
+        lblSearch.Size = New Size(137, 20)
         lblSearch.TabIndex = 3
         lblSearch.Text = "Search Reservation:"
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(184, 74)
-        txtSearch.Margin = New Padding(3, 4, 3, 4)
+        txtSearch.Location = New Point(161, 56)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(250, 27)
+        txtSearch.Size = New Size(219, 23)
         txtSearch.TabIndex = 4
         ' 
         ' btnSearch
         ' 
         btnSearch.BackColor = Color.OldLace
         btnSearch.ForeColor = Color.Maroon
-        btnSearch.Location = New Point(445, 70)
-        btnSearch.Margin = New Padding(3, 4, 3, 4)
+        btnSearch.Location = New Point(389, 52)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(90, 32)
+        btnSearch.Size = New Size(79, 24)
         btnSearch.TabIndex = 5
         btnSearch.Text = "SEARCH"
         btnSearch.UseVisualStyleBackColor = False
@@ -95,10 +93,9 @@ Partial Class ReservationListControl
         ' 
         btnRefresh.BackColor = Color.OldLace
         btnRefresh.ForeColor = Color.Maroon
-        btnRefresh.Location = New Point(545, 70)
-        btnRefresh.Margin = New Padding(3, 4, 3, 4)
+        btnRefresh.Location = New Point(477, 52)
         btnRefresh.Name = "btnRefresh"
-        btnRefresh.Size = New Size(95, 32)
+        btnRefresh.Size = New Size(83, 24)
         btnRefresh.TabIndex = 6
         btnRefresh.Text = "↻ REFRESH"
         btnRefresh.UseVisualStyleBackColor = False
@@ -108,9 +105,10 @@ Partial Class ReservationListControl
         cmbStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList
         cmbStatusFilter.FormattingEnabled = True
         cmbStatusFilter.Items.AddRange(New Object() {"All", "Pending", "Check-In", "Check-Out", "No-Show", "Canceled"})
-        cmbStatusFilter.Location = New Point(650, 73)
+        cmbStatusFilter.Location = New Point(569, 55)
+        cmbStatusFilter.Margin = New Padding(3, 2, 3, 2)
         cmbStatusFilter.Name = "cmbStatusFilter"
-        cmbStatusFilter.Size = New Size(140, 28)
+        cmbStatusFilter.Size = New Size(123, 23)
         cmbStatusFilter.TabIndex = 31
         ' 
         ' dgvReservations
@@ -121,7 +119,7 @@ Partial Class ReservationListControl
         dgvReservations.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle1.ForeColor = Color.Beige
         DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle1.SelectionForeColor = Color.Beige
@@ -131,19 +129,18 @@ Partial Class ReservationListControl
         dgvReservations.Columns.AddRange(New DataGridViewColumn() {colResID, colResCode, colGuest, colRoom, colStatus, colCheckIn, colCheckOut, colNights, colTotal})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle2.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         dgvReservations.DefaultCellStyle = DataGridViewCellStyle2
         dgvReservations.EnableHeadersVisualStyles = False
-        dgvReservations.Location = New Point(12, 165)
-        dgvReservations.Margin = New Padding(3, 4, 3, 4)
+        dgvReservations.Location = New Point(10, 124)
         dgvReservations.Name = "dgvReservations"
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         DataGridViewCellStyle3.SelectionBackColor = Color.Bisque
         DataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
@@ -151,7 +148,7 @@ Partial Class ReservationListControl
         dgvReservations.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvReservations.RowHeadersWidth = 51
         dgvReservations.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        dgvReservations.Size = New Size(1008, 380)
+        dgvReservations.Size = New Size(882, 285)
         dgvReservations.TabIndex = 7
         ' 
         ' colResID
@@ -222,10 +219,9 @@ Partial Class ReservationListControl
         ' 
         btnAddReservation.BackColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         btnAddReservation.ForeColor = Color.Beige
-        btnAddReservation.Location = New Point(12, 115)
-        btnAddReservation.Margin = New Padding(3, 4, 3, 4)
+        btnAddReservation.Location = New Point(10, 86)
         btnAddReservation.Name = "btnAddReservation"
-        btnAddReservation.Size = New Size(180, 40)
+        btnAddReservation.Size = New Size(158, 30)
         btnAddReservation.TabIndex = 9
         btnAddReservation.Text = "＋ADD RESERVATION"
         btnAddReservation.UseVisualStyleBackColor = False
@@ -234,10 +230,9 @@ Partial Class ReservationListControl
         ' 
         btnEdit.BackColor = Color.OldLace
         btnEdit.ForeColor = Color.Maroon
-        btnEdit.Location = New Point(200, 115)
-        btnEdit.Margin = New Padding(3, 4, 3, 4)
+        btnEdit.Location = New Point(175, 86)
         btnEdit.Name = "btnEdit"
-        btnEdit.Size = New Size(120, 40)
+        btnEdit.Size = New Size(105, 30)
         btnEdit.TabIndex = 10
         btnEdit.Text = "EDIT"
         btnEdit.UseVisualStyleBackColor = False
@@ -246,10 +241,9 @@ Partial Class ReservationListControl
         ' 
         btnCancelReservation.BackColor = Color.OldLace
         btnCancelReservation.ForeColor = Color.Maroon
-        btnCancelReservation.Location = New Point(328, 115)
-        btnCancelReservation.Margin = New Padding(3, 4, 3, 4)
+        btnCancelReservation.Location = New Point(287, 86)
         btnCancelReservation.Name = "btnCancelReservation"
-        btnCancelReservation.Size = New Size(170, 40)
+        btnCancelReservation.Size = New Size(149, 30)
         btnCancelReservation.TabIndex = 11
         btnCancelReservation.Text = "CANCEL RESERVATION"
         btnCancelReservation.UseVisualStyleBackColor = False
@@ -258,10 +252,9 @@ Partial Class ReservationListControl
         ' 
         btnDelete.BackColor = Color.OldLace
         btnDelete.ForeColor = Color.Maroon
-        btnDelete.Location = New Point(506, 115)
-        btnDelete.Margin = New Padding(3, 4, 3, 4)
+        btnDelete.Location = New Point(443, 86)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(100, 40)
+        btnDelete.Size = New Size(88, 30)
         btnDelete.TabIndex = 13
         btnDelete.Text = "DELETE"
         btnDelete.UseVisualStyleBackColor = False
@@ -269,9 +262,10 @@ Partial Class ReservationListControl
         ' PictureBox2
         ' 
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(18, 8)
+        PictureBox2.Location = New Point(16, 6)
+        PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 62)
+        PictureBox2.Size = New Size(72, 46)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 22
         PictureBox2.TabStop = False
@@ -280,9 +274,9 @@ Partial Class ReservationListControl
         ' 
         Label4.AutoSize = True
         Label4.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label4.Location = New Point(105, 37)
+        Label4.Location = New Point(92, 34)
         Label4.Name = "Label4"
-        Label4.Size = New Size(539, 20)
+        Label4.Size = New Size(432, 15)
         Label4.TabIndex = 21
         Label4.Text = "Manage reservations, track check-in schedules, and keep stay records up to date."
         ' 
@@ -291,9 +285,9 @@ Partial Class ReservationListControl
         Label1.AutoSize = True
         Label1.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label1.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label1.Location = New Point(101, 10)
+        Label1.Location = New Point(88, 8)
         Label1.Name = "Label1"
-        Label1.Size = New Size(221, 30)
+        Label1.Size = New Size(177, 24)
         Label1.TabIndex = 20
         Label1.Text = "Reservation List"
         ' 
@@ -302,10 +296,9 @@ Partial Class ReservationListControl
         btnCheckIn.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnCheckIn.BackColor = Color.OldLace
         btnCheckIn.ForeColor = Color.Maroon
-        btnCheckIn.Location = New Point(12, 565)
-        btnCheckIn.Margin = New Padding(3, 4, 3, 4)
+        btnCheckIn.Location = New Point(10, 424)
         btnCheckIn.Name = "btnCheckIn"
-        btnCheckIn.Size = New Size(140, 45)
+        btnCheckIn.Size = New Size(122, 34)
         btnCheckIn.TabIndex = 24
         btnCheckIn.Text = "Check-In"
         btnCheckIn.UseVisualStyleBackColor = False
@@ -315,10 +308,9 @@ Partial Class ReservationListControl
         btnCheckOut.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnCheckOut.BackColor = Color.OldLace
         btnCheckOut.ForeColor = Color.Maroon
-        btnCheckOut.Location = New Point(160, 565)
-        btnCheckOut.Margin = New Padding(3, 4, 3, 4)
+        btnCheckOut.Location = New Point(140, 424)
         btnCheckOut.Name = "btnCheckOut"
-        btnCheckOut.Size = New Size(140, 45)
+        btnCheckOut.Size = New Size(122, 34)
         btnCheckOut.TabIndex = 25
         btnCheckOut.Text = "Check-Out"
         btnCheckOut.UseVisualStyleBackColor = False
@@ -328,10 +320,9 @@ Partial Class ReservationListControl
         btnProcessPayment.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         btnProcessPayment.BackColor = Color.OldLace
         btnProcessPayment.ForeColor = Color.Maroon
-        btnProcessPayment.Location = New Point(308, 565)
-        btnProcessPayment.Margin = New Padding(3, 4, 3, 4)
+        btnProcessPayment.Location = New Point(270, 424)
         btnProcessPayment.Name = "btnProcessPayment"
-        btnProcessPayment.Size = New Size(180, 45)
+        btnProcessPayment.Size = New Size(158, 34)
         btnProcessPayment.TabIndex = 26
         btnProcessPayment.Text = "Process Payment"
         btnProcessPayment.UseVisualStyleBackColor = False
@@ -353,10 +344,9 @@ Partial Class ReservationListControl
         ' 
         btnExport.BackColor = Color.OldLace
         btnExport.ForeColor = Color.Maroon
-        btnExport.Location = New Point(614, 115)
-        btnExport.Margin = New Padding(3, 4, 3, 4)
+        btnExport.Location = New Point(537, 86)
         btnExport.Name = "btnExport"
-        btnExport.Size = New Size(100, 40)
+        btnExport.Size = New Size(88, 30)
         btnExport.TabIndex = 28
         btnExport.Text = "EXPORT"
         btnExport.UseVisualStyleBackColor = False
@@ -367,9 +357,10 @@ Partial Class ReservationListControl
         cmbInvoiceType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbInvoiceType.FormattingEnabled = True
         cmbInvoiceType.Items.AddRange(New Object() {"Pre-payment Quote", "Advance Payment Receipt", "Final Checkout Folio"})
-        cmbInvoiceType.Location = New Point(610, 572)
+        cmbInvoiceType.Location = New Point(534, 429)
+        cmbInvoiceType.Margin = New Padding(3, 2, 3, 2)
         cmbInvoiceType.Name = "cmbInvoiceType"
-        cmbInvoiceType.Size = New Size(240, 28)
+        cmbInvoiceType.Size = New Size(210, 23)
         cmbInvoiceType.TabIndex = 29
         ' 
         ' btnPrintInvoice
@@ -377,17 +368,16 @@ Partial Class ReservationListControl
         btnPrintInvoice.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnPrintInvoice.BackColor = Color.OldLace
         btnPrintInvoice.ForeColor = Color.Maroon
-        btnPrintInvoice.Location = New Point(858, 565)
-        btnPrintInvoice.Margin = New Padding(3, 4, 3, 4)
+        btnPrintInvoice.Location = New Point(751, 424)
         btnPrintInvoice.Name = "btnPrintInvoice"
-        btnPrintInvoice.Size = New Size(162, 45)
+        btnPrintInvoice.Size = New Size(142, 34)
         btnPrintInvoice.TabIndex = 30
         btnPrintInvoice.Text = "Print Invoice"
         btnPrintInvoice.UseVisualStyleBackColor = False
         ' 
         ' ReservationListControl
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(cmbStatusFilter)
@@ -409,8 +399,9 @@ Partial Class ReservationListControl
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
         Controls.Add(lblSearch)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "ReservationListControl"
-        Size = New Size(1032, 637)
+        Size = New Size(903, 478)
         CType(dgvReservations, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
