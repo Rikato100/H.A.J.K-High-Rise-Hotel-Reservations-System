@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Database: `hajk`
 --
 
+DROP DATABASE IF EXISTS `hajk`;
+CREATE DATABASE `hajk` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hajk`;
+
 -- --------------------------------------------------------
 
 --
@@ -145,7 +149,7 @@ CREATE TABLE `payment` (
   `payment_method` enum('Cash','GCash','Maya','PayPal','Card','Bank Transfer') NOT NULL,
   `reference_no` varchar(100) DEFAULT NULL,
   `payment_date` datetime NOT NULL DEFAULT current_timestamp()
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
@@ -188,7 +192,7 @@ CREATE TABLE `reservation` (
   `vat_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reservation`
@@ -386,13 +390,13 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -420,7 +424,8 @@ ALTER TABLE `discount`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `chk_payment_amount` CHECK (`amount` > 0);
 
 --
 -- Constraints for table `reservation`
@@ -429,7 +434,9 @@ ALTER TABLE `reservation`
   ADD CONSTRAINT `fk_reservation_account` FOREIGN KEY (`created_by`) REFERENCES `account` (`account_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_reservation_discount` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`discount_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_reservation_guest` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`guest_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `chk_reservation_dates` CHECK (`check_out` > `check_in`),
+  ADD CONSTRAINT `chk_reservation_adults` CHECK (`adults` >= 1);
 
 --
 -- Constraints for table `room`
