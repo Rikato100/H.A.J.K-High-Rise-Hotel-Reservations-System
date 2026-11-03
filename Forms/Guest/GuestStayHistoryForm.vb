@@ -15,17 +15,20 @@ Public Class GuestStayHistoryForm
     End Sub
 
     ' Load the guest's reservation history
+    ' Load the guest's reservation history
     Private Sub LoadStayHistory()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
 
+                ' Added INNER JOIN to guest table and selected g.notes
                 Dim query As String =
                     "SELECT res.res_code, r.room_number, " &
                     "res.check_in, res.check_out, " &
-                    "res.res_status, res.total_amount " &
+                    "res.res_status, res.total_amount, g.notes " &
                     "FROM reservation res " &
                     "INNER JOIN room r ON res.room_id = r.room_id " &
+                    "INNER JOIN guest g ON res.guest_id = g.guest_id " &
                     "WHERE res.guest_id = @guestID " &
                     "ORDER BY res.check_in DESC"
 
@@ -42,7 +45,8 @@ Public Class GuestStayHistoryForm
                                 Convert.ToDateTime(reader("check_in")).ToString("MMM dd, yyyy"),
                                 Convert.ToDateTime(reader("check_out")).ToString("MMM dd, yyyy"),
                                 reader("res_status").ToString(),
-                                Convert.ToDecimal(reader("total_amount")).ToString("₱#,##0.00")
+                                Convert.ToDecimal(reader("total_amount")).ToString("₱#,##0.00"),
+                                If(reader("notes") Is DBNull.Value, "", reader("notes").ToString())
                             )
                         End While
                     End Using

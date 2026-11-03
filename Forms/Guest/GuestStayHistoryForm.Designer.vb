@@ -30,13 +30,14 @@ Partial Class GuestStayHistoryForm
         lblGuestName = New Label()
         lblGuestID = New Label()
         dgvStayHistory = New DataGridView()
+        btnClose = New Button()
         colResCode = New DataGridViewTextBoxColumn()
         colRoomNumber = New DataGridViewTextBoxColumn()
         colCheckIn = New DataGridViewTextBoxColumn()
         colCheckOut = New DataGridViewTextBoxColumn()
         colStatus = New DataGridViewTextBoxColumn()
         colTotalAmount = New DataGridViewTextBoxColumn()
-        btnClose = New Button()
+        colNotes = New DataGridViewTextBoxColumn()
         PanelTop.SuspendLayout()
         CType(dgvStayHistory, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -47,8 +48,9 @@ Partial Class GuestStayHistoryForm
         PanelTop.Controls.Add(lblTitle)
         PanelTop.Dock = DockStyle.Top
         PanelTop.Location = New Point(0, 0)
+        PanelTop.Margin = New Padding(3, 2, 3, 2)
         PanelTop.Name = "PanelTop"
-        PanelTop.Size = New Size(950, 70)
+        PanelTop.Size = New Size(831, 52)
         PanelTop.TabIndex = 0
         ' 
         ' lblTitle
@@ -58,7 +60,7 @@ Partial Class GuestStayHistoryForm
         lblTitle.ForeColor = Color.Beige
         lblTitle.Location = New Point(0, 0)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(950, 70)
+        lblTitle.Size = New Size(831, 52)
         lblTitle.TabIndex = 0
         lblTitle.Text = "GUEST STAY HISTORY"
         lblTitle.TextAlign = ContentAlignment.MiddleCenter
@@ -68,9 +70,9 @@ Partial Class GuestStayHistoryForm
         lblGuestName.AutoSize = True
         lblGuestName.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold)
         lblGuestName.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblGuestName.Location = New Point(30, 95)
+        lblGuestName.Location = New Point(26, 71)
         lblGuestName.Name = "lblGuestName"
-        lblGuestName.Size = New Size(73, 25)
+        lblGuestName.Size = New Size(58, 20)
         lblGuestName.TabIndex = 1
         lblGuestName.Text = "Guest: "
         ' 
@@ -79,9 +81,9 @@ Partial Class GuestStayHistoryForm
         lblGuestID.AutoSize = True
         lblGuestID.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold)
         lblGuestID.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblGuestID.Location = New Point(450, 95)
+        lblGuestID.Location = New Point(394, 71)
         lblGuestID.Name = "lblGuestID"
-        lblGuestID.Size = New Size(98, 25)
+        lblGuestID.Size = New Size(78, 20)
         lblGuestID.TabIndex = 2
         lblGuestID.Text = "Guest ID: "
         ' 
@@ -99,7 +101,7 @@ Partial Class GuestStayHistoryForm
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         dgvStayHistory.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvStayHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvStayHistory.Columns.AddRange(New DataGridViewColumn() {colResCode, colRoomNumber, colCheckIn, colCheckOut, colStatus, colTotalAmount})
+        dgvStayHistory.Columns.AddRange(New DataGridViewColumn() {colResCode, colRoomNumber, colCheckIn, colCheckOut, colStatus, colTotalAmount, colNotes})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
@@ -109,8 +111,7 @@ Partial Class GuestStayHistoryForm
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         dgvStayHistory.DefaultCellStyle = DataGridViewCellStyle2
         dgvStayHistory.EnableHeadersVisualStyles = False
-        dgvStayHistory.Location = New Point(30, 140)
-        dgvStayHistory.Margin = New Padding(3, 4, 3, 4)
+        dgvStayHistory.Location = New Point(26, 105)
         dgvStayHistory.Name = "dgvStayHistory"
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.Beige
@@ -123,8 +124,20 @@ Partial Class GuestStayHistoryForm
         dgvStayHistory.RowHeadersWidth = 51
         dgvStayHistory.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         dgvStayHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvStayHistory.Size = New Size(890, 400)
+        dgvStayHistory.Size = New Size(779, 300)
         dgvStayHistory.TabIndex = 3
+        ' 
+        ' btnClose
+        ' 
+        btnClose.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
+        btnClose.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnClose.ForeColor = Color.Beige
+        btnClose.Location = New Point(678, 416)
+        btnClose.Name = "btnClose"
+        btnClose.Size = New Size(127, 34)
+        btnClose.TabIndex = 4
+        btnClose.Text = "BACK"
+        btnClose.UseVisualStyleBackColor = False
         ' 
         ' colResCode
         ' 
@@ -168,31 +181,25 @@ Partial Class GuestStayHistoryForm
         colTotalAmount.Name = "colTotalAmount"
         colTotalAmount.ReadOnly = True
         ' 
-        ' btnClose
+        ' colNotes
         ' 
-        btnClose.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        btnClose.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
-        btnClose.ForeColor = Color.Beige
-        btnClose.Location = New Point(775, 555)
-        btnClose.Margin = New Padding(3, 4, 3, 4)
-        btnClose.Name = "btnClose"
-        btnClose.Size = New Size(145, 45)
-        btnClose.TabIndex = 4
-        btnClose.Text = "BACK"
-        btnClose.UseVisualStyleBackColor = False
+        colNotes.HeaderText = "Notes"
+        colNotes.Name = "colNotes"
+        colNotes.ReadOnly = True
         ' 
         ' GuestStayHistoryForm
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
-        ClientSize = New Size(950, 620)
+        ClientSize = New Size(831, 465)
         Controls.Add(btnClose)
         Controls.Add(dgvStayHistory)
         Controls.Add(lblGuestID)
         Controls.Add(lblGuestName)
         Controls.Add(PanelTop)
         FormBorderStyle = FormBorderStyle.FixedDialog
+        Margin = New Padding(3, 2, 3, 2)
         MaximizeBox = False
         MinimizeBox = False
         Name = "GuestStayHistoryForm"
@@ -209,11 +216,12 @@ Partial Class GuestStayHistoryForm
     Friend WithEvents lblGuestName As Label
     Friend WithEvents lblGuestID As Label
     Friend WithEvents dgvStayHistory As DataGridView
+    Friend WithEvents btnClose As Button
     Friend WithEvents colResCode As DataGridViewTextBoxColumn
     Friend WithEvents colRoomNumber As DataGridViewTextBoxColumn
     Friend WithEvents colCheckIn As DataGridViewTextBoxColumn
     Friend WithEvents colCheckOut As DataGridViewTextBoxColumn
     Friend WithEvents colStatus As DataGridViewTextBoxColumn
     Friend WithEvents colTotalAmount As DataGridViewTextBoxColumn
-    Friend WithEvents btnClose As Button
+    Friend WithEvents colNotes As DataGridViewTextBoxColumn
 End Class
