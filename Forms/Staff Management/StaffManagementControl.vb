@@ -279,7 +279,7 @@ Public Class StaffManagementControl
         ' when an archived account is being restored from the soft-delete view:
         If chkShowArchived.Checked Then
             Dim confirmArchived As DialogResult = MessageBox.Show(
-                "Restore this archived account? You can edit the username above if it conflicts with an active account.",
+                "Restore this archived account?",
                 "Confirm Recovery", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
             If confirmArchived = DialogResult.Yes Then
