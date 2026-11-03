@@ -5,19 +5,19 @@ Public Class loginForm
         Me.AcceptButton = btnLogin
     End Sub
 
-Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
-    If e.KeyCode = Keys.Down Then
-        txtPassword.Focus()
-        e.SuppressKeyPress = True
-    End If
-End Sub
+    Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
+        If e.KeyCode = Keys.Down Then
+            txtPassword.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 
-Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
-    If e.KeyCode = Keys.Up Then
-        txtUsername.Focus()
-        e.SuppressKeyPress = True
-    End If
-End Sub
+    Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
+        If e.KeyCode = Keys.Up Then
+            txtUsername.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = txtUsername.Text.Trim()
@@ -33,9 +33,9 @@ End Sub
 
                 conn.Open()
 
-                ' The password is checked in code (hashed), not in SQL
+                ' Include is_deleted in the query to check if the account is archived
                 Dim query As String =
-                "SELECT account_id, role, password_hash, account_status FROM account " &
+                "SELECT account_id, role, password_hash, account_status, is_deleted FROM account " &
                 "WHERE username = @username"
 
                 Using cmd As New MySqlCommand(query, conn)
@@ -46,7 +46,13 @@ End Sub
 
                         If reader.Read() AndAlso PasswordHash.VerifyPassword(password, reader("password_hash").ToString()) Then
 
-                            ' Correct password but the account is switched off
+                            ' If the account is soft-deleted/archived
+                            If Convert.ToInt32(reader("is_deleted")) = 1 Then
+                                MessageBox.Show("Invalid username or password.")
+                                Exit Sub
+                            End If
+
+                            ' Correct password but the account is manually deactivated
                             If reader("account_status").ToString() <> "Active" Then
                                 MessageBox.Show("This account has been deactivated. Please contact the administrator.",
                                                 "Account Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Warning)
