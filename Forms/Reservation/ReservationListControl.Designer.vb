@@ -265,7 +265,7 @@ Partial Class ReservationListControl
         PictureBox2.Location = New Point(16, 6)
         PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(72, 46)
+        PictureBox2.Size = New Size(66, 46)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 22
         PictureBox2.TabStop = False

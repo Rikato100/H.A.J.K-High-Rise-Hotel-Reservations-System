@@ -61,29 +61,29 @@ Partial Class ReportsControl
         ' dtpStartDate
         ' 
         dtpStartDate.Format = DateTimePickerFormat.Short
-        dtpStartDate.Location = New Point(10, 183)
-        dtpStartDate.Margin = New Padding(5)
+        dtpStartDate.Location = New Point(9, 137)
+        dtpStartDate.Margin = New Padding(4, 4, 4, 4)
         dtpStartDate.Name = "dtpStartDate"
-        dtpStartDate.Size = New Size(233, 27)
+        dtpStartDate.Size = New Size(204, 23)
         dtpStartDate.TabIndex = 1
         ' 
         ' dtpEndDate
         ' 
         dtpEndDate.Format = DateTimePickerFormat.Short
-        dtpEndDate.Location = New Point(10, 263)
-        dtpEndDate.Margin = New Padding(5)
+        dtpEndDate.Location = New Point(9, 197)
+        dtpEndDate.Margin = New Padding(4, 4, 4, 4)
         dtpEndDate.Name = "dtpEndDate"
-        dtpEndDate.Size = New Size(233, 27)
+        dtpEndDate.Size = New Size(204, 23)
         dtpEndDate.TabIndex = 2
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        Label1.Location = New Point(10, 145)
-        Label1.Margin = New Padding(5, 0, 5, 0)
+        Label1.Location = New Point(9, 109)
+        Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(112, 23)
+        Label1.Size = New Size(92, 19)
         Label1.TabIndex = 3
         Label1.Text = "▦ Start Date:"
         ' 
@@ -91,10 +91,10 @@ Partial Class ReportsControl
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        Label2.Location = New Point(10, 225)
-        Label2.Margin = New Padding(5, 0, 5, 0)
+        Label2.Location = New Point(9, 169)
+        Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(101, 23)
+        Label2.Size = New Size(82, 19)
         Label2.TabIndex = 4
         Label2.Text = "▦ End Date"
         ' 
@@ -103,10 +103,10 @@ Partial Class ReportsControl
         cmbReportType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbReportType.FormattingEnabled = True
         cmbReportType.Items.AddRange(New Object() {"Daily", "Monthly", "Annual"})
-        cmbReportType.Location = New Point(10, 101)
-        cmbReportType.Margin = New Padding(5)
+        cmbReportType.Location = New Point(9, 76)
+        cmbReportType.Margin = New Padding(4, 4, 4, 4)
         cmbReportType.Name = "cmbReportType"
-        cmbReportType.Size = New Size(233, 28)
+        cmbReportType.Size = New Size(204, 23)
         cmbReportType.TabIndex = 0
         ' 
         ' btnGenerate
@@ -114,10 +114,10 @@ Partial Class ReportsControl
         btnGenerate.BackColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         btnGenerate.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnGenerate.ForeColor = Color.Beige
-        btnGenerate.Location = New Point(29, 324)
-        btnGenerate.Margin = New Padding(5)
+        btnGenerate.Location = New Point(25, 243)
+        btnGenerate.Margin = New Padding(4, 4, 4, 4)
         btnGenerate.Name = "btnGenerate"
-        btnGenerate.Size = New Size(203, 45)
+        btnGenerate.Size = New Size(178, 34)
         btnGenerate.TabIndex = 5
         btnGenerate.Text = "▥ GENERATE REPORT"
         btnGenerate.UseVisualStyleBackColor = False
@@ -148,8 +148,8 @@ Partial Class ReportsControl
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         dgvReports.DefaultCellStyle = DataGridViewCellStyle2
         dgvReports.EnableHeadersVisualStyles = False
-        dgvReports.Location = New Point(280, 92)
-        dgvReports.Margin = New Padding(5)
+        dgvReports.Location = New Point(245, 69)
+        dgvReports.Margin = New Padding(4, 4, 4, 4)
         dgvReports.Name = "dgvReports"
         dgvReports.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -162,7 +162,7 @@ Partial Class ReportsControl
         dgvReports.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvReports.RowHeadersWidth = 51
         dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvReports.Size = New Size(739, 460)
+        dgvReports.Size = New Size(647, 345)
         dgvReports.TabIndex = 6
         ' 
         ' colDate
@@ -205,10 +205,10 @@ Partial Class ReportsControl
         lblTotalRevenue.AutoSize = True
         lblTotalRevenue.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTotalRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblTotalRevenue.Location = New Point(94, 20)
-        lblTotalRevenue.Margin = New Padding(5, 0, 5, 0)
+        lblTotalRevenue.Location = New Point(82, 15)
+        lblTotalRevenue.Margin = New Padding(4, 0, 4, 0)
         lblTotalRevenue.Name = "lblTotalRevenue"
-        lblTotalRevenue.Size = New Size(221, 25)
+        lblTotalRevenue.Size = New Size(182, 20)
         lblTotalRevenue.TabIndex = 7
         lblTotalRevenue.Text = "Total Revenue: ₱0.00"
         ' 
@@ -223,9 +223,10 @@ Partial Class ReportsControl
         Panel3.Controls.Add(Label2)
         Panel3.Controls.Add(dtpEndDate)
         Panel3.Controls.Add(btnGenerate)
-        Panel3.Location = New Point(15, 92)
+        Panel3.Location = New Point(13, 69)
+        Panel3.Margin = New Padding(3, 2, 3, 2)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(250, 528)
+        Panel3.Size = New Size(219, 396)
         Panel3.TabIndex = 29
         ' 
         ' Panel5
@@ -235,15 +236,17 @@ Partial Class ReportsControl
         Panel5.Controls.Add(Label4)
         Panel5.Dock = DockStyle.Top
         Panel5.Location = New Point(0, 0)
+        Panel5.Margin = New Padding(3, 2, 3, 2)
         Panel5.Name = "Panel5"
-        Panel5.Size = New Size(250, 45)
+        Panel5.Size = New Size(219, 34)
         Panel5.TabIndex = 12
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(3, 3)
+        PictureBox1.Location = New Point(3, 2)
+        PictureBox1.Margin = New Padding(3, 2, 3, 2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(46, 37)
+        PictureBox1.Size = New Size(40, 28)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 31
         PictureBox1.TabStop = False
@@ -253,9 +256,9 @@ Partial Class ReportsControl
         Label4.AutoSize = True
         Label4.Font = New Font("Mongolian Baiti", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = Color.Beige
-        Label4.Location = New Point(51, 11)
+        Label4.Location = New Point(45, 8)
         Label4.Name = "Label4"
-        Label4.Size = New Size(182, 21)
+        Label4.Size = New Size(152, 16)
         Label4.TabIndex = 31
         Label4.Text = "REPORT FILTERS"
         ' 
@@ -263,10 +266,10 @@ Partial Class ReportsControl
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold)
-        Label3.Location = New Point(10, 64)
-        Label3.Margin = New Padding(5, 0, 5, 0)
+        Label3.Location = New Point(9, 48)
+        Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(128, 23)
+        Label3.Size = New Size(104, 19)
         Label3.TabIndex = 6
         Label3.Text = "▤ Report Type:"
         ' 
@@ -276,17 +279,19 @@ Partial Class ReportsControl
         Panel4.BackColor = Color.AntiqueWhite
         Panel4.Controls.Add(PictureBox2)
         Panel4.Controls.Add(lblTotalRevenue)
-        Panel4.Location = New Point(280, 560)
+        Panel4.Location = New Point(245, 420)
+        Panel4.Margin = New Padding(3, 2, 3, 2)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(739, 60)
+        Panel4.Size = New Size(647, 45)
         Panel4.TabIndex = 30
         ' 
         ' PictureBox2
         ' 
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(25, 10)
+        PictureBox2.Location = New Point(22, 8)
+        PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(74, 49)
+        PictureBox2.Size = New Size(65, 37)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 32
         PictureBox2.TabStop = False
@@ -294,9 +299,10 @@ Partial Class ReportsControl
         ' PictureBox5
         ' 
         PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
-        PictureBox5.Location = New Point(22, 9)
+        PictureBox5.Location = New Point(19, 7)
+        PictureBox5.Margin = New Padding(3, 2, 3, 2)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(80, 56)
+        PictureBox5.Size = New Size(59, 42)
         PictureBox5.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox5.TabIndex = 33
         PictureBox5.TabStop = False
@@ -305,9 +311,9 @@ Partial Class ReportsControl
         ' 
         Label5.AutoSize = True
         Label5.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label5.Location = New Point(111, 45)
+        Label5.Location = New Point(97, 34)
         Label5.Name = "Label5"
-        Label5.Size = New Size(543, 20)
+        Label5.Size = New Size(436, 15)
         Label5.TabIndex = 32
         Label5.Text = "Track hotel revenue, review payment records, and monitor financial performance."
         ' 
@@ -316,15 +322,15 @@ Partial Class ReportsControl
         Label6.AutoSize = True
         Label6.Font = New Font("Mongolian Baiti", 17.25F, FontStyle.Bold)
         Label6.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        Label6.Location = New Point(108, 12)
+        Label6.Location = New Point(94, 9)
         Label6.Name = "Label6"
-        Label6.Size = New Size(237, 30)
+        Label6.Size = New Size(190, 24)
         Label6.TabIndex = 31
         Label6.Text = "Financial Reports"
         ' 
         ' ReportsControl
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         Controls.Add(PictureBox5)
@@ -333,9 +339,8 @@ Partial Class ReportsControl
         Controls.Add(Panel4)
         Controls.Add(Panel3)
         Controls.Add(dgvReports)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "ReportsControl"
-        Size = New Size(1032, 637)
+        Size = New Size(903, 478)
         CType(dgvReports, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()

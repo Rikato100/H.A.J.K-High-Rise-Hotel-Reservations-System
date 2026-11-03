@@ -265,7 +265,7 @@ Partial Class GuestControl
         PictureBox2.Location = New Point(16, 4)
         PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(76, 50)
+        PictureBox2.Size = New Size(67, 50)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 25
         PictureBox2.TabStop = False

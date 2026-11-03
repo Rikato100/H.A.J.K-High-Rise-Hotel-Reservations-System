@@ -139,7 +139,7 @@ Partial Class StaffManagementControl
         chkShowArchived.AutoSize = True
         chkShowArchived.Font = New Font("Segoe UI", 9.5F)
         chkShowArchived.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        chkShowArchived.Location = New Point(770, 62)
+        chkShowArchived.Location = New Point(771, 62)
         chkShowArchived.Margin = New Padding(3, 2, 3, 2)
         chkShowArchived.Name = "chkShowArchived"
         chkShowArchived.Size = New Size(107, 21)
@@ -370,7 +370,7 @@ Partial Class StaffManagementControl
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(18, 5)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(82, 46)
+        PictureBox2.Size = New Size(66, 51)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 30
         PictureBox2.TabStop = False

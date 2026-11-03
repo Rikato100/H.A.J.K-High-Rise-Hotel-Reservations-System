@@ -57,8 +57,6 @@ Public Class StaffManagementControl
             Dim role As String = If(cboRoleFilter.Text = "All", "", cboRoleFilter.Text)
             Dim showDeleted As Integer = If(chkShowArchived.Checked, 1, 0)
 
-            ' If your repository method handles is_deleted filtering, pass showDeleted or adjust accordingly.
-            ' Assuming StaffRepository.GetAllAccounts supports fetching based on archive flag:
             dgvStaff.DataSource = StaffRepository.GetAllAccounts(txtSearch.Text.Trim(), status, role, showDeleted)
 
             dgvStaff.Columns("account_id").HeaderText = "ID"
@@ -278,7 +276,7 @@ Public Class StaffManagementControl
             Exit Sub
         End If
 
-        ' If it's an archived account being restored from the soft-delete view:
+        ' when an archived account is being restored from the soft-delete view:
         If chkShowArchived.Checked Then
             Dim confirmArchived As DialogResult = MessageBox.Show(
                 "Restore this archived account? You can edit the username above if it conflicts with an active account.",
