@@ -544,7 +544,7 @@ Public Class ReservationListControl
 
         g.DrawString("H.A.J.K HIGH RISE HOTEL", fontTitle, brush, 50, y) : y += 25
         g.DrawString("123 Luxury Boulevard, Metro Manila, Philippines", fontBody, brush, 50, y) : y += 20
-        g.DrawString("Contact: +63 (2) 8888-0000 | info@hajkhigrise.com", fontBody, brush, 50, y) : y += 30
+        g.DrawString("Contact: +63 (2) 8888-0000 | info@hajkhighrise.com", fontBody, brush, 50, y) : y += 30
 
         Dim invType As String = cmbInvoiceType.Text.ToUpper()
         g.DrawString("OFFICIAL " & invType, fontHeader, brush, 50, y)
@@ -562,7 +562,7 @@ Public Class ReservationListControl
         y += 20
         g.DrawString("Room No: " & roomNo & " (" & roomType & ")", fontBody, brush, 400, y)
         y += 20
-        g.DrawString("Duration: " & nights & " Nights", fontBody, brush, 400, y)
+        g.DrawString("Duration: " & nights & " Night(s)", fontBody, brush, 400, y)
         y += 20
 
         g.DrawLine(pen, 50, y, 750, y) : y += 15
