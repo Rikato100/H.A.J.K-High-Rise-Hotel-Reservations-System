@@ -3,7 +3,7 @@
 Public Class StaffRepository
 
     ' Returns accounts for the grid. Leave a filter blank to ignore it.
-    Public Shared Function GetAllAccounts(Optional search As String = "", Optional status As String = "", Optional role As String = "") As DataTable
+    Public Shared Function GetAllAccounts(Optional search As String = "", Optional status As String = "", Optional role As String = "", Optional showDeleted As Integer = 0) As DataTable
         Dim dt As New DataTable()
 
         Using conn As MySqlConnection = DbConnection.GetConnection()
@@ -12,13 +12,14 @@ Public Class StaffRepository
             Dim query As String =
                 "SELECT account_id, username, fullname, role, account_status " &
                 "FROM account " &
-                "WHERE is_deleted = 0 AND (@search = '' OR username LIKE @like OR fullname LIKE @like) " &
+                "WHERE is_deleted = @showDeleted AND (@search = '' OR username LIKE @like OR fullname LIKE @like) " &
                 "AND (@status = '' OR account_status = @status) " &
                 "AND (@role = '' OR role = @role) " &
                 "ORDER BY account_id"
 
             Using cmd As New MySqlCommand(query, conn)
                 Dim escaped As String = search.Replace("\", "\\").Replace("%", "\%").Replace("_", "\_")
+                cmd.Parameters.AddWithValue("@showDeleted", showDeleted)
                 cmd.Parameters.AddWithValue("@search", search)
                 cmd.Parameters.AddWithValue("@like", "%" & escaped & "%")
                 cmd.Parameters.AddWithValue("@status", status)
@@ -43,7 +44,6 @@ Public Class StaffRepository
             End Using
         End Using
     End Function
-
 
     Public Shared Function AddAccount(username As String, password As String, fullname As String, role As String) As Boolean
         Using conn As MySqlConnection = DbConnection.GetConnection()
@@ -110,7 +110,6 @@ Public Class StaffRepository
 
         Return True
     End Function
-
 
     Public Shared Sub SetAccountStatus(accountId As Integer, status As String)
         Using conn As MySqlConnection = DbConnection.GetConnection()

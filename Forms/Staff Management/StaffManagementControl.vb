@@ -21,41 +21,45 @@ Public Class StaffManagementControl
         LoadStaffGrid()
     End Sub
 
-     Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
-     If e.KeyCode = Keys.Down Then
-         txtFullName.Focus()
-         e.SuppressKeyPress = True
-     End If
- End Sub
+    Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
+        If e.KeyCode = Keys.Down Then
+            txtFullName.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 
- Private Sub txtFullName_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFullName.KeyDown
-     If e.KeyCode = Keys.Down Then
-         txtPassword.Focus()
-         e.SuppressKeyPress = True
-     ElseIf e.KeyCode = Keys.Up Then
-         txtUsername.Focus()
-         e.SuppressKeyPress = True
-     End If
- End Sub
+    Private Sub txtFullName_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFullName.KeyDown
+        If e.KeyCode = Keys.Down Then
+            txtPassword.Focus()
+            e.SuppressKeyPress = True
+        ElseIf e.KeyCode = Keys.Up Then
+            txtUsername.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 
- Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
-     If e.KeyCode = Keys.Down Then
-         cboRole.Focus()
-         e.SuppressKeyPress = True
-     ElseIf e.KeyCode = Keys.Up Then
-         txtFullName.Focus()
-         e.SuppressKeyPress = True
-     End If
- End Sub
+    Private Sub txtPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPassword.KeyDown
+        If e.KeyCode = Keys.Down Then
+            cboRole.Focus()
+            e.SuppressKeyPress = True
+        ElseIf e.KeyCode = Keys.Up Then
+            txtFullName.Focus()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 
     ' ---------- Grid, search and filters ----------
 
     Private Sub LoadStaffGrid()
+        If isLoading Then Exit Sub
         Try
             Dim status As String = If(cboStatusFilter.Text = "All", "", cboStatusFilter.Text)
             Dim role As String = If(cboRoleFilter.Text = "All", "", cboRoleFilter.Text)
+            Dim showDeleted As Integer = If(chkShowArchived.Checked, 1, 0)
 
-            dgvStaff.DataSource = StaffRepository.GetAllAccounts(txtSearch.Text.Trim(), status, role)
+            ' If your repository method handles is_deleted filtering, pass showDeleted or adjust accordingly.
+            ' Assuming StaffRepository.GetAllAccounts supports fetching based on archive flag:
+            dgvStaff.DataSource = StaffRepository.GetAllAccounts(txtSearch.Text.Trim(), status, role, showDeleted)
 
             dgvStaff.Columns("account_id").HeaderText = "ID"
             dgvStaff.Columns("username").HeaderText = "Username"
@@ -64,9 +68,9 @@ Public Class StaffManagementControl
             dgvStaff.Columns("account_status").HeaderText = "Status"
             dgvStaff.Columns("account_id").FillWeight = 30
 
-            ' Gray out deactivated accounts
+            ' Gray out deactivated/archived accounts
             For Each row As DataGridViewRow In dgvStaff.Rows
-                If row.Cells("account_status").Value.ToString() = "Inactive" Then
+                If row.Cells("account_status").Value.ToString() = "Inactive" OrElse showDeleted = 1 Then
                     row.DefaultCellStyle.ForeColor = Color.Gray
                 End If
             Next
@@ -77,15 +81,19 @@ Public Class StaffManagementControl
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        If Not isLoading Then LoadStaffGrid()
+        LoadStaffGrid()
     End Sub
 
     Private Sub cboStatusFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboStatusFilter.SelectedIndexChanged
-        If Not isLoading Then LoadStaffGrid()
+        LoadStaffGrid()
     End Sub
 
     Private Sub cboRoleFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboRoleFilter.SelectedIndexChanged
-        If Not isLoading Then LoadStaffGrid()
+        LoadStaffGrid()
+    End Sub
+
+    Private Sub chkShowArchived_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowArchived.CheckedChanged
+        LoadStaffGrid()
     End Sub
 
     Private Sub btnClearFilter_Click(sender As Object, e As EventArgs) Handles btnClearFilter.Click
@@ -95,6 +103,7 @@ Public Class StaffManagementControl
         txtSearch.Text = ""
         cboStatusFilter.SelectedIndex = 0
         cboRoleFilter.SelectedIndex = 0
+        chkShowArchived.Checked = False
 
         ' Clear the form textboxes and reset selections
         ClearForm()
@@ -269,6 +278,34 @@ Public Class StaffManagementControl
             Exit Sub
         End If
 
+        ' If it's an archived account being restored from the soft-delete view:
+        If chkShowArchived.Checked Then
+            Dim confirmArchived As DialogResult = MessageBox.Show(
+                "Restore this archived account? You can edit the username above if it conflicts with an active account.",
+                "Confirm Recovery", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If confirmArchived = DialogResult.Yes Then
+                Try
+                    Using conn As MySqlConnection = DbConnection.GetConnection()
+                        conn.Open()
+                        Using cmd As New MySqlCommand("UPDATE account SET is_deleted = 0, account_status = 'Active', username = @newUsername WHERE account_id = @id", conn)
+                            cmd.Parameters.AddWithValue("@newUsername", txtUsername.Text.Trim())
+                            cmd.Parameters.AddWithValue("@id", selectedAccountId)
+                            cmd.ExecuteNonQuery()
+                        End Using
+                    End Using
+
+                    MessageBox.Show("Account successfully restored.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ClearForm()
+                    LoadStaffGrid()
+                Catch ex As Exception
+                    MessageBox.Show("Could not restore account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+            Exit Sub
+        End If
+
+        ' Standard reactivation for regular inactive accounts
         If selectedStatus = "Active" Then
             ShowWarning("This account is already active.")
             Exit Sub
@@ -290,47 +327,47 @@ Public Class StaffManagementControl
         End Try
     End Sub
 
-    ' ---------- NEW DELETE BUTTON ----------
+    ' ---------- DELETE BUTTON (SOFT-DELETE) ----------
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-    If selectedAccountId = 0 Then
-        ShowWarning("Select an account from the list first.")
-        Exit Sub
-    End If
+        If selectedAccountId = 0 Then
+            ShowWarning("Select an account from the list first.")
+            Exit Sub
+        End If
 
-    If selectedAccountId = CurrentUser.AccountID Then
-        ShowWarning("You cannot delete the account you are currently logged in with.")
-        Exit Sub
-    End If
+        If selectedAccountId = CurrentUser.AccountID Then
+            ShowWarning("You cannot delete the account you are currently logged in with.")
+            Exit Sub
+        End If
 
-    ' Admin accounts can only be deactivated, never deleted
-    If selectedRole = "Admin" Then
-        ShowWarning("Admin accounts can't be deleted. Use Deactivate instead.")
-        Exit Sub
-    End If
+        ' Admin accounts can only be deactivated, never deleted
+        If selectedRole = "Admin" Then
+            ShowWarning("Admin accounts can't be deleted. Use Deactivate instead.")
+            Exit Sub
+        End If
 
-    Dim confirm As DialogResult = MessageBox.Show(
-        "Delete this staff account? It will be removed from the list and can no longer log in.",
-        "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        Dim confirm As DialogResult = MessageBox.Show(
+            "Delete this staff account? It will be archived and can be restored later if needed.",
+            "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-    If confirm = DialogResult.Yes Then
-        Try
-            Using conn As MySqlConnection = DbConnection.GetConnection()
-                conn.Open()
-                ' Soft delete: keep the row (reservations still point to it), just hide it and switch it off
-                Using cmd As New MySqlCommand("UPDATE account SET is_deleted = 1, account_status = 'Inactive' WHERE account_id = @id AND role = 'Staff'", conn)
-                    cmd.Parameters.AddWithValue("@id", selectedAccountId)
-                    cmd.ExecuteNonQuery()
+        If confirm = DialogResult.Yes Then
+            Try
+                Using conn As MySqlConnection = DbConnection.GetConnection()
+                    conn.Open()
+                    ' Soft delete: flag is_deleted = 1 and set inactive
+                    Using cmd As New MySqlCommand("UPDATE account SET is_deleted = 1, account_status = 'Inactive' WHERE account_id = @id AND role = 'Staff'", conn)
+                        cmd.Parameters.AddWithValue("@id", selectedAccountId)
+                        cmd.ExecuteNonQuery()
+                    End Using
                 End Using
-            End Using
 
-            MessageBox.Show("Account deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            ClearForm()
-            LoadStaffGrid()
-        Catch ex As Exception
-            MessageBox.Show("Error deleting account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End If
-End Sub
+                MessageBox.Show("Account archived successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ClearForm()
+                LoadStaffGrid()
+            Catch ex As Exception
+                MessageBox.Show("Error archiving account: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
 
     Private Sub ClearForm()
         selectedAccountId = 0
