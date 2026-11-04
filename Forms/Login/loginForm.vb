@@ -3,6 +3,7 @@ Imports MySql.Data.MySqlClient
 Public Class loginForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.AcceptButton = btnLogin
+        LoadAccounts() 
     End Sub
 
     Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
@@ -117,7 +118,7 @@ Public Class loginForm
         End If
     End Sub
 
-        Private Sub LoadDemoAccounts()
+        Private Sub LoadAccounts()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
