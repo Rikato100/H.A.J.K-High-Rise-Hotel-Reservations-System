@@ -1,7 +1,7 @@
 # 🏨 H.A.J.K High Rise Hotel Reservation System
 
 A desktop application for managing hotel rooms, guests, reservations and payments.
-Built with VB.NET (Windows Forms) and MySQL for the partial requirement for the subject "Software Development Fundamentals 104 – Object-Oriented Programming using (VB.Net)" for section BSCS 2B.
+Built with VB.NET (Windows Forms) and MySQL for the partial requirement for the subject "Software Development Fundamentals 104 – Object-Oriented Programming (VB.Net)" for section BSCS 2B.
 
 ## ⚙️ Features
 - Admin and Staff login with different access
