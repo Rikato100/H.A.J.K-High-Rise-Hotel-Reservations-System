@@ -69,24 +69,22 @@ Public Class AdminDashboard
         Me.Text = "Settings - Logged in as: " & CurrentUser.Username
     End Sub
 
-    Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' Only ask if they clicked 'X' AND they are not logging out
+        Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' If the user clicked the 'X' button (and not the Logout button)
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
-                "Are you sure you want to exit? Any unsaved changes will be lost.", 
+                "Are you sure you want to exit the application?", 
                 "Confirm Exit", 
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Warning)
                 
             If result = DialogResult.No Then
+                ' Stay on the dashboard
                 e.Cancel = True
             Else
+                ' Close the whole app
                 Application.Exit()
             End If
-        Else
-            ' If they ARE logging out, show the login form cleanly
-            Dim login As New loginForm()
-            login.Show()
         End If
     End Sub
 End Class
