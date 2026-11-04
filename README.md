@@ -17,33 +17,26 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 
 ## Demo Accounts
 
-Admin: admin0001 / admin123
+**Admin:**
+- admin0001 / admin123
+- admin3104 / adminhans123
 
-Admin: admin3104 / adminhans123
+**Staff:**
+- staff0001 / staff123
+- staff1003 / staffjasper123
 
-Staff: staff0001 / staff123
-
-Staff: staff1003 / staffjasper123
-
-Deactivated accounts (for testing the deactivated login message):
-
-staff0839 / staffkirk123
-
-admin1268 / adminabe123
-
-staff1332 / staffjd123
+**Deactivated accounts (for testing the deactivated login message):**
+- staff0839 / staffkirk123
+- admin1268 / adminabe123
+- staff1332 / staffjd123
 
 ## Team – H.A.J.K High Rise (BSCS 2B)
 
-Project Manager / Documentation: Ferolino, Abegail T.
-
-Lead Programmer: Olaes, Hans Norman T.
-
-Assistant Programmer / Database Designer: Galzote, John Dave J.
-
-UI Designer / System Analyst: Dela Cruz, Jasper E.
-
-Business Analyst / Quality Assurance: Cortal, Kirk Patrick S.
+- **Project Manager / Documentation:** Ferolino, Abegail T.
+- **Lead Programmer:** Olaes, Hans Norman T.
+- **Assistant Programmer / Database Designer:** Galzote, John Dave J.
+- **UI Designer / System Analyst:** Dela Cruz, Jasper E.
+- **Business Analyst / Quality Assurance:** Cortal, Kirk Patrick S.
 
 ---
 
