@@ -97,4 +97,23 @@ Public Class loginForm
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
     End Sub
+
+    Private Sub loginForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' Only trigger this if they clicked the 'X' button
+        If e.CloseReason = CloseReason.UserClosing Then
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to exit the application?", 
+                "Confirm Exit", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question)
+                
+            If result = DialogResult.No Then
+                ' Cancel the closing action and keep the login screen open
+                e.Cancel = True
+            Else
+                ' They said Yes. Force the whole app to close.
+                Application.Exit()
+            End If
+        End If
+    End Sub
 End Class
