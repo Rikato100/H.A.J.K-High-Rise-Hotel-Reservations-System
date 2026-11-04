@@ -323,12 +323,10 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
-        ' If the user is typing, set the flag
         isTyping = True
 
         Dim searchText As String = cmbGuest.Text.Trim()
 
-        ' Temporarily stop drawing to prevent flickering
         cmbGuest.BeginUpdate()
         cmbGuest.Items.Clear()
 
@@ -351,9 +349,17 @@ Public Class Reservation
 
         ' Keep the cursor at the end of the text
         cmbGuest.SelectionStart = cmbGuest.Text.Length
+        
+        ' Start the timer to open the dropdown safely
+        tmrGuestDrop.Start()
+    End Sub
 
-        ' Force the ComboBox to have no selection. 
-        cmbGuest.SelectedIndex = -1 
+    Private Sub tmrGuestDrop_Tick(sender As Object, e As EventArgs) Handles tmrGuestDrop.Tick
+        tmrGuestDrop.Stop()
+        
+        ' Open the dropdown and force the selection to be empty
+        cmbGuest.DroppedDown = True
+        cmbGuest.SelectedIndex = -1
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
