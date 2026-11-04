@@ -56,3 +56,15 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 - You **must** import the **`schema.sql`** file (located in the **`DataAccess > Database`** folder) into **phpMyAdmin** before attempting to log in. 
 - If XAMPP is not running, or the database has not been imported, the application will open but will **fail to log in or load any data**. 
 - The standalone `.exe` file **does not contain the database**. It only contains the user interface.
+
+## 🛠️ TROUBLESHOOTING
+
+**Encountering "Restricted Zone" or "Mark of the Web" errors when building?**
+If Visual Studio throws errors saying the files are in a restricted zone or blocked (common when downloading projects from the internet), follow these steps to unblock them:
+1. Click the Windows Start button, search for **PowerShell**.
+2. Right-click on **Windows PowerShell** and select **Run as Administrator**.
+3. Copy and paste the following command, replacing `"Folder Path"` with the actual path to your project folder, and press Enter:
+   ```powershell
+   Get-ChildItem -Path "Folder Path" -Recurse | Unblock-File
+(To easily get the folder path, open the project folder in File Explorer, click the address bar at the top, and copy the path).
+4. Rebuild the solution in Visual Studio.
