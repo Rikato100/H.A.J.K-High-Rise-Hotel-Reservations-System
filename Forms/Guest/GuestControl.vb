@@ -101,13 +101,12 @@ Public Class GuestControl
                         Exit Sub
                     End If
                 End Using
-            End Using
 
-    Using cmd As New MySqlCommand("UPDATE guest SET is_deleted = 1 WHERE guest_id = @guestID", conn)
-        cmd.Parameters.AddWithValue("@guestID", guestID)
-        cmd.ExecuteNonQuery()
-    End Using
-End Using
+                Using cmd As New MySqlCommand("UPDATE guest SET is_deleted = 1 WHERE guest_id = @guestID", conn)
+                    cmd.Parameters.AddWithValue("@guestID", guestID)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
 
             MessageBox.Show("Guest deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadGuests()
