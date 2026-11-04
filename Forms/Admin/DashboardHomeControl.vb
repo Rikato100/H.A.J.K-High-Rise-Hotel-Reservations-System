@@ -29,17 +29,17 @@ Public Class DashboardHomeControl
                 End Using
 
                 ' Arriving Today (Pending)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_in = CURDATE() AND res_status = 'Pending'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_in = CURDATE() AND res_status = 'Pending' AND is_deleted = 0", conn)
                     lblArrivingToday.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
                 ' Departing Today (Check-In)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_out = CURDATE() AND res_status = 'Check-In'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_out = CURDATE() AND res_status = 'Check-In' AND is_deleted = 0", conn)
                     lblDepartingToday.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
                 ' In-House (Currently Checked In)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_status = 'Check-In'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_status = 'Check-In' AND is_deleted = 0", conn)                    
                     lblInHouse.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
