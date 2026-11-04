@@ -39,8 +39,12 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        isLoggingOut = True ' Tell the form we are intentionally logging out
-        SessionHelper.Logout()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            isLoggingOut = True ' Flag it so FormClosing doesn't ask again
+            SessionHelper.Logout() ' Safely logs out and opens loginForm
+        End If
     End Sub
 
     ' Navigation: Switch content cleanly inside pnlContent instead of opening a separate popup window
@@ -69,21 +73,21 @@ Public Class AdminDashboard
         Me.Text = "Settings - Logged in as: " & CurrentUser.Username
     End Sub
 
-        Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' If the user clicked the 'X' button (and not the Logout button)
+    Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' If they click 'X' and they aren't already logging out
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
-                "Are you sure you want to exit the application?", 
-                "Confirm Exit", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Warning)
-                
+                "Are you sure you want to log out and return to the login screen?",
+                "Confirm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question)
+
             If result = DialogResult.No Then
-                ' Stay on the dashboard
-                e.Cancel = True
+                e.Cancel = True ' Stop the form from closing
             Else
-                ' Close the whole app
-                Application.Exit()
+                ' They said Yes. Show login screen cleanly.
+                Dim login As New loginForm()
+                login.Show()
             End If
         End If
     End Sub
