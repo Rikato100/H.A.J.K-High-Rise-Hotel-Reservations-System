@@ -1,7 +1,7 @@
 Imports MySql.Data.MySqlClient
 
 Public Class StaffDashboardHomeControl
-    
+
     Private Sub StaffDashboardHomeControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize and Start the Live Date & Time Timer
         tmrDashboard.Interval = 1000
