@@ -3,7 +3,7 @@
 A desktop application for managing hotel rooms, guests, reservations and payments.
 Built with VB.NET (Windows Forms) and MySQL for the partial requirement for the subject "Software Development Fundamentals 104 – Object-Oriented Programming" for section BSCS 2B.
 
-## Features
+## ⚙️ Features
 - Admin and Staff login with different access
 - Room, guest, reservation management
 - Check-in, check-out, payments and invoice printing
@@ -22,7 +22,7 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 3. Install XAMPP, start the Apache and MySQL modules, then click the "Admin" button next to MySQL to open phpMyAdmin. From there, import the provided `schema.sql` file.
 4. Double-click the **`HajkHotel.exe`** file to launch the application.
 
-## Demo Accounts
+## 👤 Demo Accounts
 
 **Admin:**
 - admin0001 / admin123
