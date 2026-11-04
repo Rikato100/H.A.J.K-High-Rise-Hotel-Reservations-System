@@ -7,6 +7,8 @@ Public Class Reservation
     Private selectedGuestID As Integer = 0
 
     Private allGuests As New List(Of GuestComboItem)
+    
+    Private isTyping As Boolean = False
 
     Private rawSubtotal As Decimal = 0D
     Private rawDiscountAmount As Decimal = 0D
@@ -104,6 +106,7 @@ Public Class Reservation
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
+        
         cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
         cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
 
@@ -140,7 +143,6 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                ' Highest number used today + 1 (a COUNT would repeat a code after rows are deleted)
                 Using cmd As New MySqlCommand("SELECT IFNULL(MAX(CAST(SUBSTRING(res_code, 10) AS UNSIGNED)), 0) FROM reservation WHERE res_code LIKE @prefix", conn)
                     cmd.Parameters.AddWithValue("@prefix", todayPrefix & "-%")
                     dailyCounter = Convert.ToInt32(cmd.ExecuteScalar()) + 1
@@ -193,8 +195,8 @@ Public Class Reservation
                                 If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString()),
                                 If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             )
-                            allGuests.Add(guest) ' Save to the master list
-                            cmbGuest.Items.Add(guest) ' Add to the combobox
+                            allGuests.Add(guest)
+                            cmbGuest.Items.Add(guest)
                         End While
                     End Using
                 End Using
@@ -206,10 +208,17 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbGuest.SelectedIndexChanged
+        ' If the user is still typing, do not auto-fill the textboxes yet
+        If isTyping Then Exit Sub
+
         If cmbGuest.SelectedItem Is Nothing Then
             selectedGuestID = 0
             Exit Sub
         End If
+        
+        ' Reset the typing flag now that a selection is made
+        isTyping = False 
+
         Dim guest As GuestComboItem = CType(cmbGuest.SelectedItem, GuestComboItem)
         selectedGuestID = guest.GuestID
         txtFirstName.Text = guest.FirstName
@@ -264,7 +273,6 @@ Public Class Reservation
                 End Using
             End Using
 
-            ' Keep the chosen room if it is still free for the new dates
             For i As Integer = 0 To cmbRoom.Items.Count - 1
                 If CType(cmbRoom.Items(i), RoomComboItem).RoomID = keepRoomID Then
                     cmbRoom.SelectedIndex = i
@@ -307,6 +315,44 @@ Public Class Reservation
         End Try
     End Sub
 
+    Private Sub cmbGuest_DropDown(sender As Object, e As EventArgs) Handles cmbGuest.DropDown
+        isTyping = False
+    End Sub
+
+    Private Sub cmbGuest_Leave(sender As Object, e As EventArgs) Handles cmbGuest.Leave
+        isTyping = False
+    End Sub
+
+    Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        isTyping = True
+
+        If cmbGuest.SelectedIndex >= 0 Then Exit Sub
+
+        Dim searchText As String = cmbGuest.Text.Trim()
+
+        cmbGuest.BeginUpdate()
+        cmbGuest.Items.Clear()
+
+        If searchText = "" Then
+            For Each g In allGuests
+                cmbGuest.Items.Add(g)
+            Next
+        Else
+            For Each g In allGuests
+                Dim fullName As String = g.FirstName & " " & g.Surname
+                If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
+                   g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
+                   fullName.ToLower().Contains(searchText.ToLower()) Then
+                    cmbGuest.Items.Add(g)
+                End If
+            Next
+        End If
+
+        cmbGuest.EndUpdate()
+        cmbGuest.SelectionStart = cmbGuest.Text.Length
+        cmbGuest.DroppedDown = True
+    End Sub
+
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
         If cmbRoom.SelectedItem Is Nothing Then Exit Sub
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
@@ -326,7 +372,7 @@ Public Class Reservation
 
     Private Sub dtpCheckOut_ValueChanged(sender As Object, e As EventArgs) Handles dtpCheckOut.ValueChanged
         CalculateNights()
-        LoadRooms() ' Reload rooms to ensure the checkout date doesn't cause an overlap
+        LoadRooms()
     End Sub
 
     Private Sub CalculateNights()
@@ -388,7 +434,6 @@ Public Class Reservation
         Dim net As Decimal = subtotal - discountAmount
         Dim total As Decimal = net + vatAmount
 
-        ' Store raw values globally to save them directly to the database
         rawSubtotal = subtotal
         rawDiscountAmount = discountAmount
         rawVatAmount = vatAmount
@@ -502,7 +547,6 @@ Public Class Reservation
                 Dim adults As Integer = Convert.ToInt32(numAdults.Value)
                 Dim children As Integer = Convert.ToInt32(numChildren.Value)
 
-                ' Use raw class-level decimals instead of parsing formatted textbox strings
                 Dim netAmount As Decimal = rawSubtotal - rawDiscountAmount
                 Dim extraAdults As Integer = Math.Max(0, adults - selectedRoom.StandardCapacity)
                 Dim extraPersonFee As Decimal = extraAdults * 800D * nights
@@ -534,7 +578,6 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
 
-                        ' Pass raw unformatted decimals directly to database parameters
                         cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
@@ -586,7 +629,6 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
 
-                        ' Pass raw unformatted decimals directly to update parameters
                         cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
@@ -673,7 +715,6 @@ Public Class Reservation
                                 txtValidIdNumber.Text = If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             End If
 
-                            ' Dates first, so the room list is loaded for these dates before the room is selected
                             dtpCheckIn.Value = Convert.ToDateTime(reader("check_in"))
                             dtpCheckOut.Value = Convert.ToDateTime(reader("check_out"))
                             Dim roomID As Integer = Convert.ToInt32(reader("room_id"))
@@ -711,35 +752,5 @@ Public Class Reservation
         Catch ex As Exception
             MessageBox.Show("Error loading reservation: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-        Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
-        isTyping = True ' <-- ADD THIS LINE
-
-        If cmbGuest.SelectedIndex >= 0 Then Exit Sub
-
-        Dim searchText As String = cmbGuest.Text.Trim()
-
-        cmbGuest.BeginUpdate()
-        cmbGuest.Items.Clear()
-
-        If searchText = "" Then
-            For Each g In allGuests
-                cmbGuest.Items.Add(g)
-            Next
-        Else
-            For Each g In allGuests
-                Dim fullName As String = g.FirstName & " " & g.Surname
-                If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
-                   g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
-                   fullName.ToLower().Contains(searchText.ToLower()) Then
-                    cmbGuest.Items.Add(g)
-                End If
-            Next
-        End If
-
-        cmbGuest.EndUpdate()
-        cmbGuest.SelectionStart = cmbGuest.Text.Length
-        cmbGuest.DroppedDown = True
     End Sub
 End Class
