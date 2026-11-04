@@ -252,7 +252,7 @@ Public Class ReservationListControl
                 End Using
 
                 Dim currentStatus As String = dgvReservations.SelectedRows(0).Cells("colStatus").Value.ToString()
-                If roomID <> 0 AndAlso currentStatus <> "Canceled" Then
+                If roomID <> 0 AndAlso currentStatus = "Check-In" Then
                     Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @roomID", conn)
                         freeCmd.Parameters.AddWithValue("@roomID", roomID)
                         freeCmd.ExecuteNonQuery()
