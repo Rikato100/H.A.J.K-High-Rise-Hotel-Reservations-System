@@ -29,7 +29,7 @@ Public Class GuestStayHistoryForm
                     "FROM reservation res " &
                     "INNER JOIN room r ON res.room_id = r.room_id " &
                     "INNER JOIN guest g ON res.guest_id = g.guest_id " &
-                    "WHERE res.guest_id = @guestID " &
+                    "WHERE res.guest_id = @guestID AND res.is_deleted = 0 " &
                     "ORDER BY res.check_in DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
