@@ -123,7 +123,7 @@ Public Class loginForm
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
                 
-                ' REMOVED the account_status filter. Now it gets ALL accounts (Active and Inactive)
+                ' Gets ALL accounts (Active and Inactive)
                 Dim query As String = "SELECT username FROM account WHERE is_deleted = 0 ORDER BY role, username"
                 
                 Using cmd As New MySqlCommand(query, conn)
