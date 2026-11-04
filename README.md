@@ -38,7 +38,7 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 - staff1332 / staffjd123
 - admin1786 / specialmention143
 
-## Team – H.A.J.K High Rise (BSCS 2B)
+## 🤝 Team – H.A.J.K High Rise (BSCS 2B)
 
 - **Project Manager / Documentation:** Ferolino, Abegail T.
 - **Lead Programmer:** Olaes, Hans Norman T.
