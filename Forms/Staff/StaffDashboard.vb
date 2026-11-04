@@ -58,9 +58,9 @@ Public Class StaffDashboard
         End If
     End Sub
 
-    Private Sub StaffDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' Only trigger this if they clicked the 'X' button
-        If e.CloseReason = CloseReason.UserClosing Then
+        Private Sub StaffDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' Only ask if they clicked 'X' AND they are not logging out
+        If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
                 "Are you sure you want to exit? Any unsaved changes will be lost.", 
                 "Confirm Exit", 
@@ -72,7 +72,10 @@ Public Class StaffDashboard
             Else
                 Application.Exit()
             End If
+        Else
+            ' If they ARE logging out, show the login form cleanly
+            Dim login As New loginForm()
+            login.Show()
         End If
-    End Sub  
-
+    End Sub
 End Class
