@@ -713,23 +713,21 @@ Public Class Reservation
         End Try
     End Sub
 
-    Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
-        ' If they are typing from the dropdown, ignore
+        Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        isTyping = True ' <-- ADD THIS LINE
+
         If cmbGuest.SelectedIndex >= 0 Then Exit Sub
 
         Dim searchText As String = cmbGuest.Text.Trim()
 
-        ' Temporarily stop drawing to prevent flickering
         cmbGuest.BeginUpdate()
         cmbGuest.Items.Clear()
 
         If searchText = "" Then
-            ' If empty, show all guests again
             For Each g In allGuests
                 cmbGuest.Items.Add(g)
             Next
         Else
-            ' Find guests whose first name OR last name matches the text
             For Each g In allGuests
                 Dim fullName As String = g.FirstName & " " & g.Surname
                 If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
@@ -741,8 +739,6 @@ Public Class Reservation
         End If
 
         cmbGuest.EndUpdate()
-
-        ' Keep the cursor at the end of the text and show the dropdown
         cmbGuest.SelectionStart = cmbGuest.Text.Length
         cmbGuest.DroppedDown = True
     End Sub
