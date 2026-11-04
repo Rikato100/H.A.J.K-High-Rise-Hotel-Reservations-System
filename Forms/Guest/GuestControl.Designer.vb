@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class GuestControl
     Inherits System.Windows.Forms.UserControl
 
@@ -35,7 +35,6 @@ Partial Class GuestControl
         colIDType = New DataGridViewTextBoxColumn()
         colIDNumber = New DataGridViewTextBoxColumn()
         colVisits = New DataGridViewTextBoxColumn()
-        btnBack = New Button()
         btnAdd = New Button()
         btnEdit = New Button()
         btnDelete = New Button()
@@ -156,16 +155,6 @@ Partial Class GuestControl
         colVisits.MinimumWidth = 6
         colVisits.Name = "colVisits"
         colVisits.ReadOnly = True
-        ' 
-        ' btnBack
-        ' 
-        btnBack.Location = New Point(24, 658)
-        btnBack.Margin = New Padding(4)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(116, 34)
-        btnBack.TabIndex = 1
-        btnBack.Text = "Back"
-        btnBack.UseVisualStyleBackColor = True
         ' 
         ' btnAdd
         ' 
@@ -307,7 +296,6 @@ Partial Class GuestControl
         Controls.Add(btnDelete)
         Controls.Add(btnEdit)
         Controls.Add(btnAdd)
-        Controls.Add(btnBack)
         Controls.Add(dgvGuests)
         Margin = New Padding(4)
         Name = "GuestControl"
@@ -329,7 +317,6 @@ Partial Class GuestControl
     Friend WithEvents colIDType As DataGridViewTextBoxColumn
     Friend WithEvents colIDNumber As DataGridViewTextBoxColumn
     Friend WithEvents colVisits As DataGridViewTextBoxColumn
-    Friend WithEvents btnBack As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnDelete As Button
