@@ -7,7 +7,7 @@ Public Class Reservation
     Private selectedGuestID As Integer = 0
 
     Private allGuests As New List(Of GuestComboItem)
-    
+
     Private isTyping As Boolean = False
 
     Private rawSubtotal As Decimal = 0D
@@ -106,7 +106,7 @@ Public Class Reservation
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
-        
+
         cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
 
         LoadStatuses()
@@ -214,9 +214,9 @@ Public Class Reservation
             selectedGuestID = 0
             Exit Sub
         End If
-        
+
         ' Reset the typing flag now that a selection is made
-        isTyping = False 
+        isTyping = False
 
         Dim guest As GuestComboItem = CType(cmbGuest.SelectedItem, GuestComboItem)
         selectedGuestID = guest.GuestID
@@ -349,14 +349,14 @@ Public Class Reservation
 
         ' Keep the cursor at the end of the text
         cmbGuest.SelectionStart = cmbGuest.Text.Length
-        
+
         ' Start the timer to open the dropdown safely
         tmrGuestDrop.Start()
     End Sub
 
     Private Sub tmrGuestDrop_Tick(sender As Object, e As EventArgs) Handles tmrGuestDrop.Tick
         tmrGuestDrop.Stop()
-        
+
         ' Open the dropdown and force the selection to be empty
         cmbGuest.DroppedDown = True
         cmbGuest.SelectedIndex = -1
