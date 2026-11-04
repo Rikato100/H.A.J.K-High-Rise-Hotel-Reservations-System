@@ -102,7 +102,9 @@ Public Class Reservation
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
-        cmbGuest.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
+        cmbGuest.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
 
         LoadStatuses()
         LoadPaymentMethods()
@@ -421,9 +423,6 @@ Public Class Reservation
         cmbDiscount.SelectedIndex = -1
         cmbPaymentMethod.SelectedIndex = 0
         txtReferenceNo.Clear()
-
-        ' If you add the txtDownpayment textbox, clear it here too:
-        ' txtDownpayment.Clear()
 
         dtpCheckIn.Value = DateTime.Today
         dtpCheckOut.Value = DateTime.Today.AddDays(1)
