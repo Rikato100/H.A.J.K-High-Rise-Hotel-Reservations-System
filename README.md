@@ -16,10 +16,11 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 3. Open `HajkHotel.slnx` in Visual Studio and press Start.
 
 ## How to Run (Without Visual Studio)
-If you do not have Visual Studio installed, you can run the compiled application directly:
-1. Ensure XAMPP is running and the database is imported (see step 2 above).
-2. Download the **`HajkHotel.exe`** file from this Google Drive link: **https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing**
-3. Double-click the `.exe` file to launch the application.
+If you do not have Visual Studio installed, you can still run the compiled application directly:
+1. **You still need XAMPP and phpMyAdmin running on your computer.** (See the disclaimer below).
+2. Ensure the `hajk` database is imported into phpMyAdmin.
+3. Download the **`HajkHotel.exe`** file from this Google Drive link: **[Insert Google Drive Link Here]**
+4. Double-click the `.exe` file to launch the application.
 
 ## Demo Accounts
 
@@ -52,4 +53,5 @@ If you do not have Visual Studio installed, you can run the compiled application
 
 - You **must** have **XAMPP** installed and running (specifically the Apache and MySQL modules).
 - You **must** import the **`schema.sql`** file (located in the **`DataAccess > Database`** folder) into **phpMyAdmin** before attempting to log in. 
-- If XAMPP is not running, or the database has not been imported, the application will open but will fail to log in or load any data.
+- If XAMPP is not running, or the database has not been imported, the application will open but will **fail to log in or load any data**. 
+- The standalone `.exe` file **does not contain the database**. It only contains the user interface. 
