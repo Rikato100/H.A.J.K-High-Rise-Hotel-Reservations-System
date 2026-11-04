@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2026 at 02:49 PM
+-- Generation Time: Nov 04, 2026 at 07:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,10 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `hajk`
 --
-
-DROP DATABASE IF EXISTS `hajk`;
-CREATE DATABASE `hajk` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `hajk`;
 
 -- --------------------------------------------------------
 
@@ -102,39 +98,40 @@ CREATE TABLE `guest` (
   `email` varchar(100) DEFAULT NULL,
   `valid_id_type` varchar(50) DEFAULT NULL,
   `valid_id_number` varchar(100) DEFAULT NULL,
-  `notes` text DEFAULT NULL
+  `notes` text DEFAULT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `guest`
 --
 
-INSERT INTO `guest` (`guest_id`, `surname`, `firstname`, `middlename`, `contact`, `email`, `valid_id_type`, `valid_id_number`, `notes`) VALUES
-(1, 'Olaes', 'Hans Norman', 'Tahad', '09602896489', 'hansolaes1019@gmail.com', 'Student ID', '306151019', 'VIP Guest'),
-(2, 'Galzote', 'Jd', 'Jalbuna', '09673490318', 'jdgalzote24@gmail.com', 'National ID', '2345678', 'VIP Guest'),
-(3, 'Dela Cruz', 'Jasper', 'Ergina', '09982746352', 'jasperdelacruz30@gmail.com', 'PWD ID', '425364543', 'VIP GUEST'),
-(4, 'Cortal', 'Kirk Patrick', 'Sigara', '09453629485', 'cortalpatrick783@gmail.com', 'Drivers License ID', '4635423', 'VIP GUEST'),
-(5, 'Ferolino', 'Abegail', 'Timogtimog', '09382940577', 'AbeFerolino9910@gmail.com', 'Philippine Passport ID', '78269867', 'VIP Guest'),
-(6, 'Santos', 'Maria Clara', 'Reyes', '09171234567', 'mariaclara.santos@gmail.com', 'National ID', '1234-5678-9012-3456', NULL),
-(7, 'Reyes', 'Juan Miguel', 'Dela Torre', '09285550142', 'juanmiguel.reyes@yahoo.com', 'Driver\'s License', 'N03-21-004512', 'VIP Guest'),
-(8, 'Garcia', 'Angelica', 'Mendoza', '09054418820', 'angelica.garcia@gmail.com', 'Passport', 'P1234567A', NULL),
-(9, 'Bautista', 'Ricardo', 'Villanueva', '09178899001', NULL, 'Senior Citizen ID', 'SC-2019-004871', 'Prefers 4th floor'),
-(10, 'Lopez', 'Katrina', 'Domingo', '09366012233', 'katrina.lopez@outlook.com', 'Student ID', '2021-00457', NULL),
-(11, 'Mercado', 'Eduardo', 'Santiago', '09219087765', 'eduardo.mercado@gmail.com', 'Voter\'s ID', '7421-0098-5532', NULL),
-(12, 'Aquino', 'Patricia', 'Navarro', '09993345510', 'patricia.aquino@gmail.com', 'PWD ID', 'PWD-0412-77781', 'Wheelchair accessible room needed'),
-(13, 'Cruz', 'Marco', 'Padilla', '09456671199', 'marco.cruz@gmail.com', 'Driver\'s License', 'D01-18-776203', NULL),
-(14, 'Ramos', 'Lorna', 'Castillo', '09128834402', NULL, 'Senior Citizen ID', 'SC-2017-120934', 'VIP Guest'),
-(15, 'Torres', 'Christian', 'Bernardo', '09271550936', 'christian.torres@yahoo.com', 'National ID', '5567-1234-8890-1122', NULL),
-(16, 'Flores', 'Sofia', 'Alcantara', '09187762251', 'sofia.flores@gmail.com', 'Passport', 'P7654321B', 'Allergic to feather pillows'),
-(17, 'Navarro', 'Benjamin', 'Soriano', '09064400378', 'ben.navarro@gmail.com', 'Other', 'BRGY-CLR-2026-0192', NULL),
-(18, 'Gonzales', 'Jasmine', 'Pascual', '09353321870', 'jasmine.gonzales@gmail.com', 'Student ID', '2022-01983', NULL),
-(19, 'Villanueva', 'Rolando', 'Magsaysay', '09172208843', NULL, 'Voter\'s ID', '3310-4471-0825', 'Frequent guest'),
-(20, 'Castro', 'Elena', 'Fernandez', '09228819075', 'elena.castro@outlook.com', 'Driver\'s License', 'N05-19-330847', NULL),
-(21, 'Salazar', 'Dennis', 'Ocampo', '09391457702', 'dennis.salazar@gmail.com', 'National ID', '9087-5521-3340-7766', NULL),
-(22, 'Dizon', 'Mary Grace', 'Lim', '09175503391', 'marygrace.dizon@gmail.com', 'Passport', 'P2468135C', 'VIP Guest'),
-(23, 'Pineda', 'Oscar', 'Tolentino', '09086617250', NULL, 'PWD ID', 'PWD-0788-12045', NULL),
-(24, 'Evangelista', 'Bianca', 'Roque', '09260932814', 'bianca.evangelista@yahoo.com', 'Student ID', '2020-03312', NULL),
-(25, 'Mangubat', 'Ferdinand', 'Abad', '09197745526', 'ferdinand.mangubat@gmail.com', 'Driver\'s License', 'N02-20-558193', 'Late check-in usually');
+INSERT INTO `guest` (`guest_id`, `surname`, `firstname`, `middlename`, `contact`, `email`, `valid_id_type`, `valid_id_number`, `notes`, `is_deleted`) VALUES
+(1, 'Olaes', 'Hans Norman', 'Tahad', '09602896489', 'hansolaes1019@gmail.com', 'Student ID', '306151019', 'VIP Guest', 0),
+(2, 'Galzote', 'Jd', 'Jalbuna', '09673490318', 'jdgalzote24@gmail.com', 'National ID', '2345678', 'VIP Guest', 0),
+(3, 'Dela Cruz', 'Jasper', 'Ergina', '09982746352', 'jasperdelacruz30@gmail.com', 'PWD ID', '425364543', 'VIP GUEST', 0),
+(4, 'Cortal', 'Kirk Patrick', 'Sigara', '09453629485', 'cortalpatrick783@gmail.com', 'Drivers License ID', '4635423', 'VIP GUEST', 0),
+(5, 'Ferolino', 'Abegail', 'Timogtimog', '09382940577', 'AbeFerolino9910@gmail.com', 'Philippine Passport ID', '78269867', 'VIP Guest', 0),
+(6, 'Santos', 'Maria Clara', 'Reyes', '09171234567', 'mariaclara.santos@gmail.com', 'National ID', '1234-5678-9012-3456', NULL, 0),
+(7, 'Reyes', 'Juan Miguel', 'Dela Torre', '09285550142', 'juanmiguel.reyes@yahoo.com', 'Driver\'s License', 'N03-21-004512', 'VIP Guest', 0),
+(8, 'Garcia', 'Angelica', 'Mendoza', '09054418820', 'angelica.garcia@gmail.com', 'Passport', 'P1234567A', NULL, 0),
+(9, 'Bautista', 'Ricardo', 'Villanueva', '09178899001', NULL, 'Senior Citizen ID', 'SC-2019-004871', 'Prefers 4th floor', 0),
+(10, 'Lopez', 'Katrina', 'Domingo', '09366012233', 'katrina.lopez@outlook.com', 'Student ID', '2021-00457', NULL, 0),
+(11, 'Mercado', 'Eduardo', 'Santiago', '09219087765', 'eduardo.mercado@gmail.com', 'Voter\'s ID', '7421-0098-5532', NULL, 0),
+(12, 'Aquino', 'Patricia', 'Navarro', '09993345510', 'patricia.aquino@gmail.com', 'PWD ID', 'PWD-0412-77781', 'Wheelchair accessible room needed', 0),
+(13, 'Cruz', 'Marco', 'Padilla', '09456671199', 'marco.cruz@gmail.com', 'Driver\'s License', 'D01-18-776203', NULL, 0),
+(14, 'Ramos', 'Lorna', 'Castillo', '09128834402', NULL, 'Senior Citizen ID', 'SC-2017-120934', 'VIP Guest', 0),
+(15, 'Torres', 'Christian', 'Bernardo', '09271550936', 'christian.torres@yahoo.com', 'National ID', '5567-1234-8890-1122', NULL, 0),
+(16, 'Flores', 'Sofia', 'Alcantara', '09187762251', 'sofia.flores@gmail.com', 'Passport', 'P7654321B', 'Allergic to feather pillows', 0),
+(17, 'Navarro', 'Benjamin', 'Soriano', '09064400378', 'ben.navarro@gmail.com', 'Other', 'BRGY-CLR-2026-0192', NULL, 0),
+(18, 'Gonzales', 'Jasmine', 'Pascual', '09353321870', 'jasmine.gonzales@gmail.com', 'Student ID', '2022-01983', NULL, 0),
+(19, 'Villanueva', 'Rolando', 'Magsaysay', '09172208843', NULL, 'Voter\'s ID', '3310-4471-0825', 'Frequent guest', 0),
+(20, 'Castro', 'Elena', 'Fernandez', '09228819075', 'elena.castro@outlook.com', 'Driver\'s License', 'N05-19-330847', NULL, 0),
+(21, 'Salazar', 'Dennis', 'Ocampo', '09391457702', 'dennis.salazar@gmail.com', 'National ID', '9087-5521-3340-7766', NULL, 0),
+(22, 'Dizon', 'Mary Grace', 'Lim', '09175503391', 'marygrace.dizon@gmail.com', 'Passport', 'P2468135C', 'VIP Guest', 0),
+(23, 'Pineda', 'Oscar', 'Tolentino', '09086617250', NULL, 'PWD ID', 'PWD-0788-12045', NULL, 0),
+(24, 'Evangelista', 'Bianca', 'Roque', '09260932814', 'bianca.evangelista@yahoo.com', 'Student ID', '2020-03312', NULL, 0),
+(25, 'Mangubat', 'Ferdinand', 'Abad', '09197745526', 'ferdinand.mangubat@gmail.com', 'Driver\'s License', 'N02-20-558193', 'Late check-in usually', 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +146,7 @@ CREATE TABLE `payment` (
   `payment_method` enum('Cash','GCash','Maya','PayPal','Card','Bank Transfer') NOT NULL,
   `reference_no` varchar(100) DEFAULT NULL,
   `payment_date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Dumping data for table `payment`
@@ -191,31 +188,32 @@ CREATE TABLE `reservation` (
   `net_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `vat_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+) ;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `created_by`, `res_code`, `res_status`, `check_in`, `check_out`, `num_nights`, `adults`, `children`, `base_rate`, `extra_adult_fee`, `extra_person`, `subtotal`, `discount_amount`, `net_amount`, `vat_amount`, `total_amount`, `created_at`) VALUES
-(1, 1, 1, 1, 1, '20261025-0001', 'Check-In', '2026-10-25', '2026-10-28', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37'),
-(2, 2, 2, 1, 2, '20261025-0002', 'Pending', '2026-11-01', '2026-11-03', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(3, 3, 3, 1, 1, '20261025-0003', 'Check-Out', '2026-10-20', '2026-10-22', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(4, 4, 5, 3, 2, '20261025-0004', 'Check-Out', '2026-12-01', '2026-12-05', 4, 2, 1, 3800.00, 800.00, 0.00, 15200.00, 2280.00, 12920.00, 1550.40, 14470.40, '2026-10-30 20:45:37'),
-(5, 5, 6, 2, 1, '20261025-0005', 'Check-In', '2026-10-24', '2026-10-26', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 1520.00, 6080.00, 0.00, 6080.00, '2026-10-30 20:45:37'),
-(6, 6, 9, 1, 2, '20261025-0006', 'Canceled', '2026-10-15', '2026-10-18', 3, 2, 0, 5500.00, 800.00, 0.00, 16500.00, 0.00, 16500.00, 1980.00, 18480.00, '2026-10-30 20:45:37'),
-(7, 7, 10, 1, 1, '20261025-0007', 'Pending', '2026-11-10', '2026-11-12', 2, 3, 0, 5500.00, 800.00, 1600.00, 12600.00, 0.00, 12600.00, 1512.00, 14112.00, '2026-10-30 20:45:37'),
-(8, 8, 11, 4, 2, '20261025-0008', 'Pending', '2026-12-20', '2026-12-27', 7, 2, 0, 7000.00, 800.00, 0.00, 49000.00, 4900.00, 44100.00, 5292.00, 49392.00, '2026-10-30 20:45:37'),
-(9, 9, 12, 1, 1, '20261025-0009', 'Check-In', '2026-10-25', '2026-10-30', 5, 4, 2, 7000.00, 800.00, 0.00, 35000.00, 0.00, 35000.00, 4200.00, 39200.00, '2026-10-30 20:45:37'),
-(10, 10, 1, 1, 2, '20261025-0010', 'No-Show', '2026-10-10', '2026-10-12', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(11, 11, 2, 1, 1, '20261025-0011', 'Pending', '2026-11-15', '2026-11-18', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37'),
-(12, 12, 3, 1, 2, '20261025-0012', 'Check-Out', '2026-10-21', '2026-10-23', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37'),
-(13, 13, 5, 1, 1, '20261025-0013', 'Check-In', '2026-12-10', '2026-12-12', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37'),
-(14, 14, 6, 1, 2, '20261025-0014', 'Check-In', '2026-10-26', '2026-10-28', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37'),
-(15, 15, 9, 1, 1, '20261025-0015', 'Check-In', '2026-11-20', '2026-11-22', 2, 2, 0, 5500.00, 800.00, 0.00, 11000.00, 0.00, 11000.00, 1320.00, 12320.00, '2026-10-30 20:45:37'),
-(16, 21, 6, 3, 4, '20261030-0001', 'Pending', '2026-10-30', '2026-10-31', 1, 2, 0, 3800.00, 800.00, 0.00, 3800.00, 570.00, 3230.00, 387.60, 3617.60, '2026-10-30 20:57:49'),
-(17, 19, 24, 2, 4, '20261030-0002', 'Check-In', '2026-10-30', '2026-10-31', 1, 2, 2, 3800.00, 800.00, 0.00, 3800.00, 760.00, 3040.00, 0.00, 3040.00, '2026-10-30 20:58:48');
+INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `created_by`, `res_code`, `res_status`, `check_in`, `check_out`, `num_nights`, `adults`, `children`, `base_rate`, `extra_adult_fee`, `extra_person`, `subtotal`, `discount_amount`, `net_amount`, `vat_amount`, `total_amount`, `created_at`, `is_deleted`) VALUES
+(1, 1, 1, 1, 1, '20261025-0001', 'Check-In', '2026-10-25', '2026-10-28', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37', 0),
+(2, 2, 2, 1, 2, '20261025-0002', 'Pending', '2026-11-01', '2026-11-03', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37', 0),
+(3, 3, 3, 1, 1, '20261025-0003', 'Check-Out', '2026-10-20', '2026-10-22', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37', 0),
+(4, 4, 5, 3, 2, '20261025-0004', 'Check-Out', '2026-12-01', '2026-12-05', 4, 2, 1, 3800.00, 800.00, 0.00, 15200.00, 2280.00, 12920.00, 1550.40, 14470.40, '2026-10-30 20:45:37', 0),
+(5, 5, 6, 2, 1, '20261025-0005', 'Check-In', '2026-10-24', '2026-10-26', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 1520.00, 6080.00, 0.00, 6080.00, '2026-10-30 20:45:37', 0),
+(6, 6, 9, 1, 2, '20261025-0006', 'Canceled', '2026-10-15', '2026-10-18', 3, 2, 0, 5500.00, 800.00, 0.00, 16500.00, 0.00, 16500.00, 1980.00, 18480.00, '2026-10-30 20:45:37', 0),
+(7, 7, 10, 1, 1, '20261025-0007', 'Pending', '2026-11-10', '2026-11-12', 2, 3, 0, 5500.00, 800.00, 1600.00, 12600.00, 0.00, 12600.00, 1512.00, 14112.00, '2026-10-30 20:45:37', 0),
+(8, 8, 11, 4, 2, '20261025-0008', 'Pending', '2026-12-20', '2026-12-27', 7, 2, 0, 7000.00, 800.00, 0.00, 49000.00, 4900.00, 44100.00, 5292.00, 49392.00, '2026-10-30 20:45:37', 0),
+(9, 9, 12, 1, 1, '20261025-0009', 'Check-In', '2026-10-25', '2026-10-30', 5, 4, 2, 7000.00, 800.00, 0.00, 35000.00, 0.00, 35000.00, 4200.00, 39200.00, '2026-10-30 20:45:37', 0),
+(10, 10, 1, 1, 2, '20261025-0010', 'No-Show', '2026-10-10', '2026-10-12', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37', 0),
+(11, 11, 2, 1, 1, '20261025-0011', 'Pending', '2026-11-15', '2026-11-18', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37', 0),
+(12, 12, 3, 1, 2, '20261025-0012', 'Check-Out', '2026-10-21', '2026-10-23', 2, 2, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37', 0),
+(13, 13, 5, 1, 1, '20261025-0013', 'Check-In', '2026-12-10', '2026-12-12', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37', 0),
+(14, 14, 6, 1, 2, '20261025-0014', 'Check-In', '2026-10-26', '2026-10-28', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 0.00, 7600.00, 912.00, 8512.00, '2026-10-30 20:45:37', 0),
+(15, 15, 9, 1, 1, '20261025-0015', 'Check-In', '2026-11-20', '2026-11-22', 2, 2, 0, 5500.00, 800.00, 0.00, 11000.00, 0.00, 11000.00, 1320.00, 12320.00, '2026-10-30 20:45:37', 0),
+(16, 21, 6, 3, 4, '20261030-0001', 'Pending', '2026-10-30', '2026-10-31', 1, 2, 0, 3800.00, 800.00, 0.00, 3800.00, 570.00, 3230.00, 387.60, 3617.60, '2026-10-30 20:57:49', 0),
+(17, 19, 24, 2, 4, '20261030-0002', 'Check-In', '2026-10-30', '2026-10-31', 1, 2, 2, 3800.00, 800.00, 0.00, 3800.00, 760.00, 3040.00, 0.00, 3040.00, '2026-10-30 20:58:48', 0);
 
 -- --------------------------------------------------------
 
@@ -390,13 +388,13 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -424,8 +422,7 @@ ALTER TABLE `discount`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `chk_payment_amount` CHECK (`amount` > 0);
+  ADD CONSTRAINT `fk_payment_reservation` FOREIGN KEY (`res_id`) REFERENCES `reservation` (`res_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reservation`
@@ -434,9 +431,7 @@ ALTER TABLE `reservation`
   ADD CONSTRAINT `fk_reservation_account` FOREIGN KEY (`created_by`) REFERENCES `account` (`account_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_reservation_discount` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`discount_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_reservation_guest` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`guest_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `chk_reservation_dates` CHECK (`check_out` > `check_in`),
-  ADD CONSTRAINT `chk_reservation_adults` CHECK (`adults` >= 1);
+  ADD CONSTRAINT `fk_reservation_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `room`
