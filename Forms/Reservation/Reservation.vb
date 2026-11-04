@@ -103,7 +103,8 @@ Public Class Reservation
         txtTotal.ReadOnly = True
 
         'Change it back to DropDown at runtime
-        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown 
+        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
+        cmbGuest.DrawMode = DrawMode.Normal
 
         cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
@@ -326,9 +327,6 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
-        ' If we are already processing a keystroke, ignore
-        If isTyping Then Exit Sub
-        
         isTyping = True
 
         Dim searchText As String = cmbGuest.Text.Trim()
@@ -353,22 +351,9 @@ Public Class Reservation
 
         cmbGuest.EndUpdate()
 
-        ' Keep the cursor at the end
+        ' Keep cursor at end
         cmbGuest.SelectionStart = cmbGuest.Text.Length
-        
-        ' Reset the flag
-        isTyping = False 
-        
-        ' Open the dropdown after filtering
-        tmrGuestDrop.Start()
-    End Sub
-
-    Private Sub tmrGuestDrop_Tick(sender As Object, e As EventArgs) Handles tmrGuestDrop.Tick
-        tmrGuestDrop.Stop()
-
-        ' Open the dropdown and force the selection to be empty
-        cmbGuest.DroppedDown = True
-        cmbGuest.SelectedIndex = -1
+        isTyping = False
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
@@ -376,6 +361,18 @@ Public Class Reservation
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
         txtRoomRate.Text = selectedRoom.BaseRate.ToString("N2")
         CalculateTotal()
+    End Sub
+
+    Private Sub cmbGuest_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbGuest.KeyPress
+        ' Suppress the key press so Windows doesn't auto-select the first item
+        If Char.IsLetter(e.KeyChar) OrElse Char.IsNumber(e.KeyChar) Then
+            e.Handled = True
+
+            ' Manually insert the character so the user still sees what they typed
+            cmbGuest.SelectedIndex = -1
+            cmbGuest.Text = cmbGuest.Text.Insert(cmbGuest.SelectionStart, e.KeyChar)
+            cmbGuest.SelectionStart = cmbGuest.Text.Length
+        End If
     End Sub
 
     Private Sub cmbDiscount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDiscount.SelectedIndexChanged
