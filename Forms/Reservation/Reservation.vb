@@ -322,7 +322,7 @@ Public Class Reservation
         isTyping = False
     End Sub
 
-    Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
         isTyping = True
 
         Dim searchText As String = cmbGuest.Text.Trim()
@@ -337,6 +337,7 @@ Public Class Reservation
         Else
             For Each g In allGuests
                 Dim fullName As String = g.FirstName & " " & g.Surname
+                ' This checks if the typed text is anywhere in the first name, surname, or full name
                 If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
                    g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
                    fullName.ToLower().Contains(searchText.ToLower()) Then
@@ -346,12 +347,14 @@ Public Class Reservation
         End If
 
         cmbGuest.EndUpdate()
-
-        ' This stops the textboxes from auto-filling early
+        
+        ' this is so that combobox doesn't fill the textboxes early.
         cmbGuest.SelectedIndex = -1 
         
         ' Keep the cursor at the end of the text
         cmbGuest.SelectionStart = cmbGuest.Text.Length
+        
+        ' Automatically open the dropdown so you can see the filtered results
         cmbGuest.DroppedDown = True
     End Sub
 
