@@ -116,4 +116,32 @@ Public Class loginForm
             End If
         End If
     End Sub
+
+        Private Sub LoadDemoAccounts()
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+                Dim query As String = "SELECT username FROM account WHERE account_status = 'Active' AND is_deleted = 0 ORDER BY username"
+                
+                Using cmd As New MySqlCommand(query, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        ' Clear any existing autocomplete sources
+                        txtUsername.AutoCompleteCustomSource.Clear()
+                        
+                        While reader.Read()
+                            ' Add the username to the TextBox's autocomplete list
+                            txtUsername.AutoCompleteCustomSource.Add(reader("username").ToString())
+                        End While
+                    End Using
+                End Using
+            End Using
+            
+            ' Turn on the autofill magic
+            txtUsername.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            txtUsername.AutoCompleteSource = AutoCompleteSource.CustomSource
+            
+        Catch ex As Exception
+            ' Silently fail if DB is not connected
+        End Try
+    End Sub
 End Class
