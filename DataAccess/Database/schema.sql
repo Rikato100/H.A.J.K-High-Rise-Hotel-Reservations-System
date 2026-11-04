@@ -55,7 +55,7 @@ INSERT INTO `account` (`account_id`, `username`, `password_hash`, `fullname`, `r
 (5, 'staff0839', '3dv5hrBIFCKp1c1s+vsfNEq5CEO3pca7N4S9FDdDH3A=', 'Kirk Patrick Cortal', 'Staff', 'Inactive', '2026-10-25 15:41:11', '2026-10-30 15:12:08', 0),
 (6, 'admin1268', 'bAtGcUhNLhZLCA1lqtAo09EtU3TXSRbgnmgIt8oqVDI=', 'Abegail Ferolino', 'Admin', 'Inactive', '2026-10-30 15:09:42', '2026-10-30 15:12:20', 0),
 (7, 'staff1332', 'VQT7EW/zjFyStYks34v9NkcWCiy6RvZWkjibdXYdcK0=', 'John Dave Galzote', 'Staff', 'Inactive', '2026-10-30 22:09:16', '2026-10-30 22:10:22', 0),
-(8, 'staff1786', 'LVNNOSkcAftNnGdoNTRrQDmujpC7XcAxHJ4OAkPkjvQ=', 'Yonix Chloe Rubio', 'Admin', 'Inactive', '2026-10-30 22:59:31', '2026-10-30 23:06:22', 0);
+(8, 'admin1786', 'nY4jnHttEos2whitvEGxDTARnlcPkOfZKy8N8SHFJRg=', 'Yonix Chloe Rubio', 'Admin', 'Inactive', '2026-10-30 22:59:31', '2026-10-30 23:06:22', 0);
 
 -- --------------------------------------------------------
 
