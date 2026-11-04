@@ -108,7 +108,6 @@ Public Class Reservation
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
         
         cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
-        cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
 
         LoadStatuses()
         LoadPaymentMethods()
@@ -326,8 +325,6 @@ Public Class Reservation
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
         isTyping = True
 
-        If cmbGuest.SelectedIndex >= 0 Then Exit Sub
-
         Dim searchText As String = cmbGuest.Text.Trim()
 
         cmbGuest.BeginUpdate()
@@ -349,6 +346,11 @@ Public Class Reservation
         End If
 
         cmbGuest.EndUpdate()
+
+        ' This stops the textboxes from auto-filling early
+        cmbGuest.SelectedIndex = -1 
+        
+        ' Keep the cursor at the end of the text
         cmbGuest.SelectionStart = cmbGuest.Text.Length
         cmbGuest.DroppedDown = True
     End Sub
