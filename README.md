@@ -67,6 +67,6 @@ If Visual Studio throws errors saying the files are in a restricted zone or bloc
 
    ```powershell
    Get-ChildItem -Path "(Folder Path)" -Recurse | Unblock-File
-- (To get the folder path, open the project folder in File Explorer, click the address bar at the top, and copy the path).
+- (To get the path: open the project folder in File Explorer, click the address bar, and copy the path).
 
 4. Rebuild the solution in Visual Studio.
