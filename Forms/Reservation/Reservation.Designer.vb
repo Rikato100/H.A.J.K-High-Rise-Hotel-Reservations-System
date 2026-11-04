@@ -22,6 +22,7 @@ Partial Class Reservation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         grpGuest = New GroupBox()
         Label1 = New Label()
         cmbGuest = New ComboBox()
@@ -78,6 +79,7 @@ Partial Class Reservation
         btnCancel = New Button()
         lblTitle = New Label()
         FlowLayoutPanel1 = New FlowLayoutPanel()
+        tmrGuestDrop = New Timer(components)
         grpGuest.SuspendLayout()
         grpGeneral.SuspendLayout()
         CType(numAdults, ComponentModel.ISupportInitialize).BeginInit()
@@ -125,8 +127,6 @@ Partial Class Reservation
         ' 
         ' cmbGuest
         ' 
-        cmbGuest.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
         cmbGuest.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbGuest.FormattingEnabled = True
         cmbGuest.Location = New Point(18, 60)
@@ -705,9 +705,13 @@ Partial Class Reservation
         FlowLayoutPanel1.Size = New Size(1045, 50)
         FlowLayoutPanel1.TabIndex = 8
         ' 
+        ' tmrGuestDrop
+        ' 
+        tmrGuestDrop.Interval = 1
+        ' 
         ' Reservation
         ' 
-        AutoScaleDimensions = New SizeF(9F, 21F)
+        AutoScaleDimensions = New SizeF(9.0F, 21.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1014, 500)
@@ -792,4 +796,5 @@ Partial Class Reservation
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label1 As Label
     Friend WithEvents cmbGuest As ComboBox
+    Friend WithEvents tmrGuestDrop As Timer
 End Class
