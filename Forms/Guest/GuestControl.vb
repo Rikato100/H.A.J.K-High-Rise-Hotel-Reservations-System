@@ -49,10 +49,6 @@ Public Class GuestControl
         End Try
     End Sub
 
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        SessionHelper.GoToDashboard()
-    End Sub
-
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim addGuest As New AddGuestForm()
         If addGuest.ShowDialog() = DialogResult.OK Then
