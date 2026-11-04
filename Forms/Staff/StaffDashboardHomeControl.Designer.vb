@@ -63,7 +63,7 @@ Partial Class StaffDashboardHomeControl
         LabelWelcome.AutoSize = True
         LabelWelcome.Font = New Font("Mongolian Baiti", 18.0F, FontStyle.Bold)
         LabelWelcome.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        LabelWelcome.Location = New Point(18, 11)
+        LabelWelcome.Location = New Point(27, 11)
         LabelWelcome.Name = "LabelWelcome"
         LabelWelcome.Size = New Size(270, 25)
         LabelWelcome.TabIndex = 0
@@ -74,7 +74,7 @@ Partial Class StaffDashboardHomeControl
         lblSubtitle.AutoSize = True
         lblSubtitle.Font = New Font("Segoe UI", 9.5F)
         lblSubtitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
-        lblSubtitle.Location = New Point(19, 38)
+        lblSubtitle.Location = New Point(29, 38)
         lblSubtitle.Name = "lblSubtitle"
         lblSubtitle.Size = New Size(365, 17)
         lblSubtitle.TabIndex = 1
