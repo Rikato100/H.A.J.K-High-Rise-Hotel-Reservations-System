@@ -35,7 +35,7 @@ Public Class ReservationListControl
                     "FROM reservation r " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
                     "INNER JOIN room rm ON r.room_id = rm.room_id " &
-                    "WHERE (@status = 'All' OR r.res_status = @status) " &
+                    "WHERE r.is_deleted = 0 AND (@status = 'All' OR r.res_status = @status) " &
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
@@ -103,10 +103,10 @@ Public Class ReservationListControl
                     "FROM reservation r " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
                     "INNER JOIN room rm ON r.room_id = rm.room_id " &
-                    "WHERE r.res_code LIKE @search " &
+                    "WHERE r.is_deleted = 0 AND (r.res_code LIKE @search " &
                     "OR g.surname LIKE @search " &
                     "OR g.firstname LIKE @search " &
-                    "OR rm.room_number LIKE @search " &
+                    "OR rm.room_number LIKE @search) " &
                     "ORDER BY r.res_id DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
@@ -230,7 +230,7 @@ Public Class ReservationListControl
         Dim resCode As String = dgvReservations.SelectedRows(0).Cells("colResCode").Value.ToString()
 
         Dim answer As DialogResult = MessageBox.Show(
-            "Are you sure you want to permanently delete reservation " & resCode & "?",
+            "Are you sure you want to delete reservation " & resCode & "?",
             "Delete Reservation",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning
@@ -259,7 +259,7 @@ Public Class ReservationListControl
                     End Using
                 End If
 
-                Dim query As String = "DELETE FROM reservation WHERE res_id = @resID"
+                Dim query As String = "UPDATE reservation SET is_deleted = 1 WHERE res_id = @resID"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@resID", resID)
                     cmd.ExecuteNonQuery()
