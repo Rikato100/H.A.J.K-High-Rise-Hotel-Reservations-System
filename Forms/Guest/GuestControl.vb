@@ -142,7 +142,7 @@ Public Class GuestControl
                 Dim query As String =
                         "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
                         "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
-                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
+                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id AND r.is_deleted = 0) AS total_visits " &
                         "FROM guest g " &
                         "WHERE g.is_deleted = 0 AND (g.surname LIKE @search " &
                         "OR g.firstname LIKE @search " &
