@@ -19,7 +19,7 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 If you do not have Visual Studio installed, you can still run the compiled application directly:
 1. **You still need XAMPP and phpMyAdmin running on your computer.** (See the disclaimer below).
 2. Ensure the `hajk` database is imported into phpMyAdmin.
-3. Download the **`HajkHotel.exe`** file from this Google Drive link: **[Insert Google Drive Link Here]**
+3. Download the **`HajkHotel.exe`** file from this Google Drive link: **https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing**
 4. Double-click the `.exe` file to launch the application.
 
 ## Demo Accounts
