@@ -102,6 +102,9 @@ Public Class Reservation
         txtVAT.ReadOnly = True
         txtTotal.ReadOnly = True
 
+        'Change it back to DropDown at runtime
+        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown 
+
         cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
@@ -323,6 +326,9 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        ' If we are already processing a keystroke, ignore
+        If isTyping Then Exit Sub
+        
         isTyping = True
 
         Dim searchText As String = cmbGuest.Text.Trim()
@@ -347,10 +353,13 @@ Public Class Reservation
 
         cmbGuest.EndUpdate()
 
-        ' Keep the cursor at the end of the text
+        ' Keep the cursor at the end
         cmbGuest.SelectionStart = cmbGuest.Text.Length
-
-        ' Start the timer to open the dropdown safely
+        
+        ' Reset the flag
+        isTyping = False 
+        
+        ' Open the dropdown after filtering
         tmrGuestDrop.Start()
     End Sub
 
