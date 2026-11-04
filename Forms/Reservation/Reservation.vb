@@ -7,7 +7,7 @@ Public Class Reservation
     Private selectedGuestID As Integer = 0
 
     Private allGuests As New List(Of GuestComboItem)
-    
+
     Private isTyping As Boolean = False
 
     Private rawSubtotal As Decimal = 0D
@@ -102,13 +102,16 @@ Public Class Reservation
         txtVAT.ReadOnly = True
         txtTotal.ReadOnly = True
 
+        'Change it back to DropDown at runtime
+        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
+        cmbGuest.DrawMode = DrawMode.Normal
+
         cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList
         cmbRoom.DropDownStyle = ComboBoxStyle.DropDownList
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
-        
+
         cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
-        cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
 
         LoadStatuses()
         LoadPaymentMethods()
@@ -215,9 +218,9 @@ Public Class Reservation
             selectedGuestID = 0
             Exit Sub
         End If
-        
+
         ' Reset the typing flag now that a selection is made
-        isTyping = False 
+        isTyping = False
 
         Dim guest As GuestComboItem = CType(cmbGuest.SelectedItem, GuestComboItem)
         selectedGuestID = guest.GuestID
@@ -326,8 +329,6 @@ Public Class Reservation
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
         isTyping = True
 
-        If cmbGuest.SelectedIndex >= 0 Then Exit Sub
-
         Dim searchText As String = cmbGuest.Text.Trim()
 
         cmbGuest.BeginUpdate()
@@ -349,8 +350,10 @@ Public Class Reservation
         End If
 
         cmbGuest.EndUpdate()
+
+        ' Keep cursor at end
         cmbGuest.SelectionStart = cmbGuest.Text.Length
-        cmbGuest.DroppedDown = True
+        isTyping = False
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
@@ -358,6 +361,18 @@ Public Class Reservation
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
         txtRoomRate.Text = selectedRoom.BaseRate.ToString("N2")
         CalculateTotal()
+    End Sub
+
+    Private Sub cmbGuest_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbGuest.KeyPress
+        ' Suppress the key press so Windows doesn't auto-select the first item
+        If Char.IsLetter(e.KeyChar) OrElse Char.IsNumber(e.KeyChar) Then
+            e.Handled = True
+
+            ' Manually insert the character so the user still sees what they typed
+            cmbGuest.SelectedIndex = -1
+            cmbGuest.Text = cmbGuest.Text.Insert(cmbGuest.SelectionStart, e.KeyChar)
+            cmbGuest.SelectionStart = cmbGuest.Text.Length
+        End If
     End Sub
 
     Private Sub cmbDiscount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDiscount.SelectedIndexChanged

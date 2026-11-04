@@ -22,6 +22,7 @@ Partial Class Reservation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         grpGuest = New GroupBox()
         Label1 = New Label()
         cmbGuest = New ComboBox()
@@ -125,8 +126,6 @@ Partial Class Reservation
         ' 
         ' cmbGuest
         ' 
-        cmbGuest.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
         cmbGuest.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cmbGuest.FormattingEnabled = True
         cmbGuest.Location = New Point(18, 60)
@@ -707,7 +706,7 @@ Partial Class Reservation
         ' 
         ' Reservation
         ' 
-        AutoScaleDimensions = New SizeF(9F, 21F)
+        AutoScaleDimensions = New SizeF(9.0F, 21.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         ClientSize = New Size(1014, 500)
