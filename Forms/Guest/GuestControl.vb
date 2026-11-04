@@ -18,8 +18,9 @@ Public Class GuestControl
                 Dim query As String =
                         "SELECT g.guest_id, g.surname, g.firstname, g.middlename, " &
                         "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
-                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
+                        "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id AND r.is_deleted = 0) AS total_visits " &
                         "FROM guest g " &
+                        "WHERE g.is_deleted = 0 " &
                         "ORDER BY g.surname, g.firstname"
 
                 Using cmd As New MySqlCommand(query, conn)
@@ -91,13 +92,22 @@ Public Class GuestControl
 
         Try
             Using conn = DbConnection.GetConnection
-                conn.Open()
-                Dim query = "DELETE FROM guest WHERE guest_id = @guestID"
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@guestID", guestID)
-                    cmd.ExecuteNonQuery()
+            conn.Open()
+
+                Using chk As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE guest_id = @guestID AND is_deleted = 0 AND res_status IN ('Pending','Check-In')", conn)
+                    chk.Parameters.AddWithValue("@guestID", guestID)
+                    If Convert.ToInt32(chk.ExecuteScalar()) > 0 Then
+                        MessageBox.Show("This guest still has an active reservation and cannot be deleted.", "Cannot Delete Guest", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Exit Sub
+                    End If
                 End Using
             End Using
+
+    Using cmd As New MySqlCommand("UPDATE guest SET is_deleted = 1 WHERE guest_id = @guestID", conn)
+        cmd.Parameters.AddWithValue("@guestID", guestID)
+        cmd.ExecuteNonQuery()
+    End Using
+End Using
 
             MessageBox.Show("Guest deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadGuests()
@@ -135,12 +145,12 @@ Public Class GuestControl
                         "g.contact, g.email, g.valid_id_type, g.valid_id_number, " &
                         "(SELECT COUNT(*) FROM reservation r WHERE r.guest_id = g.guest_id) AS total_visits " &
                         "FROM guest g " &
-                        "WHERE g.surname LIKE @search " &
+                        "WHERE g.is_deleted = 0 AND (g.surname LIKE @search " &
                         "OR g.firstname LIKE @search " &
                         "OR g.middlename LIKE @search " &
                         "OR g.contact LIKE @search " &
                         "OR g.email LIKE @search " &
-                        "OR g.valid_id_number LIKE @search " &
+                        "OR g.valid_id_number LIKE @search) " &
                         "ORDER BY g.surname, g.firstname"
 
                 Using cmd As New MySqlCommand(query, conn)
