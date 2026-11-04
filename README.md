@@ -10,10 +10,16 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 - Reports with CSV and PDF export
 - Settings: discounts, change password, system reset (Admin only)
 
-## How to Run
+## How to Run (Using Visual Studio)
 1. Start MySQL in XAMPP.
 2. In phpMyAdmin, import the **`schema.sql`** file located in the **`DataAccess > Database`** folder. This creates the `hajk` database.
 3. Open `HajkHotel.slnx` in Visual Studio and press Start.
+
+## How to Run (Without Visual Studio)
+If you do not have Visual Studio installed, you can run the compiled application directly:
+1. Ensure XAMPP is running and the database is imported (see step 2 above).
+2. Download the **`HajkHotel.exe`** file from this Google Drive link: **(https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing)**
+3. Double-click the `.exe` file to launch the application.
 
 ## Demo Accounts
 
