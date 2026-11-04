@@ -2,6 +2,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class StaffDashboardHomeControl
 
+    
     Private Sub StaffDashboardHomeControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize and Start the Live Date & Time Timer
         tmrDashboard.Interval = 1000
@@ -28,17 +29,17 @@ Public Class StaffDashboardHomeControl
                 End Using
 
                 ' Arriving today (Pending)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_in = CURDATE() AND res_status = 'Pending'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_in = CURDATE() AND res_status = 'Pending' AND is_deleted = 0", conn)
                     lblArrivingToday.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
                 ' Departing today (checked in, leaving today)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_out = CURDATE() AND res_status = 'Check-In'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE check_out = CURDATE() AND res_status = 'Check-In' AND is_deleted = 0", conn)
                     lblDepartingToday.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
                 ' In-house (currently checked in)
-                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_status = 'Check-In'", conn)
+                Using cmd As New MySqlCommand("SELECT COUNT(*) FROM reservation WHERE res_status = 'Check-In' AND is_deleted = 0", conn)
                     lblInHouse.Text = cmd.ExecuteScalar().ToString()
                 End Using
 
