@@ -1,7 +1,7 @@
 # H.A.J.K High Rise Hotel Reservation System
 
 A desktop application for managing hotel rooms, guests, reservations and payments.
-Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
+Built with VB.NET (Windows Forms) and MySQL for the partial requirement for the subject "Software Development Fundamentals 104 – Object-Oriented Programming" for section BSCS 2B.
 
 ## Features
 - Admin and Staff login with different access
@@ -18,9 +18,9 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 ## How to Run (Without Visual Studio)
 If you do not have Visual Studio installed, you can still run the compiled application directly:
 1. **You still need XAMPP and phpMyAdmin running on your computer.** (See the disclaimer below).
-2. Ensure the `hajk` database is imported into phpMyAdmin.
-3. Download the **`HajkHotel.exe`** file from this Google Drive link: **https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing**
-4. Double-click the `.exe` file to launch the application.
+2. Download the **XAMPP Installer** and the **`HajkHotel.exe`** file from this Google Drive link: **[https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing]**
+3. Install XAMPP, start the MySQL module, and import the provided `schema.sql` into phpMyAdmin.
+4. Double-click the **`HajkHotel.exe`** file to launch the application.
 
 ## Demo Accounts
 
@@ -54,4 +54,4 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 - You **must** have **XAMPP** installed and running (specifically the Apache and MySQL modules).
 - You **must** import the **`schema.sql`** file (located in the **`DataAccess > Database`** folder) into **phpMyAdmin** before attempting to log in. 
 - If XAMPP is not running, or the database has not been imported, the application will open but will **fail to log in or load any data**. 
-- The standalone `.exe` file **does not contain the database**. It only contains the user interface. 
+- The standalone `.exe` file **does not contain the database**. It only contains the user interface.
