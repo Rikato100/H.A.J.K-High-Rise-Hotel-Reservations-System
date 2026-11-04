@@ -58,7 +58,7 @@ Public Class StaffDashboard
         SessionHelper.Logout() ' This opens the login form and closes the current form
     End Sub
 
-            Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+            Private Sub StaffDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ' If the user clicked the 'X' button (and not the Logout button)
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
