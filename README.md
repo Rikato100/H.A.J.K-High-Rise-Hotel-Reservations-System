@@ -64,7 +64,9 @@ If Visual Studio throws errors saying the files are in a restricted zone or bloc
 1. Click the Windows Start button, search for **PowerShell**.
 2. Right-click on **Windows PowerShell** and select **Run as Administrator**.
 3. Copy and paste the following command, replacing `"Folder Path"` with the actual path to your project folder, and press Enter:
+
    ```powershell
    Get-ChildItem -Path "Folder Path" -Recurse | Unblock-File
 (To easily get the folder path, open the project folder in File Explorer, click the address bar at the top, and copy the path).
+
 4. Rebuild the solution in Visual Studio.
