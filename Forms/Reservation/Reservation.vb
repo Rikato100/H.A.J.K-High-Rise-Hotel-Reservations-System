@@ -211,16 +211,13 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbGuest.SelectedIndexChanged
-        ' If the user is still typing, do not auto-fill the textboxes yet
+        ' Do nothing while the user is still typing
         If isTyping Then Exit Sub
 
         If cmbGuest.SelectedItem Is Nothing Then
             selectedGuestID = 0
             Exit Sub
         End If
-
-        ' Reset the typing flag now that a selection is made
-        isTyping = False
 
         Dim guest As GuestComboItem = CType(cmbGuest.SelectedItem, GuestComboItem)
         selectedGuestID = guest.GuestID
@@ -327,23 +324,25 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
-        isTyping = True
+        Dim typedText As String = cmbGuest.Text
+        Dim cursorPos As Integer = cmbGuest.SelectionStart
 
-        Dim searchText As String = cmbGuest.Text.Trim()
+        isTyping = True   ' Keep this true while filtering
 
         cmbGuest.BeginUpdate()
         cmbGuest.Items.Clear()
 
-        If searchText = "" Then
+        Dim search As String = typedText.Trim().ToLower()
+
+        If search = "" Then
             For Each g In allGuests
                 cmbGuest.Items.Add(g)
             Next
         Else
             For Each g In allGuests
-                Dim fullName As String = g.FirstName & " " & g.Surname
-                If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
-                   g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
-                   fullName.ToLower().Contains(searchText.ToLower()) Then
+                If g.ToString().ToLower().Contains(search) OrElse
+               g.FirstName.ToLower().Contains(search) OrElse
+               g.Surname.ToLower().Contains(search) Then
                     cmbGuest.Items.Add(g)
                 End If
             Next
@@ -351,9 +350,20 @@ Public Class Reservation
 
         cmbGuest.EndUpdate()
 
-        ' Keep cursor at end
-        cmbGuest.SelectionStart = cmbGuest.Text.Length
-        isTyping = False
+        ' Force the text to stay exactly what the user typed
+        cmbGuest.Text = typedText
+        cmbGuest.SelectionStart = cursorPos
+        cmbGuest.SelectionLength = 0
+
+        If typedText.Length > 0 AndAlso cmbGuest.Items.Count > 0 Then
+            cmbGuest.DroppedDown = True
+            Cursor.Current = Cursors.Default
+
+            ' Very important: force no selection after dropdown opens
+            cmbGuest.SelectedIndex = -1
+            cmbGuest.Text = typedText
+            cmbGuest.SelectionStart = typedText.Length
+        End If
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
@@ -364,15 +374,8 @@ Public Class Reservation
     End Sub
 
     Private Sub cmbGuest_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbGuest.KeyPress
-        ' Suppress the key press so Windows doesn't auto-select the first item
-        If Char.IsLetter(e.KeyChar) OrElse Char.IsNumber(e.KeyChar) Then
-            e.Handled = True
-
-            ' Manually insert the character so the user still sees what they typed
-            cmbGuest.SelectedIndex = -1
-            cmbGuest.Text = cmbGuest.Text.Insert(cmbGuest.SelectionStart, e.KeyChar)
-            cmbGuest.SelectionStart = cmbGuest.Text.Length
-        End If
+        ' Optional: only needed if you still get unwanted auto-selection
+        If Char.IsControl(e.KeyChar) Then Return ' allow Backspace, Delete, etc.
     End Sub
 
     Private Sub cmbDiscount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDiscount.SelectedIndexChanged
