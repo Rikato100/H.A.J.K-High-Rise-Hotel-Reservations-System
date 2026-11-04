@@ -6,6 +6,8 @@ Public Class Reservation
     Private reservationID As Integer = 0
     Private selectedGuestID As Integer = 0
 
+    Private allGuests As New List(Of GuestComboItem)
+
     Private rawSubtotal As Decimal = 0D
     Private rawDiscountAmount As Decimal = 0D
     Private rawVatAmount As Decimal = 0D
@@ -103,7 +105,6 @@ Public Class Reservation
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
         cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
-        cmbGuest.AutoCompleteMode = AutoCompleteMode.SuggestAppend
         cmbGuest.AutoCompleteSource = AutoCompleteSource.ListItems
 
         LoadStatuses()
@@ -179,6 +180,7 @@ Public Class Reservation
                 Dim query As String = "SELECT guest_id, firstname, middlename, surname, contact, email, valid_id_type, valid_id_number FROM guest WHERE is_deleted = 0 ORDER BY surname, firstname"
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        allGuests.Clear()
                         cmbGuest.Items.Clear()
                         While reader.Read()
                             Dim guest As New GuestComboItem(
@@ -191,7 +193,8 @@ Public Class Reservation
                                 If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString()),
                                 If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString())
                             )
-                            cmbGuest.Items.Add(guest)
+                            allGuests.Add(guest) ' Save to the master list
+                            cmbGuest.Items.Add(guest) ' Add to the combobox
                         End While
                     End Using
                 End Using
@@ -708,5 +711,39 @@ Public Class Reservation
         Catch ex As Exception
             MessageBox.Show("Error loading reservation: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        ' If they are typing from the dropdown, ignore
+        If cmbGuest.SelectedIndex >= 0 Then Exit Sub
+
+        Dim searchText As String = cmbGuest.Text.Trim()
+
+        ' Temporarily stop drawing to prevent flickering
+        cmbGuest.BeginUpdate()
+        cmbGuest.Items.Clear()
+
+        If searchText = "" Then
+            ' If empty, show all guests again
+            For Each g In allGuests
+                cmbGuest.Items.Add(g)
+            Next
+        Else
+            ' Find guests whose first name OR last name matches the text
+            For Each g In allGuests
+                Dim fullName As String = g.FirstName & " " & g.Surname
+                If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
+                   g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
+                   fullName.ToLower().Contains(searchText.ToLower()) Then
+                    cmbGuest.Items.Add(g)
+                End If
+            Next
+        End If
+
+        cmbGuest.EndUpdate()
+
+        ' Keep the cursor at the end of the text and show the dropdown
+        cmbGuest.SelectionStart = cmbGuest.Text.Length
+        cmbGuest.DroppedDown = True
     End Sub
 End Class
