@@ -122,7 +122,9 @@ Public Class loginForm
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                Dim query As String = "SELECT username FROM account WHERE account_status = 'Active' AND is_deleted = 0 ORDER BY username"
+                
+                ' REMOVED the account_status filter. Now it gets ALL accounts (Active and Inactive)
+                Dim query As String = "SELECT username FROM account WHERE is_deleted = 0 ORDER BY role, username"
                 
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
