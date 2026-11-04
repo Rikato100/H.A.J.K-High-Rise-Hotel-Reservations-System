@@ -3,6 +3,8 @@ Imports MySql.Data.MySqlClient
 
 Public Class AdminDashboard
 
+    Private isLoggingOut As Boolean = False
+
     Private Sub AdminDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadView(New DashboardHomeControl())
         ' Checks if Current User is Admin
