@@ -36,6 +36,7 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 - staff0839 / staffkirk123
 - admin1268 / adminabe123
 - staff1332 / staffjd123
+- admin1786 / specialmention143
 
 ## Team – H.A.J.K High Rise (BSCS 2B)
 
