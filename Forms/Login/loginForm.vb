@@ -118,7 +118,7 @@ Public Class loginForm
         End If
     End Sub
 
-        Private Sub LoadAccounts()
+    Private Sub LoadAccounts()
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
