@@ -39,10 +39,8 @@ Public Class AdminDashboard
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            SessionHelper.Logout()
-        End If
+        isLoggingOut = True ' Tell the form we are intentionally logging out
+        SessionHelper.Logout()
     End Sub
 
     ' Navigation: Switch content cleanly inside pnlContent instead of opening a separate popup window
@@ -71,7 +69,7 @@ Public Class AdminDashboard
         Me.Text = "Settings - Logged in as: " & CurrentUser.Username
     End Sub
 
-            Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ' Only ask if they clicked 'X' AND they are not logging out
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
