@@ -174,7 +174,7 @@ Public Class Reservation
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                Dim query As String = "SELECT guest_id, firstname, middlename, surname, contact, email, valid_id_type, valid_id_number FROM guest ORDER BY surname, firstname"
+                Dim query As String = "SELECT guest_id, firstname, middlename, surname, contact, email, valid_id_type, valid_id_number FROM guest WHERE is_deleted = 0 ORDER BY surname, firstname"
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbGuest.Items.Clear()
