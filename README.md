@@ -16,14 +16,21 @@ Built with VB.NET (Windows Forms) and MySQL for SDF 104 – OOP, BSCS 2B.
 3. Open HajkHotel.slnx in Visual Studio and press Start.
 
 ## Demo Accounts
+
 Admin: admin0001 / admin123
+
 Admin: admin3104 / adminhans123
+
 Staff: staff0001 / staff123
+
 Staff: staff1003 / staffjasper123
 
 Deactivated accounts (for testing the deactivated login message):
+
 staff0839 / staffkirk123
+
 admin1268 / adminabe123
+
 staff1332 / staffjd123
 
 ## Team – H.A.J.K High Rise (BSCS 2B)
