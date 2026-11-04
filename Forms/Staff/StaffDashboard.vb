@@ -2,6 +2,8 @@ Imports System.Data.SqlTypes
 
 Public Class StaffDashboard
 
+    Private isLoggingOut As Boolean = False
+
     Private Sub StaffDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Check if current user is Staff/Receptionist or Admin
         If CurrentUser.Role <> "Staff" AndAlso CurrentUser.Role <> "Admin" Then
@@ -54,7 +56,8 @@ Public Class StaffDashboard
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
-            SessionHelper.Logout()
+            isLoggingOut = True ' Set the flag to true
+            Me.Close() ' Close the dashboard
         End If
     End Sub
 
