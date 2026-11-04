@@ -232,6 +232,7 @@ Public Class Reservation
                     "AND r.room_id NOT IN (" &
                     "    SELECT room_id FROM reservation " &
                     "    WHERE res_status IN ('Pending', 'Check-In') " &
+                    "    AND is_deleted = 0 " &
                     "    AND res_id <> @resID " &
                     "    AND (@newCheckIn < check_out AND @newCheckOut > check_in)" &
                     ") " &
