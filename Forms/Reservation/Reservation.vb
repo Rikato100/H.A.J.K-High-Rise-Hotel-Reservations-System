@@ -322,11 +322,13 @@ Public Class Reservation
         isTyping = False
     End Sub
 
-        Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+    Private Sub cmbGuest_TextUpdate(sender As Object, e As EventArgs) Handles cmbGuest.TextUpdate
+        ' If the user is typing, set the flag
         isTyping = True
 
         Dim searchText As String = cmbGuest.Text.Trim()
 
+        ' Temporarily stop drawing to prevent flickering
         cmbGuest.BeginUpdate()
         cmbGuest.Items.Clear()
 
@@ -337,7 +339,6 @@ Public Class Reservation
         Else
             For Each g In allGuests
                 Dim fullName As String = g.FirstName & " " & g.Surname
-                ' This checks if the typed text is anywhere in the first name, surname, or full name
                 If g.Surname.ToLower().Contains(searchText.ToLower()) OrElse
                    g.FirstName.ToLower().Contains(searchText.ToLower()) OrElse
                    fullName.ToLower().Contains(searchText.ToLower()) Then
@@ -347,15 +348,12 @@ Public Class Reservation
         End If
 
         cmbGuest.EndUpdate()
-        
-        ' this is so that combobox doesn't fill the textboxes early.
-        cmbGuest.SelectedIndex = -1 
-        
+
         ' Keep the cursor at the end of the text
         cmbGuest.SelectionStart = cmbGuest.Text.Length
-        
-        ' Automatically open the dropdown so you can see the filtered results
-        cmbGuest.DroppedDown = True
+
+        ' Force the ComboBox to have no selection. 
+        cmbGuest.SelectedIndex = -1 
     End Sub
 
     Private Sub cmbRoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoom.SelectedIndexChanged
