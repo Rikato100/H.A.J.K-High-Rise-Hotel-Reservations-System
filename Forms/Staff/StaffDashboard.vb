@@ -58,4 +58,21 @@ Public Class StaffDashboard
         End If
     End Sub
 
+    Private Sub StaffDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' Only trigger this if they clicked the 'X' button
+        If e.CloseReason = CloseReason.UserClosing Then
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to exit? Any unsaved changes will be lost.", 
+                "Confirm Exit", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Warning)
+                
+            If result = DialogResult.No Then
+                e.Cancel = True
+            Else
+                Application.Exit()
+            End If
+        End If
+    End Sub  
+
 End Class
