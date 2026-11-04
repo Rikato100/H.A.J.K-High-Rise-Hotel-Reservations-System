@@ -19,7 +19,7 @@ Built with VB.NET (Windows Forms) and MySQL for the partial requirement for the 
 If you do not have Visual Studio installed, you can still run the compiled application directly:
 1. **You still need XAMPP and phpMyAdmin running on your computer.** (See the disclaimer below).
 2. Download the **XAMPP Installer** and the **`HajkHotel.exe`** file from this Google Drive link: **https://drive.google.com/drive/folders/1Bc8w7GephEzZLao8vKFgXDk7Ym7ezOTy?usp=sharing**
-3. Install XAMPP, start the MySQL module, and import the provided `schema.sql` into phpMyAdmin.
+3. Install XAMPP, start the Apache and MySQL modules, then click the "Admin" button next to MySQL to open phpMyAdmin. From there, import the provided `schema.sql` file.
 4. Double-click the **`HajkHotel.exe`** file to launch the application.
 
 ## Demo Accounts
