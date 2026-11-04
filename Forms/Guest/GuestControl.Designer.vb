@@ -54,6 +54,7 @@ Partial Class GuestControl
         ' 
         dgvGuests.AllowUserToAddRows = False
         dgvGuests.AllowUserToDeleteRows = False
+        dgvGuests.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvGuests.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvGuests.BackgroundColor = Color.Beige
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft

@@ -3,7 +3,7 @@ Imports MySql.Data.MySqlClient
 Public Class loginForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.AcceptButton = btnLogin
-        LoadAccounts() 
+        LoadAccounts()
     End Sub
 
     Private Sub txtUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsername.KeyDown
@@ -94,7 +94,7 @@ Public Class loginForm
             MessageBox.Show("Login error: " & ex.Message)
         End Try
     End Sub
-                
+
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
     End Sub
@@ -103,11 +103,11 @@ Public Class loginForm
         ' Only trigger this if they clicked the 'X' button
         If e.CloseReason = CloseReason.UserClosing Then
             Dim result As DialogResult = MessageBox.Show(
-                "Are you sure you want to exit the application?", 
-                "Confirm Exit", 
-                MessageBoxButtons.YesNo, 
+                "Are you sure you want to exit the application?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question)
-                
+
             If result = DialogResult.No Then
                 ' Cancel the closing action and keep the login screen open
                 e.Cancel = True
@@ -122,15 +122,15 @@ Public Class loginForm
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
-                
+
                 ' Gets ALL accounts (Active and Inactive)
                 Dim query As String = "SELECT username FROM account WHERE is_deleted = 0 ORDER BY role, username"
-                
+
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         ' Clear any existing autocomplete sources
                         txtUsername.AutoCompleteCustomSource.Clear()
-                        
+
                         While reader.Read()
                             ' Add the username to the TextBox's autocomplete list
                             txtUsername.AutoCompleteCustomSource.Add(reader("username").ToString())
@@ -138,11 +138,11 @@ Public Class loginForm
                     End Using
                 End Using
             End Using
-            
+
             ' Turn on the autofill magic
             txtUsername.AutoCompleteMode = AutoCompleteMode.SuggestAppend
             txtUsername.AutoCompleteSource = AutoCompleteSource.CustomSource
-            
+
         Catch ex As Exception
             ' Silently fail if DB is not connected
         End Try
