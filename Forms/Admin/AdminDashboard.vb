@@ -73,7 +73,8 @@ Public Class AdminDashboard
         Me.Text = "Settings - Logged in as: " & CurrentUser.Username
     End Sub
 
-        Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub AdminDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' If they click the X button AND they aren't already logging out
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
                 "Are you sure you want to log out and return to the login screen?", 
@@ -84,11 +85,10 @@ Public Class AdminDashboard
             If result = DialogResult.No Then
                 e.Cancel = True
             Else
+                ' Set the flag FIRST to prevent the loop
                 isLoggingOut = True
                 SessionHelper.Logout()
             End If
-        Else
-            SessionHelper.Logout()
         End If
     End Sub
 End Class
