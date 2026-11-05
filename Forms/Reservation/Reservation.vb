@@ -3,19 +3,18 @@ Imports MySql.Data.MySqlClient
 
 Public Class Reservation
 
+    ' --- OOP IMPLEMENTATION ---
     Private reservationID As Integer = 0
     Private selectedGuestID As Integer = 0
-
     Private allGuests As New List(Of GuestComboItem)
-
     Private isTyping As Boolean = False
-
     Private rawSubtotal As Decimal = 0D
     Private rawDiscountAmount As Decimal = 0D
     Private rawVatAmount As Decimal = 0D
     Private rawTotal As Decimal = 0D
 
     Public Class GuestComboItem
+        ' 1. ENCAPSULATION: Data is stored safely inside properties
         Public Property GuestID As Integer
         Public Property FirstName As String
         Public Property MiddleName As String
@@ -25,6 +24,7 @@ Public Class Reservation
         Public Property ValidIDType As String
         Public Property ValidIDNumber As String
 
+        ' 2. CONSTRUCTOR: Forces the programmer to provide all data when creating the object
         Public Sub New(id As Integer, first As String, middle As String, surname As String, contact As String, email As String, idType As String, idNumber As String)
             GuestID = id
             FirstName = first
@@ -33,9 +33,10 @@ Public Class Reservation
             Me.Contact = contact
             Me.Email = email
             ValidIDType = idType
-            ValidIDNumber = idNumber
+             ValidIDNumber = idNumber
         End Sub
 
+        ' 3. METHOD OVERRIDING: Controls exactly how this object appears in the dropdown
         Public Overrides Function ToString() As String
             Return Surname & ", " & FirstName & If(MiddleName = "", "", " " & MiddleName)
         End Function
@@ -408,6 +409,7 @@ Public Class Reservation
         CalculateTotal()
     End Sub
 
+    ' --- COMPUTATIONAL LOGIC ---                                                                                                                          
     Private Sub CalculateTotal()
         If cmbRoom.SelectedItem Is Nothing Then Exit Sub
         Dim selectedRoom As RoomComboItem = CType(cmbRoom.SelectedItem, RoomComboItem)
