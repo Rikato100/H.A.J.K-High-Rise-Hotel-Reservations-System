@@ -1,7 +1,7 @@
 Imports System.Security.Cryptography
 Imports System.Text
 
-' Handles password hashing so plain-text passwords are never stored in the database.
+' Handles password hashing
 Public Class PasswordHash
 
     ' A fixed extra string added to every password before hashing.
@@ -9,7 +9,7 @@ Public Class PasswordHash
 
     ' Turns a plain password into a hashed string that is safe to store.
     Public Shared Function HashPassword(password As String) As String
-        ' SHA256 is the hashing algorithm; "Using" disposes it automatically when done.
+        ' SHA256 is the hashing algorithm
         Using sha256 As SHA256 = SHA256.Create()
 
             ' Add the salt to the password before hashing.
@@ -18,7 +18,7 @@ Public Class PasswordHash
             ' Convert the text into bytes, because the hash works on bytes.
             Dim bytes As Byte() = Encoding.UTF8.GetBytes(combined)
 
-            ' Compute the one-way hash (it can't be turned back into the password).
+            ' Compute the one-way hash.
             Dim hash As Byte() = sha256.ComputeHash(bytes)
 
             ' Convert the bytes to a Base64 text string so it can be saved in the database.
