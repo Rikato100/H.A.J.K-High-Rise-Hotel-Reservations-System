@@ -165,10 +165,6 @@ Public Class Reservation
         cmbStatus.Enabled = False
         cmbStatus.Items.Clear()
         cmbStatus.Items.Add("Pending")
-        cmbStatus.Items.Add("Check-In")
-        cmbStatus.Items.Add("Check-Out")
-        cmbStatus.Items.Add("No-Show")
-        cmbStatus.Items.Add("Canceled")
         cmbStatus.SelectedIndex = 0
     End Sub
 
@@ -616,7 +612,8 @@ Public Class Reservation
                         totalForPayment = rawTotal
                     End Using
 
-                    If cmbStatus.Text = "Check-In" AndAlso oldRoomID <> roomID Then
+                    ' Only set room to occupied if it was explicitly a Check-In
+                    If cmbStatus.Text = "Check-In" Then
                         Using updateCmd As New MySqlCommand("UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID", conn)
                             updateCmd.Parameters.AddWithValue("@roomID", roomID)
                              updateCmd.ExecuteNonQuery()
@@ -663,7 +660,8 @@ Public Class Reservation
                         cmd.ExecuteNonQuery()
                     End Using
 
-                    If dtpCheckIn.Value.Date = DateTime.Today Then
+                    ' Only free/occupy rooms if the status was explicitly Check-In
+                    If cmbStatus.Text = "Check-In" Then
                         If oldRoomID <> roomID Then
                             Using freeCmd As New MySqlCommand("UPDATE room SET room_status = 'Available' WHERE room_id = @oldRoomID", conn)
                                 freeCmd.Parameters.AddWithValue("@oldRoomID", oldRoomID)
