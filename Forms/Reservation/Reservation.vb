@@ -234,6 +234,9 @@ Public Class Reservation
         txtValidIdNumber.Text = guest.ValidIDNumber
     End Sub
 
+    ' --- CODE FIXES AND ERROR AVOIDANCE ---
+    ' Prevents double-booking by checking for overlapping dates.
+    ' (@newCheckIn < check_out AND @newCheckOut > check_in)
     Private Sub LoadRooms()
         Dim keepRoomID As Integer = 0
         If cmbRoom.SelectedItem IsNot Nothing Then keepRoomID = CType(cmbRoom.SelectedItem, RoomComboItem).RoomID
