@@ -1,5 +1,5 @@
 ﻿Public Module SessionHelper
-        Public Sub Logout()
+    Public Sub Logout()
         ' 1. Clear the current user
         CurrentUser.AccountID = 0
         CurrentUser.Role = ""

@@ -87,7 +87,7 @@ Partial Class DashboardHomeControl
         ' lblSubtitle
         ' 
         lblSubtitle.AutoSize = True
-        lblSubtitle.Font = New Font("Segoe UI", 9.0F)
+        lblSubtitle.Font = New Font("Segoe UI", 9F)
         lblSubtitle.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblSubtitle.Location = New Point(33, 38)
         lblSubtitle.Name = "lblSubtitle"
@@ -99,7 +99,7 @@ Partial Class DashboardHomeControl
         ' 
         lblDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblDateTime.AutoSize = True
-        lblDateTime.Font = New Font("Segoe UI", 9.0F)
+        lblDateTime.Font = New Font("Segoe UI", 9F)
         lblDateTime.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         lblDateTime.Location = New Point(696, 11)
         lblDateTime.Name = "lblDateTime"
@@ -133,7 +133,7 @@ Partial Class DashboardHomeControl
         ' lblTitleAvailableRooms
         ' 
         lblTitleAvailableRooms.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        lblTitleAvailableRooms.Font = New Font("Segoe UI Black", 18.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTitleAvailableRooms.Font = New Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitleAvailableRooms.ForeColor = Color.DimGray
         lblTitleAvailableRooms.Location = New Point(15, 18)
         lblTitleAvailableRooms.Name = "lblTitleAvailableRooms"
@@ -145,7 +145,7 @@ Partial Class DashboardHomeControl
         ' lblAvailableRooms
         ' 
         lblAvailableRooms.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lblAvailableRooms.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblAvailableRooms.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAvailableRooms.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblAvailableRooms.Location = New Point(15, 56)
         lblAvailableRooms.Name = "lblAvailableRooms"
@@ -180,7 +180,7 @@ Partial Class DashboardHomeControl
         ' lblTitleOccupancyRate
         ' 
         lblTitleOccupancyRate.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        lblTitleOccupancyRate.Font = New Font("Segoe UI Black", 18.0F, FontStyle.Bold)
+        lblTitleOccupancyRate.Font = New Font("Segoe UI Black", 18F, FontStyle.Bold)
         lblTitleOccupancyRate.ForeColor = Color.DimGray
         lblTitleOccupancyRate.Location = New Point(15, 18)
         lblTitleOccupancyRate.Name = "lblTitleOccupancyRate"
@@ -192,7 +192,7 @@ Partial Class DashboardHomeControl
         ' lblOccupancyRate
         ' 
         lblOccupancyRate.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lblOccupancyRate.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblOccupancyRate.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblOccupancyRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblOccupancyRate.Location = New Point(15, 56)
         lblOccupancyRate.Name = "lblOccupancyRate"
@@ -218,7 +218,7 @@ Partial Class DashboardHomeControl
         ' 
         reservationCardsGrid.BackColor = Color.Transparent
         reservationCardsGrid.ColumnCount = 1
-        reservationCardsGrid.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
+        reservationCardsGrid.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         reservationCardsGrid.Controls.Add(lblReservationsGroupTitle, 0, 0)
         reservationCardsGrid.Controls.Add(cardsSubGrid, 0, 1)
         reservationCardsGrid.Dock = DockStyle.Fill
@@ -226,8 +226,8 @@ Partial Class DashboardHomeControl
         reservationCardsGrid.Margin = New Padding(0)
         reservationCardsGrid.Name = "reservationCardsGrid"
         reservationCardsGrid.RowCount = 2
-        reservationCardsGrid.RowStyles.Add(New RowStyle(SizeType.Absolute, 45.0F))
-        reservationCardsGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        reservationCardsGrid.RowStyles.Add(New RowStyle(SizeType.Absolute, 45F))
+        reservationCardsGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
         reservationCardsGrid.Size = New Size(267, 362)
         reservationCardsGrid.TabIndex = 1
         ' 
@@ -247,7 +247,7 @@ Partial Class DashboardHomeControl
         ' 
         cardsSubGrid.BackColor = Color.Transparent
         cardsSubGrid.ColumnCount = 1
-        cardsSubGrid.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
+        cardsSubGrid.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         cardsSubGrid.Controls.Add(cardArriving, 0, 0)
         cardsSubGrid.Controls.Add(cardInHouse, 0, 1)
         cardsSubGrid.Controls.Add(cardDeparting, 0, 2)
@@ -431,7 +431,7 @@ Partial Class DashboardHomeControl
         ' lblTitleDailyRevenue
         ' 
         lblTitleDailyRevenue.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        lblTitleDailyRevenue.Font = New Font("Segoe UI Black", 18.0F, FontStyle.Bold)
+        lblTitleDailyRevenue.Font = New Font("Segoe UI Black", 18F, FontStyle.Bold)
         lblTitleDailyRevenue.ForeColor = Color.DimGray
         lblTitleDailyRevenue.Location = New Point(15, 18)
         lblTitleDailyRevenue.Name = "lblTitleDailyRevenue"
@@ -443,7 +443,7 @@ Partial Class DashboardHomeControl
         ' lblDailyRevenue
         ' 
         lblDailyRevenue.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lblDailyRevenue.Font = New Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblDailyRevenue.Font = New Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblDailyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblDailyRevenue.Location = New Point(15, 62)
         lblDailyRevenue.Name = "lblDailyRevenue"
@@ -478,7 +478,7 @@ Partial Class DashboardHomeControl
         ' lblTitleMonthlyRevenue
         ' 
         lblTitleMonthlyRevenue.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        lblTitleMonthlyRevenue.Font = New Font("Segoe UI Black", 18.0F, FontStyle.Bold)
+        lblTitleMonthlyRevenue.Font = New Font("Segoe UI Black", 18F, FontStyle.Bold)
         lblTitleMonthlyRevenue.ForeColor = Color.DimGray
         lblTitleMonthlyRevenue.Location = New Point(15, 18)
         lblTitleMonthlyRevenue.Name = "lblTitleMonthlyRevenue"
@@ -490,7 +490,7 @@ Partial Class DashboardHomeControl
         ' lblMonthlyRevenue
         ' 
         lblMonthlyRevenue.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lblMonthlyRevenue.Font = New Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblMonthlyRevenue.Font = New Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblMonthlyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
         lblMonthlyRevenue.Location = New Point(31, 62)
         lblMonthlyRevenue.Name = "lblMonthlyRevenue"
@@ -520,14 +520,14 @@ Partial Class DashboardHomeControl
         dashboardGrid.Margin = New Padding(0)
         dashboardGrid.Name = "dashboardGrid"
         dashboardGrid.RowCount = 2
-        dashboardGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        dashboardGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        dashboardGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        dashboardGrid.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         dashboardGrid.Size = New Size(853, 380)
         dashboardGrid.TabIndex = 0
         ' 
         ' DashboardHomeControl
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         BorderStyle = BorderStyle.FixedSingle
