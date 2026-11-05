@@ -63,21 +63,21 @@ Public Class StaffDashboard
     End Sub
 
     Private Sub StaffDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' If they click 'X' and they aren't already logging out
         If e.CloseReason = CloseReason.UserClosing AndAlso Not isLoggingOut Then
             Dim result As DialogResult = MessageBox.Show(
-                "Are you sure you want to log out and return to the login screen?",
-                "Confirm",
-                MessageBoxButtons.YesNo,
+                "Are you sure you want to log out and return to the login screen?", 
+                "Confirm", 
+                MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Question)
-
+                
             If result = DialogResult.No Then
-                e.Cancel = True ' Stop the form from closing
+                e.Cancel = True
             Else
-                ' They said Yes. Show login screen cleanly.
-                Dim login As New loginForm()
-                login.Show()
+                isLoggingOut = True
+                SessionHelper.Logout() ' <-- Use the helper instead of creating a new form
             End If
+        Else
+            SessionHelper.Logout()
         End If
     End Sub
 End Class
