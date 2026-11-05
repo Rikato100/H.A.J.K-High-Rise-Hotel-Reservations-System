@@ -76,12 +76,4 @@ Public Class DashboardHomeControl
             MessageBox.Show("Error loading dashboard data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub lblAvailableRooms_Click(sender As Object, e As EventArgs) Handles lblAvailableRooms.Click
-
-    End Sub
-
-    Private Sub lblInHouse_Click(sender As Object, e As EventArgs) Handles lblInHouse.Click
-
-    End Sub
 End Class

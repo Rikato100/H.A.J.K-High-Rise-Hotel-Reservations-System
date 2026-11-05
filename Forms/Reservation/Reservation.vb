@@ -115,8 +115,6 @@ Public Class Reservation
         cmbDiscount.DropDownStyle = ComboBoxStyle.DropDownList
         cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList
 
-        cmbGuest.DropDownStyle = ComboBoxStyle.DropDown
-
         LoadStatuses()
         LoadPaymentMethods()
         LoadGuests()
