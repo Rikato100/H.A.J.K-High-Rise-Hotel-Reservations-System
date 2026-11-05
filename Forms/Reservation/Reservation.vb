@@ -162,10 +162,14 @@ Public Class Reservation
     End Function
 
     Private Sub LoadStatuses()
-        cmbStatus.Enabled = False
         cmbStatus.Items.Clear()
         cmbStatus.Items.Add("Pending")
+        cmbStatus.Items.Add("Check-In")
+        cmbStatus.Items.Add("Check-Out")
+        cmbStatus.Items.Add("Canceled")
+        cmbStatus.Items.Add("No-Show")
         cmbStatus.SelectedIndex = 0
+        cmbStatus.Enabled = False   ' status is controlled from ReservationListControl
     End Sub
 
     Private Sub LoadPaymentMethods()
@@ -632,7 +636,7 @@ Public Class Reservation
                     Dim query As String =
                     "UPDATE reservation SET " &
                     "guest_id = @guestID, room_id = @roomID, discount_id = @discountID, " &
-                    "res_status = @status, check_in = @checkIn, check_out = @checkOut, " &
+                    "check_in = @checkIn, check_out = @checkOut, " &
                     "num_nights = @nights, adults = @adults, children = @children, " &
                     "base_rate = @baseRate, extra_adult_fee = @extraAdultFee, extra_person = @extraPerson, subtotal = @subtotal, discount_amount = @discountAmount, " &
                     "net_amount = @netAmount, vat_amount = @vatAmount, total_amount = @totalAmount " &
@@ -642,7 +646,6 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@guestID", guestId)
                         cmd.Parameters.AddWithValue("@roomID", roomID)
                         cmd.Parameters.AddWithValue("@discountID", discountID)
-                        cmd.Parameters.AddWithValue("@status", cmbStatus.Text)
                         cmd.Parameters.AddWithValue("@checkIn", dtpCheckIn.Value.Date)
                         cmd.Parameters.AddWithValue("@checkOut", dtpCheckOut.Value.Date)
                         cmd.Parameters.AddWithValue("@nights", nights)
