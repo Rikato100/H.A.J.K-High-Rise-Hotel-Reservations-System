@@ -147,12 +147,12 @@ Partial Class DashboardHomeControl
         lblAvailableRooms.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         lblAvailableRooms.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAvailableRooms.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblAvailableRooms.Location = New Point(15, 56)
+        lblAvailableRooms.Location = New Point(32, 56)
         lblAvailableRooms.Name = "lblAvailableRooms"
-        lblAvailableRooms.Size = New Size(237, 95)
+        lblAvailableRooms.Size = New Size(220, 95)
         lblAvailableRooms.TabIndex = 3
         lblAvailableRooms.Text = "0"
-        lblAvailableRooms.TextAlign = ContentAlignment.MiddleCenter
+        lblAvailableRooms.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' cardOccupancy
         ' 
@@ -194,12 +194,12 @@ Partial Class DashboardHomeControl
         lblOccupancyRate.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         lblOccupancyRate.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblOccupancyRate.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblOccupancyRate.Location = New Point(15, 56)
+        lblOccupancyRate.Location = New Point(31, 56)
         lblOccupancyRate.Name = "lblOccupancyRate"
-        lblOccupancyRate.Size = New Size(234, 95)
+        lblOccupancyRate.Size = New Size(218, 95)
         lblOccupancyRate.TabIndex = 3
         lblOccupancyRate.Text = "0%"
-        lblOccupancyRate.TextAlign = ContentAlignment.MiddleCenter
+        lblOccupancyRate.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' groupReservations
         ' 
@@ -435,7 +435,7 @@ Partial Class DashboardHomeControl
         lblTitleDailyRevenue.ForeColor = Color.DimGray
         lblTitleDailyRevenue.Location = New Point(15, 18)
         lblTitleDailyRevenue.Name = "lblTitleDailyRevenue"
-        lblTitleDailyRevenue.Size = New Size(223, 33)
+        lblTitleDailyRevenue.Size = New Size(237, 33)
         lblTitleDailyRevenue.TabIndex = 2
         lblTitleDailyRevenue.Text = "Daily Revenue"
         lblTitleDailyRevenue.TextAlign = ContentAlignment.MiddleCenter
@@ -445,9 +445,9 @@ Partial Class DashboardHomeControl
         lblDailyRevenue.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         lblDailyRevenue.Font = New Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblDailyRevenue.ForeColor = Color.FromArgb(CByte(64), CByte(0), CByte(0))
-        lblDailyRevenue.Location = New Point(15, 62)
+        lblDailyRevenue.Location = New Point(32, 62)
         lblDailyRevenue.Name = "lblDailyRevenue"
-        lblDailyRevenue.Size = New Size(237, 95)
+        lblDailyRevenue.Size = New Size(220, 95)
         lblDailyRevenue.TabIndex = 3
         lblDailyRevenue.Text = "₱0.00"
         lblDailyRevenue.TextAlign = ContentAlignment.MiddleLeft
