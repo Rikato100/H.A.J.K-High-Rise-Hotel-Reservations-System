@@ -450,7 +450,7 @@ Partial Class DashboardHomeControl
         lblDailyRevenue.Size = New Size(237, 95)
         lblDailyRevenue.TabIndex = 3
         lblDailyRevenue.Text = "₱0.00"
-        lblDailyRevenue.TextAlign = ContentAlignment.MiddleCenter
+        lblDailyRevenue.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' cardMonthlyRevenue
         ' 
@@ -497,7 +497,7 @@ Partial Class DashboardHomeControl
         lblMonthlyRevenue.Size = New Size(199, 95)
         lblMonthlyRevenue.TabIndex = 3
         lblMonthlyRevenue.Text = "₱0.00"
-        lblMonthlyRevenue.TextAlign = ContentAlignment.MiddleCenter
+        lblMonthlyRevenue.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' tmrDashboard
         ' 
