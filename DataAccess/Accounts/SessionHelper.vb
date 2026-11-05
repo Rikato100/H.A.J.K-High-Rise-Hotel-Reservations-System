@@ -1,21 +1,36 @@
 ﻿Public Module SessionHelper
-    Public Sub Logout()
-        ' Reuse the original (hidden) login form instead of making a new one
-        Dim login As loginForm = Application.OpenForms.OfType(Of loginForm)().FirstOrDefault()
-        If login Is Nothing Then login = New loginForm()
-
-        ' Close everything that is not the login form
-        For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
-            If Not TypeOf frm Is loginForm Then frm.Close()
-        Next
-
+        Public Shared Sub Logout()
+        ' 1. Clear the current user
         CurrentUser.AccountID = 0
         CurrentUser.Role = ""
         CurrentUser.Username = ""
 
-        login.txtPassword.Clear()
+        ' 2. Find and show the original login form
+        Dim login As loginForm = Nothing
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is loginForm Then
+                login = CType(frm, loginForm)
+                Exit For
+            End If
+        Next
+
+        ' If for some reason it's missing, create a new one
+        If login Is Nothing Then
+            login = New loginForm()
+        End If
+
+        ' 3. Show it before closing the current forms
         login.Show()
+        login.txtPassword.Clear()
         login.Activate()
+
+        ' 4. Close every other form EXCEPT the login form
+        For Each frm As Form In Application.OpenForms.Cast(Of Form)().ToList()
+            If Not TypeOf frm Is loginForm Then
+                frm.Hide() ' Hide it so it doesn't trigger FormClosing events again
+                frm.Dispose() ' Actually destroy it
+            End If
+        Next
     End Sub
 
     Public Sub GoToDashboard()
