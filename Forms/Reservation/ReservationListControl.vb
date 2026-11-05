@@ -187,7 +187,8 @@ Public Class ReservationListControl
                     cmd.ExecuteNonQuery()
                 End Using
 
-                If roomID <> 0 Then
+                ' Only free the room if they were actually checked in
+                If roomID <> 0 AndAlso status = "Check-In" Then
                     Dim freeRoomQuery As String = "UPDATE room SET room_status = 'Available' WHERE room_id = @roomID"
                     Using freeCmd As New MySqlCommand(freeRoomQuery, conn)
                         freeCmd.Parameters.AddWithValue("@roomID", roomID)
