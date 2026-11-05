@@ -1,5 +1,4 @@
-﻿
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 Imports System.Data
 
 Public Class AddRoomForm
@@ -235,6 +234,29 @@ Public Class AddRoomForm
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
+        End Try
+
+        ' Check for duplicate room number
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+                Dim checkQuery As String = "SELECT COUNT(*) FROM room WHERE room_number = @roomNumber AND room_id <> @roomID"
+
+                Using checkCmd As New MySqlCommand(checkQuery, conn)
+                    checkCmd.Parameters.AddWithValue("@roomNumber", txtRoomNumber.Text.Trim())
+                    checkCmd.Parameters.AddWithValue("@roomID", roomID) ' 0 when adding new
+
+                    Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+                    If count > 0 Then
+                        MessageBox.Show("Room number already exists. Please use a different number.",
+                                "Duplicate Room", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Exit Sub
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error checking room number: " & ex.Message)
+            Exit Sub
         End Try
     End Sub
 
