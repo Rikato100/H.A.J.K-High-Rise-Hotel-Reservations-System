@@ -62,11 +62,36 @@ Public Class PaymentForm
             Exit Sub
         End If
 
+        ' FIX 1: Prevent zero or negative payments
         If amountPaid <= 0 Then
             MessageBox.Show("Amount must be greater than zero.")
             Exit Sub
         End If
 
+        ' FIX 2: Prevent overpayment
+        Dim totalPaid As Decimal = 0
+        Try
+            Using conn As MySqlConnection = DbConnection.GetConnection()
+                conn.Open()
+                Using cmd As New MySqlCommand("SELECT IFNULL(SUM(amount), 0) FROM payment WHERE res_id = @resID", conn)
+                    cmd.Parameters.AddWithValue("@resID", resID)
+                    totalPaid = Convert.ToDecimal(cmd.ExecuteScalar())
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error checking balance: " & ex.Message)
+            Exit Sub
+        End Try
+
+        Dim remainingBalance As Decimal = totalAmount - totalPaid
+
+        If amountPaid > remainingBalance Then
+            MessageBox.Show("The amount exceeds the remaining balance of ₱" & remainingBalance.ToString("N2") & ".",
+                            "Overpayment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        ' Save the payment
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
