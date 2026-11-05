@@ -3,14 +3,25 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2026 at 03:31 PM
+-- Generation Time: Nov 05, 2026 at 03:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
+-- 1. Disable foreign key checks to ensure a clean drop
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- 2. Drop and recreate the database automatically
+DROP DATABASE IF EXISTS `hajk`;
+CREATE DATABASE `hajk`;
+USE `hajk`;
+
+-- 3. Re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- 4. Set up the environment
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -79,8 +90,7 @@ INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_
 (1, 1, 'None', 0.00, 'None', NULL, NULL, 0, '2026-10-25 07:22:28'),
 (2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1, '2026-10-25 07:22:28'),
 (3, 1, 'Lean Season', 15.00, 'Lean Season', '2024-06-01', '2024-10-31', 0, '2026-10-25 07:22:28'),
-(7, 1, 'Peak Season (Nov-Jan)', 10.00, 'Peak Season', '2024-11-01', '2024-01-31', 0, '2026-11-05 22:30:43'),
-(8, 1, 'Peak Season (April)', 10.00, 'Peak Season', '2024-04-01', '2024-04-30', 0, '2026-11-05 22:30:43');
+(7, 1, 'Peak Season', 10.00, 'Peak Season', '2024-11-01', '2024-01-31', 0, '2026-11-05 22:30:43');
 
 -- --------------------------------------------------------
 
