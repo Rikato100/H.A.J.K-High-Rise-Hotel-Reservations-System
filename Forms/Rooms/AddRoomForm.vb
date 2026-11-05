@@ -166,7 +166,7 @@ Public Class AddRoomForm
             Exit Sub
         End If
 
-        ' 2. Duplicate Check (MOVED TO THE TOP)
+        ' 2. Duplicate Check
         Try
             Using conn As MySqlConnection = DbConnection.GetConnection()
                 conn.Open()
