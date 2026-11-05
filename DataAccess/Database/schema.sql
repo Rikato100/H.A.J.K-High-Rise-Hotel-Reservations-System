@@ -3,19 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2026 at 11:12 AM
+-- Generation Time: Nov 05, 2026 at 03:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
--- 1. Drop and recreate the database to ensure a clean import
-DROP DATABASE IF EXISTS `hajk`;
-CREATE DATABASE `hajk`;
-USE `hajk`;
-
--- 2. Set up the environment
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -84,9 +79,8 @@ INSERT INTO `discount` (`discount_id`, `created_by`, `discount_name`, `discount_
 (1, 1, 'None', 0.00, 'None', NULL, NULL, 0, '2026-10-25 07:22:28'),
 (2, 1, 'Statutory', 20.00, 'Statutory', NULL, NULL, 1, '2026-10-25 07:22:28'),
 (3, 1, 'Lean Season', 15.00, 'Lean Season', '2024-06-01', '2024-10-31', 0, '2026-10-25 07:22:28'),
-(4, 1, 'Peak Season (Nov-Dec)', 10.00, 'Peak Season', '2024-11-01', '2024-12-31', 0, '2026-10-25 07:22:28'),
-(5, 1, 'Peak Season (Jan)', 10.00, 'Peak Season', '2024-01-01', '2024-01-31', 0, '2026-10-25 07:22:28'),
-(6, 1, 'Peak Season (April)', 10.00, 'Peak Season', '2024-04-01', '2024-04-30', 0, '2026-10-25 07:22:28');
+(7, 1, 'Peak Season (Nov-Jan)', 10.00, 'Peak Season', '2024-11-01', '2024-01-31', 0, '2026-11-05 22:30:43'),
+(8, 1, 'Peak Season (April)', 10.00, 'Peak Season', '2024-04-01', '2024-04-30', 0, '2026-11-05 22:30:43');
 
 -- --------------------------------------------------------
 
@@ -151,7 +145,7 @@ CREATE TABLE `payment` (
   `payment_method` enum('Cash','GCash','Maya','PayPal','Card','Bank Transfer') NOT NULL,
   `reference_no` varchar(100) DEFAULT NULL,
   `payment_date` datetime NOT NULL DEFAULT current_timestamp()
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
@@ -195,7 +189,7 @@ CREATE TABLE `reservation` (
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reservation`
@@ -209,7 +203,7 @@ INSERT INTO `reservation` (`res_id`, `guest_id`, `room_id`, `discount_id`, `crea
 (5, 5, 6, 2, 1, '20261025-0005', 'Check-Out', '2026-10-26', '2026-10-28', 2, 2, 0, 3800.00, 800.00, 0.00, 7600.00, 1520.00, 6080.00, 0.00, 6080.00, '2026-10-30 20:45:37', 0),
 (6, 6, 9, 1, 2, '20261025-0006', 'Canceled', '2026-10-27', '2026-10-30', 3, 2, 0, 5500.00, 800.00, 0.00, 16500.00, 0.00, 16500.00, 1980.00, 18480.00, '2026-10-30 20:45:37', 0),
 (7, 7, 10, 1, 1, '20261025-0007', 'Pending', '2026-10-28', '2026-10-30', 2, 3, 0, 5500.00, 800.00, 1600.00, 12600.00, 0.00, 12600.00, 1512.00, 14112.00, '2026-10-30 20:45:37', 0),
-(8, 8, 11, 4, 2, '20261025-0008', 'Pending', '2026-10-29', '2026-11-05', 7, 2, 0, 7000.00, 800.00, 0.00, 49000.00, 4900.00, 44100.00, 5292.00, 49392.00, '2026-10-30 20:45:37', 0),
+(8, 8, 11, NULL, 2, '20261025-0008', 'Pending', '2026-10-29', '2026-11-05', 7, 2, 0, 7000.00, 800.00, 0.00, 49000.00, 4900.00, 44100.00, 5292.00, 49392.00, '2026-10-30 20:45:37', 0),
 (9, 9, 12, 1, 1, '20261025-0009', 'Check-Out', '2026-10-30', '2026-11-04', 5, 4, 2, 7000.00, 800.00, 0.00, 35000.00, 0.00, 35000.00, 4200.00, 39200.00, '2026-10-30 20:45:37', 0),
 (10, 10, 1, 1, 2, '20261025-0010', 'No-Show', '2026-10-31', '2026-11-02', 2, 1, 0, 2500.00, 800.00, 0.00, 5000.00, 0.00, 5000.00, 600.00, 5600.00, '2026-10-30 20:45:37', 0),
 (11, 11, 2, 1, 1, '20261025-0011', 'Pending', '2026-11-01', '2026-11-04', 3, 2, 0, 2500.00, 800.00, 0.00, 7500.00, 0.00, 7500.00, 900.00, 8400.00, '2026-10-30 20:45:37', 0),
@@ -381,7 +375,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `discount_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `discount_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `guest`
@@ -393,13 +387,13 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `room`
