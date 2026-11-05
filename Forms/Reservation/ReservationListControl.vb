@@ -1,4 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient
 
 Public Class ReservationListControl
 
@@ -471,7 +471,8 @@ Public Class ReservationListControl
         Dim totalPaid As Decimal = 0
         Dim paymentMethod As String = "N/A"
         Dim refNo As String = "N/A"
-
+        Dim guestIdType As String = ""
+        Dim guestIdNumber As String = ""
         Dim baseRate As Decimal = 0
         Dim extraPersonFee As Decimal = 0
         Dim subtotal As Decimal = 0
@@ -484,6 +485,7 @@ Public Class ReservationListControl
 
                 Dim q1 As String =
                     "SELECT r.res_code, CONCAT(g.surname, ', ', g.firstname) AS guest, " &
+                    "g.valid_id_type, g.valid_id_number, " &   '<-- ADD THIS LINE
                     "rm.room_number, rt.type_name, r.check_in, r.check_out, r.num_nights, " &
                     "r.total_amount, r.base_rate, r.extra_person, r.subtotal, r.discount_amount, r.vat_amount " &
                     "FROM reservation r " &
@@ -498,6 +500,8 @@ Public Class ReservationListControl
                         If reader.Read() Then
                             resCode = reader("res_code").ToString()
                             guestName = reader("guest").ToString()
+                            guestIdType = If(IsDBNull(reader("valid_id_type")), "", reader("valid_id_type").ToString())    '<-- ADD
+                            guestIdNumber = If(IsDBNull(reader("valid_id_number")), "", reader("valid_id_number").ToString()) '<-- ADD
                             roomNo = reader("room_number").ToString()
                             roomType = reader("type_name").ToString()
                             checkIn = Convert.ToDateTime(reader("check_in")).ToString("MMM dd, yyyy")
@@ -561,6 +565,13 @@ Public Class ReservationListControl
         g.DrawString("Stay Information:", fontHeader, brush, 400, y)
         y += 20
         g.DrawString("Guest Name: " & guestName, fontBody, brush, 50, y)
+
+        If guestIdType <> "" Then
+            g.DrawString("Valid ID: " & guestIdType & " #" & guestIdNumber, fontSmall, brush, 50, y + 15)
+        End If
+
+        y += 35 ' Change the existing y += 20 to y += 35 so the next text doesn't overlap
+
         g.DrawString("Check-In: " & checkIn & " | Check-Out: " & checkOut, fontBody, brush, 400, y)
         y += 20
         g.DrawString("Room No: " & roomNo & " (" & roomType & ")", fontBody, brush, 400, y)
