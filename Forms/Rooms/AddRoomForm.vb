@@ -261,5 +261,4 @@ Public Class AddRoomForm
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
-
 End Class
