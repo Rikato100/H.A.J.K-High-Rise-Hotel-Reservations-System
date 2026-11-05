@@ -53,54 +53,78 @@ Public Class PaymentForm
         txtAmount.Text = balance.ToString("N2")
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If String.IsNullOrWhiteSpace(txtAmount.Text) Then
-            MessageBox.Show("Please enter an amount.")
-            Exit Sub
-        End If
+Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    If String.IsNullOrWhiteSpace(txtAmount.Text) Then
+        MessageBox.Show("Please enter an amount.")
+        Exit Sub
+    End If
 
-        Dim amountPaid As Decimal
-        If Not Decimal.TryParse(txtAmount.Text, amountPaid) Then
-            MessageBox.Show("Please enter a valid number for the amount.")
-            Exit Sub
-        End If
+    Dim amountPaid As Decimal
+    If Not Decimal.TryParse(txtAmount.Text, amountPaid) Then
+        MessageBox.Show("Please enter a valid number for the amount.")
+        Exit Sub
+    End If
 
-        If amountPaid <= 0 Then
-            MessageBox.Show("Amount must be greater than zero.")
-            Exit Sub
-        End If
+    If amountPaid <= 0 Then
+        MessageBox.Show("Amount must be greater than zero.")
+        Exit Sub
+    End If
 
-        Try
-            Using conn As MySqlConnection = DbConnection.GetConnection()
-                conn.Open()
-
-                Dim query As String =
-                    "INSERT INTO payment (res_id, amount, payment_method, reference_no) " &
-                    "VALUES (@resID, @amount, @method, @refNo)"
-
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@resID", resID)
-                    cmd.Parameters.AddWithValue("@amount", amountPaid)
-                    cmd.Parameters.AddWithValue("@method", cmbMethod.Text)
-
-                    If String.IsNullOrWhiteSpace(txtReference.Text) Then
-                        cmd.Parameters.AddWithValue("@refNo", DBNull.Value)
-                    Else
-                        cmd.Parameters.AddWithValue("@refNo", txtReference.Text.Trim())
-                    End If
-
-                    cmd.ExecuteNonQuery()
-                End Using
+    ' ===== ADD THIS BLOCK =====
+    Dim totalPaid As Decimal = 0
+    Try
+        Using conn As MySqlConnection = DbConnection.GetConnection()
+            conn.Open()
+            Using cmd As New MySqlCommand("SELECT IFNULL(SUM(amount), 0) FROM payment WHERE res_id = @resID", conn)
+                cmd.Parameters.AddWithValue("@resID", resID)
+                totalPaid = Convert.ToDecimal(cmd.ExecuteScalar())
             End Using
+        End Using
+    Catch ex As Exception
+        MessageBox.Show("Error checking balance: " & ex.Message)
+        Exit Sub
+    End Try
 
-            MessageBox.Show("Payment recorded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.DialogResult = DialogResult.OK
-            Me.Close()
+    Dim balance As Decimal = totalAmount - totalPaid
 
-        Catch ex As Exception
-            MessageBox.Show("Error saving payment: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
+    If amountPaid > balance Then
+        MessageBox.Show("Amount cannot be greater than the remaining balance of ₱" & balance.ToString("N2") & ".",
+                        "Overpayment Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Exit Sub
+    End If
+    ' ===== END OF ADDED BLOCK =====
+
+    Try
+        Using conn As MySqlConnection = DbConnection.GetConnection()
+            conn.Open()
+
+            Dim query As String =
+                "INSERT INTO payment (res_id, amount, payment_method, reference_no) " &
+                "VALUES (@resID, @amount, @method, @refNo)"
+
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@resID", resID)
+                cmd.Parameters.AddWithValue("@amount", amountPaid)
+                cmd.Parameters.AddWithValue("@method", cmbMethod.Text)
+
+                If String.IsNullOrWhiteSpace(txtReference.Text) Then
+                    cmd.Parameters.AddWithValue("@refNo", DBNull.Value)
+                Else
+                    cmd.Parameters.AddWithValue("@refNo", txtReference.Text.Trim())
+                End If
+
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+
+        MessageBox.Show("Payment recorded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Me.DialogResult = DialogResult.OK
+        Me.Close()
+
+    Catch ex As Exception
+        MessageBox.Show("Error saving payment: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Try
+End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.DialogResult = DialogResult.Cancel
