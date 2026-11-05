@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿
+Imports MySql.Data.MySqlClient
 Imports System.Drawing.Printing
 
 Public Class ReportsControl
@@ -13,9 +14,9 @@ Public Class ReportsControl
         cmbReportType.Items.Add("Daily")
         cmbReportType.Items.Add("Monthly")
         cmbReportType.Items.Add("Annual")
-        cmbReportType.SelectedIndex = 0 ' Default to Daily
+        cmbReportType.SelectedIndex = 0
 
-        ' "Export PDF" button, created here (placed under the Generate button)
+        ' Export PDF button
         Dim btnPdf As New Button()
         btnPdf.Text = "EXPORT PDF"
         btnPdf.BackColor = btnGenerate.BackColor
@@ -30,91 +31,158 @@ Public Class ReportsControl
     End Sub
 
     ' ==========================================
-    ' PDF EXPORT (prints the grid to the "Microsoft Print to PDF" printer)
+    ' PDF EXPORT
     ' ==========================================
     Private printRowIndex As Integer = 0
 
     Private Sub btnExportPdf_Click(sender As Object, e As EventArgs)
-        If dgvReports.Rows.Count = 0 OrElse (dgvReports.Rows.Count = 1 AndAlso dgvReports.Rows(0).IsNewRow) Then
-            MessageBox.Show("Generate a report first.", "Nothing to export", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If dgvReports.Rows.Count = 0 OrElse
+           (dgvReports.Rows.Count = 1 AndAlso dgvReports.Rows(0).IsNewRow) Then
+
+            MessageBox.Show("Generate a report first.",
+                            "Nothing to export",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information)
             Return
         End If
 
         Using sfd As New SaveFileDialog()
             sfd.Filter = "PDF file (*.pdf)|*.pdf"
             sfd.FileName = "Report_" & DateTime.Now.ToString("yyyyMMdd_HHmm") & ".pdf"
+
             If sfd.ShowDialog() <> DialogResult.OK Then Return
 
             Try
                 printRowIndex = 0
+
                 Dim doc As New PrintDocument()
                 AddHandler doc.PrintPage, AddressOf reportDoc_PrintPage
+
                 doc.PrinterSettings.PrinterName = "Microsoft Print to PDF"
 
                 If doc.PrinterSettings.IsValid Then
+
                     doc.PrinterSettings.PrintToFile = True
                     doc.PrinterSettings.PrintFileName = sfd.FileName
                     doc.Print()
-                    MessageBox.Show("Saved to:" & vbCrLf & sfd.FileName, "PDF exported", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    MessageBox.Show("Saved to:" & vbCrLf & sfd.FileName,
+                                    "PDF exported",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information)
+
                 Else
-                    ' No PDF printer on this PC: show a preview; choose a PDF printer from there
-                    MessageBox.Show("The 'Microsoft Print to PDF' printer was not found. A print preview will open instead.", "PDF printer missing", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    MessageBox.Show("The 'Microsoft Print to PDF' printer was not found. A print preview will open instead.",
+                                    "PDF printer missing",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information)
+
                     Using preview As New PrintPreviewDialog()
                         preview.Document = doc
                         preview.ShowDialog(Me)
                     End Using
+
                 End If
+
             Catch ex As Exception
-                MessageBox.Show("Could not export the PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Could not export the PDF: " & ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error)
             End Try
         End Using
+
     End Sub
 
+    ' ==========================================
+    ' PRINT REPORT PAGE
+    ' ==========================================
     Private Sub reportDoc_PrintPage(sender As Object, e As PrintPageEventArgs)
+
         Dim g As Graphics = e.Graphics
         Dim left As Integer = e.MarginBounds.Left
         Dim width As Integer = e.MarginBounds.Width
         Dim y As Single = e.MarginBounds.Top
 
-        Dim widths() As Single = {0.19F, 0.2F, 0.27F, 0.15F, 0.19F}
+        ' Six columns including Valid ID
+        Dim widths() As Single = {0.15F, 0.14F, 0.18F, 0.13F, 0.15F, 0.25F}
 
         Using fTitle As New Font("Arial", 16, FontStyle.Bold),
-              fHead As New Font("Arial", 10, FontStyle.Bold),
-              fBody As New Font("Arial", 10)
+              fHead As New Font("Arial", 9, FontStyle.Bold),
+              fBody As New Font("Arial", 8)
 
-            g.DrawString("H.A.J.K High Rise Hotel", fTitle, Brushes.Black, left, y)
+            g.DrawString("H.A.J.K High Rise Hotel",
+                         fTitle, Brushes.Black, left, y)
+
             y += 32
-            g.DrawString(lblTotalRevenue.Text, fHead, Brushes.Black, New RectangleF(left, y, width, 40))
+
+            g.DrawString(lblTotalRevenue.Text,
+                         fHead, Brushes.Black,
+                         New RectangleF(left, y, width, 40))
+
             y += 45
 
-            ' column headings on every page
+            ' Column headings
             Dim x As Single = left
+
             For c As Integer = 0 To dgvReports.Columns.Count - 1
-                g.DrawString(dgvReports.Columns(c).HeaderText, fHead, Brushes.Black, New RectangleF(x, y, width * widths(c), 20))
+
+                g.DrawString(
+                    dgvReports.Columns(c).HeaderText,
+                    fHead,
+                    Brushes.Black,
+                    New RectangleF(x, y, width * widths(c), 25)
+                )
+
                 x += width * widths(c)
+
             Next
-            y += 22
+
+            y += 27
+
             g.DrawLine(Pens.Black, left, y, left + width, y)
+
             y += 4
 
-            ' rows
+            ' Report rows
             While printRowIndex < dgvReports.Rows.Count
+
                 Dim row As DataGridViewRow = dgvReports.Rows(printRowIndex)
+
                 If row.IsNewRow Then
                     printRowIndex += 1
                     Continue While
                 End If
-                If y + 22 > e.MarginBounds.Bottom Then Exit While
+
+                If y + 25 > e.MarginBounds.Bottom Then Exit While
 
                 x = left
+
                 For c As Integer = 0 To dgvReports.Columns.Count - 1
-                    Dim text As String = If(row.Cells(c).Value Is Nothing, "", row.Cells(c).Value.ToString())
-                    g.DrawString(text, fBody, Brushes.Black, New RectangleF(x, y, width * widths(c) - 4, 20))
+
+                    Dim cellText As String =
+                        If(row.Cells(c).Value Is Nothing,
+                           "",
+                           row.Cells(c).Value.ToString())
+
+                    g.DrawString(
+                        cellText,
+                        fBody,
+                        Brushes.Black,
+                        New RectangleF(x, y, width * widths(c) - 4, 25)
+                    )
+
                     x += width * widths(c)
+
                 Next
-                y += 22
+
+                y += 27
                 printRowIndex += 1
+
             End While
+
         End Using
 
         If printRowIndex < dgvReports.Rows.Count Then
@@ -123,33 +191,46 @@ Public Class ReportsControl
             e.HasMorePages = False
             printRowIndex = 0
         End If
+
     End Sub
 
+    ' ==========================================
+    ' GENERATE REPORT
+    ' ==========================================
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+
         Dim filterQuery As String = ""
         Dim title As String = ""
 
-        ' 1. Choose the SQL filter based on the dropdown
+        ' Choose SQL filter
         Select Case cmbReportType.Text
+
             Case "Daily"
                 filterQuery = "DATE(p.payment_date) = @selectedDate"
                 title = "Daily Report for " & dtpStartDate.Value.ToString("MMM dd, yyyy")
+
             Case "Monthly"
                 filterQuery = "MONTH(p.payment_date) = MONTH(@selectedDate) AND YEAR(p.payment_date) = YEAR(@selectedDate)"
                 title = "Monthly Report for " & dtpStartDate.Value.ToString("MMMM yyyy")
+
             Case "Annual"
                 filterQuery = "YEAR(p.payment_date) = YEAR(@selectedDate)"
                 title = "Annual Report for " & dtpStartDate.Value.ToString("yyyy")
+
         End Select
 
         Try
+
             Using conn As MySqlConnection = DbConnection.GetConnection()
+
                 conn.Open()
 
                 Dim query As String =
                     "SELECT p.payment_date, r.res_code, " &
                     "CONCAT(g.surname, ', ', g.firstname) AS guest_name, " &
-                    "p.amount, p.payment_method " &
+                    "p.amount, p.payment_method, " &
+                    "CONCAT(COALESCE(g.valid_id_type, ''), ' - ', " &
+                    "COALESCE(g.valid_id_number, '')) AS guest_valid_id " &
                     "FROM payment p " &
                     "INNER JOIN reservation r ON p.res_id = r.res_id " &
                     "INNER JOIN guest g ON r.guest_id = g.guest_id " &
@@ -157,15 +238,23 @@ Public Class ReportsControl
                     "ORDER BY p.payment_date DESC"
 
                 Using cmd As New MySqlCommand(query, conn)
-                    ' We use dtpStartDate as the reference date for all reports
-                    cmd.Parameters.AddWithValue("@selectedDate", dtpStartDate.Value.Date)
+
+                    cmd.Parameters.AddWithValue(
+                        "@selectedDate",
+                        dtpStartDate.Value.Date
+                    )
 
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
+
                         dgvReports.Rows.Clear()
+
                         Dim grandTotal As Decimal = 0
 
                         While reader.Read()
-                            Dim amount As Decimal = Convert.ToDecimal(reader("amount"))
+
+                            Dim amount As Decimal =
+                                Convert.ToDecimal(reader("amount"))
+
                             grandTotal += amount
 
                             dgvReports.Rows.Add(
@@ -173,18 +262,39 @@ Public Class ReportsControl
                                 reader("res_code").ToString(),
                                 reader("guest_name").ToString(),
                                 "₱" & amount.ToString("N2"),
-                                reader("payment_method").ToString()
+                                reader("payment_method").ToString(),
+                                reader("guest_valid_id").ToString()
                             )
+
                         End While
 
-                        lblTotalRevenue.Text = title & " | Total Revenue: ₱" & grandTotal.ToString("N2")
+                        lblTotalRevenue.Text =
+                            title & " | Total Revenue: ₱" & grandTotal.ToString("N2")
+
                     End Using
+
                 End Using
+
             End Using
 
         Catch ex As Exception
-            MessageBox.Show("Error generating report: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            MessageBox.Show(
+                "Error generating report: " & ex.Message,
+                "Database Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            )
+
         End Try
+
+    End Sub
+
+    Private Sub dgvReports_CellContentClick(
+        sender As Object,
+        e As DataGridViewCellEventArgs
+    ) Handles dgvReports.CellContentClick
+
     End Sub
 
 End Class
