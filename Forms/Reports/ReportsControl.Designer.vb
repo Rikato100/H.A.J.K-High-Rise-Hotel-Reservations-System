@@ -38,6 +38,7 @@ Partial Class ReportsControl
         colGuest = New DataGridViewTextBoxColumn()
         colAmount = New DataGridViewTextBoxColumn()
         colMethod = New DataGridViewTextBoxColumn()
+        colValidId = New DataGridViewTextBoxColumn()
         lblTotalRevenue = New Label()
         Panel3 = New Panel()
         Panel5 = New Panel()
@@ -49,6 +50,7 @@ Partial Class ReportsControl
         PictureBox5 = New PictureBox()
         Label5 = New Label()
         Label6 = New Label()
+        MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
         CType(dgvReports, ComponentModel.ISupportInitialize).BeginInit()
         Panel3.SuspendLayout()
         Panel5.SuspendLayout()
@@ -62,7 +64,7 @@ Partial Class ReportsControl
         ' 
         dtpStartDate.Format = DateTimePickerFormat.Short
         dtpStartDate.Location = New Point(9, 137)
-        dtpStartDate.Margin = New Padding(4, 4, 4, 4)
+        dtpStartDate.Margin = New Padding(4)
         dtpStartDate.Name = "dtpStartDate"
         dtpStartDate.Size = New Size(204, 23)
         dtpStartDate.TabIndex = 1
@@ -71,7 +73,7 @@ Partial Class ReportsControl
         ' 
         dtpEndDate.Format = DateTimePickerFormat.Short
         dtpEndDate.Location = New Point(9, 197)
-        dtpEndDate.Margin = New Padding(4, 4, 4, 4)
+        dtpEndDate.Margin = New Padding(4)
         dtpEndDate.Name = "dtpEndDate"
         dtpEndDate.Size = New Size(204, 23)
         dtpEndDate.TabIndex = 2
@@ -104,7 +106,7 @@ Partial Class ReportsControl
         cmbReportType.FormattingEnabled = True
         cmbReportType.Items.AddRange(New Object() {"Daily", "Monthly", "Annual"})
         cmbReportType.Location = New Point(9, 76)
-        cmbReportType.Margin = New Padding(4, 4, 4, 4)
+        cmbReportType.Margin = New Padding(4)
         cmbReportType.Name = "cmbReportType"
         cmbReportType.Size = New Size(204, 23)
         cmbReportType.TabIndex = 0
@@ -115,7 +117,7 @@ Partial Class ReportsControl
         btnGenerate.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnGenerate.ForeColor = Color.Beige
         btnGenerate.Location = New Point(25, 243)
-        btnGenerate.Margin = New Padding(4, 4, 4, 4)
+        btnGenerate.Margin = New Padding(4)
         btnGenerate.Name = "btnGenerate"
         btnGenerate.Size = New Size(178, 34)
         btnGenerate.TabIndex = 5
@@ -138,7 +140,7 @@ Partial Class ReportsControl
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         dgvReports.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvReports.Columns.AddRange(New DataGridViewColumn() {colDate, colResCode, colGuest, colAmount, colMethod})
+        dgvReports.Columns.AddRange(New DataGridViewColumn() {colDate, colResCode, colGuest, colAmount, colMethod, colValidId})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.Beige
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
@@ -149,7 +151,7 @@ Partial Class ReportsControl
         dgvReports.DefaultCellStyle = DataGridViewCellStyle2
         dgvReports.EnableHeadersVisualStyles = False
         dgvReports.Location = New Point(245, 69)
-        dgvReports.Margin = New Padding(4, 4, 4, 4)
+        dgvReports.Margin = New Padding(4)
         dgvReports.Name = "dgvReports"
         dgvReports.ReadOnly = True
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -162,7 +164,7 @@ Partial Class ReportsControl
         dgvReports.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         dgvReports.RowHeadersWidth = 51
         dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvReports.Size = New Size(647, 345)
+        dgvReports.Size = New Size(738, 460)
         dgvReports.TabIndex = 6
         ' 
         ' colDate
@@ -199,6 +201,12 @@ Partial Class ReportsControl
         colMethod.MinimumWidth = 6
         colMethod.Name = "colMethod"
         colMethod.ReadOnly = True
+        ' 
+        ' colValidId
+        ' 
+        colValidId.HeaderText = "Valid ID"
+        colValidId.Name = "colValidId"
+        colValidId.ReadOnly = True
         ' 
         ' lblTotalRevenue
         ' 
@@ -279,10 +287,10 @@ Partial Class ReportsControl
         Panel4.BackColor = Color.AntiqueWhite
         Panel4.Controls.Add(PictureBox2)
         Panel4.Controls.Add(lblTotalRevenue)
-        Panel4.Location = New Point(245, 420)
+        Panel4.Location = New Point(245, 535)
         Panel4.Margin = New Padding(3, 2, 3, 2)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(647, 45)
+        Panel4.Size = New Size(738, 45)
         Panel4.TabIndex = 30
         ' 
         ' PictureBox2
@@ -313,7 +321,7 @@ Partial Class ReportsControl
         Label5.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label5.Location = New Point(97, 34)
         Label5.Name = "Label5"
-        Label5.Size = New Size(436, 15)
+        Label5.Size = New Size(435, 15)
         Label5.TabIndex = 32
         Label5.Text = "Track hotel revenue, review payment records, and monitor financial performance."
         ' 
@@ -324,9 +332,16 @@ Partial Class ReportsControl
         Label6.ForeColor = Color.FromArgb(CByte(89), CByte(15), CByte(27))
         Label6.Location = New Point(94, 9)
         Label6.Name = "Label6"
-        Label6.Size = New Size(190, 24)
+        Label6.Size = New Size(189, 24)
         Label6.TabIndex = 31
         Label6.Text = "Financial Reports"
+        ' 
+        ' MySqlCommand1
+        ' 
+        MySqlCommand1.CacheAge = 0
+        MySqlCommand1.Connection = Nothing
+        MySqlCommand1.EnableCaching = False
+        MySqlCommand1.Transaction = Nothing
         ' 
         ' ReportsControl
         ' 
@@ -340,7 +355,7 @@ Partial Class ReportsControl
         Controls.Add(Panel3)
         Controls.Add(dgvReports)
         Name = "ReportsControl"
-        Size = New Size(903, 478)
+        Size = New Size(994, 593)
         CType(dgvReports, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
@@ -378,4 +393,6 @@ Partial Class ReportsControl
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents colValidId As DataGridViewTextBoxColumn
+    Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
 End Class

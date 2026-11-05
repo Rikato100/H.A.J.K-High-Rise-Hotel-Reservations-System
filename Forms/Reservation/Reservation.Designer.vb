@@ -691,7 +691,7 @@ Partial Class Reservation
         lblTitle.ForeColor = Color.Beige
         lblTitle.Location = New Point(401, 9)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(243, 24)
+        lblTitle.Size = New Size(239, 24)
         lblTitle.TabIndex = 7
         lblTitle.Text = "ADD RESERVATION"
         ' 
@@ -708,7 +708,7 @@ Partial Class Reservation
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
-        ClientSize = New Size(1014, 500)
+        ClientSize = New Size(1010, 585)
         Controls.Add(lblTitle)
         Controls.Add(btnCancel)
         Controls.Add(btnClear)

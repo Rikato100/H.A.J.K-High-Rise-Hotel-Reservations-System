@@ -686,7 +686,14 @@ Public Class Reservation
                 If MessageBox.Show("Record a payment for this reservation now?", "Payment",
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     Dim fullName As String = (txtFirstName.Text.Trim() & " " & txtSurname.Text.Trim()).Trim()
-                    Using pf As New PaymentForm(newResID, fullName, totalForPayment)
+
+                    Using pf As New PaymentForm(
+                        newResID,
+                        fullName,
+                        totalForPayment,
+                        cmbPaymentMethod.Text,
+                        txtReferenceNo.Text.Trim()
+                    )
                         pf.ShowDialog(Me)
                     End Using
                 End If
