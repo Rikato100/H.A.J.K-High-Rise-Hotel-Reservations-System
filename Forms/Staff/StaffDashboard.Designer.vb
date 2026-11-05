@@ -43,15 +43,15 @@ Partial Class StaffDashboard
         ' 
         ' btnLogout
         ' 
+        btnLogout.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         btnLogout.BackColor = Color.Transparent
         btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(105), CByte(20), CByte(35))
         btnLogout.FlatStyle = FlatStyle.Flat
         btnLogout.Font = New Font("Mongolian Baiti", 11.25F)
         btnLogout.ForeColor = Color.Beige
-        btnLogout.Location = New Point(3, 537)
-        btnLogout.Margin = New Padding(3, 4, 3, 4)
+        btnLogout.Location = New Point(3, 403)
         btnLogout.Name = "btnLogout"
-        btnLogout.Size = New Size(144, 56)
+        btnLogout.Size = New Size(126, 42)
         btnLogout.TabIndex = 16
         btnLogout.Text = ChrW(9211) & " Logout"
         btnLogout.UseVisualStyleBackColor = False
@@ -63,10 +63,9 @@ Partial Class StaffDashboard
         btnGuests.FlatStyle = FlatStyle.Flat
         btnGuests.Font = New Font("Mongolian Baiti", 11.25F)
         btnGuests.ForeColor = Color.Beige
-        btnGuests.Location = New Point(3, 225)
-        btnGuests.Margin = New Padding(3, 4, 3, 4)
+        btnGuests.Location = New Point(3, 169)
         btnGuests.Name = "btnGuests"
-        btnGuests.Size = New Size(144, 56)
+        btnGuests.Size = New Size(126, 42)
         btnGuests.TabIndex = 14
         btnGuests.Text = "♟ Guest Management"
         btnGuests.UseVisualStyleBackColor = False
@@ -78,10 +77,9 @@ Partial Class StaffDashboard
         btnReservations.FlatStyle = FlatStyle.Flat
         btnReservations.Font = New Font("Mongolian Baiti", 11.25F)
         btnReservations.ForeColor = Color.Beige
-        btnReservations.Location = New Point(3, 169)
-        btnReservations.Margin = New Padding(3, 4, 3, 4)
+        btnReservations.Location = New Point(3, 127)
         btnReservations.Name = "btnReservations"
-        btnReservations.Size = New Size(144, 56)
+        btnReservations.Size = New Size(126, 42)
         btnReservations.TabIndex = 11
         btnReservations.Text = "▤ Reservation"
         btnReservations.UseVisualStyleBackColor = False
@@ -97,16 +95,18 @@ Partial Class StaffDashboard
         Panel1.Controls.Add(btnReservations)
         Panel1.Dock = DockStyle.Left
         Panel1.Location = New Point(0, 0)
+        Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(150, 749)
+        Panel1.Size = New Size(131, 562)
         Panel1.TabIndex = 17
         ' 
         ' PictureBox3
         ' 
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(11, 8)
+        PictureBox3.Location = New Point(10, 6)
+        PictureBox3.Margin = New Padding(3, 2, 3, 2)
         PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(125, 92)
+        PictureBox3.Size = New Size(109, 69)
         PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox3.TabIndex = 15
         PictureBox3.TabStop = False
@@ -118,9 +118,10 @@ Partial Class StaffDashboard
         btnSettings.FlatStyle = FlatStyle.Flat
         btnSettings.Font = New Font("Mongolian Baiti", 11.25F)
         btnSettings.ForeColor = Color.Beige
-        btnSettings.Location = New Point(3, 277)
+        btnSettings.Location = New Point(3, 208)
+        btnSettings.Margin = New Padding(3, 2, 3, 2)
         btnSettings.Name = "btnSettings"
-        btnSettings.Size = New Size(144, 56)
+        btnSettings.Size = New Size(126, 42)
         btnSettings.TabIndex = 5
         btnSettings.Text = "⚙ Settings"
         btnSettings.UseVisualStyleBackColor = False
@@ -132,9 +133,10 @@ Partial Class StaffDashboard
         btnDashboard.FlatStyle = FlatStyle.Flat
         btnDashboard.Font = New Font("Mongolian Baiti", 11.25F)
         btnDashboard.ForeColor = Color.Beige
-        btnDashboard.Location = New Point(3, 113)
+        btnDashboard.Location = New Point(3, 85)
+        btnDashboard.Margin = New Padding(3, 2, 3, 2)
         btnDashboard.Name = "btnDashboard"
-        btnDashboard.Size = New Size(144, 56)
+        btnDashboard.Size = New Size(126, 42)
         btnDashboard.TabIndex = 0
         btnDashboard.Text = "🏠 Dashboard"
         btnDashboard.UseVisualStyleBackColor = False
@@ -146,17 +148,19 @@ Partial Class StaffDashboard
         Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(Label4)
         Panel2.Dock = DockStyle.Top
-        Panel2.Location = New Point(150, 0)
+        Panel2.Location = New Point(131, 0)
+        Panel2.Margin = New Padding(3, 2, 3, 2)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1032, 112)
+        Panel2.Size = New Size(903, 84)
         Panel2.TabIndex = 21
         ' 
         ' PictureBox4
         ' 
         PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(510, 0)
+        PictureBox4.Location = New Point(446, 0)
+        PictureBox4.Margin = New Padding(3, 2, 3, 2)
         PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(522, 112)
+        PictureBox4.Size = New Size(457, 84)
         PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox4.TabIndex = 16
         PictureBox4.TabStop = False
@@ -166,9 +170,9 @@ Partial Class StaffDashboard
         Label3.AutoSize = True
         Label3.Font = New Font("Monotype Corsiva", 12F, FontStyle.Italic)
         Label3.ForeColor = Color.Beige
-        Label3.Location = New Point(13, 59)
+        Label3.Location = New Point(11, 44)
         Label3.Name = "Label3"
-        Label3.Size = New Size(264, 24)
+        Label3.Size = New Size(220, 18)
         Label3.TabIndex = 15
         Label3.Text = "Where every stay feels extraordinary"
         ' 
@@ -177,9 +181,9 @@ Partial Class StaffDashboard
         Label4.AutoSize = True
         Label4.Font = New Font("Imprint MT Shadow", 19.8000011F, FontStyle.Bold)
         Label4.ForeColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        Label4.Location = New Point(7, 12)
+        Label4.Location = New Point(6, 9)
         Label4.Name = "Label4"
-        Label4.Size = New Size(404, 40)
+        Label4.Size = New Size(326, 32)
         Label4.TabIndex = 0
         Label4.Text = "H.A.J.K High Rise Hotel"
         ' 
@@ -187,22 +191,21 @@ Partial Class StaffDashboard
         ' 
         pnlContent.BackColor = Color.FromArgb(CByte(243), CByte(232), CByte(210))
         pnlContent.Dock = DockStyle.Fill
-        pnlContent.Location = New Point(150, 112)
+        pnlContent.Location = New Point(131, 84)
+        pnlContent.Margin = New Padding(3, 2, 3, 2)
         pnlContent.Name = "pnlContent"
-        pnlContent.Size = New Size(1032, 637)
+        pnlContent.Size = New Size(903, 478)
         pnlContent.TabIndex = 22
         ' 
         ' StaffDashboard
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1182, 749)
+        ClientSize = New Size(1034, 562)
         Controls.Add(pnlContent)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         FormBorderStyle = FormBorderStyle.FixedSingle
-        Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "StaffDashboard"
         StartPosition = FormStartPosition.CenterScreen
         Text = "H.A.J.K High Rise Hotel Reservation System"

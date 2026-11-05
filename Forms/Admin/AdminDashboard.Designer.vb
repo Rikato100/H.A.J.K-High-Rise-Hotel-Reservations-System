@@ -123,6 +123,7 @@ Partial Class AdminDashboard
         ' 
         ' btnLogout
         ' 
+        btnLogout.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         btnLogout.BackColor = Color.Transparent
         btnLogout.FlatAppearance.BorderColor = Color.Beige
         btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(105), CByte(20), CByte(35))
