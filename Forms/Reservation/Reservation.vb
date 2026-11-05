@@ -162,6 +162,7 @@ Public Class Reservation
     End Function
 
     Private Sub LoadStatuses()
+        cmbStatus.Enabled = False
         cmbStatus.Items.Clear()
         cmbStatus.Items.Add("Pending")
         cmbStatus.Items.Add("Check-In")
@@ -603,7 +604,6 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
-
                         cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
@@ -616,10 +616,10 @@ Public Class Reservation
                         totalForPayment = rawTotal
                     End Using
 
-                    If dtpCheckIn.Value.Date = DateTime.Today Then
+                    If cmbStatus.Text = "Check-In" AndAlso oldRoomID <> roomID Then
                         Using updateCmd As New MySqlCommand("UPDATE room SET room_status = 'Occupied' WHERE room_id = @roomID", conn)
                             updateCmd.Parameters.AddWithValue("@roomID", roomID)
-                            updateCmd.ExecuteNonQuery()
+                             updateCmd.ExecuteNonQuery()
                         End Using
                     End If
 
@@ -654,13 +654,11 @@ Public Class Reservation
                         cmd.Parameters.AddWithValue("@baseRate", baseRate)
                         cmd.Parameters.AddWithValue("@extraAdultFee", 800D)
                         cmd.Parameters.AddWithValue("@extraPerson", extraPersonFee)
-
                         cmd.Parameters.AddWithValue("@subtotal", rawSubtotal)
                         cmd.Parameters.AddWithValue("@discountAmount", rawDiscountAmount)
                         cmd.Parameters.AddWithValue("@netAmount", netAmount)
                         cmd.Parameters.AddWithValue("@vatAmount", rawVatAmount)
                         cmd.Parameters.AddWithValue("@totalAmount", rawTotal)
-
                         cmd.Parameters.AddWithValue("@resID", reservationID)
                         cmd.ExecuteNonQuery()
                     End Using
