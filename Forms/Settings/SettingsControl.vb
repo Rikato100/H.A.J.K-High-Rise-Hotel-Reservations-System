@@ -299,22 +299,24 @@ Public Class SettingsControl
     ' TAB 3: SYSTEM RESET LOGIC
     ' ==========================================
 
-    Private Sub rbSelectiveReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbSelectiveReset.CheckedChanged
+        Private Sub rbSelectiveReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbSelectiveReset.CheckedChanged
         Dim isSelective As Boolean = rbSelectiveReset.Checked
-        ' Date pickers are enabled only if selective reset is chosen AND guest history is checked
-        dtpResetStartDate.Enabled = isSelective AndAlso chkDeleteGuestHistory.Checked
-        dtpResetEndDate.Enabled = isSelective AndAlso chkDeleteGuestHistory.Checked
+        
+        ' Enable date pickers if EITHER history OR financial is checked
+        dtpResetStartDate.Enabled = isSelective AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
+        dtpResetEndDate.Enabled = isSelective AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
 
         chkDeleteGuestHistory.Enabled = isSelective
         chkDeleteFinancial.Enabled = isSelective
         chkResetRoomStatus.Enabled = isSelective
     End Sub
 
-    Private Sub chkDeleteGuestHistory_CheckedChanged(sender As Object, e As EventArgs) Handles chkDeleteGuestHistory.CheckedChanged
-        ' Update date pickers instantly when guest history is checked/unchecked
-        dtpResetStartDate.Enabled = rbSelectiveReset.Checked AndAlso chkDeleteGuestHistory.Checked
-        dtpResetEndDate.Enabled = rbSelectiveReset.Checked AndAlso chkDeleteGuestHistory.Checked
+        Private Sub chkDeleteGuestHistory_CheckedChanged(sender As Object, e As EventArgs) Handles chkDeleteGuestHistory.CheckedChanged
+        ' Also check if financial is checked
+        dtpResetStartDate.Enabled = rbSelectiveReset.Checked AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
+        dtpResetEndDate.Enabled = rbSelectiveReset.Checked AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
     End Sub
+                                                                                                
     Private Sub rbFactoryReset_CheckedChanged(sender As Object, e As EventArgs) Handles rbFactoryReset.CheckedChanged
         If rbFactoryReset.Checked Then
             ' Factory Reset disables all selective sub-options and date pickers
@@ -375,7 +377,7 @@ Public Class SettingsControl
             Dim messageDetails As String = "Are you sure you want to perform the selected actions?" & vbCrLf & vbCrLf
 
             If chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked Then
-                messageDetails &= "• Date Range: " & dtpResetStartDate.Value.ToShortDateString() & " to " & dtpResetEndDate.Value.ToShortDateString() & vbCrLf
+                messageDetails &= "Â• Date Range: " & dtpResetStartDate.Value.ToShortDateString() & " to " & dtpResetEndDate.Value.ToShortDateString() & vbCrLf
             End If
 
             messageDetails &= "Selected items to reset:" & vbCrLf
@@ -402,6 +404,12 @@ Public Class SettingsControl
         End If
 
         txtAdminPwdConfirm.Clear()
+    End Sub
+                                                                                                                    
+    ' Handle the Financial checkbox toggling the date pickers
+    Private Sub chkDeleteFinancial_CheckedChanged(sender As Object, e As EventArgs) Handles chkDeleteFinancial.CheckedChanged
+        dtpResetStartDate.Enabled = rbSelectiveReset.Checked AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
+        dtpResetEndDate.Enabled = rbSelectiveReset.Checked AndAlso (chkDeleteGuestHistory.Checked OrElse chkDeleteFinancial.Checked)
     End Sub
 
     Private Function VerifyAdminPassword(inputPassword As String) As Boolean
