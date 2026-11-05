@@ -84,11 +84,14 @@ Public Class Reservation
         End Function
     End Class
 
+    ' METHOD OVERLOADING: Same method name but different parameters.
+    ' 1. Constructor with NO parameters
     Public Sub New()
         InitializeComponent()
         reservationID = 0
     End Sub
 
+    ' 2. Constructor WITH an ID parameter
     Public Sub New(id As Integer)
         InitializeComponent()
         reservationID = id
