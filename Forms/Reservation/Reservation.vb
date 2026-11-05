@@ -293,18 +293,19 @@ Public Class Reservation
     End Sub
 
     Private Sub LoadDiscounts()
-        Try
-            Using conn As MySqlConnection = DbConnection.GetConnection()
-                conn.Open()
-                Dim query As String =
-                    "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
-                    "FROM discount " &
-                    "WHERE (start_date IS NULL AND end_date IS NULL) " &
-                    "OR (MONTH(@checkInDate) BETWEEN MONTH(start_date) AND MONTH(end_date)) " &
-                    "ORDER BY discount_id"
+    Try
+        Using conn As MySqlConnection = DbConnection.GetConnection()
+            conn.Open()
+            Dim query As String =
+                "SELECT discount_id, discount_name, discount_rate, vat_exempt " &
+                "FROM discount " &
+                "WHERE (start_date IS NULL AND end_date IS NULL) " &
+                "OR (MONTH(start_date) <= MONTH(end_date) AND MONTH(@checkInDate) BETWEEN MONTH(start_date) AND MONTH(end_date)) " &
+                "OR (MONTH(start_date) > MONTH(end_date) AND (MONTH(@checkInDate) >= MONTH(start_date) OR MONTH(@checkInDate) <= MONTH(end_date))) " &
+                "ORDER BY discount_id"
 
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@checkInDate", dtpCheckIn.Value.Date)
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@checkInDate", dtpCheckIn.Value.Date)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         cmbDiscount.Items.Clear()
                         While reader.Read()
