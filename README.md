@@ -67,4 +67,5 @@ If Visual Studio throws errors saying the files are in a restricted zone or bloc
 4. Now extract the ZIP file and open it in Visual Studio. The errors will be gone.
 
 *(Alternatively, open PowerShell as Administrator and run: `Get-ChildItem -Path "Folder Path" -Recurse | Unblock-File`)*
+
 *(To get the folder path: open the project folder in File Explorer, click the address bar, and copy the path)*
