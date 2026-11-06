@@ -60,13 +60,11 @@ If you do not have Visual Studio installed, you can still run the compiled appli
 ## 🛠️ TROUBLESHOOTING
 
 **Encountering "Restricted Zone" or "Mark of the Web" errors when building?**
-If Visual Studio throws errors saying the files are in a restricted zone or blocked (common when downloading projects from the internet), follow these steps to unblock them:
-1. Click the Windows Start button, search for **PowerShell**.
-2. Right-click on **Windows PowerShell** and select **Run as Administrator**.
-3. Copy and paste the following command, replacing `(Folder Path)` with the actual path to your project folder, and press Enter:
+If Visual Studio throws errors saying the files are in a restricted zone or blocked (common when downloading projects from the internet), follow these steps:
+1. **Before extracting the ZIP file**, right-click the downloaded `.zip` file and select **Properties**.
+2. At the bottom of the **General** tab, check the box that says **"Unblock"**.
+3. Click **Apply** and **OK**.
+4. Now extract the ZIP file and open it in Visual Studio. The errors will be gone.
 
-   ```powershell
-   Get-ChildItem -Path "(Folder Path)" -Recurse | Unblock-File
-- (To get the folder path: open the project folder in File Explorer, click the address bar, and copy the path).
-
-4. Rebuild the solution in Visual Studio.
+*(Alternatively, open PowerShell as Administrator and run: `Get-ChildItem -Path "Folder Path" -Recurse | Unblock-File`)*
+*(To get the folder path: open the project folder in File Explorer, click the address bar, and copy the path)*
